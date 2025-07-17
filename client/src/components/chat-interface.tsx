@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useChat } from "@/hooks/use-chat";
 import { useDocuments } from "@/hooks/use-documents";
+import { useToast } from "@/hooks/use-toast";
 import { Bot, User, Send, Paperclip, Mic, Trash2, FileText, Loader2, Upload } from "lucide-react";
 import { type ChatMessage } from "@shared/schema";
 
@@ -23,6 +24,7 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
 
   const { messages, isLoading, sendMessage, clearMessages } = useChat(sessionId);
   const { uploadFiles } = useDocuments();
+  const { toast } = useToast();
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -50,17 +52,46 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
         setIsUploading(true);
         const fileNames = filesToUpload.map(f => f.name).join(', ');
         
-        // Upload files
-        const fileList = new DataTransfer();
-        filesToUpload.forEach(file => fileList.items.add(file));
-        await uploadFiles(fileList.files);
+        // Create a proper FileList from the staged files
+        const formData = new FormData();
+        filesToUpload.forEach(file => formData.append('files', file));
         
-        // Send message with file context
-        const fileMessage = message 
-          ? `${message}\n\n[Attached files: ${fileNames}]`
-          : `Please analyze the uploaded files: ${fileNames}`;
-        
-        await sendMessage(fileMessage);
+        // Upload files using the form data approach directly
+        try {
+          const response = await fetch("/api/documents/upload", {
+            method: "POST",
+            body: formData,
+            credentials: "include",
+          });
+
+          if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.error || "Upload failed");
+          }
+
+          const result = await response.json();
+          
+          // Show success toast
+          toast({
+            title: "✅ Documents processed successfully",
+            description: `${result.documents.length} documents analyzed and ready for questions`,
+          });
+          
+          // Send message with file context
+          const fileMessage = message 
+            ? `${message}\n\n[Attached files: ${fileNames}]`
+            : `Please analyze the uploaded files: ${fileNames}`;
+          
+          await sendMessage(fileMessage);
+        } catch (error) {
+          console.error('File upload failed:', error);
+          toast({
+            title: "Upload failed",
+            description: error.message,
+            variant: "destructive",
+          });
+          await sendMessage(`❌ Failed to upload files: ${error.message}`);
+        }
       } else {
         // Just send the message
         await sendMessage(message);
