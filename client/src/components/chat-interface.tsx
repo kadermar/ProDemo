@@ -300,7 +300,11 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
             type="submit"
             disabled={(!input.trim() && stagedFiles.length === 0) || isLoading}
             className="px-6 py-3"
-            onClick={() => console.log('Send button clicked - input:', input, 'stagedFiles:', stagedFiles.length, 'isLoading:', isLoading)}
+            onClick={(e) => {
+              console.log('Send button clicked - input:', input, 'stagedFiles:', stagedFiles.length, 'isLoading:', isLoading);
+              console.log('Button disabled:', (!input.trim() && stagedFiles.length === 0) || isLoading);
+              // Let the form submission handle it
+            }}
           >
             <Send className="w-4 h-4 mr-2" />
             Send
