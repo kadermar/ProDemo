@@ -11,6 +11,7 @@ import { type ChatMessage } from "@shared/schema";
 export function ChatInterface() {
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -60,12 +61,24 @@ export function ChatInterface() {
     textareaRef.current?.focus();
   };
 
-  const handleFileUpload = (files: FileList) => {
+  const handleFileUpload = async (files: FileList) => {
     if (files.length > 0) {
-      uploadFiles(files);
-      // Add a message to the chat indicating files were uploaded
-      const fileNames = Array.from(files).map(f => f.name).join(', ');
-      sendMessage(`I've uploaded ${files.length} file(s): ${fileNames}. Please analyze these documents.`);
+      setIsUploading(true);
+      try {
+        await uploadFiles(files);
+        // Add a message to the chat indicating files were uploaded
+        const fileNames = Array.from(files).map(f => f.name).join(', ');
+        await sendMessage(`I've uploaded ${files.length} file(s): ${fileNames}. Please analyze these documents.`);
+      } catch (error) {
+        console.error('File upload failed:', error);
+        await sendMessage(`Failed to upload files. Please try again.`);
+      } finally {
+        setIsUploading(false);
+        // Reset the file input
+        if (fileInputRef.current) {
+          fileInputRef.current.value = '';
+        }
+      }
     }
   };
 
@@ -154,7 +167,7 @@ export function ChatInterface() {
                   type="button"
                   variant="ghost"
                   size="sm"
-                  className="text-gray-400 hover:text-gray-600"
+                  className="text-blue-500 hover:text-blue-700 hover:bg-blue-50"
                   onClick={() => fileInputRef.current?.click()}
                   title="Upload PDF documents"
                 >
@@ -171,6 +184,20 @@ export function ChatInterface() {
               </div>
             </div>
           </div>
+          <Button
+            type="button"
+            variant="outline"
+            onClick={() => fileInputRef.current?.click()}
+            disabled={isUploading || isLoading}
+            className="px-4 py-3 border-blue-200 text-blue-600 hover:bg-blue-50 disabled:opacity-50"
+            title="Upload PDF documents"
+          >
+            {isUploading ? (
+              <Loader2 className="w-4 h-4 animate-spin" />
+            ) : (
+              <Upload className="w-4 h-4" />
+            )}
+          </Button>
           <Button
             type="submit"
             disabled={!input.trim() || isLoading}
@@ -194,6 +221,14 @@ export function ChatInterface() {
             }
           }}
         />
+
+        {/* Upload Status */}
+        {isUploading && (
+          <div className="mt-3 flex items-center text-sm text-blue-600">
+            <Loader2 className="w-4 h-4 animate-spin mr-2" />
+            Uploading files...
+          </div>
+        )}
 
         {/* Quick Actions */}
         <div className="mt-3 flex flex-wrap gap-2">
