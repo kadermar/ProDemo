@@ -11,8 +11,16 @@ export const documents = pgTable("documents", {
   uploadedAt: timestamp("uploaded_at").defaultNow().notNull(),
 });
 
+export const chatSessions = pgTable("chat_sessions", {
+  id: serial("id").primaryKey(),
+  title: text("title").notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+});
+
 export const chatMessages = pgTable("chat_messages", {
   id: serial("id").primaryKey(),
+  sessionId: integer("session_id").references(() => chatSessions.id),
   content: text("content").notNull(),
   role: text("role").notNull(), // 'user' or 'assistant'
   sources: jsonb("sources"), // Array of source references
@@ -41,6 +49,12 @@ export const insertDocumentSchema = createInsertSchema(documents).omit({
   uploadedAt: true,
 });
 
+export const insertChatSessionSchema = createInsertSchema(chatSessions).omit({
+  id: true,
+  createdAt: true,
+  updatedAt: true,
+});
+
 export const insertChatMessageSchema = createInsertSchema(chatMessages).omit({
   id: true,
   createdAt: true,
@@ -52,6 +66,8 @@ export const insertProductDataSchema = createInsertSchema(productData).omit({
 
 export type InsertDocument = z.infer<typeof insertDocumentSchema>;
 export type Document = typeof documents.$inferSelect;
+export type InsertChatSession = z.infer<typeof insertChatSessionSchema>;
+export type ChatSession = typeof chatSessions.$inferSelect;
 export type InsertChatMessage = z.infer<typeof insertChatMessageSchema>;
 export type ChatMessage = typeof chatMessages.$inferSelect;
 export type InsertProductData = z.infer<typeof insertProductDataSchema>;

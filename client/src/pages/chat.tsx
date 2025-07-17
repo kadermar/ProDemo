@@ -1,16 +1,37 @@
 import { useState } from "react";
 import { DocumentLibrary } from "@/components/document-library";
 import { ChatInterface } from "@/components/chat-interface";
-import { Search, Settings, FolderOpen } from "lucide-react";
+import { ChatHistorySidebar } from "@/components/chat-history-sidebar";
+import { Search, Settings, FolderOpen, History } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 export default function ChatPage() {
   const [isLibraryOpen, setIsLibraryOpen] = useState(true);
+  const [isHistoryOpen, setIsHistoryOpen] = useState(false);
+  const [currentSessionId, setCurrentSessionId] = useState<number | undefined>(undefined);
   const isMobile = useIsMobile();
 
   const toggleLibrary = () => {
     setIsLibraryOpen(!isLibraryOpen);
+  };
+
+  const toggleHistory = () => {
+    setIsHistoryOpen(!isHistoryOpen);
+  };
+
+  const handleSessionSelect = (sessionId: number) => {
+    setCurrentSessionId(sessionId);
+    if (isMobile) {
+      setIsHistoryOpen(false);
+    }
+  };
+
+  const handleNewSession = () => {
+    setCurrentSessionId(undefined);
+    if (isMobile) {
+      setIsHistoryOpen(false);
+    }
   };
 
   return (
@@ -27,6 +48,15 @@ export default function ChatPage() {
             </h1>
           </div>
           <div className="flex items-center space-x-3">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={toggleHistory}
+              className="text-gray-600 hover:text-primary"
+            >
+              <History className="w-4 h-4 mr-2" />
+              <span className="hidden sm:inline">Chat History</span>
+            </Button>
             <Button
               variant="ghost"
               size="sm"
@@ -48,23 +78,40 @@ export default function ChatPage() {
       </header>
 
       <div className="flex flex-1 max-w-7xl mx-auto w-full overflow-hidden">
+        {/* Chat History Sidebar */}
+        <div
+          className={`${
+            isHistoryOpen ? "w-80" : "w-0"
+          } transition-all duration-300 ease-in-out overflow-hidden ${
+            isMobile ? "absolute inset-y-0 left-0 z-50" : ""
+          }`}
+        >
+          <ChatHistorySidebar
+            isOpen={isHistoryOpen}
+            onClose={() => setIsHistoryOpen(false)}
+            currentSessionId={currentSessionId}
+            onSessionSelect={handleSessionSelect}
+            onNewSession={handleNewSession}
+          />
+        </div>
+
+        {/* Main Chat Interface */}
+        <div className="flex-1 flex flex-col bg-white">
+          <ChatInterface sessionId={currentSessionId} />
+        </div>
+
         {/* Document Library Sidebar */}
         <div
           className={`${
             isLibraryOpen ? "w-80" : "w-0"
           } transition-all duration-300 ease-in-out overflow-hidden ${
-            isMobile ? "absolute inset-y-0 left-0 z-50" : ""
+            isMobile ? "absolute inset-y-0 right-0 z-50" : ""
           }`}
         >
           <DocumentLibrary
             isOpen={isLibraryOpen}
             onClose={() => setIsLibraryOpen(false)}
           />
-        </div>
-
-        {/* Main Chat Interface */}
-        <div className="flex-1 flex flex-col bg-white">
-          <ChatInterface />
         </div>
       </div>
     </div>

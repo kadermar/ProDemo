@@ -4,21 +4,25 @@ import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { type ChatMessage } from "@shared/schema";
 
-export function useChat() {
+export function useChat(sessionId?: number) {
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
   const { data: messages = [], isLoading: isLoadingMessages } = useQuery<ChatMessage[]>({
-    queryKey: ["/api/chat/messages"],
+    queryKey: ["/api/chat/messages", sessionId],
+    queryFn: () => apiRequest<ChatMessage[]>(`/api/chat/messages${sessionId ? `?sessionId=${sessionId}` : ""}`),
   });
 
   const sendMessageMutation = useMutation({
     mutationFn: async (content: string) => {
-      const response = await apiRequest("POST", "/api/chat/message", { content });
-      return response.json();
+      const response = await apiRequest("/api/chat/message", {
+        method: "POST",
+        body: JSON.stringify({ content, sessionId }),
+      });
+      return response;
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["/api/chat/messages"] });
+      queryClient.invalidateQueries({ queryKey: ["/api/chat/messages", sessionId] });
     },
     onError: (error) => {
       toast({
@@ -31,13 +35,15 @@ export function useChat() {
 
   const clearMessagesMutation = useMutation({
     mutationFn: async () => {
-      await apiRequest("DELETE", "/api/chat/messages");
+      await apiRequest(`/api/chat/messages${sessionId ? `?sessionId=${sessionId}` : ""}`, {
+        method: "DELETE",
+      });
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["/api/chat/messages"] });
+      queryClient.invalidateQueries({ queryKey: ["/api/chat/messages", sessionId] });
       toast({
         title: "Chat cleared",
-        description: "All messages have been removed.",
+        description: sessionId ? "Session messages cleared." : "All messages have been removed.",
       });
     },
     onError: (error) => {

@@ -1,4 +1,4 @@
-import { documents, chatMessages, productData, type Document, type ChatMessage, type ProductData, type InsertDocument, type InsertChatMessage, type InsertProductData } from "@shared/schema";
+import { documents, chatSessions, chatMessages, productData, type Document, type ChatSession, type ChatMessage, type ProductData, type InsertDocument, type InsertChatSession, type InsertChatMessage, type InsertProductData } from "@shared/schema";
 
 export interface IStorage {
   // Document operations
@@ -7,10 +7,17 @@ export interface IStorage {
   getDocument(id: number): Promise<Document | undefined>;
   searchDocuments(query: string): Promise<Document[]>;
   
-  // Chat operations
+  // Chat session operations
+  createChatSession(session: InsertChatSession): Promise<ChatSession>;
+  getChatSessions(): Promise<ChatSession[]>;
+  getChatSession(id: number): Promise<ChatSession | undefined>;
+  updateChatSession(id: number, updates: Partial<ChatSession>): Promise<ChatSession | undefined>;
+  deleteChatSession(id: number): Promise<void>;
+  
+  // Chat message operations
   createChatMessage(message: InsertChatMessage): Promise<ChatMessage>;
-  getChatMessages(): Promise<ChatMessage[]>;
-  clearChatMessages(): Promise<void>;
+  getChatMessages(sessionId?: number): Promise<ChatMessage[]>;
+  clearChatMessages(sessionId?: number): Promise<void>;
   
   // Product data operations
   createProductData(data: InsertProductData): Promise<ProductData>;
@@ -20,17 +27,21 @@ export interface IStorage {
 
 export class MemStorage implements IStorage {
   private documents: Map<number, Document>;
+  private chatSessions: Map<number, ChatSession>;
   private chatMessages: Map<number, ChatMessage>;
   private productData: Map<number, ProductData>;
   private currentDocumentId: number;
+  private currentChatSessionId: number;
   private currentChatMessageId: number;
   private currentProductDataId: number;
 
   constructor() {
     this.documents = new Map();
+    this.chatSessions = new Map();
     this.chatMessages = new Map();
     this.productData = new Map();
     this.currentDocumentId = 1;
+    this.currentChatSessionId = 1;
     this.currentChatMessageId = 1;
     this.currentProductDataId = 1;
   }
@@ -65,11 +76,50 @@ export class MemStorage implements IStorage {
     );
   }
 
+  async createChatSession(insertSession: InsertChatSession): Promise<ChatSession> {
+    const id = this.currentChatSessionId++;
+    const session: ChatSession = {
+      ...insertSession,
+      id,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    };
+    this.chatSessions.set(id, session);
+    return session;
+  }
+
+  async getChatSessions(): Promise<ChatSession[]> {
+    return Array.from(this.chatSessions.values()).sort((a, b) => 
+      b.updatedAt.getTime() - a.updatedAt.getTime()
+    );
+  }
+
+  async getChatSession(id: number): Promise<ChatSession | undefined> {
+    return this.chatSessions.get(id);
+  }
+
+  async updateChatSession(id: number, updates: Partial<ChatSession>): Promise<ChatSession | undefined> {
+    const session = this.chatSessions.get(id);
+    if (!session) return undefined;
+    
+    const updatedSession = { ...session, ...updates, updatedAt: new Date() };
+    this.chatSessions.set(id, updatedSession);
+    return updatedSession;
+  }
+
+  async deleteChatSession(id: number): Promise<void> {
+    this.chatSessions.delete(id);
+    // Also delete all messages in this session
+    const messagesToDelete = Array.from(this.chatMessages.values()).filter(msg => msg.sessionId === id);
+    messagesToDelete.forEach(msg => this.chatMessages.delete(msg.id));
+  }
+
   async createChatMessage(insertMessage: InsertChatMessage): Promise<ChatMessage> {
     const id = this.currentChatMessageId++;
     const message: ChatMessage = {
       ...insertMessage,
       id,
+      sessionId: insertMessage.sessionId || null,
       sources: insertMessage.sources || null,
       createdAt: new Date(),
     };
@@ -77,14 +127,23 @@ export class MemStorage implements IStorage {
     return message;
   }
 
-  async getChatMessages(): Promise<ChatMessage[]> {
-    return Array.from(this.chatMessages.values()).sort((a, b) => 
+  async getChatMessages(sessionId?: number): Promise<ChatMessage[]> {
+    const messages = Array.from(this.chatMessages.values());
+    const filteredMessages = sessionId 
+      ? messages.filter(msg => msg.sessionId === sessionId)
+      : messages;
+    return filteredMessages.sort((a, b) => 
       a.createdAt.getTime() - b.createdAt.getTime()
     );
   }
 
-  async clearChatMessages(): Promise<void> {
-    this.chatMessages.clear();
+  async clearChatMessages(sessionId?: number): Promise<void> {
+    if (sessionId) {
+      const messagesToDelete = Array.from(this.chatMessages.values()).filter(msg => msg.sessionId === sessionId);
+      messagesToDelete.forEach(msg => this.chatMessages.delete(msg.id));
+    } else {
+      this.chatMessages.clear();
+    }
   }
 
   async createProductData(insertData: InsertProductData): Promise<ProductData> {

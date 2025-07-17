@@ -8,7 +8,11 @@ import { useDocuments } from "@/hooks/use-documents";
 import { Bot, User, Send, Paperclip, Mic, History, Trash2, FileText, Loader2, Upload } from "lucide-react";
 import { type ChatMessage } from "@shared/schema";
 
-export function ChatInterface() {
+interface ChatInterfaceProps {
+  sessionId?: number;
+}
+
+export function ChatInterface({ sessionId }: ChatInterfaceProps) {
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
@@ -16,7 +20,7 @@ export function ChatInterface() {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const { messages, isLoading, sendMessage, clearMessages } = useChat();
+  const { messages, isLoading, sendMessage, clearMessages } = useChat(sessionId);
   const { uploadFiles } = useDocuments();
 
   const scrollToBottom = () => {
