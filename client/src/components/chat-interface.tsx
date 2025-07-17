@@ -249,6 +249,11 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
           </div>
         )}
 
+        {/* Debug Info */}
+        <div className="mb-2 text-xs text-gray-500 bg-gray-100 p-2 rounded">
+          Debug: Input: "{input}" | Staged Files: {stagedFiles.length} | Button disabled: {((!input.trim() && stagedFiles.length === 0) || isLoading).toString()}
+        </div>
+        
         <form onSubmit={handleSubmit} className="flex items-end space-x-3">
           <div className="flex-1">
             <div className="relative">
@@ -295,6 +300,7 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
             type="submit"
             disabled={(!input.trim() && stagedFiles.length === 0) || isLoading}
             className="px-6 py-3"
+            onClick={() => console.log('Send button clicked - input:', input, 'stagedFiles:', stagedFiles.length, 'isLoading:', isLoading)}
           >
             <Send className="w-4 h-4 mr-2" />
             Send
