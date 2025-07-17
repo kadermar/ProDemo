@@ -71,13 +71,20 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
     if (files.length > 0) {
       setIsUploading(true);
       try {
-        await uploadFiles(files);
-        // Add a message to the chat indicating files were uploaded
         const fileNames = Array.from(files).map(f => f.name).join(', ');
-        await sendMessage(`I've uploaded ${files.length} file(s): ${fileNames}. Please analyze these documents.`);
+        
+        // First, send a processing message to show the user what's happening
+        await sendMessage(`📄 Processing ${files.length} file(s): ${fileNames}...`);
+        
+        // Upload the files
+        await uploadFiles(files);
+        
+        // Send a ready message once processing is complete
+        await sendMessage(`✅ Documents processed successfully! The content from ${fileNames} has been analyzed and is now ready for questions. You can ask me about the specifications, requirements, or any details from these documents.`);
+        
       } catch (error) {
         console.error('File upload failed:', error);
-        await sendMessage(`Failed to upload files. Please try again.`);
+        await sendMessage(`❌ Failed to upload files. Please try again.`);
       } finally {
         setIsUploading(false);
         // Reset the file input
@@ -98,7 +105,14 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
               Product Information Chat
             </h2>
             <p className="text-sm text-gray-500">
-              Ask questions about roofing systems, membranes, and specifications
+              {isUploading ? (
+                <span className="flex items-center">
+                  <Loader2 className="w-3 h-3 animate-spin mr-1" />
+                  Processing uploaded documents...
+                </span>
+              ) : (
+                "Ask questions about roofing systems, membranes, and specifications"
+              )}
             </p>
           </div>
           <div className="flex items-center space-x-2">
@@ -125,7 +139,7 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
           ))
         )}
 
-        {(isLoading || isTyping) && (
+        {(isLoading || isTyping || isUploading) && (
           <div className="flex items-start space-x-3">
             <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
               <Bot className="text-white w-4 h-4" />
@@ -135,7 +149,9 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
                 <CardContent className="p-4">
                   <div className="flex items-center space-x-2">
                     <Loader2 className="w-4 h-4 animate-spin text-primary" />
-                    <span className="text-gray-600">Processing your query...</span>
+                    <span className="text-gray-600">
+                      {isUploading ? "Processing uploaded documents..." : "Processing your query..."}
+                    </span>
                   </div>
                 </CardContent>
               </Card>

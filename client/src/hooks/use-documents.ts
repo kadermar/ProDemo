@@ -34,8 +34,8 @@ export function useDocuments() {
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ["/api/documents"] });
       toast({
-        title: "Documents uploaded successfully",
-        description: `${data.documents.length} documents processed`,
+        title: "✅ Documents processed successfully",
+        description: `${data.documents.length} documents analyzed and ready for questions`,
       });
     },
     onError: (error) => {
