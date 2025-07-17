@@ -19,10 +19,7 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
   const [isUploading, setIsUploading] = useState(false);
   const [stagedFiles, setStagedFiles] = useState<File[]>([]);
   
-  // Debug effect to track stagedFiles changes
-  useEffect(() => {
-    console.log('stagedFiles state changed:', stagedFiles.length, stagedFiles.map(f => f.name));
-  }, [stagedFiles]);
+
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -41,13 +38,10 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('handleSubmit called - input:', input, 'stagedFiles:', stagedFiles.length, 'isLoading:', isLoading);
     if ((!input.trim() && stagedFiles.length === 0) || isLoading) return;
 
     const message = input.trim();
     const filesToUpload = [...stagedFiles];
-    
-    console.log('Processing submission - message:', message, 'filesToUpload:', filesToUpload.length);
     
     // Clear input and staged files
     setInput("");
@@ -57,14 +51,12 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
     try {
       // If there are files to upload, upload them first
       if (filesToUpload.length > 0) {
-        console.log('Uploading files:', filesToUpload.map(f => f.name));
         setIsUploading(true);
         const fileNames = filesToUpload.map(f => f.name).join(', ');
         
         // Create a proper FileList from the staged files
         const formData = new FormData();
         filesToUpload.forEach(file => {
-          console.log('Adding file to FormData:', file.name, file.size, file.type);
           formData.append('files', file);
         });
         
@@ -96,7 +88,6 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
           
           await sendMessage(fileMessage);
         } catch (error) {
-          console.error('File upload failed:', error);
           toast({
             title: "Upload failed",
             description: error.message,
@@ -137,16 +128,10 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
 
   const handleFileUpload = async (files: FileList) => {
     if (files.length > 0) {
-      console.log('Staging files:', Array.from(files).map(f => f.name));
       const newFiles = Array.from(files);
-      console.log('Before setStagedFiles, current stagedFiles:', stagedFiles.length);
       
       // Stage the files instead of immediately uploading
-      setStagedFiles(prev => {
-        const updated = [...prev, ...newFiles];
-        console.log('After setStagedFiles, new stagedFiles:', updated.length);
-        return updated;
-      });
+      setStagedFiles(prev => [...prev, ...newFiles]);
       
       // Reset the file input
       if (fileInputRef.current) {
@@ -261,12 +246,7 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
           </div>
         )}
 
-        {/* Debug Info */}
-        <div className="mb-2 text-xs text-gray-500 bg-gray-100 p-2 rounded">
-          Debug: Input: "{input}" | Staged Files: {stagedFiles.length} | Button disabled: {((!input.trim() && stagedFiles.length === 0) || isLoading).toString()}
-          <br />
-          Files: {stagedFiles.map(f => f.name).join(', ')}
-        </div>
+
         
         <form onSubmit={handleSubmit} className="flex items-end space-x-3">
           <div className="flex-1">
@@ -314,11 +294,7 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
             type="submit"
             disabled={(!input.trim() && stagedFiles.length === 0) || isLoading}
             className="px-6 py-3"
-            onClick={(e) => {
-              console.log('Send button clicked - input:', input, 'stagedFiles:', stagedFiles.length, 'isLoading:', isLoading);
-              console.log('Button disabled:', (!input.trim() && stagedFiles.length === 0) || isLoading);
-              // Let the form submission handle it
-            }}
+
           >
             <Send className="w-4 h-4 mr-2" />
             Send
