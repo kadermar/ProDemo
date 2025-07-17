@@ -18,6 +18,11 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
   const [isTyping, setIsTyping] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [stagedFiles, setStagedFiles] = useState<File[]>([]);
+  
+  // Debug effect to track stagedFiles changes
+  useEffect(() => {
+    console.log('stagedFiles state changed:', stagedFiles.length, stagedFiles.map(f => f.name));
+  }, [stagedFiles]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -133,8 +138,15 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
   const handleFileUpload = async (files: FileList) => {
     if (files.length > 0) {
       console.log('Staging files:', Array.from(files).map(f => f.name));
+      const newFiles = Array.from(files);
+      console.log('Before setStagedFiles, current stagedFiles:', stagedFiles.length);
+      
       // Stage the files instead of immediately uploading
-      setStagedFiles(prev => [...prev, ...Array.from(files)]);
+      setStagedFiles(prev => {
+        const updated = [...prev, ...newFiles];
+        console.log('After setStagedFiles, new stagedFiles:', updated.length);
+        return updated;
+      });
       
       // Reset the file input
       if (fileInputRef.current) {
@@ -252,6 +264,8 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
         {/* Debug Info */}
         <div className="mb-2 text-xs text-gray-500 bg-gray-100 p-2 rounded">
           Debug: Input: "{input}" | Staged Files: {stagedFiles.length} | Button disabled: {((!input.trim() && stagedFiles.length === 0) || isLoading).toString()}
+          <br />
+          Files: {stagedFiles.map(f => f.name).join(', ')}
         </div>
         
         <form onSubmit={handleSubmit} className="flex items-end space-x-3">
