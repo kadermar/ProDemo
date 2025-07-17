@@ -54,13 +54,17 @@ Your role is to:
 5. Cite specific sources from the provided context with document references
 6. Offer recommendations based on building requirements, climate, and project needs
 7. Explain technical specifications like uplift pressures, hail ratings, and deck requirements
+8. Analyze uploaded documents and extract relevant information about roofing projects
+9. Answer questions about uploaded documents by referencing both the document content and related product specifications
 
-IMPORTANT: PRIORITIZE PRODUCT DATABASE OVER ASSEMBLY LETTERS
+IMPORTANT: DOCUMENT ANALYSIS AND SOURCE PRIORITIZATION
 - Primary source: Product Database (contains structured product specifications from zip files)
-- Secondary source: Assembly Letters (provides additional context and project examples)
-- When answering questions, base your response primarily on the Product Database
-- Use Assembly Letters only for additional context or when Product Database lacks specific information
-- For source citations, prefer Product Database entries over Assembly Letters
+- Secondary source: Uploaded Documents (user-provided PDFs with project-specific information)
+- Tertiary source: Assembly Letters (provides additional context and project examples)
+- When analyzing uploaded documents, extract key information like project details, specifications, requirements
+- Cross-reference uploaded document content with relevant product database entries
+- For source citations, prioritize Product Database, then Uploaded Documents, then Assembly Letters
+- When answering questions about uploaded documents, provide both document analysis and relevant product recommendations
 
 Key roofing system knowledge:
 - TPO (Thermoplastic Polyolefin): Single-ply, heat-welded, energy-efficient
@@ -80,7 +84,14 @@ Product Database: ${JSON.stringify(context.productData.slice(0, 5).map(p => ({
   warranty: p.warranty,
   sourceDocument: p.sourceDocument
 })), null, 2)}
-Assembly Letters: ${JSON.stringify(context.documents.map(doc => ({
+Uploaded Documents: ${JSON.stringify(context.documents.filter(doc => !doc.filename.includes('assembly')).map(doc => ({
+  id: doc.id,
+  filename: doc.filename,
+  content: doc.content.substring(0, 800) + "...",
+  metadata: doc.metadata
+})), null, 2)}
+
+Assembly Letters (Context): ${JSON.stringify(context.documents.filter(doc => doc.filename.includes('assembly')).map(doc => ({
   id: doc.id,
   filename: doc.filename,
   content: doc.content.substring(0, 400) + "..."
@@ -141,8 +152,23 @@ Assembly Letters: ${JSON.stringify(context.documents.map(doc => ({
       }
     });
 
-    // Secondary: Assembly letters (lower relevance)
-    context.documents.forEach(doc => {
+    // Secondary: Uploaded documents (medium relevance)
+    context.documents.filter(doc => !doc.filename.includes('assembly')).forEach(doc => {
+      if (content.toLowerCase().includes(doc.filename.toLowerCase()) ||
+          content.toLowerCase().includes('uploaded') ||
+          content.toLowerCase().includes('document')) {
+        sources.push({
+          type: 'document',
+          id: doc.id,
+          title: doc.filename,
+          relevance: 0.8, // Medium relevance for uploaded documents
+          excerpt: doc.content.substring(0, 200) + "..."
+        });
+      }
+    });
+
+    // Tertiary: Assembly letters (lower relevance)
+    context.documents.filter(doc => doc.filename.includes('assembly')).forEach(doc => {
       if (content.toLowerCase().includes(doc.filename.toLowerCase())) {
         sources.push({
           type: 'document',
@@ -165,11 +191,11 @@ Assembly Letters: ${JSON.stringify(context.documents.map(doc => ({
         messages: [
           {
             role: "system",
-            content: "You are a roofing system expert. Summarize the key information from this assembly letter, including membrane type, building specifications, warranty details, and any special requirements."
+            content: "You are a roofing system expert. Analyze and summarize the key information from this document, including membrane type, building specifications, warranty details, project requirements, contractor information, and any special requirements. Focus on extracting actionable roofing system information."
           },
           {
             role: "user",
-            content: `Please summarize this roofing assembly letter: ${filename}\n\nContent: ${content}`
+            content: `Please analyze and summarize this roofing document: ${filename}\n\nContent: ${content}`
           }
         ],
         temperature: 0.5,
