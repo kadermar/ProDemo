@@ -70,15 +70,24 @@ Key roofing system knowledge:
 Always cite your sources using the format: [Source: Product ID - Product Name] for product data or [Source: Document Name] for assembly letters. Provide specific details from the documentation including project names, locations, and exact specifications. If you don't have enough information to answer a question, say so clearly and suggest what additional information would be helpful.
 
 Context Information:
-Product Database: ${JSON.stringify(context.productData, null, 2)}
+Product Database: ${JSON.stringify(context.productData.slice(0, 5).map(p => ({
+  id: p.id,
+  system: p.system,
+  manufacturer: p.manufacturer,
+  membraneType: p.membraneType,
+  projectName: p.projectName,
+  thickness: p.thickness,
+  warranty: p.warranty,
+  sourceDocument: p.sourceDocument
+})), null, 2)}
 Assembly Letters: ${JSON.stringify(context.documents.map(doc => ({
   id: doc.id,
   filename: doc.filename,
-  content: doc.content.substring(0, 1500) + "..."
+  content: doc.content.substring(0, 400) + "..."
 })), null, 2)}`;
 
       const response = await openai.chat.completions.create({
-        model: "gpt-4o-mini",
+        model: "gpt-3.5-turbo",
         messages: [
           { role: "system", content: systemPrompt },
           { role: "user", content: query }
@@ -152,7 +161,7 @@ Assembly Letters: ${JSON.stringify(context.documents.map(doc => ({
   async summarizeDocument(content: string, filename: string): Promise<string> {
     try {
       const response = await openai.chat.completions.create({
-        model: "gpt-4o-mini",
+        model: "gpt-3.5-turbo",
         messages: [
           {
             role: "system",

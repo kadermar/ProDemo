@@ -19,11 +19,11 @@ export class RAGService {
       // Search documents
       const documents = await storage.searchDocuments(query);
       
-      // If no specific search results, get all data for general queries
-      const allProductData = productData.length > 0 ? productData : await storage.getProductData();
+      // If no specific search results, get limited data for general queries to prevent token limit issues
+      const allProductData = productData.length > 0 ? productData.slice(0, 10) : (await storage.getProductData()).slice(0, 10);
       const allDocuments = documents.length > 0 ? documents : await storage.getDocuments();
       
-      // Build context for AI - PRIORITIZE PRODUCT DATA
+      // Build context for AI - PRIORITIZE PRODUCT DATA (limited to prevent token overflow)
       const context: RAGContext = {
         productData: allProductData.map(p => ({
           id: p.id,
