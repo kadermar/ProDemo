@@ -111,9 +111,21 @@ export function DocumentLibrary({ isOpen, onClose }: DocumentLibraryProps) {
                       <p className="text-sm text-gray-500 mt-1">
                         {product.manufacturer} • {product.location}
                       </p>
-                      <div className="flex items-center space-x-2 mt-2">
+                      <div className="flex items-center flex-wrap gap-2 mt-2">
                         <Badge className={getSystemColor(product.system)}>
                           {product.manufacturer}
+                        </Badge>
+                        <Badge variant="outline" className="text-purple-600 border-purple-200">
+                          {product.specifications?.category || 
+                           (product.membraneType.includes('Primer') ? 'Primer' :
+                            product.membraneType.includes('Walkway') ? 'Walkway' :
+                            product.membraneType.includes('Adhesive') ? 'Adhesive' :
+                            product.membraneType.includes('Sealant') ? 'Sealant' :
+                            product.membraneType.includes('Fastener') ? 'Fastener' :
+                            product.membraneType.includes('Membrane') ? 'Membrane' : 'Other')}
+                        </Badge>
+                        <Badge variant="outline" className="text-indigo-600 border-indigo-200">
+                          {product.system}
                         </Badge>
                         {product.warranty && (
                           <Badge variant="outline" className="text-green-600 border-green-200">
