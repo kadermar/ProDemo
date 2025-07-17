@@ -127,18 +127,6 @@ export function DocumentLibrary({ isOpen, onClose }: DocumentLibraryProps) {
                         <Badge variant="outline" className="text-indigo-600 border-indigo-200">
                           {product.system}
                         </Badge>
-                        {product.warranty && (
-                          <Badge variant="outline" className="text-green-600 border-green-200">
-                            <Shield className="w-3 h-3 mr-1" />
-                            {product.warranty.match(/(\d+)-year/)?.[1] || ""}yr
-                          </Badge>
-                        )}
-                        {product.windSpeed && (
-                          <Badge variant="outline" className="text-blue-600 border-blue-200">
-                            <Wind className="w-3 h-3 mr-1" />
-                            {product.windSpeed}
-                          </Badge>
-                        )}
                       </div>
                     </div>
                   </div>
