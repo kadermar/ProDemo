@@ -37,7 +37,7 @@ Preferred communication style: Simple, everyday language.
 ### Database Schema
 - **documents**: Stores uploaded PDF files with content and metadata (includes pre-loaded assembly letters)
 - **chatMessages**: Stores chat conversation history with user and assistant messages
-- **productData**: Pre-loaded roofing system specifications extracted from assembly letters
+- **productData**: Pre-loaded roofing product sheets from ZIP file (TPO, PVC, EPDM products)
 
 ### AI Service (RAG Implementation)
 - **RAG Service**: Combines document search with product database queries
@@ -59,10 +59,10 @@ Preferred communication style: Simple, everyday language.
 
 ## Data Flow
 
-1. **Pre-loaded Data**: System starts with 7 product specifications and 3 assembly letters from zip file content
+1. **Pre-loaded Data**: System starts with 10 product sheets from ZIP file and 3 assembly letters for context
 2. **Document Upload**: Users can upload additional PDF files → Server processes and extracts text → Content stored in database
 3. **Chat Interaction**: User sends message → RAG service searches relevant content → AI generates response with sources → Response displayed with citations
-4. **Product Search**: System searches pre-loaded product database for relevant roofing specifications
+4. **Product Search**: System searches pre-loaded product sheets for roofing specifications and product details
 5. **Document Search**: Full-text search across assembly letters and uploaded document content
 6. **Response Generation**: AI combines search results to provide comprehensive answers with proper source citations
 
@@ -118,3 +118,5 @@ The application is designed to be a comprehensive tool for roofing professionals
 - ✓ Added file upload functionality directly to chat interface (upload button)
 - ✓ Created product modal for detailed product sheet viewing
 - ✓ Assembly letters now serve as contextual information only
+- ✓ Integrated actual product sheets from ZIP file (10 TPO/PVC/EPDM products)
+- ✓ Updated system to use authentic product data from manufacturer specifications

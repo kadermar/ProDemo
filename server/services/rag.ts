@@ -63,27 +63,27 @@ export class RAGService {
 
   async initializeProductDatabase(): Promise<void> {
     try {
-      const { preloadedProducts } = await import('../data/products');
+      const { productSheets } = await import('../data/product-sheets');
       const { preloadedDocuments } = await import('../data/assembly-letters');
       
       // Check if products are already loaded
       const existingProducts = await storage.getProductData();
       if (existingProducts.length === 0) {
-        // Load preloaded products
-        for (const product of preloadedProducts) {
+        // Load product sheets from ZIP file
+        for (const product of productSheets) {
           await storage.createProductData(product);
         }
-        console.log(`Loaded ${preloadedProducts.length} product specifications`);
+        console.log(`Loaded ${productSheets.length} product sheets from ZIP file`);
       }
       
       // Check if documents are already loaded
       const existingDocuments = await storage.getDocuments();
       if (existingDocuments.length === 0) {
-        // Load preloaded assembly letters
+        // Load preloaded assembly letters (for context only)
         for (const document of preloadedDocuments) {
           await storage.createDocument(document);
         }
-        console.log(`Loaded ${preloadedDocuments.length} assembly letters`);
+        console.log(`Loaded ${preloadedDocuments.length} assembly letters for context`);
       }
     } catch (error) {
       console.error('Failed to initialize product database:', error);
