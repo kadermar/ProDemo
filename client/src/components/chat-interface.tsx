@@ -49,12 +49,16 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
     try {
       // If there are files to upload, upload them first
       if (filesToUpload.length > 0) {
+        console.log('Uploading files:', filesToUpload.map(f => f.name));
         setIsUploading(true);
         const fileNames = filesToUpload.map(f => f.name).join(', ');
         
         // Create a proper FileList from the staged files
         const formData = new FormData();
-        filesToUpload.forEach(file => formData.append('files', file));
+        filesToUpload.forEach(file => {
+          console.log('Adding file to FormData:', file.name, file.size, file.type);
+          formData.append('files', file);
+        });
         
         // Upload files using the form data approach directly
         try {
@@ -125,6 +129,7 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
 
   const handleFileUpload = async (files: FileList) => {
     if (files.length > 0) {
+      console.log('Staging files:', Array.from(files).map(f => f.name));
       // Stage the files instead of immediately uploading
       setStagedFiles(prev => [...prev, ...Array.from(files)]);
       
