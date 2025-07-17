@@ -16,6 +16,7 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
+  const [stagedFiles, setStagedFiles] = useState<File[]>([]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -33,16 +34,40 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!input.trim() || isLoading) return;
+    if ((!input.trim() && stagedFiles.length === 0) || isLoading) return;
 
     const message = input.trim();
+    const filesToUpload = [...stagedFiles];
+    
+    // Clear input and staged files
     setInput("");
+    setStagedFiles([]);
     setIsTyping(true);
 
     try {
-      await sendMessage(message);
+      // If there are files to upload, upload them first
+      if (filesToUpload.length > 0) {
+        setIsUploading(true);
+        const fileNames = filesToUpload.map(f => f.name).join(', ');
+        
+        // Upload files
+        const fileList = new DataTransfer();
+        filesToUpload.forEach(file => fileList.items.add(file));
+        await uploadFiles(fileList.files);
+        
+        // Send message with file context
+        const fileMessage = message 
+          ? `${message}\n\n[Attached files: ${fileNames}]`
+          : `Please analyze the uploaded files: ${fileNames}`;
+        
+        await sendMessage(fileMessage);
+      } else {
+        // Just send the message
+        await sendMessage(message);
+      }
     } finally {
       setIsTyping(false);
+      setIsUploading(false);
     }
   };
 
@@ -69,30 +94,18 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
 
   const handleFileUpload = async (files: FileList) => {
     if (files.length > 0) {
-      setIsUploading(true);
-      try {
-        const fileNames = Array.from(files).map(f => f.name).join(', ');
-        
-        // First, send a processing message to show the user what's happening
-        await sendMessage(`📄 Processing ${files.length} file(s): ${fileNames}...`);
-        
-        // Upload the files
-        await uploadFiles(files);
-        
-        // Send a ready message once processing is complete
-        await sendMessage(`✅ Documents processed successfully! The content from ${fileNames} has been analyzed and is now ready for questions. You can ask me about the specifications, requirements, or any details from these documents.`);
-        
-      } catch (error) {
-        console.error('File upload failed:', error);
-        await sendMessage(`❌ Failed to upload files. Please try again.`);
-      } finally {
-        setIsUploading(false);
-        // Reset the file input
-        if (fileInputRef.current) {
-          fileInputRef.current.value = '';
-        }
+      // Stage the files instead of immediately uploading
+      setStagedFiles(prev => [...prev, ...Array.from(files)]);
+      
+      // Reset the file input
+      if (fileInputRef.current) {
+        fileInputRef.current.value = '';
       }
     }
+  };
+
+  const removeStagedFile = (index: number) => {
+    setStagedFiles(prev => prev.filter((_, i) => i !== index));
   };
 
   return (
@@ -109,6 +122,11 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
                 <span className="flex items-center">
                   <Loader2 className="w-3 h-3 animate-spin mr-1" />
                   Processing uploaded documents...
+                </span>
+              ) : stagedFiles.length > 0 ? (
+                <span className="flex items-center">
+                  <FileText className="w-3 h-3 mr-1 text-blue-600" />
+                  {stagedFiles.length} file{stagedFiles.length > 1 ? 's' : ''} ready to upload
                 </span>
               ) : (
                 "Ask questions about roofing systems, membranes, and specifications"
@@ -164,12 +182,43 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
 
       {/* Chat Input */}
       <div className="border-t border-gray-200 p-4">
+        {/* Staged Files Display */}
+        {stagedFiles.length > 0 && (
+          <div className="mb-3 p-3 bg-blue-50 rounded-lg">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-sm font-medium text-blue-900">
+                Files ready to upload ({stagedFiles.length})
+              </span>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {stagedFiles.map((file, index) => (
+                <div key={index} className="flex items-center gap-2 bg-white px-3 py-1 rounded-full text-sm">
+                  <FileText className="w-3 h-3 text-blue-600" />
+                  <span className="text-gray-700">{file.name}</span>
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="sm"
+                    className="h-4 w-4 p-0 text-gray-400 hover:text-red-500"
+                    onClick={() => removeStagedFile(index)}
+                  >
+                    ×
+                  </Button>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         <form onSubmit={handleSubmit} className="flex items-end space-x-3">
           <div className="flex-1">
             <div className="relative">
               <Textarea
                 ref={textareaRef}
-                placeholder="Ask about product specifications, membrane types, warranties, or any roofing system questions..."
+                placeholder={stagedFiles.length > 0 
+                  ? "Ask a question about the files you've attached, or just hit Send to analyze them..."
+                  : "Ask about product specifications, membrane types, warranties, or any roofing system questions..."
+                }
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
@@ -205,7 +254,7 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
           </div>
           <Button
             type="submit"
-            disabled={!input.trim() || isLoading}
+            disabled={(!input.trim() && stagedFiles.length === 0) || isLoading}
             className="px-6 py-3"
           >
             <Send className="w-4 h-4 mr-2" />
