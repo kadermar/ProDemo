@@ -23,7 +23,7 @@ export class RAGService {
       const allProductData = productData.length > 0 ? productData : await storage.getProductData();
       const allDocuments = documents.length > 0 ? documents : await storage.getDocuments();
       
-      // Build context for AI
+      // Build context for AI - PRIORITIZE PRODUCT DATA
       const context: RAGContext = {
         productData: allProductData.map(p => ({
           id: p.id,
@@ -32,7 +32,14 @@ export class RAGService {
           membraneType: p.membraneType,
           projectName: p.projectName,
           specifications: p.specifications,
-          sourceDocument: p.sourceDocument || ''
+          sourceDocument: p.sourceDocument || '',
+          thickness: p.thickness,
+          warranty: p.warranty,
+          buildingHeight: p.buildingHeight,
+          windSpeed: p.windSpeed,
+          location: p.location,
+          contractor: p.contractor,
+          date: p.date
         })),
         documents: allDocuments.map(d => ({
           id: d.id,

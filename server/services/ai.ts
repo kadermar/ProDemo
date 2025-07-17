@@ -25,6 +25,13 @@ export interface RAGContext {
     projectName: string;
     specifications: any;
     sourceDocument: string;
+    thickness?: string;
+    warranty?: string;
+    buildingHeight?: string;
+    windSpeed?: string;
+    location?: string;
+    contractor?: string;
+    date?: string;
   }>;
   documents: Array<{
     id: number;
@@ -48,12 +55,19 @@ Your role is to:
 6. Offer recommendations based on building requirements, climate, and project needs
 7. Explain technical specifications like uplift pressures, hail ratings, and deck requirements
 
+IMPORTANT: PRIORITIZE PRODUCT DATABASE OVER ASSEMBLY LETTERS
+- Primary source: Product Database (contains structured product specifications from zip files)
+- Secondary source: Assembly Letters (provides additional context and project examples)
+- When answering questions, base your response primarily on the Product Database
+- Use Assembly Letters only for additional context or when Product Database lacks specific information
+- For source citations, prefer Product Database entries over Assembly Letters
+
 Key roofing system knowledge:
 - TPO (Thermoplastic Polyolefin): Single-ply, heat-welded, energy-efficient
 - EPDM (Ethylene Propylene Diene Monomer): Synthetic rubber, durable, adhered or mechanically fastened
 - PVC (Polyvinyl Chloride): Chemical-resistant, heat-welded, good for restaurants/chemical exposure
 
-Always cite your sources using the format: [Source: Document Name or Product ID]. Provide specific details from the documentation including project names, locations, and exact specifications. If you don't have enough information to answer a question, say so clearly and suggest what additional information would be helpful.
+Always cite your sources using the format: [Source: Product ID - Product Name] for product data or [Source: Document Name] for assembly letters. Provide specific details from the documentation including project names, locations, and exact specifications. If you don't have enough information to answer a question, say so clearly and suggest what additional information would be helpful.
 
 Context Information:
 Product Database: ${JSON.stringify(context.productData, null, 2)}
@@ -102,35 +116,37 @@ Assembly Letters: ${JSON.stringify(context.documents.map(doc => ({
       excerpt: string;
     }> = [];
 
-    // Look for product references in the content
+    // PRIORITIZE PRODUCT DATA - Higher relevance scores
     context.productData.forEach(product => {
       if (content.toLowerCase().includes(product.projectName.toLowerCase()) ||
           content.toLowerCase().includes(product.manufacturer.toLowerCase()) ||
-          content.toLowerCase().includes(product.system.toLowerCase())) {
+          content.toLowerCase().includes(product.system.toLowerCase()) ||
+          content.toLowerCase().includes(product.membraneType.toLowerCase())) {
         sources.push({
           type: 'product',
           id: product.id,
           title: `${product.manufacturer} ${product.system} - ${product.projectName}`,
-          relevance: 0.8,
-          excerpt: `${product.membraneType} system for ${product.projectName}`
+          relevance: 0.95, // Higher relevance for product data
+          excerpt: `${product.thickness} ${product.membraneType} system for ${product.projectName} with ${product.warranty}`
         });
       }
     });
 
-    // Look for document references
+    // Secondary: Assembly letters (lower relevance)
     context.documents.forEach(doc => {
       if (content.toLowerCase().includes(doc.filename.toLowerCase())) {
         sources.push({
           type: 'document',
           id: doc.id,
           title: doc.filename,
-          relevance: 0.9,
+          relevance: 0.6, // Lower relevance for assembly letters
           excerpt: doc.content.substring(0, 200) + "..."
         });
       }
     });
 
-    return sources.slice(0, 5); // Return top 5 sources
+    // Sort by relevance (product data first) and return top 5
+    return sources.sort((a, b) => b.relevance - a.relevance).slice(0, 5);
   }
 
   async summarizeDocument(content: string, filename: string): Promise<string> {
