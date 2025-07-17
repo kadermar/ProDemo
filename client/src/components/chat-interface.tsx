@@ -36,10 +36,13 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('handleSubmit called - input:', input, 'stagedFiles:', stagedFiles.length, 'isLoading:', isLoading);
     if ((!input.trim() && stagedFiles.length === 0) || isLoading) return;
 
     const message = input.trim();
     const filesToUpload = [...stagedFiles];
+    
+    console.log('Processing submission - message:', message, 'filesToUpload:', filesToUpload.length);
     
     // Clear input and staged files
     setInput("");
