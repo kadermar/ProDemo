@@ -113,7 +113,7 @@ export function DocumentLibrary({ isOpen, onClose }: DocumentLibraryProps) {
                       </p>
                       <div className="flex items-center space-x-2 mt-2">
                         <Badge className={getSystemColor(product.system)}>
-                          {product.thickness} {product.system}
+                          {product.manufacturer}
                         </Badge>
                         {product.warranty && (
                           <Badge variant="outline" className="text-green-600 border-green-200">
