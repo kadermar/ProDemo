@@ -113,3 +113,8 @@ The application is designed to be a comprehensive tool for roofing professionals
 - ✓ Implemented source citation system for traceability
 - ✓ Fixed TypeScript errors and improved error handling
 - ✓ Added comprehensive product information from Carlisle and Versico manufacturers
+- ✓ Updated document library to display product sheets from zip file instead of assembly letters
+- ✓ Modified AI system to prioritize product data over assembly letters for answers and sources
+- ✓ Added file upload functionality directly to chat interface (upload button)
+- ✓ Created product modal for detailed product sheet viewing
+- ✓ Assembly letters now serve as contextual information only

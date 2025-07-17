@@ -25,11 +25,36 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Initialize the product database
   await ragService.initializeProductDatabase();
 
-  // Get all documents
+  // Get all documents (assembly letters)
   app.get("/api/documents", async (req, res) => {
     try {
       const documents = await storage.getDocuments();
       res.json(documents);
+    } catch (error) {
+      res.status(500).json({ error: error instanceof Error ? error.message : 'Unknown error' });
+    }
+  });
+
+  // Get all product data (product sheets from zip file)
+  app.get("/api/products", async (req, res) => {
+    try {
+      const products = await storage.getProductData();
+      res.json(products);
+    } catch (error) {
+      res.status(500).json({ error: error instanceof Error ? error.message : 'Unknown error' });
+    }
+  });
+
+  // Get a specific product
+  app.get("/api/products/:id", async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      const products = await storage.getProductData();
+      const product = products.find(p => p.id === id);
+      if (!product) {
+        return res.status(404).json({ error: "Product not found" });
+      }
+      res.json(product);
     } catch (error) {
       res.status(500).json({ error: error instanceof Error ? error.message : 'Unknown error' });
     }

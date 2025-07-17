@@ -4,7 +4,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useChat } from "@/hooks/use-chat";
-import { Bot, User, Send, Paperclip, Mic, History, Trash2, FileText, Loader2 } from "lucide-react";
+import { useDocuments } from "@/hooks/use-documents";
+import { Bot, User, Send, Paperclip, Mic, History, Trash2, FileText, Loader2, Upload } from "lucide-react";
 import { type ChatMessage } from "@shared/schema";
 
 export function ChatInterface() {
@@ -12,8 +13,10 @@ export function ChatInterface() {
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const { messages, isLoading, sendMessage, clearMessages } = useChat();
+  const { uploadFiles } = useDocuments();
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -55,6 +58,15 @@ export function ChatInterface() {
   const handleQuickQuery = (query: string) => {
     setInput(query);
     textareaRef.current?.focus();
+  };
+
+  const handleFileUpload = (files: FileList) => {
+    if (files.length > 0) {
+      uploadFiles(files);
+      // Add a message to the chat indicating files were uploaded
+      const fileNames = Array.from(files).map(f => f.name).join(', ');
+      sendMessage(`I've uploaded ${files.length} file(s): ${fileNames}. Please analyze these documents.`);
+    }
   };
 
   return (
@@ -143,8 +155,10 @@ export function ChatInterface() {
                   variant="ghost"
                   size="sm"
                   className="text-gray-400 hover:text-gray-600"
+                  onClick={() => fileInputRef.current?.click()}
+                  title="Upload PDF documents"
                 >
-                  <Paperclip className="w-4 h-4" />
+                  <Upload className="w-4 h-4" />
                 </Button>
                 <Button
                   type="button"
@@ -166,6 +180,20 @@ export function ChatInterface() {
             Send
           </Button>
         </form>
+
+        {/* Hidden file input */}
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept=".pdf"
+          multiple
+          className="hidden"
+          onChange={(e) => {
+            if (e.target.files) {
+              handleFileUpload(e.target.files);
+            }
+          }}
+        />
 
         {/* Quick Actions */}
         <div className="mt-3 flex flex-wrap gap-2">
