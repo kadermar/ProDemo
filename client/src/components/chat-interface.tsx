@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useChat } from "@/hooks/use-chat";
 import { useDocuments } from "@/hooks/use-documents";
-import { Bot, User, Send, Paperclip, Mic, History, Trash2, FileText, Loader2, Upload } from "lucide-react";
+import { Bot, User, Send, Paperclip, Mic, Trash2, FileText, Loader2, Upload } from "lucide-react";
 import { type ChatMessage } from "@shared/schema";
 
 interface ChatInterfaceProps {
@@ -102,14 +102,6 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
             </p>
           </div>
           <div className="flex items-center space-x-2">
-            <Button
-              variant="ghost"
-              size="sm"
-              className="text-gray-600 hover:text-primary"
-            >
-              <History className="w-4 h-4 mr-1" />
-              History
-            </Button>
             <Button
               variant="ghost"
               size="sm"
