@@ -46,10 +46,14 @@ export function ChatHistorySidebar({
   const deleteSessionMutation = useDeleteChatSession();
 
   const handleCreateSession = async () => {
-    const newSession = await createSessionMutation.mutateAsync({
-      title: `New Chat ${sessions.length + 1}`,
-    });
-    onSessionSelect(newSession.id);
+    try {
+      const newSession = await createSessionMutation.mutateAsync({
+        title: `New Chat ${sessions.length + 1}`,
+      });
+      onSessionSelect(newSession.id);
+    } catch (error) {
+      console.error('Failed to create session:', error);
+    }
   };
 
   const handleEditSession = (session: ChatSession) => {
@@ -59,12 +63,16 @@ export function ChatHistorySidebar({
 
   const handleSaveEdit = async () => {
     if (editingSessionId && editingTitle.trim()) {
-      await updateSessionMutation.mutateAsync({
-        id: editingSessionId,
-        data: { title: editingTitle.trim() },
-      });
-      setEditingSessionId(null);
-      setEditingTitle("");
+      try {
+        await updateSessionMutation.mutateAsync({
+          id: editingSessionId,
+          data: { title: editingTitle.trim() },
+        });
+        setEditingSessionId(null);
+        setEditingTitle("");
+      } catch (error) {
+        console.error('Failed to update session:', error);
+      }
     }
   };
 
@@ -74,9 +82,13 @@ export function ChatHistorySidebar({
   };
 
   const handleDeleteSession = async (sessionId: number) => {
-    await deleteSessionMutation.mutateAsync(sessionId);
-    if (currentSessionId === sessionId) {
-      onNewSession();
+    try {
+      await deleteSessionMutation.mutateAsync(sessionId);
+      if (currentSessionId === sessionId) {
+        onNewSession();
+      }
+    } catch (error) {
+      console.error('Failed to delete session:', error);
     }
   };
 
