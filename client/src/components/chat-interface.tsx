@@ -167,11 +167,16 @@ export function ChatInterface() {
                   type="button"
                   variant="ghost"
                   size="sm"
-                  className="text-blue-500 hover:text-blue-700 hover:bg-blue-50"
+                  className="text-blue-500 hover:text-blue-700 hover:bg-blue-50 disabled:opacity-50"
                   onClick={() => fileInputRef.current?.click()}
+                  disabled={isUploading || isLoading}
                   title="Upload PDF documents"
                 >
-                  <Upload className="w-4 h-4" />
+                  {isUploading ? (
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                  ) : (
+                    <Upload className="w-4 h-4" />
+                  )}
                 </Button>
                 <Button
                   type="button"
@@ -184,20 +189,6 @@ export function ChatInterface() {
               </div>
             </div>
           </div>
-          <Button
-            type="button"
-            variant="outline"
-            onClick={() => fileInputRef.current?.click()}
-            disabled={isUploading || isLoading}
-            className="px-4 py-3 border-blue-200 text-blue-600 hover:bg-blue-50 disabled:opacity-50"
-            title="Upload PDF documents"
-          >
-            {isUploading ? (
-              <Loader2 className="w-4 h-4 animate-spin" />
-            ) : (
-              <Upload className="w-4 h-4" />
-            )}
-          </Button>
           <Button
             type="submit"
             disabled={!input.trim() || isLoading}
