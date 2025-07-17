@@ -78,7 +78,7 @@ Assembly Letters: ${JSON.stringify(context.documents.map(doc => ({
 })), null, 2)}`;
 
       const response = await openai.chat.completions.create({
-        model: "gpt-4o",
+        model: "gpt-4o-mini",
         messages: [
           { role: "system", content: systemPrompt },
           { role: "user", content: query }
@@ -152,7 +152,7 @@ Assembly Letters: ${JSON.stringify(context.documents.map(doc => ({
   async summarizeDocument(content: string, filename: string): Promise<string> {
     try {
       const response = await openai.chat.completions.create({
-        model: "gpt-4o",
+        model: "gpt-4o-mini",
         messages: [
           {
             role: "system",
