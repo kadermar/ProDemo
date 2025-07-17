@@ -37,7 +37,7 @@ Preferred communication style: Simple, everyday language.
 ### Database Schema
 - **documents**: Stores uploaded PDF files with content and metadata (includes pre-loaded assembly letters)
 - **chatMessages**: Stores chat conversation history with user and assistant messages
-- **productData**: Pre-loaded roofing product sheets from ZIP file (TPO, PVC, EPDM products)
+- **productData**: Complete product database with 205 roofing product sheets from ZIP file (33 TPO, 40 PVC, 48 EPDM, 84 other products)
 
 ### AI Service (RAG Implementation)
 - **RAG Service**: Combines document search with product database queries
@@ -59,7 +59,7 @@ Preferred communication style: Simple, everyday language.
 
 ## Data Flow
 
-1. **Pre-loaded Data**: System starts with 10 product sheets from ZIP file and 3 assembly letters for context
+1. **Pre-loaded Data**: System starts with 205 complete product sheets from ZIP file and 3 assembly letters for context
 2. **Document Upload**: Users can upload additional PDF files → Server processes and extracts text → Content stored in database
 3. **Chat Interaction**: User sends message → RAG service searches relevant content → AI generates response with sources → Response displayed with citations
 4. **Product Search**: System searches pre-loaded product sheets for roofing specifications and product details
@@ -120,3 +120,5 @@ The application is designed to be a comprehensive tool for roofing professionals
 - ✓ Assembly letters now serve as contextual information only
 - ✓ Integrated actual product sheets from ZIP file (10 TPO/PVC/EPDM products)
 - ✓ Updated system to use authentic product data from manufacturer specifications
+- ✓ Extracted complete product database with all 205 product sheets from ZIP file
+- ✓ Organized products by system type: 33 TPO, 40 PVC, 48 EPDM, 84 other products

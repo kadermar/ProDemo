@@ -63,17 +63,17 @@ export class RAGService {
 
   async initializeProductDatabase(): Promise<void> {
     try {
-      const { productSheets } = await import('../data/product-sheets');
+      const { allProductSheets } = await import('../data/all-product-sheets');
       const { preloadedDocuments } = await import('../data/assembly-letters');
       
       // Check if products are already loaded
       const existingProducts = await storage.getProductData();
       if (existingProducts.length === 0) {
-        // Load product sheets from ZIP file
-        for (const product of productSheets) {
+        // Load all product sheets from ZIP file
+        for (const product of allProductSheets) {
           await storage.createProductData(product);
         }
-        console.log(`Loaded ${productSheets.length} product sheets from ZIP file`);
+        console.log(`Loaded ${allProductSheets.length} product sheets from ZIP file`);
       }
       
       // Check if documents are already loaded

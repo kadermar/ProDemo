@@ -1,0 +1,5958 @@
+import { type InsertProductData } from "@shared/schema";
+
+// Complete product database extracted from ZIP file (205 products)
+export const allProductSheets: InsertProductData[] = [
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "LowVOC Bonding Adhesive 1168",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "LowVOC Bonding Adhesive 1168",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Adhesive",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Adhesive applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "10001_en_LowVOC_Bonding_Adhesive_1168_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "Induction Welding Cardboard Disc",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "Induction Welding Cardboard Disc",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "10086_en_Induction_Welding_Cardboard_Disc_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "TPO",
+    "manufacturer": "Carlisle",
+    "membraneType": "SureWeld TPO Universal Corners",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "SureWeld TPO Universal Corners",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Accessory",
+      "system": "TPO",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "TPO roofing systems",
+        "Accessory applications"
+      ],
+      "features": [
+        "TPO technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "10180_en_SureWeld_TPO_Universal_Corners_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "TPO",
+    "manufacturer": "Carlisle",
+    "membraneType": "SureWeld TPO Split PipeSeals",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "SureWeld TPO Split PipeSeals",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Accessory",
+      "system": "TPO",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "TPO roofing systems",
+        "Accessory applications"
+      ],
+      "features": [
+        "TPO technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "10182_en_SureWeld_TPO_Split_PipeSeals_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "FR Base Sheet 1S",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "FR Base Sheet 1S",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "10221_en_FR_Base_Sheet_1S_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "TPO",
+    "manufacturer": "Carlisle",
+    "membraneType": "SureWeld TPO Pipe Seals",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "SureWeld TPO Pipe Seals",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Accessory",
+      "system": "TPO",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "TPO roofing systems",
+        "Accessory applications"
+      ],
+      "features": [
+        "TPO technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "10249_en_SureWeld_TPO_Pipe_Seals_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "LowVOC UNTACK Adhesive Remover and Cleaner",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "LowVOC UNTACK Adhesive Remover and Cleaner",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Adhesive",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Adhesive applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "10280_en_LowVOC_UNTACK_Adhesive_Remover_and_Cleaner_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "SureWhite EPDM Pressure Sensitive Pipe Seals",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "SureWhite EPDM Pressure Sensitive Pipe Seals",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Accessory",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Accessory applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "10864_en_SureWhite_EPDM_Pressure_Sensitive_Pipe_Seals_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "LIQUISEAL Liquid Flashing Accessories",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "LIQUISEAL Liquid Flashing Accessories",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Flashing",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Flashing applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "11014_en_LIQUISEAL_Liquid_Flashing_Accessories_PDS.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "Insulation Fastening Plates",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "Insulation Fastening Plates",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Fastener",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Fastener applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "11227_en_Insulation_Fastening_Plates_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "LIQUISEAL Liquid Flashing Concrete and Masonry Primer",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "LIQUISEAL Liquid Flashing Concrete and Masonry Primer",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Primer",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Primer applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "11281_en_LIQUISEAL_Liquid_Flashing_Concrete_and_Masonry_Primer_PDS.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "LIQUISEAL Liquid Flashing Fleece",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "LIQUISEAL Liquid Flashing Fleece",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Flashing",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Flashing applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "11282_en_LIQUISEAL_Liquid_Flashing_Fleece_PDS.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "LIQUISEAL Liquid Flashing Metal Primer",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "LIQUISEAL Liquid Flashing Metal Primer",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Primer",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Primer applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "11284_en_LIQUISEAL_Liquid_Flashing_Metal_Primer_PDS.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "HP Fastener",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "HP Fastener",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Fastener",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Fastener applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "11472_en_HP_Fastener_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "InsulFast Fasteners",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "InsulFast Fasteners",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Fastener",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Fastener applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "12208_en_InsulFast_Fasteners_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "ASAP InsulFast Fasteners",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "ASAP InsulFast Fasteners",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Fastener",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Fastener applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "12393_en_ASAP_InsulFast_Fasteners_Product_Data_Sheet.pdf"
+  },
+  {
+    "system": "TPO",
+    "manufacturer": "Carlisle",
+    "membraneType": "SureWeld CutEdge Sealant",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "SureWeld CutEdge Sealant",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Sealant",
+      "system": "TPO",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "TPO roofing systems",
+        "Sealant applications"
+      ],
+      "features": [
+        "TPO technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "12401_en_SureWeld_CutEdge_Sealant_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "TreadSafe Tube Fastening System",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "TreadSafe Tube Fastening System",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Fastener",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Fastener applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "12403_en_TreadSafe_Tube_Fastening_System_PDS.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "SureSeal EPDM PressureSensitive Overlayment Strip",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "SureSeal EPDM PressureSensitive Overlayment Strip",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "12424_en_SureSeal_EPDM_PressureSensitive_Overlayment_Strip_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "Fastening and Termination Bars",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "Fastening and Termination Bars",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Fastener",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Fastener applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "12541_en_Fastening_and_Termination_Bars_Product_Data_Sheet.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "SureSeal HP250 Primer",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "SureSeal HP250 Primer",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Primer",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Primer applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "13391_en_SureSeal_HP250_Primer_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "TPO",
+    "manufacturer": "Carlisle",
+    "membraneType": "LowVOC EPDM and TPO Primer",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "LowVOC EPDM and TPO Primer",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Primer",
+      "system": "TPO",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "TPO roofing systems",
+        "Primer applications"
+      ],
+      "features": [
+        "TPO technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "13394_en_LowVOC_EPDM_and_TPO_Primer_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "HPX Fasteners and RhinoBond Plates",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "HPX Fasteners and RhinoBond Plates",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Fastener",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Fastener applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "13484_en_HPX_Fasteners_and_RhinoBond_Plates_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "HPX Fasteners and isoweld Fastening Plates",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "HPX Fasteners and isoweld Fastening Plates",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Fastener",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Fastener applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "13485_en_HPX_Fasteners_and_isoweld_Fastening_Plates_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "CST-1209-Gyptec Fasteners and Plates-PDS 4-19",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "CST-1209-Gyptec Fasteners and Plates-PDS 4-19",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Fastener",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Fastener applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "1409_en_CST-1209-Gyptec_Fasteners_and_Plates-PDS_4-19.pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "SureFlex PVC Step 2 Primer",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "SureFlex PVC Step 2 Primer",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Primer",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Primer applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "14522_en_SureFlex_PVC_Step_2_Primer_PDS.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "SureSeal EPDM System Components",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "SureSeal EPDM System Components",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "14566_en_SureSeal_EPDM_System_Components.pdf"
+  },
+  {
+    "system": "TPO",
+    "manufacturer": "Carlisle",
+    "membraneType": "TPO and PVC TTop and Square Top Vents",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "TPO and PVC TTop and Square Top Vents",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "TPO",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "TPO roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "TPO technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "15038_en_TPO_and_PVC_TTop_and_Square_Top_Vents_Product_Data_Sheet.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "LIQUISEAL Liquid Flashing Resin",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "LIQUISEAL Liquid Flashing Resin",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Flashing",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Flashing applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "15039_en_LIQUISEAL_Liquid_Flashing_Resin_PDS.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "Type IV Glass Ply Felt",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "Type IV Glass Ply Felt",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "15240_en_Type_IV_Glass_Ply_Felt_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "Type VI Glass Ply Felt",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "Type VI Glass Ply Felt",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "15252_en_Type_VI_Glass_Ply_Felt_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "Vented Base Sheet",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "Vented Base Sheet",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "15255_en_Vented_Base_Sheet_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "Pressure Sensitive RUSS",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "Pressure Sensitive RUSS",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "15413_en_Pressure_Sensitive_RUSS_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "2 Seam Fastening Plates",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "2 Seam Fastening Plates",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Fastener",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Fastener applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "15492_en_2_Seam_Fastening_Plates_Product_Data_Sheet_PDS.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "EPDM-1073 603401-EPDM-SureWhite-PS-RUSS-PDS 7-11-12",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "EPDM-1073 603401-EPDM-SureWhite-PS-RUSS-PDS 7-11-12",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "2072_en_EPDM-1073_603401-EPDM-SureWhite-PS-RUSS-PDS_7-11-12.pdf"
+  },
+  {
+    "system": "TPO",
+    "manufacturer": "Carlisle",
+    "membraneType": "TPO-4104 604459 Sure-Weld Outside Corners",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "TPO-4104 604459 Sure-Weld Outside Corners",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Accessory",
+      "system": "TPO",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "TPO roofing systems",
+        "Accessory applications"
+      ],
+      "features": [
+        "TPO technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "3520_en_TPO-4104_604459_Sure-Weld_Outside_Corners_PDS_9-20-13.pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "PVC-2082 SureFlex Cut Edge Sealant",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "PVC-2082 SureFlex Cut Edge Sealant",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Sealant",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Sealant applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "5086_en_PVC-2082_SureFlex_Cut_Edge_Sealant_PDS_01-08-14.pdf"
+  },
+  {
+    "system": "TPO",
+    "manufacturer": "Carlisle",
+    "membraneType": "SureWeld TPO PS Coverstrip",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "SureWeld TPO PS Coverstrip",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "TPO",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "TPO roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "TPO technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "5422_en_SureWeld_TPO_PS_Coverstrip_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "TPO",
+    "manufacturer": "Carlisle",
+    "membraneType": "TPO-1047 602183-SWAdhesivesAndSealants 10-15",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "TPO-1047 602183-SWAdhesivesAndSealants 10-15",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Adhesive",
+      "system": "TPO",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "TPO roofing systems",
+        "Adhesive applications"
+      ],
+      "features": [
+        "TPO technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "543_en_TPO-1047_602183-SWAdhesivesAndSealants_10-15.pdf"
+  },
+  {
+    "system": "TPO",
+    "manufacturer": "Carlisle",
+    "membraneType": "SureWeld TPO Inside Corners",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "SureWeld TPO Inside Corners",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Accessory",
+      "system": "TPO",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "TPO roofing systems",
+        "Accessory applications"
+      ],
+      "features": [
+        "TPO technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "5445_en_SureWeld_TPO_Inside_Corners_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "600216 EPDM-4173 Sure-White EPDM Splicing Cement PDS 07-18-14",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "600216 EPDM-4173 Sure-White EPDM Splicing Cement PDS 07-18-14",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "600216 EPDM-4173 Sure-White EPDM Splicing Cement PDS_07-18-14.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "600308 EPDM-6130 Sure-Seal EPDM HP Protective MAT PDS 05-03-22",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "600308 EPDM-6130 Sure-Seal EPDM HP Protective MAT PDS 05-03-22",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "600308 EPDM-6130 Sure-Seal EPDM HP Protective MAT PDS_05-03-22.pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "600319 PVC-7913 Sure-Flex PVC Non-Reinforced Flashing Product Data Sheet PRESS",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "600319 PVC-7913 Sure-Flex PVC Non-Reinforced Flashing Product Data Sheet PRESS",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Membrane",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Membrane applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "600319 PVC-7913 Sure-Flex PVC Non-Reinforced Flashing Product Data Sheet PRESS.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "600491 INS CST-2129 InsulBase Polyiso PDS 02-19-25",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "600491 INS CST-2129 InsulBase Polyiso PDS 02-19-25",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "600491 INS_CST-2129 InsulBase Polyiso PDS_02-19-25.pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "600500 PVC-7538 Sure-Flex PVC Curb Wrap Corners PDS 11-09-20",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "600500 PVC-7538 Sure-Flex PVC Curb Wrap Corners PDS 11-09-20",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Accessory",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Accessory applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "600500 PVC-7538 Sure-Flex PVC Curb Wrap Corners PDS_11-09-20.pdf"
+  },
+  {
+    "system": "TPO",
+    "manufacturer": "Carlisle",
+    "membraneType": "600515 TPO-2012 Sure-Weld TPO Reinforced Membrane PDS 04-14-25",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "600515 TPO-2012 Sure-Weld TPO Reinforced Membrane PDS 04-14-25",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Membrane",
+      "system": "TPO",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "TPO roofing systems",
+        "Membrane applications"
+      ],
+      "features": [
+        "TPO technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "600515 TPO-2012 Sure-Weld TPO Reinforced Membrane PDS_04-14-25.pdf"
+  },
+  {
+    "system": "TPO",
+    "manufacturer": "Carlisle",
+    "membraneType": "600934 FB-1075 TPO Membranes PDS 11-24-24",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "600934 FB-1075 TPO Membranes PDS 11-24-24",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Membrane",
+      "system": "TPO",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "TPO roofing systems",
+        "Membrane applications"
+      ],
+      "features": [
+        "TPO technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "600934 FB-1075 TPO Membranes PDS_11-24-24.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "601486 INS CST-6042 DensDeck Roof Board PDS 05-04-23",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "601486 INS CST-6042 DensDeck Roof Board PDS 05-04-23",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "601486 INS_CST-6042 DensDeck Roof Board PDS_05-04-23.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "603139 EPDM-1112 Sure-Seal EPDM PS Inside Outside Corners PDS REV 01-23-24",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "603139 EPDM-1112 Sure-Seal EPDM PS Inside Outside Corners PDS REV 01-23-24",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Accessory",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Accessory applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "603139 EPDM-1112 Sure-Seal EPDM PS Inside Outside Corners PDS REV_01-23-24.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "603143 EPDM-1078 PS T-Joint Covers PDS 01-18-24",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "603143 EPDM-1078 PS T-Joint Covers PDS 01-18-24",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "603143 EPDM-1078 PS T-Joint Covers PDS_01-18-24.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "603254 INS CST-2128 SecurShield Polyiso PDS 02-27-25",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "603254 INS CST-2128 SecurShield Polyiso PDS 02-27-25",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "603254 INS_CST-2128 SecurShield Polyiso PDS_02-27-25.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "603397 EPDM-2372 Sure-White PS Elastoform Flashing PDS-PRESS",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "603397 EPDM-2372 Sure-White PS Elastoform Flashing PDS-PRESS",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Flashing",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Flashing applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "603397 EPDM-2372 Sure-White PS Elastoform Flashing PDS-PRESS.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "603527 CST-6826 VapAir Seal Flashing Foam PDS 08-24-20",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "603527 CST-6826 VapAir Seal Flashing Foam PDS 08-24-20",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Flashing",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Flashing applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "603527 CST-6826 VapAir Seal Flashing Foam PDS_08-24-20.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "603622 EPDM-1027 Water Cut-off Mastic PDS 07-21-23",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "603622 EPDM-1027 Water Cut-off Mastic PDS 07-21-23",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "603622 EPDM-1027 Water Cut-off Mastic PDS_07-21-23.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "603625 EPDM-1049 Aqua Base 120 PDS 08-01-22",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "603625 EPDM-1049 Aqua Base 120 PDS 08-01-22",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "603625 EPDM-1049 Aqua Base 120 PDS_08-01-22.pdf"
+  },
+  {
+    "system": "TPO",
+    "manufacturer": "Carlisle",
+    "membraneType": "604820 TPO-1042 Sure-Weld Coated Metal-Steel Only-PUBLIC-PDS 09-03-19",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "604820 TPO-1042 Sure-Weld Coated Metal-Steel Only-PUBLIC-PDS 09-03-19",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "TPO",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "TPO roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "TPO technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "604820 TPO-1042 Sure-Weld Coated Metal-Steel Only-PUBLIC-PDS_09-03-19.pdf"
+  },
+  {
+    "system": "TPO",
+    "manufacturer": "Carlisle",
+    "membraneType": "604821 TPO-1043 Sure-Weld Cut-Edge Sealant PDS REV07-18 PRESS",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "604821 TPO-1043 Sure-Weld Cut-Edge Sealant PDS REV07-18 PRESS",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Sealant",
+      "system": "TPO",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "TPO roofing systems",
+        "Sealant applications"
+      ],
+      "features": [
+        "TPO technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "604821 TPO-1043 Sure-Weld Cut-Edge Sealant PDS_REV07-18_PRESS.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "604825 FB-1064 FleeceBACK EPDM Membranes PDS 11-26-24",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "604825 FB-1064 FleeceBACK EPDM Membranes PDS 11-26-24",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Membrane",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Membrane applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "604825 FB-1064 FleeceBACK EPDM Membranes PDS_11-26-24.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "605037 EPDM-1075 Sure-White Pourable Sealer Pockets PDS 05-25-21",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "605037 EPDM-1075 Sure-White Pourable Sealer Pockets PDS 05-25-21",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Sealant",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Sealant applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "605037 EPDM-1075 Sure-White Pourable Sealer Pockets PDS_05-25-21.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "605075 INS CST-1284 SecurShield HD PDS 03-03-25",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "605075 INS CST-1284 SecurShield HD PDS 03-03-25",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "605075 INS_CST-1284 SecurShield HD PDS_03-03-25.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "605076 CST-1278 R-Tech Fanfold PDS 11-13-24",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "605076 CST-1278 R-Tech Fanfold PDS 11-13-24",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "605076 CST-1278 R-Tech Fanfold PDS_11-13-24.pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "605149 PVC-1007 Molded Sealant Pockets PDS 11-18-24",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "605149 PVC-1007 Molded Sealant Pockets PDS 11-18-24",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Sealant",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Sealant applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "605149 PVC-1007 Molded Sealant Pockets PDS_11-18-24.pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "605151 PVC-1009 Sure-Flex PVC Outside Corners PDS 11-03-20",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "605151 PVC-1009 Sure-Flex PVC Outside Corners PDS 11-03-20",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Accessory",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Accessory applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "605151 PVC-1009 Sure-Flex PVC Outside Corners PDS_11-03-20.pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "605152 PVC-1010 Sure-Flex PVC Pipe Seals PDS - Spanish",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "605152 PVC-1010 Sure-Flex PVC Pipe Seals PDS - Spanish",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Accessory",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Accessory applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "605152 PVC-1010 Sure-Flex PVC Pipe Seals PDS - Spanish.pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "605152 PVC-1010 Sure-Flex PVC Pipe Seals PDS-French",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "605152 PVC-1010 Sure-Flex PVC Pipe Seals PDS-French",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Accessory",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Accessory applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "605152 PVC-1010 Sure-Flex PVC Pipe Seals PDS-French.pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "605152 PVC-1010 Sure-Flex PVC Pipe Seals PDS 04-06-23",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "605152 PVC-1010 Sure-Flex PVC Pipe Seals PDS 04-06-23",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Accessory",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Accessory applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "605152 PVC-1010 Sure-Flex PVC Pipe Seals PDS_04-06-23.pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "605154 PVC-1012 Square Tubing Wraps PDS 06-15-20 (1)",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "605154 PVC-1012 Square Tubing Wraps PDS 06-15-20 (1)",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "605154 PVC-1012 Square Tubing Wraps PDS_06-15-20 (1).pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "605156 CST-9315 G2 BASE Glass Base Sheet PDS 06-27-19",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "605156 CST-9315 G2 BASE Glass Base Sheet PDS 06-27-19",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "605156 CST-9315 G2 BASE Glass Base Sheet PDS_06-27-19.pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "605245 PVC-1024 Sure-Flex PVC Membrane PDS 02-11-25",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "605245 PVC-1024 Sure-Flex PVC Membrane PDS 02-11-25",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Membrane",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Membrane applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "605245 PVC-1024 Sure-Flex PVC Membrane PDS_02-11-25.pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "605258 PVC-1016 Sure-Flex KEE HP Membrane PDS 02-13-25",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "605258 PVC-1016 Sure-Flex KEE HP Membrane PDS 02-13-25",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Membrane",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Membrane applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "605258 PVC-1016 Sure-Flex KEE HP Membrane PDS_02-13-25.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "605435 EPDM-1116 Sure-White EPDM Membranes PDS 12-10-24",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "605435 EPDM-1116 Sure-White EPDM Membranes PDS 12-10-24",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Membrane",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Membrane applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "605435 EPDM-1116 Sure-White EPDM Membranes PDS_12-10-24.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "605436 EPDM-1117 Sure-Seal EPDM Kleen Non-Reinforced Membranes PDS 12-05-24",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "605436 EPDM-1117 Sure-Seal EPDM Kleen Non-Reinforced Membranes PDS 12-05-24",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Membrane",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Membrane applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "605436 EPDM-1117 Sure-Seal EPDM Kleen Non-Reinforced Membranes PDS_12-05-24.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "605437 EPDM-1118 Sure-Tough EPDM Reinforced Membrane PDS 12-05-24",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "605437 EPDM-1118 Sure-Tough EPDM Reinforced Membrane PDS 12-05-24",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Membrane",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Membrane applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "605437 EPDM-1118 Sure-Tough EPDM Reinforced Membrane PDS_12-05-24.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "605438 EPDM-1119 Sure-Seal Dusted Non-Reinforced Membranes PDS 12-03-24",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "605438 EPDM-1119 Sure-Seal Dusted Non-Reinforced Membranes PDS 12-03-24",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Membrane",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Membrane applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "605438 EPDM-1119 Sure-Seal Dusted Non-Reinforced Membranes PDS_12-03-24.pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "605536 PVC-2080 Sure-Flex Walkway Roll PDS 04-23-25",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "605536 PVC-2080 Sure-Flex Walkway Roll PDS 04-23-25",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Walkway",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Walkway applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "605536 PVC-2080 Sure-Flex Walkway Roll PDS_04-23-25.pdf"
+  },
+  {
+    "system": "TPO",
+    "manufacturer": "Carlisle",
+    "membraneType": "605605 TPO-2180 Sure-Weld TPO SAT Reinforced Membrane PDS 04-14-25",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "605605 TPO-2180 Sure-Weld TPO SAT Reinforced Membrane PDS 04-14-25",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Membrane",
+      "system": "TPO",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "TPO roofing systems",
+        "Membrane applications"
+      ],
+      "features": [
+        "TPO technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "605605 TPO-2180 Sure-Weld TPO SAT Reinforced Membrane PDS_04-14-25.pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "605645 FB-1082 FleeceBACK PVC 10ft FRS Membrane PDS 08-08-23 (1)",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "605645 FB-1082 FleeceBACK PVC 10ft FRS Membrane PDS 08-08-23 (1)",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Membrane",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Membrane applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "605645 FB-1082 FleeceBACK PVC 10ft FRS Membrane PDS_08-08-23 (1).pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "605666 PVC-2192 Sure-Flex PVC Low-VOC Bonding Adhesive PDS 07-14-22",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "605666 PVC-2192 Sure-Flex PVC Low-VOC Bonding Adhesive PDS 07-14-22",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Adhesive",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Adhesive applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "605666 PVC-2192 Sure-Flex PVC Low-VOC Bonding Adhesive PDS_07-14-22.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "605667 EPDM-4452 Sure-White EPDM Lap Sealant PDS 11-29-23",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "605667 EPDM-4452 Sure-White EPDM Lap Sealant PDS 11-29-23",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Sealant",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Sealant applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "605667 EPDM-4452 Sure-White EPDM Lap Sealant PDS_11-29-23.pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "605808 PVC-2296 Sure-Flex FRS PVC Membrane PDS 02-13-25",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "605808 PVC-2296 Sure-Flex FRS PVC Membrane PDS 02-13-25",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Membrane",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Membrane applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "605808 PVC-2296 Sure-Flex FRS PVC Membrane PDS_02-13-25.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "605885 INS CST-2265 SecurShield HD Plus PDS 12-13-23",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "605885 INS CST-2265 SecurShield HD Plus PDS 12-13-23",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "605885 INS_CST-2265 SecurShield HD Plus PDS_12-13-23.pdf"
+  },
+  {
+    "system": "TPO",
+    "manufacturer": "Carlisle",
+    "membraneType": "605925 TPO-2661 Sure-Weld TPO Bonding Adhesive PDS-PRESS",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "605925 TPO-2661 Sure-Weld TPO Bonding Adhesive PDS-PRESS",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Adhesive",
+      "system": "TPO",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "TPO roofing systems",
+        "Adhesive applications"
+      ],
+      "features": [
+        "TPO technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "605925 TPO-2661 Sure-Weld TPO Bonding Adhesive PDS-PRESS.pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "607086 PVC-9950 Sure-Flex KEE HP Minimum Membrane PDS 02-14-25",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "607086 PVC-9950 Sure-Flex KEE HP Minimum Membrane PDS 02-14-25",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Membrane",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Membrane applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "607086 PVC-9950 Sure-Flex KEE HP Minimum Membrane PDS_02-14-25.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "608220 INS CST-5155 Securrock Gypsum-Fiber Roof Board PDS 01-24-24",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "608220 INS CST-5155 Securrock Gypsum-Fiber Roof Board PDS 01-24-24",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "608220 INS_CST-5155 Securrock Gypsum-Fiber Roof Board PDS_01-24-24.pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "608427 PVC-5835 Sure-Flex PVC Membrane PDS Minimum 02-14-25",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "608427 PVC-5835 Sure-Flex PVC Membrane PDS Minimum 02-14-25",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Membrane",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Membrane applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "608427 PVC-5835 Sure-Flex PVC Membrane PDS Minimum_02-14-25.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "610269 FB-8579 Flexible FAST 5-Gallon Jug Adhesive PDS 05-22-23",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "610269 FB-8579 Flexible FAST 5-Gallon Jug Adhesive PDS 05-22-23",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Adhesive",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Adhesive applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "610269 FB-8579 Flexible FAST 5-Gallon Jug Adhesive PDS_05-22-23.pdf"
+  },
+  {
+    "system": "TPO",
+    "manufacturer": "Carlisle",
+    "membraneType": "610331 TPO-8517 CAV-GRIP III Adhesive Primer PDS 06-14-24",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "610331 TPO-8517 CAV-GRIP III Adhesive Primer PDS 06-14-24",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Primer",
+      "system": "TPO",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "TPO roofing systems",
+        "Primer applications"
+      ],
+      "features": [
+        "TPO technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "610331 TPO-8517 CAV-GRIP III Adhesive Primer PDS_06-14-24.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "610487 INS CST-8937 InsulBase Polyiso Rapid Lock Insulation PDS 07-16-25",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "610487 INS CST-8937 InsulBase Polyiso Rapid Lock Insulation PDS 07-16-25",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Insulation",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Insulation applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "610487 INS_CST-8937 InsulBase Polyiso Rapid Lock Insulation PDS_07-16-25.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "610488 INS CST-9014 SecurShield HD RL Polyiso Rapid Lock Insulation PDS 02-07-25",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "610488 INS CST-9014 SecurShield HD RL Polyiso Rapid Lock Insulation PDS 02-07-25",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Insulation",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Insulation applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "610488 INS_CST-9014 SecurShield HD RL Polyiso Rapid Lock Insulation PDS_02-07-25.pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "611045 PVC-9617 Sure-Flex Low-VOC PVC Step 1 Activator PDS 07-22-21 (1)",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "611045 PVC-9617 Sure-Flex Low-VOC PVC Step 1 Activator PDS 07-22-21 (1)",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "611045 PVC-9617 Sure-Flex Low-VOC PVC Step 1 Activator PDS_07-22-21 (1).pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "611170 PVC-9619 Sure-Flex PVC Pressure Sensitive Cover Strip PDS 04-22-25",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "611170 PVC-9619 Sure-Flex PVC Pressure Sensitive Cover Strip PDS 04-22-25",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "611170 PVC-9619 Sure-Flex PVC Pressure Sensitive Cover Strip PDS_04-22-25.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "615001 EPDM-17198 Sure-Seal Cool Gray EPDM Membrane PDS 11-20-24",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "615001 EPDM-17198 Sure-Seal Cool Gray EPDM Membrane PDS 11-20-24",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Membrane",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Membrane applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "615001 EPDM-17198 Sure-Seal Cool Gray EPDM Membrane PDS_11-20-24.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "SureSeal PressureSensitive SecurTAPE",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "SureSeal PressureSensitive SecurTAPE",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "6786_en_SureSeal_PressureSensitive_SecurTAPE_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "GeoTough EPDM PressureSensitive Cured Cover Strip",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "GeoTough EPDM PressureSensitive Cured Cover Strip",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "6855_en_GeoTough_EPDM_PressureSensitive_Cured_Cover_Strip.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "GeoTough EPDM PressureSensitive Elastoform Flashing",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "GeoTough EPDM PressureSensitive Elastoform Flashing",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Flashing",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Flashing applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "6856_en_GeoTough_EPDM_PressureSensitive_Elastoform_Flashing.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "Yellow PressureSensitive Coverstrip",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "Yellow PressureSensitive Coverstrip",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "7093_en_Yellow_PressureSensitive_Coverstrip_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "HD 1410 Fastener",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "HD 1410 Fastener",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Fastener",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Fastener applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "7627_en_HD_1410_Fastener_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "Insulfoam SP",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "Insulfoam SP",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "8348_en_Insulfoam_SP_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "CD10 Concrete Fastener",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "CD10 Concrete Fastener",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Fastener",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Fastener applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "8379_en_CD10_Concrete_Fastener_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "HPX Fastener",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "HPX Fastener",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Fastener",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Fastener applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "8568_en_HPX_Fastener_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "SureSeal One Part Pourable Sealer",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "SureSeal One Part Pourable Sealer",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Sealant",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Sealant applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "8579_en_SureSeal_One_Part_Pourable_Sealer_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "TPO",
+    "manufacturer": "Carlisle",
+    "membraneType": "SureWeld TPO Curb Wrap Corners",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "SureWeld TPO Curb Wrap Corners",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Accessory",
+      "system": "TPO",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "TPO roofing systems",
+        "Accessory applications"
+      ],
+      "features": [
+        "TPO technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "8715_en_SureWeld_TPO_Curb_Wrap_Corners_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "LowVOC Bonding Adhesive",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "LowVOC Bonding Adhesive",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Adhesive",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Adhesive applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "8924_en_LowVOC_Bonding_Adhesive_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "EPDM x23 LowVOC Bonding Adhesive",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "EPDM x23 LowVOC Bonding Adhesive",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Adhesive",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Adhesive applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "8925_en_EPDM_x23_LowVOC_Bonding_Adhesive_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "90830A Bonding Adhesive",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "90830A Bonding Adhesive",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Adhesive",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Adhesive applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "8937_en_90830A_Bonding_Adhesive_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "TPO",
+    "manufacturer": "Carlisle",
+    "membraneType": "SureWeld TPO PressureSensitive RUSS",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "SureWeld TPO PressureSensitive RUSS",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "TPO",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "TPO roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "TPO technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "8968_en_SureWeld_TPO_PressureSensitive_RUSS_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "TPO",
+    "manufacturer": "Carlisle",
+    "membraneType": "SureWeld TPO Custom Prefabricated Sealant Pockets",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "SureWeld TPO Custom Prefabricated Sealant Pockets",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Sealant",
+      "system": "TPO",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "TPO roofing systems",
+        "Sealant applications"
+      ],
+      "features": [
+        "TPO technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "8978_en_SureWeld_TPO_Custom_Prefabricated_Sealant_Pockets_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "TPO",
+    "manufacturer": "Carlisle",
+    "membraneType": "LowVOC TPO CutEdge Sealant",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "LowVOC TPO CutEdge Sealant",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Sealant",
+      "system": "TPO",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "TPO roofing systems",
+        "Sealant applications"
+      ],
+      "features": [
+        "TPO technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "9026_en_LowVOC_TPO_CutEdge_Sealant_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "HPXTRA Fasteners and PIRANHA XTRA Plates",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "HPXTRA Fasteners and PIRANHA XTRA Plates",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Fastener",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Fastener applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "9548_en_HPXTRA_Fasteners_and_PIRANHA_XTRA_Plates_Product_Data_Sheet.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "HPXtra Polymer Seam Plates",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "HPXtra Polymer Seam Plates",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "9550_en_HPXtra_Polymer_Seam_Plates_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "PVC Oval Barbed Plate",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "PVC Oval Barbed Plate",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "9552_en_PVC_Oval_Barbed_Plate_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "HPX Fasteners and PIRANHA Plates",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "HPX Fasteners and PIRANHA Plates",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Fastener",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Fastener applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "9554_en_HPX_Fasteners_and_PIRANHA_Plates_Product_Data_Sheet.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "AccuTrac Plate",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "AccuTrac Plate",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "9580_en_AccuTrac_Plate_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "USG SECUROCK GlassMat Roof Board",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "USG SECUROCK GlassMat Roof Board",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "9677_en_USG_SECUROCK_GlassMat_Roof_Board_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "HP Polymer Seam Plates",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "HP Polymer Seam Plates",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "9746_en_HP_Polymer_Seam_Plates_Product_Data_Sheet.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "InsulBase Straight Bevel Cut Polyiso",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "InsulBase Straight Bevel Cut Polyiso",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "9809_en_InsulBase_Straight__Bevel_Cut_Polyiso.pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "SureFlex PVC and KEE HP Membrane Cleaner",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "SureFlex PVC and KEE HP Membrane Cleaner",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Membrane",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Membrane applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "9875_en_SureFlex_PVC_and_KEE_HP_Membrane_Cleaner_Product_Data_Sheet_PDS.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "SureWhite PressureSensitive Curb Flashing",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "SureWhite PressureSensitive Curb Flashing",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Flashing",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Flashing applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "9909_en_SureWhite_PressureSensitive_Curb_Flashing_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "SureWhite EPDM PressureSensitive Cured Cover Strip",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "SureWhite EPDM PressureSensitive Cured Cover Strip",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "9921_en_SureWhite_EPDM_PressureSensitive_Cured_Cover_Strip_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "TPO",
+    "manufacturer": "Carlisle",
+    "membraneType": "SureWeld TPO Sealant Pocket Extensions",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "SureWeld TPO Sealant Pocket Extensions",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Sealant",
+      "system": "TPO",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "TPO roofing systems",
+        "Sealant applications"
+      ],
+      "features": [
+        "TPO technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "9944_en_SureWeld_TPO_Sealant_Pocket_Extensions_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "Weathered Membrane Cleaner",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "Weathered Membrane Cleaner",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Membrane",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Membrane applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "9967_en_Weathered_Membrane_Cleaner_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "SureSeal ECOCO Polyepichlorohydrin Membrane",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "SureSeal ECOCO Polyepichlorohydrin Membrane",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Membrane",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Membrane applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "9986_en_SureSeal_ECOCO_Polyepichlorohydrin_Membrane_Product_Data_Sheet_PDSTDB.pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "ACC-5641 - SecurWeld PVC Skirted Drip Edge Product Data Sheet 12-17-24",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "ACC-5641 - SecurWeld PVC Skirted Drip Edge Product Data Sheet 12-17-24",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "ACC-5641 - SecurWeld PVC Skirted Drip Edge Product Data Sheet_12-17-24.pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "ACC-7618 - SecurWeld PVC Coated Drip Edge Product Data Sheet 12-13-24",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "ACC-7618 - SecurWeld PVC Coated Drip Edge Product Data Sheet 12-13-24",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "ACC-7618 - SecurWeld PVC Coated Drip Edge Product Data Sheet_12-13-24.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "ACC-9254 Expansion Joint Supports PDS 01-11-22",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "ACC-9254 Expansion Joint Supports PDS 01-11-22",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "ACC-9254 Expansion Joint Supports PDS 01-11-22.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "CST-10424 APEEL Cover Tape and Applicator PDS 10-07-20",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "CST-10424 APEEL Cover Tape and Applicator PDS 10-07-20",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "CST-10424 APEEL Cover Tape and Applicator PDS_10-07-20.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "CST-12176 SynTec Term Bar Nail-In PDS 04-20-20",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "CST-12176 SynTec Term Bar Nail-In PDS 04-20-20",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "CST-12176 SynTec Term Bar Nail-In PDS_04-20-20.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "CST-12349 SureMB 120 Base Ply PDS 04-03-21",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "CST-12349 SureMB 120 Base Ply PDS 04-03-21",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "CST-12349 SureMB 120 Base Ply PDS_04-03-21.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "CST-1309 HP Recovery Board PDS 05-02-22 (1)",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "CST-1309 HP Recovery Board PDS 05-02-22 (1)",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "CST-1309 HP Recovery Board PDS_05-02-22 (1).pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "CST-16577 SecurShield HD Composite RapidLock PDS 02-10-25",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "CST-16577 SecurShield HD Composite RapidLock PDS 02-10-25",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "CST-16577 SecurShield HD Composite RapidLock PDS_02-10-25.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "CST-4281 VapAir Seal MD PDS 06-13-25",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "CST-4281 VapAir Seal MD PDS 06-13-25",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "CST-4281 VapAir Seal MD PDS_06-13-25.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "CST-6262 HP Purlin Product Data Sheet 06-29-20",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "CST-6262 HP Purlin Product Data Sheet 06-29-20",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "CST-6262 HP Purlin Product Data Sheet_06-29-20.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "CST-7068 RetroDriller Fastener PDS 06-29-20",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "CST-7068 RetroDriller Fastener PDS 06-29-20",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Fastener",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Fastener applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "CST-7068 RetroDriller Fastener PDS_06-29-20.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "CST-7393 SureMB 70 SA Base Ply Product Data Sheet 04-30-24",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "CST-7393 SureMB 70 SA Base Ply Product Data Sheet 04-30-24",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "CST-7393 SureMB 70 SA Base Ply Product Data Sheet_04-30-24.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "CST-7832 SureMB 90TG Base Ply PDS 04-06-21",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "CST-7832 SureMB 90TG Base Ply PDS 04-06-21",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "CST-7832 SureMB 90TG Base Ply PDS_04-06-21.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "EPDM-1023 Sure-Seal Pourable Sealer Pockets PDS 01-29-24",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "EPDM-1023 Sure-Seal Pourable Sealer Pockets PDS 01-29-24",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Sealant",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Sealant applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "EPDM-1023 Sure-Seal Pourable Sealer Pockets PDS_01-29-24.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "EPDM-1045 Pressure-Senstive Curb Flashing PDS 05-24-17",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "EPDM-1045 Pressure-Senstive Curb Flashing PDS 05-24-17",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Flashing",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Flashing applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "EPDM-1045 Pressure-Senstive Curb Flashing PDS 05-24-17.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "EPDM-1081 Sure-White PS Inside-Outside Corners and T-Joint Covers PDS 05-24-21",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "EPDM-1081 Sure-White PS Inside-Outside Corners and T-Joint Covers PDS 05-24-21",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Accessory",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Accessory applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "EPDM-1081 Sure-White PS Inside-Outside Corners and T-Joint Covers PDS_05-24-21.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "EPDM-1086 Sure-White Pressure-Sensitive SecurTAPE PDS 04-24-20",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "EPDM-1086 Sure-White Pressure-Sensitive SecurTAPE PDS 04-24-20",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "EPDM-1086 Sure-White Pressure-Sensitive SecurTAPE PDS_04-24-20.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "EPDM-1089 Sure-Seal EPDM PS Cured Cover Strip PDS 01-24-24",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "EPDM-1089 Sure-Seal EPDM PS Cured Cover Strip PDS 01-24-24",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "EPDM-1089 Sure-Seal EPDM PS Cured Cover Strip PDS_01-24-24.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "EPDM-1098 PS Molded Walkway Pads PDS 01-19-24",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "EPDM-1098 PS Molded Walkway Pads PDS 01-19-24",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Walkway",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Walkway applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "EPDM-1098 PS Molded Walkway Pads PDS_01-19-24.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "EPDM-1108 Sure-White PS Molded Walkway Pads PDS 06-17-20 (2)",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "EPDM-1108 Sure-White PS Molded Walkway Pads PDS 06-17-20 (2)",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Walkway",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Walkway applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "EPDM-1108 Sure-White PS Molded Walkway Pads PDS_06-17-20 (2).pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "EPDM-1111 Sure-Seal EPDM PS Elastoform Flashing PDS 08-09-24",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "EPDM-1111 Sure-Seal EPDM PS Elastoform Flashing PDS 08-09-24",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Flashing",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Flashing applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "EPDM-1111 Sure-Seal EPDM PS Elastoform Flashing PDS_08-09-24.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "EPDM-13421 CAV-PRIME Sure-Seal HP-250 Primer PDS 02-06-23",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "EPDM-13421 CAV-PRIME Sure-Seal HP-250 Primer PDS 02-06-23",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Primer",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Primer applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "EPDM-13421 CAV-PRIME Sure-Seal HP-250 Primer PDS_02-06-23.pdf"
+  },
+  {
+    "system": "TPO",
+    "manufacturer": "Carlisle",
+    "membraneType": "EPDM-13441 CAV-PRIME Low-VOC EPDM and TPO Primer PDS 02-06-23",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "EPDM-13441 CAV-PRIME Low-VOC EPDM and TPO Primer PDS 02-06-23",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Primer",
+      "system": "TPO",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "TPO roofing systems",
+        "Primer applications"
+      ],
+      "features": [
+        "TPO technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "EPDM-13441 CAV-PRIME Low-VOC EPDM and TPO Primer PDS_02-06-23.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "EPDM-15146 Sure-White EPDM Reinforced Membrane PDS 12-03-24",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "EPDM-15146 Sure-White EPDM Reinforced Membrane PDS 12-03-24",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Membrane",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Membrane applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "EPDM-15146 Sure-White EPDM Reinforced Membrane PDS_12-03-24.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "EPDM-2806 Sure-Seal EPDM PS Pipe Seals PDS 01-23-24",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "EPDM-2806 Sure-Seal EPDM PS Pipe Seals PDS 01-23-24",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Accessory",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Accessory applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "EPDM-2806 Sure-Seal EPDM PS Pipe Seals PDS_01-23-24.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "EPDM-2943 Sure-Seal EPDM Lap Sealant PSD 03-15-21",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "EPDM-2943 Sure-Seal EPDM Lap Sealant PSD 03-15-21",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Sealant",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Sealant applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "EPDM-2943 Sure-Seal EPDM Lap Sealant PSD_03-15-21.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "EPDM-3403 Sure-Seal Two Part Pourable Sealer PDS 07-13-23",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "EPDM-3403 Sure-Seal Two Part Pourable Sealer PDS 07-13-23",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Sealant",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Sealant applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "EPDM-3403 Sure-Seal Two Part Pourable Sealer PDS_07-13-23.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "EPDM-7109 Sure-Tough EPDM SAT Reinforced Membrane PDS 12-10-24",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "EPDM-7109 Sure-Tough EPDM SAT Reinforced Membrane PDS 12-10-24",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Membrane",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Membrane applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "EPDM-7109 Sure-Tough EPDM SAT Reinforced Membrane PDS_12-10-24.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "EPDM-8254 20in Pressure-Sensitive Cured Flashing PDS 01-23-24",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "EPDM-8254 20in Pressure-Sensitive Cured Flashing PDS 01-23-24",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Flashing",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Flashing applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "EPDM-8254 20in Pressure-Sensitive Cured Flashing PDS_01-23-24.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "EPDM-8338 Sure-Seal EPDM SAT Non-Reinforced Membrane PDS 03-17-25",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "EPDM-8338 Sure-Seal EPDM SAT Non-Reinforced Membrane PDS 03-17-25",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Membrane",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Membrane applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "EPDM-8338 Sure-Seal EPDM SAT Non-Reinforced Membrane PDS_03-17-25.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "EPDM-8903 Sure-White EPDM 20 Pressure-Sensitive Cured Flashing PDS 06-02-20",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "EPDM-8903 Sure-White EPDM 20 Pressure-Sensitive Cured Flashing PDS 06-02-20",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Flashing",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Flashing applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "EPDM-8903 Sure-White EPDM 20_ Pressure-Sensitive Cured Flashing PDS_06-02-20.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "EPDM-9742 Sure-White EPDM Non-Reinforced Membrane PDS 03-27-25",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "EPDM-9742 Sure-White EPDM Non-Reinforced Membrane PDS 03-27-25",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Membrane",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Membrane applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "EPDM-9742 Sure-White EPDM Non-Reinforced Membrane PDS_03-27-25.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "EPDM-9876 Sure-White EPDM Pressure Sensitive T-Joint Cover PDS 05-25-21",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "EPDM-9876 Sure-White EPDM Pressure Sensitive T-Joint Cover PDS 05-25-21",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "EPDM-9876 Sure-White EPDM Pressure Sensitive T-Joint Cover PDS_05-25-21.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "FB-1020 VapAir Seal 725TR PDS 06-18-25",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "FB-1020 VapAir Seal 725TR PDS 06-18-25",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "FB-1020 VapAir Seal 725TR PDS_06-18-25.pdf"
+  },
+  {
+    "system": "EPDM",
+    "manufacturer": "Carlisle",
+    "membraneType": "FB-1066 FB AFX EPDM Membrane PDS 03-18-25",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "FB-1066 FB AFX EPDM Membrane PDS 03-18-25",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Membrane",
+      "system": "EPDM",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "EPDM roofing systems",
+        "Membrane applications"
+      ],
+      "features": [
+        "EPDM technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "FB-1066 FB AFX EPDM Membrane PDS_03-18-25.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "FB-1070 Flexible Fast PDS 01-16-24",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "FB-1070 Flexible Fast PDS 01-16-24",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "FB-1070 Flexible Fast PDS_01-16-24.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "FB-1086 Spectro-Weld FB Membrane PDS 04-14-25",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "FB-1086 Spectro-Weld FB Membrane PDS 04-14-25",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Membrane",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Membrane applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "FB-1086 Spectro-Weld FB Membrane PDS_04-14-25.pdf"
+  },
+  {
+    "system": "TPO",
+    "manufacturer": "Carlisle",
+    "membraneType": "FB-1091 FleeceBACK AFX TPO Membranes PDS 11-26-24",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "FB-1091 FleeceBACK AFX TPO Membranes PDS 11-26-24",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Membrane",
+      "system": "TPO",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "TPO roofing systems",
+        "Membrane applications"
+      ],
+      "features": [
+        "TPO technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "FB-1091 FleeceBACK AFX TPO Membranes PDS_11-26-24.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "FB-1105 SureMB 90 Base Ply PDS 03-30-21",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "FB-1105 SureMB 90 Base Ply PDS 03-30-21",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "FB-1105 SureMB 90 Base Ply PDS_03-30-21.pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "FB-12641 FleeceBACK PVC Polyester Membrane Minimum Thickness PDS 12-03-24",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "FB-12641 FleeceBACK PVC Polyester Membrane Minimum Thickness PDS 12-03-24",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Membrane",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Membrane applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "FB-12641 FleeceBACK PVC Polyester Membrane Minimum Thickness PDS_12-03-24.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "FB-13474 Flexible FAST Dual Tank Adhesive Formula PDS 02-26-25",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "FB-13474 Flexible FAST Dual Tank Adhesive Formula PDS 02-26-25",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Adhesive",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Adhesive applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "FB-13474 Flexible FAST Dual Tank Adhesive Formula PDS 02-26-25.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "FB-7140 Flexible FAST Dual Cartridge Adhesive PDS 01-21-25",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "FB-7140 Flexible FAST Dual Cartridge Adhesive PDS 01-21-25",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Adhesive",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Adhesive applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "FB-7140 Flexible FAST Dual Cartridge Adhesive PDS_01-21-25.pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "FB-7494 FleeceBACK PVC FRS Membrane Minimum Thickness PDS 11-27-24",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "FB-7494 FleeceBACK PVC FRS Membrane Minimum Thickness PDS 11-27-24",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Membrane",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Membrane applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "FB-7494 FleeceBACK PVC FRS Membrane Minimum Thickness PDS_11-27-24.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "FB-9312 FleeceBACK KEE HP Polyester Membrane PDS 05-29-25",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "FB-9312 FleeceBACK KEE HP Polyester Membrane PDS 05-29-25",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Membrane",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Membrane applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "FB-9312 FleeceBACK KEE HP Polyester Membrane PDS_05-29-25.pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "FB-9313 FleeceBACK PVC Polyester Membrane PDS 05-19-25",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "FB-9313 FleeceBACK PVC Polyester Membrane PDS 05-19-25",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Membrane",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Membrane applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "FB-9313 FleeceBACK PVC Polyester Membrane PDS_05-19-25.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "INS-CST 2130 Tapered SecurShield PDS 09-18-23",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "INS-CST 2130 Tapered SecurShield PDS 09-18-23",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "INS-CST 2130 Tapered SecurShield PDS_09-18-23.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "INS CST-13057 DensDeck StormX Prime Roof Board PDS 09-10-24",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "INS CST-13057 DensDeck StormX Prime Roof Board PDS 09-10-24",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "INS_CST-13057 DensDeck StormX Prime Roof Board PDS_09-10-24.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "INS CST-13765 Owen's Corning Foamular & Foamular NGX 400-600-1000 XPS Insulation PDS 04-13-21",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "INS CST-13765 Owen's Corning Foamular & Foamular NGX 400-600-1000 XPS Insulation PDS 04-13-21",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Insulation",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Insulation applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "INS_CST-13765 Owen's Corning Foamular & Foamular NGX 400-600-1000 XPS Insulation PDS_04-13-21.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "INS CST-13768 Owens Corning Foamular and Foamular NGX Thermapink 25 XPS Insulation PDS 04-13-21",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "INS CST-13768 Owens Corning Foamular and Foamular NGX Thermapink 25 XPS Insulation PDS 04-13-21",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Insulation",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Insulation applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "INS_CST-13768 Owens Corning Foamular and Foamular NGX Thermapink 25 XPS Insulation PDS_04-13-21.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "INS CST-17834 - DEXcell FA Glass Mat Roof Board PDS 08-05-24",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "INS CST-17834 - DEXcell FA Glass Mat Roof Board PDS 08-05-24",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "INS_CST-17834 - DEXcell FA Glass Mat Roof Board PDS_08-05-24.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "INS CST-17835 - DEXcell Glass Mat Roof Board PDS 08-05-24",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "INS CST-17835 - DEXcell Glass Mat Roof Board PDS 08-05-24",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "INS_CST-17835 - DEXcell Glass Mat Roof Board PDS_08-05-24.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "INS CST-2127 InsulBase Tapered PDS 08-08-24",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "INS CST-2127 InsulBase Tapered PDS 08-08-24",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "INS_CST-2127 InsulBase Tapered PDS_08-08-24.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "INS CST-5476 SecurFast Fastening Plates PDS 08-28-20",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "INS CST-5476 SecurFast Fastening Plates PDS 08-28-20",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Fastener",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Fastener applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "INS_CST-5476 SecurFast Fastening Plates PDS_08-28-20.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "INS CST-6043 DensDeck Prime Roof Board PDS 07-12-21",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "INS CST-6043 DensDeck Prime Roof Board PDS 07-12-21",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "INS_CST-6043 DensDeck Prime Roof Board PDS_07-12-21.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "INS CST-8278 Owens Corning XPS PDS 02-15-22",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "INS CST-8278 Owens Corning XPS PDS 02-15-22",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "INS_CST-8278 Owens Corning XPS PDS 02-15-22.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "INS CST-8628 GreenGuard PB6 Fanfold Roofing Recover Board PDS 09-28-21",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "INS CST-8628 GreenGuard PB6 Fanfold Roofing Recover Board PDS 09-28-21",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "INS_CST-8628 GreenGuard PB6 Fanfold Roofing Recover Board PDS_09-28-21.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "INS CST-8730 InsulBase NH Polyiso PDS 05-13-20",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "INS CST-8730 InsulBase NH Polyiso PDS 05-13-20",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "INS_CST-8730 InsulBase NH Polyiso PDS_05-13-20.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "INS CST-8731 SecurShield NH Polyiso PDS REV09-23-PRESS",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "INS CST-8731 SecurShield NH Polyiso PDS REV09-23-PRESS",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "INS_CST-8731 SecurShield NH Polyiso PDS_REV09-23-PRESS.pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "PVC-1008 Inside Corners PDS 10-28-20",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "PVC-1008 Inside Corners PDS 10-28-20",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Accessory",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Accessory applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "PVC-1008 Inside Corners PDS_10-28-20.pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "PVC-1011 Sure-Flex PVC Split Pipe Seals PDS 11-16-20",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "PVC-1011 Sure-Flex PVC Split Pipe Seals PDS 11-16-20",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Accessory",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Accessory applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "PVC-1011 Sure-Flex PVC Split Pipe Seals PDS_11-16-20.pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "PVC-1013 Sure Flex T-Joint Covers PDS 12-17-24",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "PVC-1013 Sure Flex T-Joint Covers PDS 12-17-24",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "PVC-1013 Sure Flex T-Joint Covers PDS_12-17-24.pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "PVC-1014 Sure Flex Coated Metal-Steel Only PDS 06-03-20",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "PVC-1014 Sure Flex Coated Metal-Steel Only PDS 06-03-20",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "PVC-1014 Sure Flex Coated Metal-Steel Only PDS_06-03-20.pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "PVC-12199 PVC Yellow Pressure-Sensitive Warning Strip PDS 11-17-20",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "PVC-12199 PVC Yellow Pressure-Sensitive Warning Strip PDS 11-17-20",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "PVC-12199 PVC Yellow Pressure-Sensitive Warning Strip PDS 11-17-20.pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "PVC-12269 CAV-GRIP PVC PDS 07-19-21",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "PVC-12269 CAV-GRIP PVC PDS 07-19-21",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "PVC-12269 CAV-GRIP PVC PDS_07-19-21.pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "PVC-3330 Contour Rib PDS 12-29-20 (1)",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "PVC-3330 Contour Rib PDS 12-29-20 (1)",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "PVC-3330 Contour Rib PDS_12-29-20 (1).pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "PVC-3616 Sure-Flex PVC HydroBond Water-Based Adhesive PDS 10-07-21",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "PVC-3616 Sure-Flex PVC HydroBond Water-Based Adhesive PDS 10-07-21",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Adhesive",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Adhesive applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "PVC-3616 Sure-Flex PVC HydroBond Water-Based Adhesive PDS_10-07-21.pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "PVC-6111 Sure-Flex KEE HP PVC Reinforced Coverstrip PDS 02-19-25",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "PVC-6111 Sure-Flex KEE HP PVC Reinforced Coverstrip PDS 02-19-25",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Membrane",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Membrane applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "PVC-6111 Sure-Flex KEE HP PVC Reinforced Coverstrip PDS_02-19-25.pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "PVC-6112 Sure-Flex PVC Reinforced Coverstrip PDS 01-03-25",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "PVC-6112 Sure-Flex PVC Reinforced Coverstrip PDS 01-03-25",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Membrane",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Membrane applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "PVC-6112 Sure-Flex PVC Reinforced Coverstrip PDS_01-03-25.pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "PVC-7623 Sure-Flex PVC Universal Corners PDS 04-07-22",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "PVC-7623 Sure-Flex PVC Universal Corners PDS 04-07-22",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Accessory",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Accessory applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "PVC-7623 Sure-Flex PVC Universal Corners PDS_04-07-22.pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "PVC-9559 Sure-Flex Crossgrip Walkway PDS 07-07-20",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "PVC-9559 Sure-Flex Crossgrip Walkway PDS 07-07-20",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Walkway",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Walkway applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "PVC-9559 Sure-Flex Crossgrip Walkway PDS_07-07-20.pdf"
+  },
+  {
+    "system": "PVC",
+    "manufacturer": "Carlisle",
+    "membraneType": "PVC-9618 Low-VOC PVC Step 2 Primer PDS 07-28-21",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "PVC-9618 Low-VOC PVC Step 2 Primer PDS 07-28-21",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Primer",
+      "system": "PVC",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "PVC roofing systems",
+        "Primer applications"
+      ],
+      "features": [
+        "PVC technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "PVC-9618 Low-VOC PVC Step 2 Primer PDS_07-28-21.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "RG CST-13399 Detec TruGround Product Data Sheet 09-26-24",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "RG CST-13399 Detec TruGround Product Data Sheet 09-26-24",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "RG_CST-13399 Detec TruGround Product Data Sheet_09-26-24.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "RG CST-17936 - Hanover Porcelain Pavers PDS 09-06-24",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "RG CST-17936 - Hanover Porcelain Pavers PDS 09-06-24",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "RG_CST-17936 - Hanover Porcelain Pavers PDS_09-06-24.pdf"
+  },
+  {
+    "system": "TPO",
+    "manufacturer": "Carlisle",
+    "membraneType": "TPO-1015 Sure-Weld Heat Weldable Walkway Roll PDS 05-20-25",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "TPO-1015 Sure-Weld Heat Weldable Walkway Roll PDS 05-20-25",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Walkway",
+      "system": "TPO",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "TPO roofing systems",
+        "Walkway applications"
+      ],
+      "features": [
+        "TPO technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "TPO-1015 Sure-Weld Heat Weldable Walkway Roll PDS_05-20-25.pdf"
+  },
+  {
+    "system": "TPO",
+    "manufacturer": "Carlisle",
+    "membraneType": "TPO-1029 Sure-Weld Molded Sealant Pockets PDS 09-01-20",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "TPO-1029 Sure-Weld Molded Sealant Pockets PDS 09-01-20",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Sealant",
+      "system": "TPO",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "TPO roofing systems",
+        "Sealant applications"
+      ],
+      "features": [
+        "TPO technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "TPO-1029 Sure-Weld Molded Sealant Pockets PDS_09-01-20.pdf"
+  },
+  {
+    "system": "TPO",
+    "manufacturer": "Carlisle",
+    "membraneType": "TPO-1048 Spectro-Weld Reinforced TPO Membrane PDS 02-25-25",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "TPO-1048 Spectro-Weld Reinforced TPO Membrane PDS 02-25-25",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Membrane",
+      "system": "TPO",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "TPO roofing systems",
+        "Membrane applications"
+      ],
+      "features": [
+        "TPO technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "TPO-1048 Spectro-Weld Reinforced TPO Membrane PDS_02-25-25.pdf"
+  },
+  {
+    "system": "TPO",
+    "manufacturer": "Carlisle",
+    "membraneType": "TPO-12949 Sure-Weld TPO T-Joint Covers 09-19-24",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "TPO-12949 Sure-Weld TPO T-Joint Covers 09-19-24",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "TPO",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "TPO roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "TPO technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "TPO-12949 Sure-Weld TPO T-Joint Covers_09-19-24.pdf"
+  },
+  {
+    "system": "TPO",
+    "manufacturer": "Carlisle",
+    "membraneType": "TPO-13051 Sure-Weld TPO Overlayment Strip PDS 10-13-20",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "TPO-13051 Sure-Weld TPO Overlayment Strip PDS 10-13-20",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "TPO",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "TPO roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "TPO technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "TPO-13051 Sure-Weld TPO Overlayment Strip PDS_10-13-20.pdf"
+  },
+  {
+    "system": "TPO",
+    "manufacturer": "Carlisle",
+    "membraneType": "TPO-13901 Sure-Weld TPO Reinforced Membrane - Minimum Thickness PDS 04-14-25",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "TPO-13901 Sure-Weld TPO Reinforced Membrane - Minimum Thickness PDS 04-14-25",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Membrane",
+      "system": "TPO",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "TPO roofing systems",
+        "Membrane applications"
+      ],
+      "features": [
+        "TPO technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "TPO-13901 Sure-Weld TPO Reinforced Membrane - Minimum Thickness PDS_04-14-25.pdf"
+  },
+  {
+    "system": "TPO",
+    "manufacturer": "Carlisle",
+    "membraneType": "TPO-17458 Sure-Weld TPO with SeamShield PDS 04-10-25",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "TPO-17458 Sure-Weld TPO with SeamShield PDS 04-10-25",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Other",
+      "system": "TPO",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "TPO roofing systems",
+        "Other applications"
+      ],
+      "features": [
+        "TPO technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "TPO-17458 Sure-Weld TPO with SeamShield PDS_04-10-25.pdf"
+  },
+  {
+    "system": "TPO",
+    "manufacturer": "Carlisle",
+    "membraneType": "TPO-2734 TPO Primer PDS 09-22.20",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "TPO-2734 TPO Primer PDS 09-22.20",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Primer",
+      "system": "TPO",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "TPO roofing systems",
+        "Primer applications"
+      ],
+      "features": [
+        "TPO technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "TPO-2734 TPO Primer PDS_09-22.20.pdf"
+  },
+  {
+    "system": "TPO",
+    "manufacturer": "Carlisle",
+    "membraneType": "TPO-9569 Sure-Weld Crossgrip Walkway PDS 10-27-20",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "TPO-9569 Sure-Weld Crossgrip Walkway PDS 10-27-20",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Walkway",
+      "system": "TPO",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "TPO roofing systems",
+        "Walkway applications"
+      ],
+      "features": [
+        "TPO technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "TPO-9569 Sure-Weld Crossgrip Walkway PDS_10-27-20.pdf"
+  },
+  {
+    "system": "Other",
+    "manufacturer": "Carlisle",
+    "membraneType": "WhiteOnePartPourableSealerPDS",
+    "thickness": "N/A",
+    "buildingHeight": "N/A",
+    "warranty": "Varies by system",
+    "windSpeed": "N/A",
+    "location": "N/A",
+    "contractor": "N/A",
+    "projectName": "WhiteOnePartPourableSealerPDS",
+    "date": "2025-07-17",
+    "specifications": {
+      "category": "Sealant",
+      "system": "Other",
+      "manufacturer": "Carlisle",
+      "thickness": "N/A",
+      "applications": [
+        "Other roofing systems",
+        "Sealant applications"
+      ],
+      "features": [
+        "Other technology",
+        "Professional grade",
+        "Industry standard"
+      ]
+    },
+    "sourceDocument": "WhiteOnePartPourableSealerPDS.pdf"
+  }
+];
+
+// Organized by system type
+export const productsBySystem = {
+  TPO: allProductSheets.filter(p => p.system === 'TPO'),
+  PVC: allProductSheets.filter(p => p.system === 'PVC'),
+  EPDM: allProductSheets.filter(p => p.system === 'EPDM'),
+  Other: allProductSheets.filter(p => p.system === 'Other')
+};
