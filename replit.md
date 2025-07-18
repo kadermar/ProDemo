@@ -138,3 +138,7 @@ The application is designed to be a comprehensive tool for roofing professionals
 - ✓ Resolved Send button activation issues for staged file uploads
 - ✓ Added comprehensive toast notifications for upload success and error feedback
 - ✓ Cleaned up debug logging while maintaining core functionality
+- ✓ Implemented drag-and-drop functionality for PDF file uploads
+- ✓ Added visual drag overlay with upload feedback
+- ✓ Created dedicated drag-and-drop zone in chat input area
+- ✓ Enhanced textarea with drag-and-drop support and visual feedback

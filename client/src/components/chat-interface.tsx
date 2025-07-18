@@ -18,6 +18,7 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
   const [isTyping, setIsTyping] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [stagedFiles, setStagedFiles] = useState<File[]>([]);
+  const [isDragOver, setIsDragOver] = useState(false);
   
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -130,8 +131,21 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
     if (files.length > 0) {
       const newFiles = Array.from(files);
       
-      // Stage the files instead of immediately uploading
-      setStagedFiles(prev => [...prev, ...newFiles]);
+      // Filter for PDF files only
+      const pdfFiles = newFiles.filter(file => file.type === 'application/pdf');
+      
+      if (pdfFiles.length !== newFiles.length) {
+        toast({
+          title: "Invalid files",
+          description: "Only PDF files are supported",
+          variant: "destructive",
+        });
+      }
+      
+      if (pdfFiles.length > 0) {
+        // Stage the files instead of immediately uploading
+        setStagedFiles(prev => [...prev, ...pdfFiles]);
+      }
       
       // Reset the file input
       if (fileInputRef.current) {
@@ -140,12 +154,53 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
     }
   };
 
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragOver(true);
+  };
+
+  const handleDragLeave = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    // Only set isDragOver to false if we're leaving the container
+    if (e.currentTarget === e.target) {
+      setIsDragOver(false);
+    }
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragOver(false);
+    
+    const files = e.dataTransfer.files;
+    if (files.length > 0) {
+      handleFileUpload(files);
+    }
+  };
+
   const removeStagedFile = (index: number) => {
     setStagedFiles(prev => prev.filter((_, i) => i !== index));
   };
 
   return (
-    <div className="flex flex-col h-full">
+    <div 
+      className="flex flex-col h-full relative"
+      onDragOver={handleDragOver}
+      onDragLeave={handleDragLeave}
+      onDrop={handleDrop}
+    >
+      {/* Drag Overlay */}
+      {isDragOver && (
+        <div className="absolute inset-0 bg-blue-500 bg-opacity-20 border-2 border-blue-500 border-dashed rounded-lg flex items-center justify-center z-50 backdrop-blur-sm">
+          <div className="text-center">
+            <Upload className="w-16 h-16 text-blue-600 mx-auto mb-4" />
+            <p className="text-2xl font-semibold text-blue-700 mb-2">Drop PDF files here</p>
+            <p className="text-blue-600">Files will be staged for upload</p>
+          </div>
+        </div>
+      )}
       {/* Chat Header */}
       <div className="px-6 py-4 border-b border-gray-200">
         <div className="flex items-center justify-between">
@@ -246,6 +301,20 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
           </div>
         )}
 
+        {/* Drag and Drop Zone */}
+        {stagedFiles.length === 0 && (
+          <div 
+            className="mb-3 p-4 border-2 border-dashed border-gray-300 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors cursor-pointer"
+            onClick={() => fileInputRef.current?.click()}
+          >
+            <div className="text-center">
+              <Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
+              <p className="text-sm text-gray-600 mb-1">Drop PDF files here or click to browse</p>
+              <p className="text-xs text-gray-500">Files will be staged for upload with your message</p>
+            </div>
+          </div>
+        )}
+
 
         
         <form onSubmit={handleSubmit} className="flex items-end space-x-3">
@@ -260,8 +329,13 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
-                className="resize-none pr-20"
+                className={`resize-none pr-20 transition-colors ${
+                  isDragOver ? 'border-blue-500 bg-blue-50' : ''
+                }`}
                 rows={3}
+                onDragOver={handleDragOver}
+                onDragLeave={handleDragLeave}
+                onDrop={handleDrop}
               />
               <div className="absolute bottom-3 right-3 flex items-center space-x-2">
                 <Button
