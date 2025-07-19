@@ -185,22 +185,7 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
   };
 
   return (
-    <div 
-      className="flex flex-col h-full relative"
-      onDragOver={handleDragOver}
-      onDragLeave={handleDragLeave}
-      onDrop={handleDrop}
-    >
-      {/* Drag Overlay */}
-      {isDragOver && (
-        <div className="absolute inset-0 bg-blue-500 bg-opacity-10 border-2 border-blue-400 border-dashed rounded-lg flex items-center justify-center z-50 backdrop-blur-sm">
-          <div className="text-center bg-white bg-opacity-90 p-8 rounded-lg shadow-lg">
-            <Upload className="w-16 h-16 text-blue-600 mx-auto mb-4" />
-            <p className="text-2xl font-semibold text-blue-700 mb-2">Drop PDF files here</p>
-            <p className="text-blue-600">Files will be staged and ready to analyze</p>
-          </div>
-        </div>
-      )}
+    <div className="flex flex-col h-full relative">
       {/* Chat Header */}
       <div className="px-6 py-4 border-b border-gray-200">
         <div className="flex items-center justify-between">
@@ -246,7 +231,7 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
             {stagedFiles.length === 0 && (
               <div className="mt-6 p-4 border border-dashed border-gray-200 rounded-lg bg-gray-50/50 text-center">
                 <Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
-                <p className="text-sm text-gray-600">Drag & drop PDF files anywhere or use the upload button below</p>
+                <p className="text-sm text-gray-600">Drag & drop PDF files into the text box below or use the upload button</p>
               </div>
             )}
           </div>
@@ -316,18 +301,34 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
         <form onSubmit={handleSubmit} className="flex items-end space-x-3">
           <div className="flex-1">
             <div className="relative">
-              <Textarea
-                ref={textareaRef}
-                placeholder={stagedFiles.length > 0 
-                  ? "Ask a question about the files you've attached, or just hit Send to analyze them..."
-                  : "Ask about product specifications, membrane types, warranties, or drag & drop PDF files here..."
-                }
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={handleKeyDown}
-                className="resize-none pr-20"
-                rows={3}
-              />
+              <div className="relative">
+                <Textarea
+                  ref={textareaRef}
+                  placeholder={stagedFiles.length > 0 
+                    ? "Ask a question about the files you've attached, or just hit Send to analyze them..."
+                    : "Ask about product specifications, membrane types, warranties, or drag & drop PDF files here..."
+                  }
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  onDragOver={handleDragOver}
+                  onDragLeave={handleDragLeave}
+                  onDrop={handleDrop}
+                  className={`resize-none pr-20 transition-all duration-200 ${
+                    isDragOver ? 'border-blue-500 bg-blue-50 border-2' : ''
+                  }`}
+                  rows={3}
+                />
+                {/* Drag overlay for textarea */}
+                {isDragOver && (
+                  <div className="absolute inset-0 border-2 border-blue-400 border-dashed rounded-md bg-blue-100 bg-opacity-50 flex items-center justify-center pointer-events-none">
+                    <div className="text-center">
+                      <Upload className="w-8 h-8 text-blue-600 mx-auto mb-1" />
+                      <p className="text-sm font-medium text-blue-700">Drop PDF files</p>
+                    </div>
+                  </div>
+                )}
+              </div>
               <div className="absolute bottom-3 right-3 flex items-center space-x-2">
                 <Button
                   type="button"
