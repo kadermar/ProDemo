@@ -158,8 +158,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
 
       const session = await storage.createChatSession(validation.data);
+      console.log(`[SESSION LOG] ${new Date().toISOString()} - New chat session created: "${title}" (ID: ${session.id})`);
+      
       res.json(session);
     } catch (error) {
+      console.error(`[SESSION ERROR] ${new Date().toISOString()} - Error creating session: ${error instanceof Error ? error.message : 'Unknown error'}`);
       res.status(500).json({ error: error instanceof Error ? error.message : 'Unknown error' });
     }
   });
@@ -224,6 +227,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ error: "Message content is required" });
       }
 
+      console.log(`[CONVERSATION LOG] ${new Date().toISOString()} - New conversation started`);
+      console.log(`[CONVERSATION LOG] Session ID: ${sessionId || 'No Session'}`);
+      console.log(`[CONVERSATION LOG] User Input: ${content}`);
+
       // Save user message
       const userMessage = await storage.createChatMessage({
         content,
@@ -232,8 +239,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
         sources: null
       });
 
+      console.log(`[CONVERSATION LOG] User message saved with ID: ${userMessage.id}`);
+
       // Generate AI response using RAG
       const ragResponse = await ragService.searchAndGenerate(content);
+
+      console.log(`[CONVERSATION LOG] AI Response generated`);
+      console.log(`[CONVERSATION LOG] Sources used: ${ragResponse.sources ? JSON.stringify(ragResponse.sources.map(s => s.source)) : 'None'}`);
+      console.log(`[CONVERSATION LOG] AI Response: ${ragResponse.response.substring(0, 200)}...`);
 
       // Save AI response
       const aiMessage = await storage.createChatMessage({
@@ -243,16 +256,22 @@ export async function registerRoutes(app: Express): Promise<Server> {
         sources: ragResponse.sources
       });
 
+      console.log(`[CONVERSATION LOG] AI message saved with ID: ${aiMessage.id}`);
+
       // Update session timestamp if provided
       if (sessionId) {
         await storage.updateChatSession(sessionId, { updatedAt: new Date() });
+        console.log(`[CONVERSATION LOG] Session ${sessionId} timestamp updated`);
       }
+
+      console.log(`[CONVERSATION LOG] Conversation completed successfully at ${new Date().toISOString()}`);
 
       res.json({
         userMessage,
         aiMessage
       });
     } catch (error) {
+      console.error(`[CONVERSATION ERROR] ${new Date().toISOString()} - Error in conversation: ${error instanceof Error ? error.message : 'Unknown error'}`);
       res.status(500).json({ error: error instanceof Error ? error.message : 'Unknown error' });
     }
   });
@@ -289,6 +308,79 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const products = await storage.searchProductData(query);
       res.json(products);
     } catch (error) {
+      res.status(500).json({ error: error instanceof Error ? error.message : 'Unknown error' });
+    }
+  });
+
+  // Get conversation analytics and logs
+  app.get("/api/chat/analytics", async (req, res) => {
+    try {
+      const sessions = await storage.getChatSessions();
+      const allMessages = await storage.getChatMessages();
+      
+      const analytics = {
+        totalSessions: sessions.length,
+        totalMessages: allMessages.length,
+        userMessages: allMessages.filter(m => m.role === 'user').length,
+        assistantMessages: allMessages.filter(m => m.role === 'assistant').length,
+        averageMessagesPerSession: sessions.length > 0 ? (allMessages.length / sessions.length).toFixed(2) : 0,
+        sessionsWithActivity: sessions.filter(s => (s.messageCount || 0) > 0).length,
+        totalWordCount: allMessages.reduce((sum, m) => sum + ((m as any).wordCount || 0), 0),
+        avgWordsPerMessage: allMessages.length > 0 ? 
+          (allMessages.reduce((sum, m) => sum + ((m as any).wordCount || 0), 0) / allMessages.length).toFixed(2) : 0,
+        recentSessions: sessions.slice(0, 10),
+        recentMessages: allMessages.slice(-20)
+      };
+      
+      console.log(`[ANALYTICS LOG] ${new Date().toISOString()} - Analytics requested. Total: ${analytics.totalSessions} sessions, ${analytics.totalMessages} messages`);
+      
+      res.json(analytics);
+    } catch (error) {
+      console.error(`[ANALYTICS ERROR] ${new Date().toISOString()} - Error fetching analytics: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      res.status(500).json({ error: error instanceof Error ? error.message : 'Unknown error' });
+    }
+  });
+
+  // Export conversation history (for backup/analysis)
+  app.get("/api/chat/export", async (req, res) => {
+    try {
+      const sessionId = req.query.sessionId ? parseInt(req.query.sessionId as string) : undefined;
+      const format = (req.query.format as string) || 'json';
+      
+      const messages = await storage.getChatMessages(sessionId);
+      const sessions = sessionId ? [await storage.getChatSession(sessionId)] : await storage.getChatSessions();
+      
+      const exportData = {
+        exportedAt: new Date().toISOString(),
+        sessionId: sessionId || 'all',
+        sessions: sessions.filter(Boolean),
+        messages,
+        totalMessages: messages.length,
+        messagesByRole: {
+          user: messages.filter(m => m.role === 'user').length,
+          assistant: messages.filter(m => m.role === 'assistant').length
+        }
+      };
+      
+      console.log(`[EXPORT LOG] ${new Date().toISOString()} - Conversation export requested (${format}). Session: ${sessionId || 'all'}, Messages: ${messages.length}`);
+      
+      if (format === 'csv') {
+        // Convert to CSV format
+        const csvHeader = 'ID,Session ID,Role,Content,Sources,Word Count,Created At\n';
+        const csvData = messages.map(m => 
+          `${m.id},"${m.sessionId || ''}","${m.role}","${m.content.replace(/"/g, '""')}","${m.sources ? JSON.stringify(m.sources).replace(/"/g, '""') : ''}",${(m as any).wordCount || 0},"${m.createdAt}"`
+        ).join('\n');
+        
+        res.setHeader('Content-Type', 'text/csv');
+        res.setHeader('Content-Disposition', `attachment; filename="chat_history_${sessionId || 'all'}_${new Date().toISOString().split('T')[0]}.csv"`);
+        res.send(csvHeader + csvData);
+      } else {
+        res.setHeader('Content-Type', 'application/json');
+        res.setHeader('Content-Disposition', `attachment; filename="chat_history_${sessionId || 'all'}_${new Date().toISOString().split('T')[0]}.json"`);
+        res.json(exportData);
+      }
+    } catch (error) {
+      console.error(`[EXPORT ERROR] ${new Date().toISOString()} - Error exporting chat history: ${error instanceof Error ? error.message : 'Unknown error'}`);
       res.status(500).json({ error: error instanceof Error ? error.message : 'Unknown error' });
     }
   });

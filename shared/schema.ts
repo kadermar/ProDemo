@@ -14,6 +14,7 @@ export const documents = pgTable("documents", {
 export const chatSessions = pgTable("chat_sessions", {
   id: serial("id").primaryKey(),
   title: text("title").notNull(),
+  messageCount: integer("message_count").default(0).notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
@@ -24,6 +25,8 @@ export const chatMessages = pgTable("chat_messages", {
   content: text("content").notNull(),
   role: text("role").notNull(), // 'user' or 'assistant'
   sources: jsonb("sources"), // Array of source references
+  wordCount: integer("word_count"),
+  processingTimeMs: integer("processing_time_ms"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
@@ -51,12 +54,15 @@ export const insertDocumentSchema = createInsertSchema(documents).omit({
 
 export const insertChatSessionSchema = createInsertSchema(chatSessions).omit({
   id: true,
+  messageCount: true,
   createdAt: true,
   updatedAt: true,
 });
 
 export const insertChatMessageSchema = createInsertSchema(chatMessages).omit({
   id: true,
+  wordCount: true,
+  processingTimeMs: true,
   createdAt: true,
 });
 
