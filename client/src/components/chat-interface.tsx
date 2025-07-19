@@ -193,11 +193,11 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
     >
       {/* Drag Overlay */}
       {isDragOver && (
-        <div className="absolute inset-0 bg-blue-500 bg-opacity-20 border-2 border-blue-500 border-dashed rounded-lg flex items-center justify-center z-50 backdrop-blur-sm">
-          <div className="text-center">
+        <div className="absolute inset-0 bg-blue-500 bg-opacity-10 border-2 border-blue-400 border-dashed rounded-lg flex items-center justify-center z-50 backdrop-blur-sm">
+          <div className="text-center bg-white bg-opacity-90 p-8 rounded-lg shadow-lg">
             <Upload className="w-16 h-16 text-blue-600 mx-auto mb-4" />
             <p className="text-2xl font-semibold text-blue-700 mb-2">Drop PDF files here</p>
-            <p className="text-blue-600">Files will be staged for upload</p>
+            <p className="text-blue-600">Files will be staged and ready to analyze</p>
           </div>
         </div>
       )}
@@ -241,7 +241,15 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
       {/* Messages */}
       <div className="flex-1 overflow-y-auto p-6 space-y-6">
         {messages.length === 0 ? (
-          <WelcomeMessage />
+          <div>
+            <WelcomeMessage />
+            {stagedFiles.length === 0 && (
+              <div className="mt-6 p-4 border border-dashed border-gray-200 rounded-lg bg-gray-50/50 text-center">
+                <Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
+                <p className="text-sm text-gray-600">Drag & drop PDF files anywhere or use the upload button below</p>
+              </div>
+            )}
+          </div>
         ) : (
           messages.map((message) => (
             <MessageBubble key={message.id} message={message} />
@@ -301,19 +309,7 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
           </div>
         )}
 
-        {/* Drag and Drop Zone */}
-        {stagedFiles.length === 0 && (
-          <div 
-            className="mb-3 p-4 border-2 border-dashed border-gray-300 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors cursor-pointer"
-            onClick={() => fileInputRef.current?.click()}
-          >
-            <div className="text-center">
-              <Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
-              <p className="text-sm text-gray-600 mb-1">Drop PDF files here or click to browse</p>
-              <p className="text-xs text-gray-500">Files will be staged for upload with your message</p>
-            </div>
-          </div>
-        )}
+
 
 
         
@@ -324,18 +320,13 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
                 ref={textareaRef}
                 placeholder={stagedFiles.length > 0 
                   ? "Ask a question about the files you've attached, or just hit Send to analyze them..."
-                  : "Ask about product specifications, membrane types, warranties, or any roofing system questions..."
+                  : "Ask about product specifications, membrane types, warranties, or drag & drop PDF files here..."
                 }
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
-                className={`resize-none pr-20 transition-colors ${
-                  isDragOver ? 'border-blue-500 bg-blue-50' : ''
-                }`}
+                className="resize-none pr-20"
                 rows={3}
-                onDragOver={handleDragOver}
-                onDragLeave={handleDragLeave}
-                onDrop={handleDrop}
               />
               <div className="absolute bottom-3 right-3 flex items-center space-x-2">
                 <Button
