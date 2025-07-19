@@ -36,24 +36,27 @@ export default function ChatPage() {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-gray-50">
+    <div className="flex flex-col h-screen bg-neutral">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200 px-4 py-3">
+      <header className="bg-white shadow-sm border-b border-gray-200 px-4 py-4">
         <div className="flex items-center justify-between max-w-7xl mx-auto">
           <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <Search className="text-white w-4 h-4" />
+            <div className="w-10 h-10 bg-carlisle-primary rounded-lg flex items-center justify-center shadow-sm">
+              <Search className="text-white w-5 h-5" />
             </div>
-            <h1 className="text-xl font-semibold text-gray-900">
-              Product Information Assistant
-            </h1>
+            <div>
+              <h1 className="text-xl font-bold text-carlisle-navy">
+                Roofing Product Information Assistant
+              </h1>
+              <p className="text-sm text-gray-600">Powered by Carlisle SynTec Systems</p>
+            </div>
           </div>
           <div className="flex items-center space-x-3">
             <Button
               variant="ghost"
               size="sm"
               onClick={toggleHistory}
-              className="text-gray-600 hover:text-primary"
+              className="text-gray-600 hover:text-carlisle-primary"
             >
               <History className="w-4 h-4 mr-2" />
               <span className="hidden sm:inline">Chat History</span>
@@ -62,7 +65,7 @@ export default function ChatPage() {
               variant="ghost"
               size="sm"
               onClick={toggleLibrary}
-              className="text-gray-600 hover:text-primary"
+              className="text-gray-600 hover:text-carlisle-primary"
             >
               <FolderOpen className="w-4 h-4 mr-2" />
               <span className="hidden sm:inline">Document Library</span>
@@ -71,7 +74,7 @@ export default function ChatPage() {
               <Button
                 variant="ghost"
                 size="sm"
-                className="text-gray-600 hover:text-primary"
+                className="text-gray-600 hover:text-carlisle-primary"
               >
                 <BarChart3 className="w-4 h-4 mr-2" />
                 <span className="hidden sm:inline">Analytics</span>
@@ -80,7 +83,7 @@ export default function ChatPage() {
             <Button
               variant="ghost"
               size="sm"
-              className="text-gray-600 hover:text-primary"
+              className="text-gray-600 hover:text-carlisle-primary"
             >
               <Settings className="w-4 h-4" />
             </Button>

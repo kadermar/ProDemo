@@ -106,8 +106,8 @@ export function ChatHistorySidebar({
       <div className="p-4 border-b border-gray-200 bg-gray-50">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <History className="w-5 h-5 text-primary" />
-            <h2 className="text-lg font-semibold text-gray-900">Chat History</h2>
+            <History className="w-5 h-5 text-carlisle-primary" />
+            <h2 className="text-lg font-semibold text-carlisle-navy">Chat History</h2>
           </div>
           <Button
             variant="ghost"
@@ -124,7 +124,7 @@ export function ChatHistorySidebar({
       <div className="p-4 border-b border-gray-200">
         <Button
           onClick={handleCreateSession}
-          className="w-full bg-primary hover:bg-primary/90 text-white"
+          className="w-full bg-carlisle-primary hover:bg-carlisle-primary-dark text-white"
           disabled={createSessionMutation.isPending}
         >
           <Plus className="w-4 h-4 mr-2" />
@@ -152,7 +152,7 @@ export function ChatHistorySidebar({
                 className={`
                   group rounded-lg p-3 cursor-pointer transition-colors border
                   ${currentSessionId === session.id 
-                    ? "bg-primary/10 border-primary/20 shadow-sm" 
+                    ? "bg-carlisle-blue-light border-carlisle-primary/20 shadow-sm" 
                     : "hover:bg-gray-50 border-transparent"
                   }
                 `}

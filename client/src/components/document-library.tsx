@@ -29,10 +29,10 @@ export function DocumentLibrary({ isOpen, onClose }: DocumentLibraryProps) {
 
   const getSystemColor = (system: string) => {
     switch (system.toLowerCase()) {
-      case 'tpo': return "bg-blue-100 text-blue-700";
+      case 'tpo': return "bg-carlisle-blue-light text-carlisle-primary";
       case 'epdm': return "bg-orange-100 text-orange-700";
       case 'pvc': return "bg-green-100 text-green-700";
-      default: return "bg-gray-100 text-gray-700";
+      default: return "bg-gray-100 text-carlisle-navy";
     }
   };
 
@@ -40,9 +40,9 @@ export function DocumentLibrary({ isOpen, onClose }: DocumentLibraryProps) {
     <>
       <aside className="w-full h-full bg-white border-r border-gray-200 flex flex-col">
         {/* Library Header */}
-        <div className="p-4 border-b border-gray-200">
+        <div className="p-4 border-b border-gray-200 bg-gray-50">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-semibold text-gray-900">Product Library</h2>
+            <h2 className="text-lg font-semibold text-carlisle-navy">Product Library</h2>
             <Button
               variant="ghost"
               size="sm"
