@@ -98,22 +98,22 @@ export function ChatHistorySidebar({
 
   return (
     <div className={`
-      bg-gray-900 text-white transition-all duration-300 ease-in-out
+      bg-white border-r border-gray-200 transition-all duration-300 ease-in-out
       ${isOpen ? "w-80" : "w-0"}
-      flex flex-col overflow-hidden
+      flex flex-col overflow-hidden shadow-sm
     `}>
       {/* Header */}
-      <div className="p-4 border-b border-gray-700">
+      <div className="p-4 border-b border-gray-200 bg-gray-50">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <History className="w-5 h-5" />
-            <h2 className="text-lg font-semibold">Chat History</h2>
+            <History className="w-5 h-5 text-primary" />
+            <h2 className="text-lg font-semibold text-gray-900">Chat History</h2>
           </div>
           <Button
             variant="ghost"
             size="sm"
             onClick={onClose}
-            className="text-gray-400 hover:text-white"
+            className="text-gray-500 hover:text-gray-700"
           >
             <X className="w-4 h-4" />
           </Button>
@@ -121,10 +121,10 @@ export function ChatHistorySidebar({
       </div>
 
       {/* New Chat Button */}
-      <div className="p-4 border-b border-gray-700">
+      <div className="p-4 border-b border-gray-200">
         <Button
           onClick={handleCreateSession}
-          className="w-full bg-gray-800 hover:bg-gray-700 border border-gray-600"
+          className="w-full bg-primary hover:bg-primary/90 text-white"
           disabled={createSessionMutation.isPending}
         >
           <Plus className="w-4 h-4 mr-2" />
@@ -136,11 +136,11 @@ export function ChatHistorySidebar({
       <ScrollArea className="flex-1">
         <div className="p-2 space-y-1">
           {isLoading ? (
-            <div className="text-center text-gray-400 py-8">
+            <div className="text-center text-gray-500 py-8">
               Loading sessions...
             </div>
           ) : sessions.length === 0 ? (
-            <div className="text-center text-gray-400 py-8">
+            <div className="text-center text-gray-500 py-8">
               <MessageSquare className="w-8 h-8 mx-auto mb-2 opacity-50" />
               <p>No chat sessions yet</p>
               <p className="text-sm">Start a new conversation</p>
@@ -150,10 +150,10 @@ export function ChatHistorySidebar({
               <div
                 key={session.id}
                 className={`
-                  group rounded-lg p-3 cursor-pointer transition-colors
+                  group rounded-lg p-3 cursor-pointer transition-colors border
                   ${currentSessionId === session.id 
-                    ? "bg-gray-700 border border-gray-600" 
-                    : "hover:bg-gray-800"
+                    ? "bg-primary/10 border-primary/20 shadow-sm" 
+                    : "hover:bg-gray-50 border-transparent"
                   }
                 `}
                 onClick={() => onSessionSelect(session.id)}
@@ -169,16 +169,16 @@ export function ChatHistorySidebar({
                           if (e.key === "Enter") handleSaveEdit();
                           if (e.key === "Escape") handleCancelEdit();
                         }}
-                        className="bg-gray-800 border-gray-600 text-white text-sm"
+                        className="bg-white border-gray-300 text-gray-900 text-sm"
                         autoFocus
                         onClick={(e) => e.stopPropagation()}
                       />
                     ) : (
                       <div>
-                        <p className="font-medium text-sm truncate">
+                        <p className="font-medium text-sm truncate text-gray-900">
                           {truncateTitle(session.title)}
                         </p>
-                        <p className="text-xs text-gray-400 mt-1">
+                        <p className="text-xs text-gray-500 mt-1">
                           {format(new Date(session.updatedAt), "MMM d, h:mm a")}
                         </p>
                       </div>
@@ -190,7 +190,7 @@ export function ChatHistorySidebar({
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="opacity-0 group-hover:opacity-100 text-gray-400 hover:text-white p-1"
+                        className="opacity-0 group-hover:opacity-100 text-gray-500 hover:text-gray-700 p-1"
                         onClick={(e) => e.stopPropagation()}
                       >
                         <MoreVertical className="w-4 h-4" />
@@ -198,14 +198,14 @@ export function ChatHistorySidebar({
                     </DropdownMenuTrigger>
                     <DropdownMenuContent
                       align="end"
-                      className="bg-gray-800 border-gray-600"
+                      className="bg-white border-gray-200"
                     >
                       <DropdownMenuItem
                         onClick={(e) => {
                           e.stopPropagation();
                           handleEditSession(session);
                         }}
-                        className="text-white hover:bg-gray-700"
+                        className="text-gray-700 hover:bg-gray-50"
                       >
                         <Edit2 className="w-4 h-4 mr-2" />
                         Rename
@@ -215,7 +215,7 @@ export function ChatHistorySidebar({
                           e.stopPropagation();
                           handleDeleteSession(session.id);
                         }}
-                        className="text-red-400 hover:bg-red-900/20"
+                        className="text-red-600 hover:bg-red-50"
                       >
                         <Trash2 className="w-4 h-4 mr-2" />
                         Delete
@@ -230,10 +230,10 @@ export function ChatHistorySidebar({
       </ScrollArea>
 
       {/* Footer */}
-      <div className="p-4 border-t border-gray-700">
-        <div className="flex items-center justify-between text-xs text-gray-400">
+      <div className="p-4 border-t border-gray-200 bg-gray-50">
+        <div className="flex items-center justify-between text-xs text-gray-600">
           <span>{sessions.length} conversations</span>
-          <Badge variant="outline" className="text-xs">
+          <Badge variant="outline" className="text-xs text-gray-600 border-gray-300">
             Product Assistant
           </Badge>
         </div>
