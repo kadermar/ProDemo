@@ -2,8 +2,7 @@ import { useState } from "react";
 import { DocumentLibrary } from "@/components/document-library";
 import { ChatInterface } from "@/components/chat-interface";
 import { ChatHistorySidebar } from "@/components/chat-history-sidebar";
-import { Search, Settings, FolderOpen, History, BarChart3 } from "lucide-react";
-import { Link } from "wouter";
+import { Search, Settings, FolderOpen, History } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -70,16 +69,7 @@ export default function ChatPage() {
               <FolderOpen className="w-4 h-4 mr-2" />
               <span className="hidden sm:inline">Document Library</span>
             </Button>
-            <Link href="/logs">
-              <Button
-                variant="ghost"
-                size="sm"
-                className="text-gray-600 hover:text-carlisle-primary"
-              >
-                <BarChart3 className="w-4 h-4 mr-2" />
-                <span className="hidden sm:inline">Analytics</span>
-              </Button>
-            </Link>
+
             <Button
               variant="ghost"
               size="sm"
