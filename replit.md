@@ -160,4 +160,4 @@ The application is designed to be a comprehensive tool for roofing professionals
 - ✓ Updated AI system to prioritize manufacturer product sheets over uploaded documents
 - ✓ Modified RAG service to only include uploaded documents when explicitly part of user queries
 - ✓ Enhanced system prompts and source prioritization for better product-focused responses
-- ✓ Restored suggested prompt about Sure-Weld and Spectro-Weld systems per user request
+- ✓ Removed suggested prompt about Sure-Weld and Spectro-Weld systems

@@ -140,7 +140,6 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
 
   const quickQueries = [
     "Which TPO membrane offers the best durability for extreme weather?",
-    "What are the differences between Sure-Weld and Spectro-Weld systems?",
     "Show me PVC products ideal for chemical-resistant applications",
     "Which EPDM solutions provide the longest warranty coverage?",
     "What walkway products offer superior slip resistance?",
