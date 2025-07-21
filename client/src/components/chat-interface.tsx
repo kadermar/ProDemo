@@ -3,11 +3,13 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { ProductModal } from "@/components/product-modal";
 import { useChat } from "@/hooks/use-chat";
 import { useDocuments } from "@/hooks/use-documents";
+import { useProducts } from "@/hooks/use-products";
 import { useToast } from "@/hooks/use-toast";
-import { Bot, User, Send, Paperclip, Mic, Trash2, FileText, Loader2, Upload } from "lucide-react";
-import { type ChatMessage } from "@shared/schema";
+import { Bot, User, Send, Paperclip, Mic, Trash2, FileText, Loader2, Upload, ExternalLink } from "lucide-react";
+import { type ChatMessage, type ProductData } from "@shared/schema";
 
 interface ChatInterfaceProps {
   sessionId?: number;
@@ -18,7 +20,7 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
   const [isTyping, setIsTyping] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [stagedFiles, setStagedFiles] = useState<File[]>([]);
-  
+  const [selectedProduct, setSelectedProduct] = useState<ProductData | null>(null);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -26,10 +28,29 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
 
   const { messages, isLoading, sendMessage, clearMessages } = useChat(sessionId);
   const { uploadFiles } = useDocuments();
+  const { products } = useProducts();
+  const { documents } = useDocuments();
   const { toast } = useToast();
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleSourceClick = (source: any) => {
+    if (source.type === 'product') {
+      // Find the product from the products list
+      const product = products?.find(p => p.id === source.id);
+      if (product) {
+        setSelectedProduct(product);
+      }
+    } else if (source.type === 'document') {
+      // For documents, you could implement a document viewer
+      // For now, we'll show a toast with the document name
+      toast({
+        title: "Document Reference",
+        description: `Opening: ${source.title}`,
+      });
+    }
   };
 
   useEffect(() => {
@@ -189,7 +210,7 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
           <WelcomeMessage />
         ) : (
           messages.map((message) => (
-            <MessageBubble key={message.id} message={message} />
+            <MessageBubble key={message.id} message={message} onSourceClick={handleSourceClick} />
           ))
         )}
 
@@ -338,6 +359,12 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
           ))}
         </div>
       </div>
+
+      {/* Product Modal */}
+      <ProductModal
+        product={selectedProduct}
+        onClose={() => setSelectedProduct(null)}
+      />
     </div>
   );
 }
@@ -369,7 +396,10 @@ function WelcomeMessage() {
   );
 }
 
-function MessageBubble({ message }: { message: ChatMessage }) {
+function MessageBubble({ message, onSourceClick }: { 
+  message: ChatMessage;
+  onSourceClick: (source: any) => void;
+}) {
   const isUser = message.role === "user";
   const sources = message.sources as Array<{
     type: 'product' | 'document';
@@ -399,10 +429,12 @@ function MessageBubble({ message }: { message: ChatMessage }) {
                   {sources.map((source, index) => (
                     <button
                       key={index}
-                      className="block text-sm text-primary hover:text-primary-dark transition-colors"
+                      onClick={() => onSourceClick(source)}
+                      className="flex items-center text-sm text-carlisle-primary hover:text-carlisle-primary-dark transition-colors group"
                     >
-                      <FileText className="w-3 h-3 inline mr-1" />
-                      {source.title}
+                      <FileText className="w-3 h-3 mr-1" />
+                      <span className="group-hover:underline">{source.title}</span>
+                      <ExternalLink className="w-3 h-3 ml-1 opacity-50 group-hover:opacity-100" />
                     </button>
                   ))}
                 </div>
