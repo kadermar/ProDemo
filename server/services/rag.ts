@@ -66,11 +66,17 @@ export class RAGService {
       const { allProductSheets } = await import('../data/all-product-sheets');
       const { preloadedDocuments } = await import('../data/assembly-letters');
       
-      // Check if products are already loaded
+      // Always ensure we have exactly 205 products (clean reload if needed)
       const existingProducts = await storage.getProductData();
-      if (existingProducts.length === 0) {
-        // Load all product sheets from ZIP file
-        console.log(`Starting to load ${allProductSheets.length} product sheets from ZIP file`);
+      if (existingProducts.length !== 205) {
+        // Clear existing and reload clean data
+        if (existingProducts.length > 0) {
+          console.log(`Clearing ${existingProducts.length} existing products to prevent duplicates`);
+          // Clear products using storage interface
+          await storage.clearAllProductData?.() || console.log('No clear method available');
+        }
+        
+        console.log(`Loading ${allProductSheets.length} product sheets from ZIP file`);
         let loadedCount = 0;
         for (const product of allProductSheets) {
           try {
@@ -80,9 +86,9 @@ export class RAGService {
             console.error(`Failed to load product ${product.projectName}:`, error);
           }
         }
-        console.log(`Successfully loaded ${loadedCount} out of ${allProductSheets.length} product sheets from ZIP file`);
+        console.log(`Successfully loaded ${loadedCount} out of ${allProductSheets.length} product sheets`);
       } else {
-        console.log(`Product database already contains ${existingProducts.length} products`);
+        console.log(`Product database contains correct number of products: ${existingProducts.length}`);
       }
       
       // Check if documents are already loaded
