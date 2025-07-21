@@ -278,7 +278,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       console.log(`[CONVERSATION LOG] User message saved with ID: ${userMessage.id}`);
 
       // Generate AI response using RAG
-      const ragResponse = await ragService.searchAndGenerate(content);
+      // Check if this is a file upload scenario or explicitly mentions uploaded documents
+      const includeUploadedDocs = content.includes('[Attached files:') || content.includes('upload') || content.includes('file');
+      const ragResponse = await ragService.searchAndGenerate(content, includeUploadedDocs);
 
       console.log(`[CONVERSATION LOG] AI Response generated`);
       console.log(`[CONVERSATION LOG] Sources used: ${ragResponse.sources ? JSON.stringify(ragResponse.sources.map(s => s.source)) : 'None'}`);

@@ -42,7 +42,7 @@ export interface RAGContext {
 }
 
 export class AIService {
-  async generateResponse(query: string, context: RAGContext): Promise<AIResponse> {
+  async generateResponse(query: string, context: RAGContext, includeUploadedDocs: boolean = false): Promise<AIResponse> {
     try {
       const systemPrompt = `You are a specialized Product Information Assistant for roofing systems with expertise in TPO, EPDM, and PVC membrane systems. You have access to a comprehensive database of roofing system specifications, assembly letters, and technical documentation from leading manufacturers like Carlisle and Versico.
 
@@ -57,12 +57,13 @@ Your role is to:
 8. Analyze uploaded documents and extract relevant information about roofing projects
 9. Answer questions about uploaded documents by referencing both the document content and related product specifications
 
-IMPORTANT: DOCUMENT ANALYSIS AND SOURCE PRIORITIZATION
-- Primary source: Product Database (contains structured product specifications from zip files)
-- Secondary source: Uploaded Documents (user-provided PDFs with project-specific information)
-- Tertiary source: Assembly Letters (provides additional context and project examples)
-- When analyzing uploaded documents, extract key information like project details, specifications, requirements
-- Cross-reference uploaded document content with relevant product database entries
+IMPORTANT: SOURCE PRIORITIZATION - PRODUCT DATABASE FIRST
+- PRIMARY SOURCE: Product Database (manufacturer product sheets from ZIP files) - ALWAYS prioritize this
+- SECONDARY SOURCE: Assembly Letters (minimal background context only)
+- UPLOADED DOCS: Only use when specifically uploaded with a query, not for general questions
+- Focus answers on product specifications, features, and manufacturer data
+- Reference specific product sheet PDFs when providing product information
+- Only mention uploaded documents when they were specifically part of the user's query
 - For source citations, prioritize Product Database, then Uploaded Documents, then Assembly Letters
 - When answering questions about uploaded documents, provide both document analysis and relevant product recommendations
 
@@ -73,8 +74,10 @@ Key roofing system knowledge:
 
 Always cite your sources using the format: [Source: Product ID - Product Name] for product data or [Source: Document Name] for assembly letters. Provide specific details from the documentation including project names, locations, and exact specifications. If you don't have enough information to answer a question, say so clearly and suggest what additional information would be helpful.
 
-Context Information:
-Product Database: ${JSON.stringify(context.productData.slice(0, 5).map(p => ({
+PRIORITY: Focus primarily on Product Database information for all roofing system questions.
+
+PRIMARY SOURCE - Product Database (205 manufacturer product sheets):
+${JSON.stringify(context.productData.slice(0, 10).map(p => ({
   id: p.id,
   system: p.system,
   manufacturer: p.manufacturer,
@@ -82,20 +85,26 @@ Product Database: ${JSON.stringify(context.productData.slice(0, 5).map(p => ({
   projectName: p.projectName,
   thickness: p.thickness,
   warranty: p.warranty,
-  sourceDocument: p.sourceDocument
+  sourceDocument: p.sourceDocument,
+  specifications: p.specifications
 })), null, 2)}
-Uploaded Documents: ${JSON.stringify(context.documents.filter(doc => !doc.filename.includes('assembly')).map(doc => ({
+
+${includeUploadedDocs ? 
+`SECONDARY SOURCE - Uploaded Documents (analyze when specifically uploaded):
+${JSON.stringify(context.documents.filter(doc => !doc.filename.includes('AL_') && !doc.filename.includes('Assembly')).map(doc => ({
   id: doc.id,
   filename: doc.filename,
   content: doc.content.substring(0, 800) + "...",
   metadata: doc.metadata
-})), null, 2)}
+})), null, 2)}` : 
+'BACKGROUND CONTEXT - Assembly Letters (minimal reference only):'}
 
-Assembly Letters (Context): ${JSON.stringify(context.documents.filter(doc => doc.filename.includes('assembly')).map(doc => ({
+${!includeUploadedDocs ? 
+JSON.stringify(context.documents.filter(doc => doc.filename.includes('AL_') || doc.filename.includes('Assembly')).slice(0, 2).map(doc => ({
   id: doc.id,
   filename: doc.filename,
-  content: doc.content.substring(0, 400) + "..."
-})), null, 2)}`;
+  content: doc.content.substring(0, 300) + "..."
+})), null, 2) : ''}`;
 
       const response = await openai.chat.completions.create({
         model: "gpt-3.5-turbo",

@@ -2,7 +2,7 @@ import { storage } from '../storage';
 import { aiService, type RAGContext } from './ai';
 
 export class RAGService {
-  async searchAndGenerate(query: string): Promise<{
+  async searchAndGenerate(query: string, includeUploadedDocs: boolean = false): Promise<{
     response: string;
     sources: Array<{
       type: 'product' | 'document';
@@ -13,17 +13,31 @@ export class RAGService {
     }>;
   }> {
     try {
-      // Search product database
+      // Search product database (primary source - always prioritized)
       const productData = await storage.searchProductData(query);
       
-      // Search documents
-      const documents = await storage.searchDocuments(query);
+      // Only search uploaded documents if explicitly requested
+      let uploadedDocuments: any[] = [];
+      if (includeUploadedDocs) {
+        uploadedDocuments = await storage.searchDocuments(query);
+      }
       
-      // If no specific search results, get limited data for general queries to prevent token limit issues
-      const allProductData = productData.length > 0 ? productData.slice(0, 10) : (await storage.getProductData()).slice(0, 10);
-      const allDocuments = documents.length > 0 ? documents : await storage.getDocuments();
+      // Get assembly letters for minimal background context only
+      const allDocuments = await storage.getDocuments();
+      const assemblyLetters = allDocuments
+        .filter(doc => 
+          doc.filename.includes('AL_') || 
+          doc.filename.includes('Assembly') ||
+          doc.filename.includes('Montgomery') ||
+          doc.filename.includes('Dexter') ||
+          doc.filename.includes('Miller')
+        )
+        .slice(0, 2); // Limit to 2 assembly letters for context
       
-      // Build context for AI - PRIORITIZE PRODUCT DATA (limited to prevent token overflow)
+      // Prioritize product data - get more results if available
+      const allProductData = productData.length > 0 ? productData.slice(0, 20) : (await storage.getProductData()).slice(0, 20);
+      
+      // Build context for AI - HEAVILY PRIORITIZE PRODUCT DATA
       const context: RAGContext = {
         productData: allProductData.map(p => ({
           id: p.id,
@@ -41,16 +55,25 @@ export class RAGService {
           contractor: p.contractor,
           date: p.date
         })),
-        documents: allDocuments.map(d => ({
-          id: d.id,
-          filename: d.filename,
-          content: d.content,
-          metadata: d.metadata
-        }))
+        // Include uploaded docs only when specifically requested
+        documents: includeUploadedDocs ? 
+          [...uploadedDocuments, ...assemblyLetters].map(d => ({
+            id: d.id,
+            filename: d.filename,
+            content: d.content,
+            metadata: d.metadata
+          })) :
+          // Just assembly letters for minimal context
+          assemblyLetters.map(d => ({
+            id: d.id,
+            filename: d.filename,
+            content: d.content.substring(0, 500), // Limit content to keep focus on products
+            metadata: d.metadata
+          }))
       };
       
-      // Generate AI response
-      const aiResponse = await aiService.generateResponse(query, context);
+      // Generate AI response with instructions to prioritize product data
+      const aiResponse = await aiService.generateResponse(query, context, includeUploadedDocs);
       
       return {
         response: aiResponse.content,
