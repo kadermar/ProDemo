@@ -21,6 +21,7 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
   const [isUploading, setIsUploading] = useState(false);
   const [stagedFiles, setStagedFiles] = useState<File[]>([]);
   const [selectedProduct, setSelectedProduct] = useState<ProductData | null>(null);
+  const [showQuickQueries, setShowQuickQueries] = useState(true);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -55,6 +56,10 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
 
   useEffect(() => {
     scrollToBottom();
+    // Reset showQuickQueries when messages are cleared
+    if (messages.length === 0) {
+      setShowQuickQueries(true);
+    }
   }, [messages]);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -142,9 +147,12 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
     "Compare primer options for different membrane installations"
   ];
 
-  const handleQuickQuery = (query: string) => {
-    setInput(query);
-    textareaRef.current?.focus();
+  const handleQuickQuery = async (query: string) => {
+    setInput("");
+    setShowQuickQueries(false);
+    
+    // Send the query immediately
+    await sendMessage(query);
   };
 
   const handleFileUpload = async (files: FileList) => {
@@ -344,20 +352,22 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
           </div>
         )}
 
-        {/* Quick Actions */}
-        <div className="mt-3 flex flex-wrap gap-2">
-          {quickQueries.map((query) => (
-            <Button
-              key={query}
-              variant="outline"
-              size="sm"
-              onClick={() => handleQuickQuery(query)}
-              className="text-sm"
-            >
-              {query}
-            </Button>
-          ))}
-        </div>
+        {/* Quick Actions - Only show when there are no messages or showQuickQueries is true */}
+        {(messages.length === 0 || showQuickQueries) && (
+          <div className="mt-3 flex flex-wrap gap-2">
+            {quickQueries.map((query) => (
+              <Button
+                key={query}
+                variant="outline"
+                size="sm"
+                onClick={() => handleQuickQuery(query)}
+                className="text-sm"
+              >
+                {query}
+              </Button>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Product Modal */}
