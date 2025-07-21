@@ -72,8 +72,7 @@ export class RAGService {
         // Clear existing and reload clean data
         if (existingProducts.length > 0) {
           console.log(`Clearing ${existingProducts.length} existing products to prevent duplicates`);
-          // Clear products using storage interface
-          await storage.clearAllProductData?.() || console.log('No clear method available');
+          await storage.clearAllProductData();
         }
         
         console.log(`Loading ${allProductSheets.length} product sheets from ZIP file`);

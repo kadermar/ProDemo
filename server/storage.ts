@@ -25,6 +25,7 @@ export interface IStorage {
   createProductData(data: InsertProductData): Promise<ProductData>;
   getProductData(): Promise<ProductData[]>;
   searchProductData(query: string): Promise<ProductData[]>;
+  clearAllProductData?(): Promise<void>;
 }
 
 export class MemStorage implements IStorage {
@@ -361,6 +362,11 @@ export class DatabaseStorage implements IStorage {
           ilike(productData.location, searchPattern)
         )
       );
+  }
+
+  async clearAllProductData(): Promise<void> {
+    await db.delete(productData);
+    console.log(`[PRODUCT LOG] ${new Date().toISOString()} - Cleared all product data`);
   }
 }
 
