@@ -79,21 +79,33 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/documents/pdf/:filename", async (req, res) => {
     try {
       const filename = decodeURIComponent(req.params.filename);
-      const pdfPath = path.join(__dirname, '../attached_assets/extracted_products', filename);
+      // Use process.cwd() to get the correct root directory
+      const pdfPath = path.join(process.cwd(), 'attached_assets/extracted_products', filename);
+      
+      console.log(`Attempting to serve PDF: ${pdfPath}`);
       
       // Check if file exists
       if (!fs.existsSync(pdfPath)) {
-        return res.status(404).json({ error: "PDF file not found" });
+        console.log(`PDF file not found: ${pdfPath}`);
+        return res.status(404).json({ error: `PDF file not found: ${filename}` });
       }
       
       // Set appropriate headers for PDF viewing
       res.setHeader('Content-Type', 'application/pdf');
       res.setHeader('Content-Disposition', `inline; filename="${filename}"`);
+      res.setHeader('Cache-Control', 'public, max-age=86400'); // Cache for 1 day
       
       // Stream the PDF file
       const stream = fs.createReadStream(pdfPath);
+      stream.on('error', (err) => {
+        console.error('Error streaming PDF:', err);
+        if (!res.headersSent) {
+          res.status(500).json({ error: 'Error reading PDF file' });
+        }
+      });
       stream.pipe(res);
     } catch (error) {
+      console.error('PDF serving error:', error);
       res.status(500).json({ error: error instanceof Error ? error.message : 'Unknown error' });
     }
   });
