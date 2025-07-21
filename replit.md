@@ -157,3 +157,7 @@ The application is designed to be a comprehensive tool for roofing professionals
 - ✓ Resolved product database duplication issues and restored complete 205-product library
 - ✓ Enhanced suggested prompts to send immediately when clicked and hide after selection
 - ✓ Implemented automatic prompt reappearance when chat is cleared or empty
+- ✓ Updated AI system to prioritize manufacturer product sheets over uploaded documents
+- ✓ Modified RAG service to only include uploaded documents when explicitly part of user queries
+- ✓ Enhanced system prompts and source prioritization for better product-focused responses
+- ✓ Removed problematic suggested prompt about Sure-Weld and Spectro-Weld systems
