@@ -2,6 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import multer from "multer";
 import path from "path";
+import fs from "fs";
 import { storage } from "./storage";
 import { ragService } from "./services/rag";
 import { pdfProcessor } from "./services/pdf";
@@ -69,6 +70,29 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(404).json({ error: "Document not found" });
       }
       res.json(document);
+    } catch (error) {
+      res.status(500).json({ error: error instanceof Error ? error.message : 'Unknown error' });
+    }
+  });
+
+  // Serve PDF files directly
+  app.get("/api/documents/pdf/:filename", async (req, res) => {
+    try {
+      const filename = decodeURIComponent(req.params.filename);
+      const pdfPath = path.join(__dirname, '../attached_assets/extracted_products', filename);
+      
+      // Check if file exists
+      if (!fs.existsSync(pdfPath)) {
+        return res.status(404).json({ error: "PDF file not found" });
+      }
+      
+      // Set appropriate headers for PDF viewing
+      res.setHeader('Content-Type', 'application/pdf');
+      res.setHeader('Content-Disposition', `inline; filename="${filename}"`);
+      
+      // Stream the PDF file
+      const stream = fs.createReadStream(pdfPath);
+      stream.pipe(res);
     } catch (error) {
       res.status(500).json({ error: error instanceof Error ? error.message : 'Unknown error' });
     }

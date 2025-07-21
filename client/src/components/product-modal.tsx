@@ -3,11 +3,13 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
+  DialogDescription,
 } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { type ProductData } from "@shared/schema";
-import { Building, Shield, Wind, Calendar, MapPin, User } from "lucide-react";
+import { Building, Shield, Wind, Calendar, MapPin, User, ExternalLink, FileText } from "lucide-react";
 
 interface ProductModalProps {
   product: ProductData | null;
@@ -26,6 +28,12 @@ export function ProductModal({ product, onClose }: ProductModalProps) {
     }
   };
 
+  const handleViewDocument = () => {
+    // Create a URL to view the PDF document
+    const pdfUrl = `/api/documents/pdf/${encodeURIComponent(product.sourceDocument || '')}`;
+    window.open(pdfUrl, '_blank');
+  };
+
   return (
     <Dialog open={!!product} onOpenChange={onClose}>
       <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
@@ -36,6 +44,9 @@ export function ProductModal({ product, onClose }: ProductModalProps) {
               {product.system}
             </Badge>
           </DialogTitle>
+          <DialogDescription>
+            Detailed product specifications and technical information for {product.manufacturer} {product.system} membrane system.
+          </DialogDescription>
         </DialogHeader>
 
         <div className="space-y-6">
@@ -146,8 +157,20 @@ export function ProductModal({ product, onClose }: ProductModalProps) {
                 <CardTitle className="text-lg">Source Document</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="text-sm text-gray-600">
-                  <strong>Original Document:</strong> {product.sourceDocument}
+                <div className="flex items-center justify-between">
+                  <div className="text-sm text-gray-600">
+                    <strong>Original Document:</strong> {product.sourceDocument}
+                  </div>
+                  <Button
+                    onClick={handleViewDocument}
+                    variant="outline"
+                    size="sm"
+                    className="flex items-center gap-2 text-carlisle-primary hover:text-carlisle-primary-dark"
+                  >
+                    <FileText className="w-4 h-4" />
+                    View PDF
+                    <ExternalLink className="w-3 h-3" />
+                  </Button>
                 </div>
               </CardContent>
             </Card>
