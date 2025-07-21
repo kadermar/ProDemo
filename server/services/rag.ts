@@ -70,10 +70,19 @@ export class RAGService {
       const existingProducts = await storage.getProductData();
       if (existingProducts.length === 0) {
         // Load all product sheets from ZIP file
+        console.log(`Starting to load ${allProductSheets.length} product sheets from ZIP file`);
+        let loadedCount = 0;
         for (const product of allProductSheets) {
-          await storage.createProductData(product);
+          try {
+            await storage.createProductData(product);
+            loadedCount++;
+          } catch (error) {
+            console.error(`Failed to load product ${product.projectName}:`, error);
+          }
         }
-        console.log(`Loaded ${allProductSheets.length} product sheets from ZIP file`);
+        console.log(`Successfully loaded ${loadedCount} out of ${allProductSheets.length} product sheets from ZIP file`);
+      } else {
+        console.log(`Product database already contains ${existingProducts.length} products`);
       }
       
       // Check if documents are already loaded
