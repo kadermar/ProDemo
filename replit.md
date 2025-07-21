@@ -151,3 +151,6 @@ The application is designed to be a comprehensive tool for roofing professionals
 - ✓ Implemented clickable source links in chat messages that open product sheet modals
 - ✓ Added ProductModal integration for viewing detailed product specifications from sources
 - ✓ Enhanced source display with external link icons and hover effects using Carlisle branding
+- ✓ Created direct PDF viewing functionality from product modals to original manufacturer documents
+- ✓ Implemented secure PDF serving endpoint with proper file streaming and caching headers
+- ✓ Fixed file path resolution for reliable access to product sheet PDFs from attached assets
