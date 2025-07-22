@@ -279,7 +279,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       // Generate AI response using RAG
       // Check if this is a file upload scenario or explicitly mentions uploaded documents
-      const includeUploadedDocs = content.includes('[Attached files:') || content.includes('upload') || content.includes('file');
+      const includeUploadedDocs = content.includes('[Attached files:') || 
+                                  content.includes('uploaded files') || 
+                                  content.includes('analyze the uploaded') ||
+                                  content.includes('assembly letter') ||
+                                  content.includes('document') ||
+                                  content.includes('PDF') ||
+                                  content.includes('based on this');
+      
+      console.log(`[CONVERSATION LOG] Include uploaded docs: ${includeUploadedDocs}`);
       const ragResponse = await ragService.searchAndGenerate(content, includeUploadedDocs);
 
       console.log(`[CONVERSATION LOG] AI Response generated`);

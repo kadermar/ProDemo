@@ -90,12 +90,19 @@ ${JSON.stringify(context.productData.slice(0, 10).map(p => ({
 })), null, 2)}
 
 ${includeUploadedDocs ? 
-`SECONDARY SOURCE - Uploaded Documents (analyze when specifically uploaded):
+`SECONDARY SOURCE - Uploaded Documents (ANALYZE THESE THOROUGHLY):
 ${JSON.stringify(context.documents.filter(doc => !doc.filename.includes('AL_') && !doc.filename.includes('Assembly')).map(doc => ({
   id: doc.id,
   filename: doc.filename,
-  content: doc.content.substring(0, 800) + "...",
+  content: doc.content, // Include full content for analysis
   metadata: doc.metadata
+})), null, 2)}
+
+BACKGROUND CONTEXT - Assembly Letters (minimal reference):
+${JSON.stringify(context.documents.filter(doc => doc.filename.includes('AL_') || doc.filename.includes('Assembly')).slice(0, 1).map(doc => ({
+  id: doc.id,
+  filename: doc.filename,
+  content: doc.content.substring(0, 300) + "..."
 })), null, 2)}` : 
 'BACKGROUND CONTEXT - Assembly Letters (minimal reference only):'}
 

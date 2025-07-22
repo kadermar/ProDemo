@@ -19,7 +19,26 @@ export class RAGService {
       // Only search uploaded documents if explicitly requested
       let uploadedDocuments: any[] = [];
       if (includeUploadedDocs) {
-        uploadedDocuments = await storage.searchDocuments(query);
+        // Get all documents (not just search results) to include recently uploaded ones
+        const allDocs = await storage.getDocuments();
+        uploadedDocuments = allDocs.filter(doc => 
+          !doc.filename.includes('AL_') && 
+          !doc.filename.includes('Assembly') &&
+          !doc.filename.includes('Montgomery') &&
+          !doc.filename.includes('Dexter') &&
+          !doc.filename.includes('Miller')
+        );
+        
+        // If we have a specific search query, still do the search for relevant content
+        if (query && query.trim()) {
+          const searchResults = await storage.searchDocuments(query);
+          // Combine search results with all uploaded documents, prioritizing search results
+          uploadedDocuments = [...searchResults, ...uploadedDocuments.filter(doc => 
+            !searchResults.some(sr => sr.id === doc.id)
+          )];
+        }
+        
+        console.log(`[RAG LOG] Found ${uploadedDocuments.length} uploaded documents to include`);
       }
       
       // Get assembly letters for minimal background context only
@@ -57,10 +76,10 @@ export class RAGService {
         })),
         // Include uploaded docs only when specifically requested
         documents: includeUploadedDocs ? 
-          [...uploadedDocuments, ...assemblyLetters].map(d => ({
+          [...uploadedDocuments.slice(0, 5), ...assemblyLetters.slice(0, 1)].map(d => ({
             id: d.id,
             filename: d.filename,
-            content: d.content,
+            content: d.content, // Include full content for proper analysis
             metadata: d.metadata
           })) :
           // Just assembly letters for minimal context
