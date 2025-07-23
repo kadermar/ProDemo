@@ -161,3 +161,5 @@ The application is designed to be a comprehensive tool for roofing professionals
 - ✓ Modified RAG service to only include uploaded documents when explicitly part of user queries
 - ✓ Enhanced system prompts and source prioritization for better product-focused responses
 - ✓ Removed suggested prompt about Sure-Weld and Spectro-Weld systems
+- ✓ Fixed uploaded document analysis with enhanced detection logic and full content processing
+- ✓ Created comprehensive local deployment guide for Mac users with PostgreSQL setup
