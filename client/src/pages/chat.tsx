@@ -90,7 +90,7 @@ export default function ChatPage() {
       {/* Page Header */}
       <header className="bg-white border-b border-gray-200 px-6 py-3">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-2xl font-bold text-gray-900">Roofing Product Information Assistant</h1>
+          <h1 className="text-2xl font-bold text-gray-900">Product Information Assistant</h1>
         </div>
       </header>
 
