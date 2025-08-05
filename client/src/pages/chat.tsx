@@ -128,9 +128,8 @@ export default function ChatPage() {
             isMobile ? "absolute inset-y-0 right-0 z-50" : ""
           }`}
         >
-          <div className="h-full flex flex-col">
-            
-            <div className="flex-1">
+          <div className="h-full flex flex-col min-h-0">
+            <div className="flex-1 min-h-0">
               <DocumentLibrary
                 isOpen={isLibraryOpen}
                 onClose={() => setIsLibraryOpen(false)}
