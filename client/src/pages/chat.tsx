@@ -115,10 +115,6 @@ export default function ChatPage() {
 
         {/* Main Chat Interface */}
         <div className="flex-1 flex flex-col bg-white">
-          <div className="border-b border-gray-200 px-6 py-4">
-            <h2 className="text-lg font-semibold text-gray-900">Product Information Chat</h2>
-            <p className="text-sm text-gray-600">Ask questions about roofing systems, membranes, and specifications</p>
-          </div>
           <div className="flex-1">
             <ChatInterface sessionId={currentSessionId} />
           </div>
