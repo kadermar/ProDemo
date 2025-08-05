@@ -113,7 +113,7 @@ export function DocumentLibrary({ isOpen, onClose }: DocumentLibraryProps) {
                         {product.manufacturer} • {product.location}
                       </p>
                       <div className="flex items-center flex-wrap gap-2 mt-2">
-                        <Badge className={getSystemColor(product.system)}>
+                        <Badge variant="outline" className="text-gray-600 border-gray-200">
                           {product.manufacturer}
                         </Badge>
                         <Badge variant="outline" className="text-purple-600 border-purple-200">
@@ -125,7 +125,7 @@ export function DocumentLibrary({ isOpen, onClose }: DocumentLibraryProps) {
                             product.membraneType.includes('Fastener') ? 'Fastener' :
                             product.membraneType.includes('Membrane') ? 'Membrane' : 'Other')}
                         </Badge>
-                        <Badge variant="outline" className="text-indigo-600 border-indigo-200">
+                        <Badge className={getSystemColor(product.system)}>
                           {product.system}
                         </Badge>
                       </div>
