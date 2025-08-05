@@ -354,18 +354,33 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
 
         {/* Quick Actions - Only show when there are no messages or showQuickQueries is true */}
         {(messages.length === 0 || showQuickQueries) && (
-          <div className="mt-3 flex flex-wrap gap-2">
-            {quickQueries.map((query) => (
-              <Button
-                key={query}
-                variant="outline"
-                size="sm"
-                onClick={() => handleQuickQuery(query)}
-                className="text-sm"
-              >
-                {query}
-              </Button>
-            ))}
+          <div className="mt-4 space-y-3">
+            <div className="flex flex-wrap gap-2">
+              {quickQueries.slice(0, 3).map((query) => (
+                <Button
+                  key={query}
+                  variant="outline"
+                  size="sm"
+                  onClick={() => handleQuickQuery(query)}
+                  className="text-xs text-gray-600 hover:text-blue-600 hover:border-blue-300 bg-gray-50 hover:bg-blue-50 transition-colors"
+                >
+                  {query}
+                </Button>
+              ))}
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {quickQueries.slice(3).map((query) => (
+                <Button
+                  key={query}
+                  variant="outline"
+                  size="sm"
+                  onClick={() => handleQuickQuery(query)}
+                  className="text-xs text-gray-600 hover:text-blue-600 hover:border-blue-300 bg-gray-50 hover:bg-blue-50 transition-colors"
+                >
+                  {query}
+                </Button>
+              ))}
+            </div>
           </div>
         )}
       </div>

@@ -36,57 +36,66 @@ export default function ChatPage() {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-neutral">
-      {/* Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200 px-4 py-4">
+    <div className="flex flex-col h-screen bg-gray-50">
+      {/* Top Navigation Bar */}
+      <nav className="bg-gradient-to-r from-slate-800 to-slate-900 text-white px-6 py-3">
         <div className="flex items-center justify-between max-w-7xl mx-auto">
-          <div className="flex items-center space-x-3">
-            <div className="h-10 flex items-center justify-center">
+          <div className="flex items-center space-x-8">
+            <div className="flex items-center space-x-3">
               <img 
                 src={logoImage} 
                 alt="Company Logo" 
-                className="h-10 w-auto object-contain"
+                className="h-8 w-auto object-contain brightness-0 invert"
               />
+              <span className="text-xl font-bold text-white">PRO</span>
             </div>
-            <div>
-              <h1 className="text-xl font-bold text-carlisle-navy">
-                Roofing Product Information Assistant
-              </h1>
-              <p className="text-sm text-gray-600">Powered by Carlisle SynTec Systems</p>
+            <div className="hidden md:flex items-center space-x-6">
+              <button className="text-gray-300 hover:text-white transition-colors">Home</button>
+              <button className="text-gray-300 hover:text-white transition-colors">Contacts</button>
+              <button className="text-gray-300 hover:text-white transition-colors">Search</button>
+              <button className="text-gray-300 hover:text-white transition-colors">Guides</button>
+              <button className="text-white font-semibold border-b-2 border-blue-400 pb-1">Chat</button>
             </div>
           </div>
-          <div className="flex items-center space-x-3">
-            <Button
-              variant="ghost"
-              size="sm"
+          <div className="flex items-center space-x-4">
+            <Button 
+              variant="ghost" 
+              size="sm" 
               onClick={toggleHistory}
-              className="text-gray-600 hover:text-carlisle-primary"
+              className="text-white hover:bg-slate-700 hover:text-white"
             >
-              <History className="w-4 h-4 mr-2" />
+              <History className="w-4 h-4 mr-1" />
               <span className="hidden sm:inline">Chat History</span>
             </Button>
-            <Button
-              variant="ghost"
-              size="sm"
+            <Button 
+              variant="ghost" 
+              size="sm" 
               onClick={toggleLibrary}
-              className="text-gray-600 hover:text-carlisle-primary"
+              className="text-white hover:bg-slate-700 hover:text-white"
             >
-              <FolderOpen className="w-4 h-4 mr-2" />
+              <FolderOpen className="w-4 h-4 mr-1" />
               <span className="hidden sm:inline">Document Library</span>
             </Button>
-
-            <Button
-              variant="ghost"
-              size="sm"
-              className="text-gray-600 hover:text-carlisle-primary"
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              className="text-white hover:bg-slate-700 hover:text-white"
             >
               <Settings className="w-4 h-4" />
             </Button>
           </div>
         </div>
+      </nav>
+
+      {/* Page Header */}
+      <header className="bg-white border-b border-gray-200 px-6 py-6">
+        <div className="max-w-7xl mx-auto">
+          <h1 className="text-2xl font-bold text-gray-900 mb-1">Roofing Product Information Assistant</h1>
+        </div>
       </header>
 
-      <div className="flex flex-1 max-w-7xl mx-auto w-full overflow-hidden">
+      {/* Main Content Area */}
+      <div className="flex flex-1 max-w-7xl mx-auto w-full bg-white rounded-lg shadow-sm m-6 overflow-hidden">
         {/* Chat History Sidebar */}
         <div
           className={`${
@@ -106,21 +115,35 @@ export default function ChatPage() {
 
         {/* Main Chat Interface */}
         <div className="flex-1 flex flex-col bg-white">
-          <ChatInterface sessionId={currentSessionId} />
+          <div className="border-b border-gray-200 px-6 py-4">
+            <h2 className="text-lg font-semibold text-gray-900">Product Information Chat</h2>
+            <p className="text-sm text-gray-600">Ask questions about roofing systems, membranes, and specifications</p>
+          </div>
+          <div className="flex-1">
+            <ChatInterface sessionId={currentSessionId} />
+          </div>
         </div>
 
-        {/* Document Library Sidebar */}
+        {/* Product Library Sidebar */}
         <div
           className={`${
-            isLibraryOpen ? "w-80" : "w-0"
-          } transition-all duration-300 ease-in-out overflow-hidden ${
+            isLibraryOpen ? "w-96" : "w-0"
+          } transition-all duration-300 ease-in-out overflow-hidden border-l border-gray-200 bg-gray-50 ${
             isMobile ? "absolute inset-y-0 right-0 z-50" : ""
           }`}
         >
-          <DocumentLibrary
-            isOpen={isLibraryOpen}
-            onClose={() => setIsLibraryOpen(false)}
-          />
+          <div className="h-full flex flex-col">
+            <div className="px-6 py-4 border-b border-gray-200 bg-white">
+              <h2 className="text-lg font-semibold text-gray-900">Product Library</h2>
+              <p className="text-sm text-gray-600">Browse roofing system specifications from zip file product sheets.</p>
+            </div>
+            <div className="flex-1">
+              <DocumentLibrary
+                isOpen={isLibraryOpen}
+                onClose={() => setIsLibraryOpen(false)}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>
