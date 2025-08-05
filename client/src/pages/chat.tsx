@@ -129,10 +129,7 @@ export default function ChatPage() {
           }`}
         >
           <div className="h-full flex flex-col">
-            <div className="px-6 py-4 border-b border-gray-200 bg-white">
-              <h2 className="text-lg font-semibold text-gray-900">Product Library</h2>
-              <p className="text-sm text-gray-600">Browse roofing system specifications from zip file product sheets.</p>
-            </div>
+            
             <div className="flex-1">
               <DocumentLibrary
                 isOpen={isLibraryOpen}
