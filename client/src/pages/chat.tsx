@@ -47,7 +47,7 @@ export default function ChatPage() {
                 alt="Company Logo" 
                 className="h-8 w-auto object-contain brightness-0 invert"
               />
-              <span className="text-xl font-bold text-white">PRO</span>
+              
             </div>
             <div className="hidden md:flex items-center space-x-6">
               <button className="text-gray-300 hover:text-white transition-colors">Home</button>
