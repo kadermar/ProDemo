@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useProducts } from "@/hooks/use-products";
 import { ProductModal } from "./product-modal";
 import { X, Search, FileText, Building, Shield, Wind } from "lucide-react";
+import pdfIcon from "@assets/image_1754431336073.png";
 import { type ProductData } from "@shared/schema";
 
 interface DocumentLibraryProps {
@@ -103,7 +104,7 @@ export function DocumentLibrary({ isOpen, onClose }: DocumentLibraryProps) {
               >
                 <CardContent className="p-3">
                   <div className="flex items-start space-x-3">
-                    <Building className="text-blue-500 w-5 h-5 mt-1 flex-shrink-0" />
+                    <img src={pdfIcon} alt="PDF" className="w-5 h-5 mt-1 flex-shrink-0" />
                     <div className="flex-1 min-w-0">
                       <h3 className="font-medium text-gray-900 truncate">
                         {product.projectName}

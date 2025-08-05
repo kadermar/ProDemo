@@ -90,7 +90,7 @@ export default function ChatPage() {
       
 
       {/* Main Content Area */}
-      <div className="flex flex-1 max-w-7xl mx-auto w-full bg-white rounded-lg shadow-sm mx-6 my-3 overflow-hidden h-0">
+      <div className="flex flex-1 max-w-7xl mx-auto w-full bg-white rounded-lg shadow-sm mx-6 my-6 overflow-hidden h-0">
         {/* Chat History Sidebar */}
         <div
           className={`${
