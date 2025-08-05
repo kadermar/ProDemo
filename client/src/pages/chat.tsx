@@ -88,14 +88,14 @@ export default function ChatPage() {
       </nav>
 
       {/* Page Header */}
-      <header className="bg-white border-b border-gray-200 px-6 py-6">
+      <header className="bg-white border-b border-gray-200 px-6 py-3">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-2xl font-bold text-gray-900 mb-1">Roofing Product Information Assistant</h1>
+          <h1 className="text-2xl font-bold text-gray-900">Roofing Product Information Assistant</h1>
         </div>
       </header>
 
       {/* Main Content Area */}
-      <div className="flex flex-1 max-w-7xl mx-auto w-full bg-white rounded-lg shadow-sm m-6 overflow-hidden h-0">
+      <div className="flex flex-1 max-w-7xl mx-auto w-full bg-white rounded-lg shadow-sm mx-6 my-3 overflow-hidden h-0">
         {/* Chat History Sidebar */}
         <div
           className={`${
