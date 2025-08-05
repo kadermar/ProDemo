@@ -10,6 +10,7 @@ import { useProducts } from "@/hooks/use-products";
 import { useToast } from "@/hooks/use-toast";
 import { Bot, User, Send, Paperclip, Mic, Trash2, FileText, Loader2, Upload, ExternalLink } from "lucide-react";
 import { type ChatMessage, type ProductData } from "@shared/schema";
+import botLogo from "@assets/image_1754430429145.png";
 
 interface ChatInterfaceProps {
   sessionId?: number;
@@ -381,8 +382,12 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
 function WelcomeMessage() {
   return (
     <div className="flex items-start space-x-3">
-      <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
-        <Bot className="text-white w-4 h-4" />
+      <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 overflow-hidden">
+        <img 
+          src={botLogo} 
+          alt="Assistant" 
+          className="w-8 h-8 object-cover"
+        />
       </div>
       <div className="flex-1">
         <Card className="bg-gray-50">
@@ -421,8 +426,12 @@ function MessageBubble({ message, onSourceClick }: {
   return (
     <div className={`flex items-start space-x-3 ${isUser ? "justify-end" : ""}`}>
       {!isUser && (
-        <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
-          <Bot className="text-white w-4 h-4" />
+        <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 overflow-hidden">
+          <img 
+            src={botLogo} 
+            alt="Assistant" 
+            className="w-8 h-8 object-cover"
+          />
         </div>
       )}
       
