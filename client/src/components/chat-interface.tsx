@@ -55,6 +55,23 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
     }
   };
 
+  // Clear chat on app reload/refresh
+  useEffect(() => {
+    const clearChatOnLoad = async () => {
+      try {
+        await fetch('/api/chat/clear', { 
+          method: 'POST',
+          credentials: 'include'
+        });
+        clearMessages();
+      } catch (error) {
+        console.log('Chat clear on load failed:', error);
+      }
+    };
+    
+    clearChatOnLoad();
+  }, [clearMessages]);
+
   useEffect(() => {
     scrollToBottom();
     // Reset showQuickQueries when messages are cleared
