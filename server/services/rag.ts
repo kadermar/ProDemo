@@ -69,19 +69,40 @@ export class RAGService {
         )
         .slice(0, 2); // Limit to 2 assembly letters for context
       
-      // Prioritize product data - use search results if available, otherwise fallback to insulation-related products
+      // Prioritize product data based on query type
       let allProductData = productData;
       if (productData.length === 0) {
-        // If no search results, try to find insulation-related products
         const allProducts = await storage.getProductData();
-        allProductData = allProducts.filter(p => 
-          p.membraneType.toLowerCase().includes('insul') ||
-          p.projectName.toLowerCase().includes('insul') ||
-          p.system.toLowerCase().includes('insulation')
-        ).slice(0, 10); // Include up to 10 insulation products
         
-        // If still no insulation products found, use general products
-        if (allProductData.length === 0) {
+        // For ASTM D6878 queries, prioritize TPO membrane products
+        if (query.toLowerCase().includes('astm') && query.toLowerCase().includes('d6878')) {
+          allProductData = allProducts.filter(p => 
+            p.system.toLowerCase() === 'tpo' && 
+            (p.membraneType.toLowerCase().includes('membrane') || 
+             p.membraneType.toLowerCase().includes('reinforced'))
+          ).slice(0, 10);
+          console.log(`[RAG LOG] Found ${allProductData.length} TPO membrane products for ASTM D6878 query`);
+        }
+        // For general ASTM/standards queries, get TPO products
+        else if (query.toLowerCase().includes('astm') || query.toLowerCase().includes('standard')) {
+          allProductData = allProducts.filter(p => 
+            p.system.toLowerCase() === 'tpo' || 
+            p.system.toLowerCase() === 'pvc' || 
+            p.system.toLowerCase() === 'epdm'
+          ).slice(0, 10);
+          console.log(`[RAG LOG] Found ${allProductData.length} membrane products for standards query`);
+        }
+        // For insulation queries, find insulation products
+        else if (query.toLowerCase().includes('insul') || query.toLowerCase().includes('thickness')) {
+          allProductData = allProducts.filter(p => 
+            p.membraneType.toLowerCase().includes('insul') ||
+            p.projectName.toLowerCase().includes('insul') ||
+            p.system.toLowerCase().includes('insulation')
+          ).slice(0, 10);
+          console.log(`[RAG LOG] Found ${allProductData.length} insulation products`);
+        }
+        // Default fallback
+        else {
           allProductData = allProducts.slice(0, 5);
         }
       } else {
@@ -94,19 +115,28 @@ export class RAGService {
       // Build context for AI - HEAVILY PRIORITIZE PRODUCT DATA
       const context: RAGContext = {
         productData: allProductData.map(p => {
-          // Load PDF content for insulation products or thickness queries
+          // Load PDF content for relevant product queries (thickness, standards, compliance, etc.)
           let pdfContent = '';
           if (p.sourceDocument && (
             query.toLowerCase().includes('thickness') || 
             query.toLowerCase().includes('insulation') ||
             query.toLowerCase().includes('r-value') ||
             query.toLowerCase().includes('inches') ||
+            query.toLowerCase().includes('astm') ||
+            query.toLowerCase().includes('standard') ||
+            query.toLowerCase().includes('compliance') ||
+            query.toLowerCase().includes('specification') ||
+            query.toLowerCase().includes('d6878') ||
+            query.toLowerCase().includes('meet') ||
             p.membraneType.toLowerCase().includes('insul') ||
-            p.system.toLowerCase() === 'insulation'
+            p.system.toLowerCase() === 'insulation' ||
+            p.system.toLowerCase() === 'tpo' ||
+            p.system.toLowerCase() === 'pvc' ||
+            p.system.toLowerCase() === 'epdm'
           )) {
             const fullContent = this.loadProductPDFContent(p.sourceDocument || '');
             
-            // Extract comprehensive thickness and R-value information
+            // Extract comprehensive technical information
             const patterns = [
               // Thickness ranges and panel specifications
               /Available in.*?thickness.*?[\s\S]*?(?=\n\n|\nApplications|\nInstallation)/gi,
@@ -117,7 +147,17 @@ export class RAGService {
               // Panel characteristics
               /Panel Characteristics[\s\S]*?(?=\nApplications|\n\n)/gi,
               // Thermal values tables
-              /Thermal Values[\s\S]*?(?=\nCodes|\n\n)/gi
+              /Thermal Values[\s\S]*?(?=\nCodes|\n\n)/gi,
+              // ASTM and standards compliance
+              /ASTM.*?[\s\S]*?(?=\n\n|\nPrecautions|\nInstallation|$)/gi,
+              // Standards and specifications sections
+              /Standard.*?Specification[\s\S]*?(?=\n\n|\nPrecautions|$)/gi,
+              // Compliance statements
+              /meets.*?requirements[\s\S]*?(?=\n\n|\n\d+\.|$)/gi,
+              // Supplemental approvals and characteristics
+              /Supplemental Approvals[\s\S]*?(?=\nPrecautions|\n\n|$)/gi,
+              // Codes and compliances sections
+              /Codes and Compliances[\s\S]*?(?=\nInstallation|\n\n|$)/gi
             ];
             
             const extractedContent: string[] = [];
