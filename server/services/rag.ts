@@ -1,7 +1,23 @@
 import { storage } from '../storage';
 import { aiService, type RAGContext } from './ai';
+import { readFileSync, existsSync } from 'fs';
+import { join } from 'path';
 
 export class RAGService {
+  // Helper function to load PDF content for products that have detailed specifications
+  private loadProductPDFContent(sourceDocument: string): string {
+    if (!sourceDocument) return '';
+    
+    try {
+      const pdfPath = join(process.cwd(), 'attached_assets', 'extracted_products', sourceDocument);
+      if (existsSync(pdfPath)) {
+        return readFileSync(pdfPath, 'utf-8');
+      }
+    } catch (error) {
+      console.log(`Could not load PDF content for ${sourceDocument}:`, error.message);
+    }
+    return '';
+  }
   async searchAndGenerate(query: string, includeUploadedDocs: boolean = false): Promise<{
     response: string;
     sources: Array<{
@@ -58,22 +74,41 @@ export class RAGService {
       
       // Build context for AI - HEAVILY PRIORITIZE PRODUCT DATA
       const context: RAGContext = {
-        productData: allProductData.map(p => ({
-          id: p.id,
-          system: p.system,
-          manufacturer: p.manufacturer,
-          membraneType: p.membraneType,
-          projectName: p.projectName,
-          specifications: p.specifications,
-          sourceDocument: p.sourceDocument || '',
-          thickness: p.thickness,
-          warranty: p.warranty,
-          buildingHeight: p.buildingHeight,
-          windSpeed: p.windSpeed,
-          location: p.location,
-          contractor: p.contractor,
-          date: p.date
-        })),
+        productData: allProductData.map(p => {
+          // Load full PDF content for products that might have detailed specifications
+          let pdfContent = '';
+          if (p.sourceDocument && (
+            query.toLowerCase().includes('thickness') || 
+            query.toLowerCase().includes('insulation') ||
+            query.toLowerCase().includes('specification') ||
+            query.toLowerCase().includes('dimension') ||
+            query.toLowerCase().includes('r-value') ||
+            p.membraneType.toLowerCase().includes('insul') ||
+            p.system === 'Other' // Many insulation products are categorized as 'Other'
+          )) {
+            pdfContent = this.loadProductPDFContent(p.sourceDocument || '');
+          }
+          
+          return {
+            id: p.id,
+            system: p.system,
+            manufacturer: p.manufacturer,
+            membraneType: p.membraneType,
+            projectName: p.projectName,
+            specifications: {
+              ...p.specifications,
+              fullPDFContent: pdfContent // Include full PDF content for detailed analysis
+            },
+            sourceDocument: p.sourceDocument || '',
+            thickness: p.thickness,
+            warranty: p.warranty,
+            buildingHeight: p.buildingHeight,
+            windSpeed: p.windSpeed,
+            location: p.location,
+            contractor: p.contractor,
+            date: p.date
+          };
+        }),
         // Include uploaded docs only when specifically requested
         documents: includeUploadedDocs ? 
           [...uploadedDocuments.slice(0, 5), ...assemblyLetters.slice(0, 1)].map(d => ({

@@ -48,21 +48,26 @@ export class AIService {
 
 Your role is to:
 1. Provide accurate, detailed information about roofing systems (TPO, EPDM, PVC, etc.)
-2. Compare different membrane types, thicknesses, and their specifications
+2. Compare different membrane types, thicknesses, and their specifications including insulation thickness options
 3. Explain warranty terms, building height restrictions, and wind speed coverage
-4. Analyze insulation requirements and installation methods
+4. Analyze insulation requirements including detailed thickness options, R-values, and thermal properties
 5. Cite specific sources from the provided context with document references
 6. Offer recommendations based on building requirements, climate, and project needs
 7. Explain technical specifications like uplift pressures, hail ratings, and deck requirements
 8. Analyze uploaded documents and extract relevant information about roofing projects
 9. Answer questions about uploaded documents by referencing both the document content and related product specifications
+10. Extract and reference specific thickness data, thermal values, and dimensional specifications from product sheets
 
-IMPORTANT: SOURCE PRIORITIZATION - PRODUCT DATABASE FIRST
-- PRIMARY SOURCE: Product Database (manufacturer product sheets from ZIP files) - ALWAYS prioritize this
+IMPORTANT: SOURCE PRIORITIZATION AND DETAILED SPECIFICATIONS
+- PRIMARY SOURCE: Product Database with FULL PDF content analysis - ALWAYS prioritize detailed product specifications
+- When answering thickness questions, search through the full PDF content and specifications data
+- Extract specific numerical values from product data sheets including thickness options, R-values, and dimensions
 - SECONDARY SOURCE: Assembly Letters (minimal background context only)
 - UPLOADED DOCS: Only use when specifically uploaded with a query, not for general questions
 - Focus answers on product specifications, features, and manufacturer data
 - Reference specific product sheet PDFs when providing product information
+- For insulation products, always include available thickness ranges and corresponding R-values when available
+- When asked about thickness, search through the specifications object AND the source document content
 - Only mention uploaded documents when they were specifically part of the user's query
 - For source citations, prioritize Product Database, then Uploaded Documents, then Assembly Letters
 - When answering questions about uploaded documents, provide both document analysis and relevant product recommendations
@@ -72,22 +77,36 @@ Key roofing system knowledge:
 - EPDM (Ethylene Propylene Diene Monomer): Synthetic rubber, durable, adhered or mechanically fastened
 - PVC (Polyvinyl Chloride): Chemical-resistant, heat-welded, good for restaurants/chemical exposure
 
-Always cite your sources using the format: [Source: Product ID - Product Name] for product data or [Source: Document Name] for assembly letters. Provide specific details from the documentation including project names, locations, and exact specifications. If you don't have enough information to answer a question, say so clearly and suggest what additional information would be helpful.
+Always cite your sources using the format: [Source: Product ID - Product Name] for product data or [Source: Document Name] for assembly letters. Provide specific details from the documentation including project names, locations, and exact specifications.
+
+CRITICAL FOR THICKNESS AND SPECIFICATIONS QUERIES:
+- When asked about thickness, insulation, or product specifications, examine the FULL specifications data AND source document content
+- Look for detailed tables, charts, and numerical data within the product specifications
+- For insulation products, provide specific thickness ranges (e.g., "Available in thicknesses from 0.5" to 4.5"")
+- Include corresponding R-values and thermal properties when available
+- Search through all available product data, not just the basic thickness field
+
+If you don't have enough information to answer a question, say so clearly and suggest what additional information would be helpful.
 
 PRIORITY: Focus primarily on Product Database information for all roofing system questions.
 
 PRIMARY SOURCE - Product Database (205 manufacturer product sheets):
-${JSON.stringify(context.productData.slice(0, 10).map(p => ({
-  id: p.id,
-  system: p.system,
-  manufacturer: p.manufacturer,
-  membraneType: p.membraneType,
-  projectName: p.projectName,
-  thickness: p.thickness,
-  warranty: p.warranty,
-  sourceDocument: p.sourceDocument,
-  specifications: p.specifications
-})), null, 2)}
+${context.productData.slice(0, 10).map(p => {
+  let productInfo = `Product ID: ${p.id} | System: ${p.system} | Manufacturer: ${p.manufacturer}
+Product: ${p.membraneType}
+Project: ${p.projectName}
+Source Document: ${p.sourceDocument}
+Basic Thickness: ${p.thickness}
+Warranty: ${p.warranty}
+Specifications: ${JSON.stringify(p.specifications, null, 2)}`;
+
+  // Include full PDF content if available for detailed thickness analysis
+  if (p.specifications && p.specifications.fullPDFContent && p.specifications.fullPDFContent.length > 0) {
+    productInfo += `\n\nFULL PRODUCT SPECIFICATIONS FROM PDF:\n${p.specifications.fullPDFContent.substring(0, 2000)}...`;
+  }
+  
+  return productInfo;
+}).join('\n\n---PRODUCT SEPARATOR---\n\n')}
 
 ${includeUploadedDocs ? 
 `SECONDARY SOURCE - Uploaded Documents (ANALYZE THESE THOROUGHLY):
