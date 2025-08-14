@@ -69,24 +69,27 @@ export class RAGService {
         )
         .slice(0, 2); // Limit to 2 assembly letters for context
       
-      // Prioritize product data - limit to prevent token overflow
-      const allProductData = productData.length > 0 ? productData.slice(0, 8) : (await storage.getProductData()).slice(0, 8);
+      // Prioritize product data - severely limit to prevent token overflow
+      const allProductData = productData.length > 0 ? productData.slice(0, 3) : (await storage.getProductData()).slice(0, 3);
       
       // Build context for AI - HEAVILY PRIORITIZE PRODUCT DATA
       const context: RAGContext = {
         productData: allProductData.map(p => {
-          // Load full PDF content for products that might have detailed specifications
+          // Load minimal PDF content for thickness queries only
           let pdfContent = '';
           if (p.sourceDocument && (
             query.toLowerCase().includes('thickness') || 
             query.toLowerCase().includes('insulation') ||
-            query.toLowerCase().includes('specification') ||
-            query.toLowerCase().includes('dimension') ||
-            query.toLowerCase().includes('r-value') ||
-            p.membraneType.toLowerCase().includes('insul') ||
-            p.system === 'Other' // Many insulation products are categorized as 'Other'
+            p.membraneType.toLowerCase().includes('insul')
           )) {
-            pdfContent = this.loadProductPDFContent(p.sourceDocument || '');
+            const fullContent = this.loadProductPDFContent(p.sourceDocument || '');
+            // Extract only thickness-related content to minimize tokens
+            const thicknessMatch = fullContent.match(/thickness.*?\n[\s\S]*?(?=\n\n|\n[A-Z]|$)/gi);
+            const tableMatch = fullContent.match(/\d+\.?\d*\s*(?:inch|")\s*[\s\S]*?\d+\.?\d*\s*R-value/gi);
+            pdfContent = [
+              ...(thicknessMatch || []),
+              ...(tableMatch || [])
+            ].join('\n').substring(0, 400); // Severely limit content
           }
           
           return {

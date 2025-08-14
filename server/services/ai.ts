@@ -91,18 +91,22 @@ If you don't have enough information to answer a question, say so clearly and su
 PRIORITY: Focus primarily on Product Database information for all roofing system questions.
 
 PRIMARY SOURCE - Product Database (205 manufacturer product sheets):
-${context.productData.slice(0, 8).map(p => {
+${context.productData.slice(0, 3).map(p => {
   let productInfo = `Product ID: ${p.id} | System: ${p.system} | Manufacturer: ${p.manufacturer}
 Product: ${p.membraneType}
 Project: ${p.projectName}
 Source Document: ${p.sourceDocument}
 Basic Thickness: ${p.thickness}
 Warranty: ${p.warranty}
-Specifications: ${JSON.stringify(p.specifications, null, 2)}`;
+Basic Specs: ${JSON.stringify({
+  category: p.specifications?.category,
+  system: p.specifications?.system,
+  applications: p.specifications?.applications?.slice(0, 2)
+}, null, 1)}`;
 
-  // Include relevant PDF content for thickness analysis (reduced size to prevent token overflow)
+  // Include minimal PDF content for thickness analysis
   if (p.specifications && p.specifications.fullPDFContent && p.specifications.fullPDFContent.length > 0) {
-    productInfo += `\n\nKEY PRODUCT SPECIFICATIONS:\n${p.specifications.fullPDFContent.substring(0, 800)}...`;
+    productInfo += `\n\nTHICKNESS INFO:\n${p.specifications.fullPDFContent}`;
   }
   
   return productInfo;
@@ -133,7 +137,7 @@ JSON.stringify(context.documents.filter(doc => doc.filename.includes('AL_') || d
 })), null, 2) : ''}`;
 
       const response = await openai.chat.completions.create({
-        model: "gpt-4o-mini",
+        model: "gpt-4o",
         messages: [
           { role: "system", content: systemPrompt },
           { role: "user", content: query }
@@ -222,7 +226,7 @@ JSON.stringify(context.documents.filter(doc => doc.filename.includes('AL_') || d
   async summarizeDocument(content: string, filename: string): Promise<string> {
     try {
       const response = await openai.chat.completions.create({
-        model: "gpt-4o-mini",
+        model: "gpt-4o",
         messages: [
           {
             role: "system",
