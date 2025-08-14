@@ -91,7 +91,7 @@ If you don't have enough information to answer a question, say so clearly and su
 PRIORITY: Focus primarily on Product Database information for all roofing system questions.
 
 PRIMARY SOURCE - Product Database (205 manufacturer product sheets):
-${context.productData.slice(0, 10).map(p => {
+${context.productData.slice(0, 8).map(p => {
   let productInfo = `Product ID: ${p.id} | System: ${p.system} | Manufacturer: ${p.manufacturer}
 Product: ${p.membraneType}
 Project: ${p.projectName}
@@ -100,9 +100,9 @@ Basic Thickness: ${p.thickness}
 Warranty: ${p.warranty}
 Specifications: ${JSON.stringify(p.specifications, null, 2)}`;
 
-  // Include full PDF content if available for detailed thickness analysis
+  // Include relevant PDF content for thickness analysis (reduced size to prevent token overflow)
   if (p.specifications && p.specifications.fullPDFContent && p.specifications.fullPDFContent.length > 0) {
-    productInfo += `\n\nFULL PRODUCT SPECIFICATIONS FROM PDF:\n${p.specifications.fullPDFContent.substring(0, 2000)}...`;
+    productInfo += `\n\nKEY PRODUCT SPECIFICATIONS:\n${p.specifications.fullPDFContent.substring(0, 800)}...`;
   }
   
   return productInfo;
@@ -133,7 +133,7 @@ JSON.stringify(context.documents.filter(doc => doc.filename.includes('AL_') || d
 })), null, 2) : ''}`;
 
       const response = await openai.chat.completions.create({
-        model: "gpt-3.5-turbo",
+        model: "gpt-4o-mini",
         messages: [
           { role: "system", content: systemPrompt },
           { role: "user", content: query }
@@ -151,7 +151,7 @@ JSON.stringify(context.documents.filter(doc => doc.filename.includes('AL_') || d
         content,
         sources
       };
-    } catch (error) {
+    } catch (error: any) {
       throw new Error(`AI service error: ${error.message}`);
     }
   }
@@ -222,7 +222,7 @@ JSON.stringify(context.documents.filter(doc => doc.filename.includes('AL_') || d
   async summarizeDocument(content: string, filename: string): Promise<string> {
     try {
       const response = await openai.chat.completions.create({
-        model: "gpt-3.5-turbo",
+        model: "gpt-4o-mini",
         messages: [
           {
             role: "system",
@@ -238,7 +238,7 @@ JSON.stringify(context.documents.filter(doc => doc.filename.includes('AL_') || d
       });
 
       return response.choices[0].message.content || "";
-    } catch (error) {
+    } catch (error: any) {
       throw new Error(`Document summarization error: ${error.message}`);
     }
   }

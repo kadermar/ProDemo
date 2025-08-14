@@ -13,7 +13,7 @@ export class RAGService {
       if (existsSync(pdfPath)) {
         return readFileSync(pdfPath, 'utf-8');
       }
-    } catch (error) {
+    } catch (error: any) {
       console.log(`Could not load PDF content for ${sourceDocument}:`, error.message);
     }
     return '';
@@ -69,8 +69,8 @@ export class RAGService {
         )
         .slice(0, 2); // Limit to 2 assembly letters for context
       
-      // Prioritize product data - get more results if available
-      const allProductData = productData.length > 0 ? productData.slice(0, 20) : (await storage.getProductData()).slice(0, 20);
+      // Prioritize product data - limit to prevent token overflow
+      const allProductData = productData.length > 0 ? productData.slice(0, 8) : (await storage.getProductData()).slice(0, 8);
       
       // Build context for AI - HEAVILY PRIORITIZE PRODUCT DATA
       const context: RAGContext = {
@@ -96,17 +96,17 @@ export class RAGService {
             membraneType: p.membraneType,
             projectName: p.projectName,
             specifications: {
-              ...p.specifications,
+              ...(p.specifications || {}),
               fullPDFContent: pdfContent // Include full PDF content for detailed analysis
             },
             sourceDocument: p.sourceDocument || '',
-            thickness: p.thickness,
-            warranty: p.warranty,
-            buildingHeight: p.buildingHeight,
-            windSpeed: p.windSpeed,
-            location: p.location,
-            contractor: p.contractor,
-            date: p.date
+            thickness: p.thickness || undefined,
+            warranty: p.warranty || undefined,
+            buildingHeight: p.buildingHeight || undefined,
+            windSpeed: p.windSpeed || undefined,
+            location: p.location || undefined,
+            contractor: p.contractor || undefined,
+            date: p.date || undefined
           };
         }),
         // Include uploaded docs only when specifically requested
@@ -133,7 +133,7 @@ export class RAGService {
         response: aiResponse.content,
         sources: aiResponse.sources
       };
-    } catch (error) {
+    } catch (error: any) {
       throw new Error(`RAG service error: ${error.message}`);
     }
   }
