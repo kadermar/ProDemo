@@ -92,6 +92,24 @@ export class RAGService {
           ).slice(0, 10);
           console.log(`[RAG LOG] Found ${allProductData.length} membrane products for standards query`);
         }
+        // For fastener number queries, prioritize fastener products
+        else if (query.toLowerCase().includes('fastener') && /[#]\d+/.test(query)) {
+          allProductData = allProducts.filter(p => 
+            p.membraneType.toLowerCase().includes('fastener') ||
+            p.projectName.toLowerCase().includes('fastener') ||
+            (p.specifications as any)?.category?.toLowerCase()?.includes('fastener')
+          ).slice(0, 10);
+          console.log(`[RAG LOG] Found ${allProductData.length} fastener products for fastener number query`);
+        }
+        // For general fastener queries
+        else if (query.toLowerCase().includes('fastener')) {
+          allProductData = allProducts.filter(p => 
+            p.membraneType.toLowerCase().includes('fastener') ||
+            p.projectName.toLowerCase().includes('fastener') ||
+            (p.specifications as any)?.category?.toLowerCase()?.includes('fastener')
+          ).slice(0, 10);
+          console.log(`[RAG LOG] Found ${allProductData.length} fastener products`);
+        }
         // For insulation queries, find insulation products
         else if (query.toLowerCase().includes('insul') || query.toLowerCase().includes('thickness')) {
           allProductData = allProducts.filter(p => 
@@ -128,11 +146,15 @@ export class RAGService {
             query.toLowerCase().includes('specification') ||
             query.toLowerCase().includes('d6878') ||
             query.toLowerCase().includes('meet') ||
+            query.toLowerCase().includes('fastener') ||
+            /[#]\d+/.test(query) ||
             p.membraneType.toLowerCase().includes('insul') ||
+            p.membraneType.toLowerCase().includes('fastener') ||
             p.system.toLowerCase() === 'insulation' ||
             p.system.toLowerCase() === 'tpo' ||
             p.system.toLowerCase() === 'pvc' ||
-            p.system.toLowerCase() === 'epdm'
+            p.system.toLowerCase() === 'epdm' ||
+            (p.specifications as any)?.category?.toLowerCase()?.includes('fastener')
           )) {
             const fullContent = this.loadProductPDFContent(p.sourceDocument || '');
             
@@ -157,7 +179,15 @@ export class RAGService {
               // Supplemental approvals and characteristics
               /Supplemental Approvals[\s\S]*?(?=\nPrecautions|\n\n|$)/gi,
               // Codes and compliances sections
-              /Codes and Compliances[\s\S]*?(?=\nInstallation|\n\n|$)/gi
+              /Codes and Compliances[\s\S]*?(?=\nInstallation|\n\n|$)/gi,
+              // Fastener specifications and overview sections
+              /Overview[\s\S]*?(?=\nFeatures|\nInstallation|\n\n|$)/gi,
+              // Fastener wire gauge and size information
+              /#\d+.*?(?=fastener|wire|gauge)[\s\S]*?(?=\n\n|\nFeatures|$)/gi,
+              // Properties and characteristics tables for fasteners
+              /Typical Properties and Characteristics[\s\S]*?(?=\nInstallation|\n\n|$)/gi,
+              // Size and weight specifications
+              /Size.*?Inches.*?Weight[\s\S]*?(?=\n\n|\nTypical|$)/gi
             ];
             
             const extractedContent: string[] = [];
