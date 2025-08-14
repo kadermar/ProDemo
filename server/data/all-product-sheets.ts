@@ -192,19 +192,19 @@ export const allProductSheets: InsertProductData[] = [
     "date": "2025-07-21",
     "specifications": {
       "category": "Flashing",
-      "system": "Other",
+      "system": "Insulation",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
+      "thickness": "Multiple thicknesses available",
       "applications": ["Other roofing systems","Flashing applications"],
-      "features": ["Other technology","Professional grade","Industry standard"]
+      "features": ["Insulation technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "11014_en_LIQUISEAL_Liquid_Flashing_Accessories_PDS.pdf"
   },
   {
-    "system": "Other",
+    "system": "Insulation",
     "manufacturer": "Carlisle",
     "membraneType": "Insulation Fastening Plates",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -214,19 +214,19 @@ export const allProductSheets: InsertProductData[] = [
     "date": "2025-07-21",
     "specifications": {
       "category": "Fastener",
-      "system": "Other",
+      "system": "Insulation",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
+      "thickness": "Multiple thicknesses available",
       "applications": ["Other roofing systems","Fastener applications"],
-      "features": ["Other technology","Professional grade","Industry standard"]
+      "features": ["Insulation technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "11227_en_Insulation_Fastening_Plates_Product_Data_Sheet_PDSTDB.pdf"
   },
   {
-    "system": "Other",
+    "system": "Insulation",
     "manufacturer": "Carlisle",
     "membraneType": "LIQUISEAL Liquid Flashing Concrete and Masonry Primer",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -236,11 +236,11 @@ export const allProductSheets: InsertProductData[] = [
     "date": "2025-07-21",
     "specifications": {
       "category": "Primer",
-      "system": "Other",
+      "system": "Insulation",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
+      "thickness": "Multiple thicknesses available",
       "applications": ["Other roofing systems","Primer applications"],
-      "features": ["Other technology","Professional grade","Industry standard"]
+      "features": ["Insulation technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "11281_en_LIQUISEAL_Liquid_Flashing_Concrete_and_Masonry_Primer_PDS.pdf"
   },
@@ -302,19 +302,19 @@ export const allProductSheets: InsertProductData[] = [
     "date": "2025-07-21",
     "specifications": {
       "category": "Fastener",
-      "system": "Other",
+      "system": "Insulation",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
+      "thickness": "Multiple thicknesses available",
       "applications": ["Other roofing systems","Fastener applications"],
-      "features": ["Other technology","Professional grade","Industry standard"]
+      "features": ["Insulation technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "11472_en_HP_Fastener_Product_Data_Sheet_PDSTDB.pdf"
   },
   {
-    "system": "Other",
+    "system": "Insulation",
     "manufacturer": "Carlisle",
     "membraneType": "InsulFast Fasteners",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -324,19 +324,19 @@ export const allProductSheets: InsertProductData[] = [
     "date": "2025-07-21",
     "specifications": {
       "category": "Fastener",
-      "system": "Other",
+      "system": "Insulation",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
+      "thickness": "Multiple thicknesses available",
       "applications": ["Other roofing systems","Fastener applications"],
-      "features": ["Other technology","Professional grade","Industry standard"]
+      "features": ["Insulation technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "12208_en_InsulFast_Fasteners_Product_Data_Sheet_PDSTDB.pdf"
   },
   {
-    "system": "Other",
+    "system": "Insulation",
     "manufacturer": "Carlisle",
     "membraneType": "ASAP InsulFast Fasteners",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -346,11 +346,11 @@ export const allProductSheets: InsertProductData[] = [
     "date": "2025-07-21",
     "specifications": {
       "category": "Fastener",
-      "system": "Other",
+      "system": "Insulation",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
+      "thickness": "Multiple thicknesses available",
       "applications": ["Other roofing systems","Fastener applications"],
-      "features": ["Other technology","Professional grade","Industry standard"]
+      "features": ["Insulation technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "12393_en_ASAP_InsulFast_Fasteners_Product_Data_Sheet.pdf"
   },
@@ -358,7 +358,7 @@ export const allProductSheets: InsertProductData[] = [
     "system": "TPO",
     "manufacturer": "Carlisle",
     "membraneType": "SureWeld CutEdge Sealant",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -370,7 +370,7 @@ export const allProductSheets: InsertProductData[] = [
       "category": "Sealant",
       "system": "TPO",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
+      "thickness": "Multiple thicknesses available",
       "applications": ["TPO roofing systems","Sealant applications"],
       "features": ["TPO technology","Professional grade","Industry standard"]
     },
@@ -930,7 +930,7 @@ export const allProductSheets: InsertProductData[] = [
     "system": "PVC",
     "manufacturer": "Carlisle",
     "membraneType": "600319 PVC-7913 Sure-Flex PVC Non-Reinforced Flashing Product Data Sheet PRESS",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -942,17 +942,17 @@ export const allProductSheets: InsertProductData[] = [
       "category": "Membrane",
       "system": "PVC",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
+      "thickness": "Multiple thicknesses available",
       "applications": ["PVC roofing systems","Membrane applications"],
       "features": ["PVC technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "600319 PVC-7913 Sure-Flex PVC Non-Reinforced Flashing Product Data Sheet PRESS.pdf"
   },
   {
-    "system": "Other",
+    "system": "Insulation",
     "manufacturer": "Carlisle",
     "membraneType": "600491 INS CST-2129 InsulBase Polyiso PDS 02-19-25",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -961,12 +961,12 @@ export const allProductSheets: InsertProductData[] = [
     "projectName": "600491 INS CST-2129 InsulBase Polyiso PDS 02-19-25",
     "date": "2025-07-21",
     "specifications": {
-      "category": "Other",
-      "system": "Other",
+      "category": "Insulation",
+      "system": "Insulation",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
-      "applications": ["Other roofing systems","Other applications"],
-      "features": ["Other technology","Professional grade","Industry standard"]
+      "thickness": "Multiple thicknesses available",
+      "applications": ["Insulation systems","Polyiso applications"],
+      "features": ["Polyiso technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "600491 INS_CST-2129 InsulBase Polyiso PDS_02-19-25.pdf"
   },
@@ -974,7 +974,7 @@ export const allProductSheets: InsertProductData[] = [
     "system": "PVC",
     "manufacturer": "Carlisle",
     "membraneType": "600500 PVC-7538 Sure-Flex PVC Curb Wrap Corners PDS 11-09-20",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -986,7 +986,7 @@ export const allProductSheets: InsertProductData[] = [
       "category": "Accessory",
       "system": "PVC",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
+      "thickness": "Multiple thicknesses available",
       "applications": ["PVC roofing systems","Accessory applications"],
       "features": ["PVC technology","Professional grade","Industry standard"]
     },
@@ -1030,17 +1030,17 @@ export const allProductSheets: InsertProductData[] = [
       "category": "Membrane",
       "system": "TPO",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
+      "thickness": "Multiple thicknesses available",
       "applications": ["TPO roofing systems","Membrane applications"],
       "features": ["TPO technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "600934 FB-1075 TPO Membranes PDS_11-24-24.pdf"
   },
   {
-    "system": "Other",
+    "system": "Insulation",
     "manufacturer": "Carlisle",
     "membraneType": "601486 INS CST-6042 DensDeck Roof Board PDS 05-04-23",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -1049,12 +1049,12 @@ export const allProductSheets: InsertProductData[] = [
     "projectName": "601486 INS CST-6042 DensDeck Roof Board PDS 05-04-23",
     "date": "2025-07-21",
     "specifications": {
-      "category": "Other",
-      "system": "Other",
+      "category": "Insulation",
+      "system": "Insulation",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
-      "applications": ["Other roofing systems","Other applications"],
-      "features": ["Other technology","Professional grade","Industry standard"]
+      "thickness": "Multiple thicknesses available",
+      "applications": ["Insulation systems","Roof insulation applications"],
+      "features": ["Insulation technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "601486 INS_CST-6042 DensDeck Roof Board PDS_05-04-23.pdf"
   },
@@ -1062,7 +1062,7 @@ export const allProductSheets: InsertProductData[] = [
     "system": "EPDM",
     "manufacturer": "Carlisle",
     "membraneType": "603139 EPDM-1112 Sure-Seal EPDM PS Inside Outside Corners PDS REV 01-23-24",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -1074,7 +1074,7 @@ export const allProductSheets: InsertProductData[] = [
       "category": "Accessory",
       "system": "EPDM",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
+      "thickness": "Multiple thicknesses available",
       "applications": ["EPDM roofing systems","Accessory applications"],
       "features": ["EPDM technology","Professional grade","Industry standard"]
     },
@@ -1093,20 +1093,20 @@ export const allProductSheets: InsertProductData[] = [
     "projectName": "603143 EPDM-1078 PS T-Joint Covers PDS 01-18-24",
     "date": "2025-07-21",
     "specifications": {
-      "category": "Other",
+      "category": "Insulation",
       "system": "EPDM",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
+      "thickness": "Multiple thicknesses available",
       "applications": ["EPDM roofing systems","Other applications"],
       "features": ["EPDM technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "603143 EPDM-1078 PS T-Joint Covers PDS_01-18-24.pdf"
   },
   {
-    "system": "Other",
+    "system": "Insulation",
     "manufacturer": "Carlisle",
     "membraneType": "603254 INS CST-2128 SecurShield Polyiso PDS 02-27-25",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -1115,12 +1115,12 @@ export const allProductSheets: InsertProductData[] = [
     "projectName": "603254 INS CST-2128 SecurShield Polyiso PDS 02-27-25",
     "date": "2025-07-21",
     "specifications": {
-      "category": "Other",
-      "system": "Other",
+      "category": "Insulation",
+      "system": "Insulation",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
-      "applications": ["Other roofing systems","Other applications"],
-      "features": ["Other technology","Professional grade","Industry standard"]
+      "thickness": "Multiple thicknesses available",
+      "applications": ["Insulation systems","Roof insulation applications"],
+      "features": ["Insulation technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "603254 INS_CST-2128 SecurShield Polyiso PDS_02-27-25.pdf"
   },
@@ -1128,7 +1128,7 @@ export const allProductSheets: InsertProductData[] = [
     "system": "EPDM",
     "manufacturer": "Carlisle",
     "membraneType": "603397 EPDM-2372 Sure-White PS Elastoform Flashing PDS-PRESS",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -1140,7 +1140,7 @@ export const allProductSheets: InsertProductData[] = [
       "category": "Flashing",
       "system": "EPDM",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
+      "thickness": "Multiple thicknesses available",
       "applications": ["EPDM roofing systems","Flashing applications"],
       "features": ["EPDM technology","Professional grade","Industry standard"]
     },
@@ -1294,17 +1294,17 @@ export const allProductSheets: InsertProductData[] = [
       "category": "Sealant",
       "system": "EPDM",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
+      "thickness": "Multiple thicknesses available",
       "applications": ["EPDM roofing systems","Sealant applications"],
       "features": ["EPDM technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "605037 EPDM-1075 Sure-White Pourable Sealer Pockets PDS_05-25-21.pdf"
   },
   {
-    "system": "Other",
+    "system": "Insulation",
     "manufacturer": "Carlisle",
     "membraneType": "605075 INS CST-1284 SecurShield HD PDS 03-03-25",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -1313,20 +1313,20 @@ export const allProductSheets: InsertProductData[] = [
     "projectName": "605075 INS CST-1284 SecurShield HD PDS 03-03-25",
     "date": "2025-07-21",
     "specifications": {
-      "category": "Other",
-      "system": "Other",
+      "category": "Insulation",
+      "system": "Insulation",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
-      "applications": ["Other roofing systems","Other applications"],
-      "features": ["Other technology","Professional grade","Industry standard"]
+      "thickness": "Multiple thicknesses available",
+      "applications": ["Insulation systems","Roof insulation applications"],
+      "features": ["Insulation technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "605075 INS_CST-1284 SecurShield HD PDS_03-03-25.pdf"
   },
   {
-    "system": "Other",
+    "system": "Insulation",
     "manufacturer": "Carlisle",
     "membraneType": "605076 CST-1278 R-Tech Fanfold PDS 11-13-24",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -1335,12 +1335,12 @@ export const allProductSheets: InsertProductData[] = [
     "projectName": "605076 CST-1278 R-Tech Fanfold PDS 11-13-24",
     "date": "2025-07-21",
     "specifications": {
-      "category": "Other",
-      "system": "Other",
+      "category": "Insulation",
+      "system": "Insulation",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
-      "applications": ["Other roofing systems","Other applications"],
-      "features": ["Other technology","Professional grade","Industry standard"]
+      "thickness": "Multiple thicknesses available",
+      "applications": ["Insulation systems","Roof insulation applications"],
+      "features": ["Insulation technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "605076 CST-1278 R-Tech Fanfold PDS_11-13-24.pdf"
   },
@@ -1348,7 +1348,7 @@ export const allProductSheets: InsertProductData[] = [
     "system": "PVC",
     "manufacturer": "Carlisle",
     "membraneType": "605149 PVC-1007 Molded Sealant Pockets PDS 11-18-24",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -1360,7 +1360,7 @@ export const allProductSheets: InsertProductData[] = [
       "category": "Sealant",
       "system": "PVC",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
+      "thickness": "Multiple thicknesses available",
       "applications": ["PVC roofing systems","Sealant applications"],
       "features": ["PVC technology","Professional grade","Industry standard"]
     },
@@ -1756,17 +1756,17 @@ export const allProductSheets: InsertProductData[] = [
       "category": "Membrane",
       "system": "PVC",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
+      "thickness": "Multiple thicknesses available",
       "applications": ["PVC roofing systems","Membrane applications"],
       "features": ["PVC technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "605808 PVC-2296 Sure-Flex FRS PVC Membrane PDS_02-13-25.pdf"
   },
   {
-    "system": "Other",
+    "system": "Insulation",
     "manufacturer": "Carlisle",
     "membraneType": "605885 INS CST-2265 SecurShield HD Plus PDS 12-13-23",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -1775,12 +1775,12 @@ export const allProductSheets: InsertProductData[] = [
     "projectName": "605885 INS CST-2265 SecurShield HD Plus PDS 12-13-23",
     "date": "2025-07-21",
     "specifications": {
-      "category": "Other",
-      "system": "Other",
+      "category": "Insulation",
+      "system": "Insulation",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
-      "applications": ["Other roofing systems","Other applications"],
-      "features": ["Other technology","Professional grade","Industry standard"]
+      "thickness": "Multiple thicknesses available",
+      "applications": ["Insulation systems","Roof insulation applications"],
+      "features": ["Insulation technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "605885 INS_CST-2265 SecurShield HD Plus PDS_12-13-23.pdf"
   },
@@ -1788,7 +1788,7 @@ export const allProductSheets: InsertProductData[] = [
     "system": "TPO",
     "manufacturer": "Carlisle",
     "membraneType": "605925 TPO-2661 Sure-Weld TPO Bonding Adhesive PDS-PRESS",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -1800,7 +1800,7 @@ export const allProductSheets: InsertProductData[] = [
       "category": "Adhesive",
       "system": "TPO",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
+      "thickness": "Multiple thicknesses available",
       "applications": ["TPO roofing systems","Adhesive applications"],
       "features": ["TPO technology","Professional grade","Industry standard"]
     },
@@ -1822,17 +1822,17 @@ export const allProductSheets: InsertProductData[] = [
       "category": "Membrane",
       "system": "PVC",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
+      "thickness": "Multiple thicknesses available",
       "applications": ["PVC roofing systems","Membrane applications"],
       "features": ["PVC technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "607086 PVC-9950 Sure-Flex KEE HP Minimum Membrane PDS_02-14-25.pdf"
   },
   {
-    "system": "Other",
+    "system": "Insulation",
     "manufacturer": "Carlisle",
     "membraneType": "608220 INS CST-5155 Securrock Gypsum-Fiber Roof Board PDS 01-24-24",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -1841,12 +1841,12 @@ export const allProductSheets: InsertProductData[] = [
     "projectName": "608220 INS CST-5155 Securrock Gypsum-Fiber Roof Board PDS 01-24-24",
     "date": "2025-07-21",
     "specifications": {
-      "category": "Other",
-      "system": "Other",
+      "category": "Insulation",
+      "system": "Insulation",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
-      "applications": ["Other roofing systems","Other applications"],
-      "features": ["Other technology","Professional grade","Industry standard"]
+      "thickness": "Multiple thicknesses available",
+      "applications": ["Insulation systems","Roof insulation applications"],
+      "features": ["Insulation technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "608220 INS_CST-5155 Securrock Gypsum-Fiber Roof Board PDS_01-24-24.pdf"
   },
@@ -1854,7 +1854,7 @@ export const allProductSheets: InsertProductData[] = [
     "system": "PVC",
     "manufacturer": "Carlisle",
     "membraneType": "608427 PVC-5835 Sure-Flex PVC Membrane PDS Minimum 02-14-25",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -1866,7 +1866,7 @@ export const allProductSheets: InsertProductData[] = [
       "category": "Membrane",
       "system": "PVC",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
+      "thickness": "Multiple thicknesses available",
       "applications": ["PVC roofing systems","Membrane applications"],
       "features": ["PVC technology","Professional grade","Industry standard"]
     },
@@ -1898,7 +1898,7 @@ export const allProductSheets: InsertProductData[] = [
     "system": "TPO",
     "manufacturer": "Carlisle",
     "membraneType": "610331 TPO-8517 CAV-GRIP III Adhesive Primer PDS 06-14-24",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -1910,17 +1910,17 @@ export const allProductSheets: InsertProductData[] = [
       "category": "Primer",
       "system": "TPO",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
+      "thickness": "Multiple thicknesses available",
       "applications": ["TPO roofing systems","Primer applications"],
       "features": ["TPO technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "610331 TPO-8517 CAV-GRIP III Adhesive Primer PDS_06-14-24.pdf"
   },
   {
-    "system": "Other",
+    "system": "Insulation",
     "manufacturer": "Carlisle",
     "membraneType": "610487 INS CST-8937 InsulBase Polyiso Rapid Lock Insulation PDS 07-16-25",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -1930,19 +1930,19 @@ export const allProductSheets: InsertProductData[] = [
     "date": "2025-07-21",
     "specifications": {
       "category": "Insulation",
-      "system": "Other",
+      "system": "Insulation",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
-      "applications": ["Other roofing systems","Insulation applications"],
-      "features": ["Other technology","Professional grade","Industry standard"]
+      "thickness": "Multiple thicknesses available",
+      "applications": ["Insulation systems","Rapid Lock applications"],
+      "features": ["Rapid Lock technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "610487 INS_CST-8937 InsulBase Polyiso Rapid Lock Insulation PDS_07-16-25.pdf"
   },
   {
-    "system": "Other",
+    "system": "Insulation",
     "manufacturer": "Carlisle",
     "membraneType": "610488 INS CST-9014 SecurShield HD RL Polyiso Rapid Lock Insulation PDS 02-07-25",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -1952,11 +1952,11 @@ export const allProductSheets: InsertProductData[] = [
     "date": "2025-07-21",
     "specifications": {
       "category": "Insulation",
-      "system": "Other",
+      "system": "Insulation",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
-      "applications": ["Other roofing systems","Insulation applications"],
-      "features": ["Other technology","Professional grade","Industry standard"]
+      "thickness": "Multiple thicknesses available",
+      "applications": ["Insulation systems","SecurShield applications"],
+      "features": ["SecurShield HD technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "610488 INS_CST-9014 SecurShield HD RL Polyiso Rapid Lock Insulation PDS_02-07-25.pdf"
   },
@@ -1964,7 +1964,7 @@ export const allProductSheets: InsertProductData[] = [
     "system": "PVC",
     "manufacturer": "Carlisle",
     "membraneType": "611045 PVC-9617 Sure-Flex Low-VOC PVC Step 1 Activator PDS 07-22-21 (1)",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -1973,10 +1973,10 @@ export const allProductSheets: InsertProductData[] = [
     "projectName": "611045 PVC-9617 Sure-Flex Low-VOC PVC Step 1 Activator PDS 07-22-21 (1)",
     "date": "2025-07-21",
     "specifications": {
-      "category": "Other",
+      "category": "Insulation",
       "system": "PVC",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
+      "thickness": "Multiple thicknesses available",
       "applications": ["PVC roofing systems","Other applications"],
       "features": ["PVC technology","Professional grade","Industry standard"]
     },
@@ -2128,19 +2128,19 @@ export const allProductSheets: InsertProductData[] = [
     "date": "2025-07-21",
     "specifications": {
       "category": "Fastener",
-      "system": "Other",
+      "system": "Insulation",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
+      "thickness": "Multiple thicknesses available",
       "applications": ["Other roofing systems","Fastener applications"],
-      "features": ["Other technology","Professional grade","Industry standard"]
+      "features": ["Insulation technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "7627_en_HD_1410_Fastener_Product_Data_Sheet_PDSTDB.pdf"
   },
   {
-    "system": "Other",
+    "system": "Insulation",
     "manufacturer": "Carlisle",
     "membraneType": "Insulfoam SP",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -2149,20 +2149,20 @@ export const allProductSheets: InsertProductData[] = [
     "projectName": "Insulfoam SP",
     "date": "2025-07-21",
     "specifications": {
-      "category": "Other",
-      "system": "Other",
+      "category": "Insulation",
+      "system": "Insulation",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
-      "applications": ["Other roofing systems","Other applications"],
-      "features": ["Other technology","Professional grade","Industry standard"]
+      "thickness": "Multiple thicknesses available",
+      "applications": ["Insulation systems","Roof insulation applications"],
+      "features": ["Insulation technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "8348_en_Insulfoam_SP_Product_Data_Sheet_PDSTDB.pdf"
   },
   {
-    "system": "Other",
+    "system": "Insulation",
     "manufacturer": "Carlisle",
     "membraneType": "CD10 Concrete Fastener",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -2172,11 +2172,11 @@ export const allProductSheets: InsertProductData[] = [
     "date": "2025-07-21",
     "specifications": {
       "category": "Fastener",
-      "system": "Other",
+      "system": "Insulation",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
+      "thickness": "Multiple thicknesses available",
       "applications": ["Other roofing systems","Fastener applications"],
-      "features": ["Other technology","Professional grade","Industry standard"]
+      "features": ["Insulation technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "8379_en_CD10_Concrete_Fastener_Product_Data_Sheet_PDSTDB.pdf"
   },
@@ -2523,20 +2523,20 @@ export const allProductSheets: InsertProductData[] = [
     "projectName": "HP Polymer Seam Plates",
     "date": "2025-07-21",
     "specifications": {
-      "category": "Other",
-      "system": "Other",
+      "category": "Insulation",
+      "system": "Insulation",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
-      "applications": ["Other roofing systems","Other applications"],
-      "features": ["Other technology","Professional grade","Industry standard"]
+      "thickness": "Multiple thicknesses available",
+      "applications": ["Insulation systems","Roof insulation applications"],
+      "features": ["Insulation technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "9746_en_HP_Polymer_Seam_Plates_Product_Data_Sheet.pdf"
   },
   {
-    "system": "Other",
+    "system": "Insulation",
     "manufacturer": "Carlisle",
     "membraneType": "InsulBase Straight Bevel Cut Polyiso",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -2545,12 +2545,12 @@ export const allProductSheets: InsertProductData[] = [
     "projectName": "InsulBase Straight Bevel Cut Polyiso",
     "date": "2025-07-21",
     "specifications": {
-      "category": "Other",
-      "system": "Other",
+      "category": "Insulation",
+      "system": "Insulation",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
-      "applications": ["Other roofing systems","Other applications"],
-      "features": ["Other technology","Professional grade","Industry standard"]
+      "thickness": "Multiple thicknesses available",
+      "applications": ["Insulation systems","Roof insulation applications"],
+      "features": ["Insulation technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "9809_en_InsulBase_Straight__Bevel_Cut_Polyiso.pdf"
   },
@@ -2558,7 +2558,7 @@ export const allProductSheets: InsertProductData[] = [
     "system": "PVC",
     "manufacturer": "Carlisle",
     "membraneType": "SureFlex PVC and KEE HP Membrane Cleaner",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -2570,7 +2570,7 @@ export const allProductSheets: InsertProductData[] = [
       "category": "Membrane",
       "system": "PVC",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
+      "thickness": "Multiple thicknesses available",
       "applications": ["PVC roofing systems","Membrane applications"],
       "features": ["PVC technology","Professional grade","Industry standard"]
     },
@@ -2831,20 +2831,20 @@ export const allProductSheets: InsertProductData[] = [
     "projectName": "CST-1309 HP Recovery Board PDS 05-02-22 (1)",
     "date": "2025-07-21",
     "specifications": {
-      "category": "Other",
-      "system": "Other",
+      "category": "Insulation",
+      "system": "Insulation",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
-      "applications": ["Other roofing systems","Other applications"],
-      "features": ["Other technology","Professional grade","Industry standard"]
+      "thickness": "Multiple thicknesses available",
+      "applications": ["Insulation systems","Roof insulation applications"],
+      "features": ["Insulation technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "CST-1309 HP Recovery Board PDS_05-02-22 (1).pdf"
   },
   {
-    "system": "Other",
+    "system": "Insulation",
     "manufacturer": "Carlisle",
     "membraneType": "CST-16577 SecurShield HD Composite RapidLock PDS 02-10-25",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -2853,20 +2853,20 @@ export const allProductSheets: InsertProductData[] = [
     "projectName": "CST-16577 SecurShield HD Composite RapidLock PDS 02-10-25",
     "date": "2025-07-21",
     "specifications": {
-      "category": "Other",
-      "system": "Other",
+      "category": "Insulation",
+      "system": "Insulation",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
-      "applications": ["Other roofing systems","Other applications"],
-      "features": ["Other technology","Professional grade","Industry standard"]
+      "thickness": "Multiple thicknesses available",
+      "applications": ["Insulation systems","Roof insulation applications"],
+      "features": ["Insulation technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "CST-16577 SecurShield HD Composite RapidLock PDS_02-10-25.pdf"
   },
   {
-    "system": "Other",
+    "system": "Insulation",
     "manufacturer": "Carlisle",
     "membraneType": "CST-4281 VapAir Seal MD PDS 06-13-25",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -2875,12 +2875,12 @@ export const allProductSheets: InsertProductData[] = [
     "projectName": "CST-4281 VapAir Seal MD PDS 06-13-25",
     "date": "2025-07-21",
     "specifications": {
-      "category": "Other",
-      "system": "Other",
+      "category": "Insulation",
+      "system": "Insulation",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
-      "applications": ["Other roofing systems","Other applications"],
-      "features": ["Other technology","Professional grade","Industry standard"]
+      "thickness": "Multiple thicknesses available",
+      "applications": ["Insulation systems","Roof insulation applications"],
+      "features": ["Insulation technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "CST-4281 VapAir Seal MD PDS_06-13-25.pdf"
   },
@@ -3670,17 +3670,17 @@ export const allProductSheets: InsertProductData[] = [
       "category": "Membrane",
       "system": "PVC",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
+      "thickness": "Multiple thicknesses available",
       "applications": ["PVC roofing systems","Membrane applications"],
       "features": ["PVC technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "FB-9313 FleeceBACK PVC Polyester Membrane PDS_05-19-25.pdf"
   },
   {
-    "system": "Other",
+    "system": "Insulation",
     "manufacturer": "Carlisle",
     "membraneType": "INS-CST 2130 Tapered SecurShield PDS 09-18-23",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -3689,20 +3689,20 @@ export const allProductSheets: InsertProductData[] = [
     "projectName": "INS-CST 2130 Tapered SecurShield PDS 09-18-23",
     "date": "2025-07-21",
     "specifications": {
-      "category": "Other",
-      "system": "Other",
+      "category": "Insulation",
+      "system": "Insulation",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
-      "applications": ["Other roofing systems","Other applications"],
-      "features": ["Other technology","Professional grade","Industry standard"]
+      "thickness": "Multiple thicknesses available",
+      "applications": ["Insulation systems","Roof insulation applications"],
+      "features": ["Insulation technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "INS-CST 2130 Tapered SecurShield PDS_09-18-23.pdf"
   },
   {
-    "system": "Other",
+    "system": "Insulation",
     "manufacturer": "Carlisle",
     "membraneType": "INS CST-13057 DensDeck StormX Prime Roof Board PDS 09-10-24",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -3711,20 +3711,20 @@ export const allProductSheets: InsertProductData[] = [
     "projectName": "INS CST-13057 DensDeck StormX Prime Roof Board PDS 09-10-24",
     "date": "2025-07-21",
     "specifications": {
-      "category": "Other",
-      "system": "Other",
+      "category": "Insulation",
+      "system": "Insulation",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
-      "applications": ["Other roofing systems","Other applications"],
-      "features": ["Other technology","Professional grade","Industry standard"]
+      "thickness": "Multiple thicknesses available",
+      "applications": ["Insulation systems","Roof insulation applications"],
+      "features": ["Insulation technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "INS_CST-13057 DensDeck StormX Prime Roof Board PDS_09-10-24.pdf"
   },
   {
-    "system": "Other",
+    "system": "Insulation",
     "manufacturer": "Carlisle",
     "membraneType": "INS CST-13765 Owen's Corning Foamular & Foamular NGX 400-600-1000 XPS Insulation PDS 04-13-21",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -3734,19 +3734,19 @@ export const allProductSheets: InsertProductData[] = [
     "date": "2025-07-21",
     "specifications": {
       "category": "Insulation",
-      "system": "Other",
+      "system": "Insulation",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
+      "thickness": "Multiple thicknesses available",
       "applications": ["Other roofing systems","Insulation applications"],
-      "features": ["Other technology","Professional grade","Industry standard"]
+      "features": ["Insulation technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "INS_CST-13765 Owen's Corning Foamular & Foamular NGX 400-600-1000 XPS Insulation PDS_04-13-21.pdf"
   },
   {
-    "system": "Other",
+    "system": "Insulation",
     "manufacturer": "Carlisle",
     "membraneType": "INS CST-13768 Owens Corning Foamular and Foamular NGX Thermapink 25 XPS Insulation PDS 04-13-21",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -3756,19 +3756,19 @@ export const allProductSheets: InsertProductData[] = [
     "date": "2025-07-21",
     "specifications": {
       "category": "Insulation",
-      "system": "Other",
+      "system": "Insulation",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
+      "thickness": "Multiple thicknesses available",
       "applications": ["Other roofing systems","Insulation applications"],
-      "features": ["Other technology","Professional grade","Industry standard"]
+      "features": ["Insulation technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "INS_CST-13768 Owens Corning Foamular and Foamular NGX Thermapink 25 XPS Insulation PDS_04-13-21.pdf"
   },
   {
-    "system": "Other",
+    "system": "Insulation",
     "manufacturer": "Carlisle",
     "membraneType": "INS CST-17834 - DEXcell FA Glass Mat Roof Board PDS 08-05-24",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -3777,20 +3777,20 @@ export const allProductSheets: InsertProductData[] = [
     "projectName": "INS CST-17834 - DEXcell FA Glass Mat Roof Board PDS 08-05-24",
     "date": "2025-07-21",
     "specifications": {
-      "category": "Other",
-      "system": "Other",
+      "category": "Insulation",
+      "system": "Insulation",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
-      "applications": ["Other roofing systems","Other applications"],
-      "features": ["Other technology","Professional grade","Industry standard"]
+      "thickness": "Multiple thicknesses available",
+      "applications": ["Insulation systems","Roof insulation applications"],
+      "features": ["Insulation technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "INS_CST-17834 - DEXcell FA Glass Mat Roof Board PDS_08-05-24.pdf"
   },
   {
-    "system": "Other",
+    "system": "Insulation",
     "manufacturer": "Carlisle",
     "membraneType": "INS CST-17835 - DEXcell Glass Mat Roof Board PDS 08-05-24",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -3799,20 +3799,20 @@ export const allProductSheets: InsertProductData[] = [
     "projectName": "INS CST-17835 - DEXcell Glass Mat Roof Board PDS 08-05-24",
     "date": "2025-07-21",
     "specifications": {
-      "category": "Other",
-      "system": "Other",
+      "category": "Insulation",
+      "system": "Insulation",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
-      "applications": ["Other roofing systems","Other applications"],
-      "features": ["Other technology","Professional grade","Industry standard"]
+      "thickness": "Multiple thicknesses available",
+      "applications": ["Insulation systems","Roof insulation applications"],
+      "features": ["Insulation technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "INS_CST-17835 - DEXcell Glass Mat Roof Board PDS_08-05-24.pdf"
   },
   {
-    "system": "Other",
+    "system": "Insulation",
     "manufacturer": "Carlisle",
     "membraneType": "INS CST-2127 InsulBase Tapered PDS 08-08-24",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -3821,20 +3821,20 @@ export const allProductSheets: InsertProductData[] = [
     "projectName": "INS CST-2127 InsulBase Tapered PDS 08-08-24",
     "date": "2025-07-21",
     "specifications": {
-      "category": "Other",
-      "system": "Other",
+      "category": "Insulation",
+      "system": "Insulation",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
-      "applications": ["Other roofing systems","Other applications"],
-      "features": ["Other technology","Professional grade","Industry standard"]
+      "thickness": "Multiple thicknesses available",
+      "applications": ["Insulation systems","Roof insulation applications"],
+      "features": ["Insulation technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "INS_CST-2127 InsulBase Tapered PDS_08-08-24.pdf"
   },
   {
-    "system": "Other",
+    "system": "Insulation",
     "manufacturer": "Carlisle",
     "membraneType": "INS CST-5476 SecurFast Fastening Plates PDS 08-28-20",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -3844,19 +3844,19 @@ export const allProductSheets: InsertProductData[] = [
     "date": "2025-07-21",
     "specifications": {
       "category": "Fastener",
-      "system": "Other",
+      "system": "Insulation",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
+      "thickness": "Multiple thicknesses available",
       "applications": ["Other roofing systems","Fastener applications"],
-      "features": ["Other technology","Professional grade","Industry standard"]
+      "features": ["Insulation technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "INS_CST-5476 SecurFast Fastening Plates PDS_08-28-20.pdf"
   },
   {
-    "system": "Other",
+    "system": "Insulation",
     "manufacturer": "Carlisle",
     "membraneType": "INS CST-6043 DensDeck Prime Roof Board PDS 07-12-21",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -3865,20 +3865,20 @@ export const allProductSheets: InsertProductData[] = [
     "projectName": "INS CST-6043 DensDeck Prime Roof Board PDS 07-12-21",
     "date": "2025-07-21",
     "specifications": {
-      "category": "Other",
-      "system": "Other",
+      "category": "Insulation",
+      "system": "Insulation",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
-      "applications": ["Other roofing systems","Other applications"],
-      "features": ["Other technology","Professional grade","Industry standard"]
+      "thickness": "Multiple thicknesses available",
+      "applications": ["Insulation systems","Roof insulation applications"],
+      "features": ["Insulation technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "INS_CST-6043 DensDeck Prime Roof Board PDS_07-12-21.pdf"
   },
   {
-    "system": "Other",
+    "system": "Insulation",
     "manufacturer": "Carlisle",
     "membraneType": "INS CST-8278 Owens Corning XPS PDS 02-15-22",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -3887,20 +3887,20 @@ export const allProductSheets: InsertProductData[] = [
     "projectName": "INS CST-8278 Owens Corning XPS PDS 02-15-22",
     "date": "2025-07-21",
     "specifications": {
-      "category": "Other",
-      "system": "Other",
+      "category": "Insulation",
+      "system": "Insulation",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
-      "applications": ["Other roofing systems","Other applications"],
-      "features": ["Other technology","Professional grade","Industry standard"]
+      "thickness": "Multiple thicknesses available",
+      "applications": ["Insulation systems","Roof insulation applications"],
+      "features": ["Insulation technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "INS_CST-8278 Owens Corning XPS PDS 02-15-22.pdf"
   },
   {
-    "system": "Other",
+    "system": "Insulation",
     "manufacturer": "Carlisle",
     "membraneType": "INS CST-8628 GreenGuard PB6 Fanfold Roofing Recover Board PDS 09-28-21",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -3909,20 +3909,20 @@ export const allProductSheets: InsertProductData[] = [
     "projectName": "INS CST-8628 GreenGuard PB6 Fanfold Roofing Recover Board PDS 09-28-21",
     "date": "2025-07-21",
     "specifications": {
-      "category": "Other",
-      "system": "Other",
+      "category": "Insulation",
+      "system": "Insulation",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
-      "applications": ["Other roofing systems","Other applications"],
-      "features": ["Other technology","Professional grade","Industry standard"]
+      "thickness": "Multiple thicknesses available",
+      "applications": ["Insulation systems","Roof insulation applications"],
+      "features": ["Insulation technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "INS_CST-8628 GreenGuard PB6 Fanfold Roofing Recover Board PDS_09-28-21.pdf"
   },
   {
-    "system": "Other",
+    "system": "Insulation",
     "manufacturer": "Carlisle",
     "membraneType": "INS CST-8730 InsulBase NH Polyiso PDS 05-13-20",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -3931,20 +3931,20 @@ export const allProductSheets: InsertProductData[] = [
     "projectName": "INS CST-8730 InsulBase NH Polyiso PDS 05-13-20",
     "date": "2025-07-21",
     "specifications": {
-      "category": "Other",
-      "system": "Other",
+      "category": "Insulation",
+      "system": "Insulation",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
-      "applications": ["Other roofing systems","Other applications"],
-      "features": ["Other technology","Professional grade","Industry standard"]
+      "thickness": "Multiple thicknesses available",
+      "applications": ["Insulation systems","Roof insulation applications"],
+      "features": ["Insulation technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "INS_CST-8730 InsulBase NH Polyiso PDS_05-13-20.pdf"
   },
   {
-    "system": "Other",
+    "system": "Insulation",
     "manufacturer": "Carlisle",
     "membraneType": "INS CST-8731 SecurShield NH Polyiso PDS REV09-23-PRESS",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -3953,12 +3953,12 @@ export const allProductSheets: InsertProductData[] = [
     "projectName": "INS CST-8731 SecurShield NH Polyiso PDS REV09-23-PRESS",
     "date": "2025-07-21",
     "specifications": {
-      "category": "Other",
-      "system": "Other",
+      "category": "Insulation",
+      "system": "Insulation",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
-      "applications": ["Other roofing systems","Other applications"],
-      "features": ["Other technology","Professional grade","Industry standard"]
+      "thickness": "Multiple thicknesses available",
+      "applications": ["Insulation systems","Roof insulation applications"],
+      "features": ["Insulation technology","Professional grade","Industry standard"]
     },
     "sourceDocument": "INS_CST-8731 SecurShield NH Polyiso PDS_REV09-23-PRESS.pdf"
   },
@@ -3966,7 +3966,7 @@ export const allProductSheets: InsertProductData[] = [
     "system": "PVC",
     "manufacturer": "Carlisle",
     "membraneType": "PVC-1008 Inside Corners PDS 10-28-20",
-    "thickness": "N/A",
+    "thickness": "Multiple thicknesses available",
     "buildingHeight": "N/A",
     "warranty": "Varies by system",
     "windSpeed": "N/A",
@@ -3978,7 +3978,7 @@ export const allProductSheets: InsertProductData[] = [
       "category": "Accessory",
       "system": "PVC",
       "manufacturer": "Carlisle",
-      "thickness": "N/A",
+      "thickness": "Multiple thicknesses available",
       "applications": ["PVC roofing systems","Accessory applications"],
       "features": ["PVC technology","Professional grade","Industry standard"]
     },

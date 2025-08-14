@@ -94,21 +94,39 @@ export class RAGService {
       // Build context for AI - HEAVILY PRIORITIZE PRODUCT DATA
       const context: RAGContext = {
         productData: allProductData.map(p => {
-          // Load minimal PDF content for thickness queries only
+          // Load PDF content for insulation products or thickness queries
           let pdfContent = '';
           if (p.sourceDocument && (
             query.toLowerCase().includes('thickness') || 
             query.toLowerCase().includes('insulation') ||
-            p.membraneType.toLowerCase().includes('insul')
+            query.toLowerCase().includes('r-value') ||
+            query.toLowerCase().includes('inches') ||
+            p.membraneType.toLowerCase().includes('insul') ||
+            p.system.toLowerCase() === 'insulation'
           )) {
             const fullContent = this.loadProductPDFContent(p.sourceDocument || '');
-            // Extract only thickness-related content to minimize tokens
-            const thicknessMatch = fullContent.match(/thickness.*?\n[\s\S]*?(?=\n\n|\n[A-Z]|$)/gi);
-            const tableMatch = fullContent.match(/\d+\.?\d*\s*(?:inch|")\s*[\s\S]*?\d+\.?\d*\s*R-value/gi);
-            pdfContent = [
-              ...(thicknessMatch || []),
-              ...(tableMatch || [])
-            ].join('\n').substring(0, 400); // Severely limit content
+            
+            // Extract comprehensive thickness and R-value information
+            const patterns = [
+              // Thickness ranges and panel specifications
+              /Available in.*?thickness.*?[\s\S]*?(?=\n\n|\nApplications|\nInstallation)/gi,
+              // Thickness tables with R-values 
+              /Thickness.*?R-value[\s\S]*?(?=\n\n|\nCodes|$)/gi,
+              // Individual thickness entries
+              /\b\d+\.?\d*\s*(?:inch|")\s*.*?\d+\.?\d*\s*R-value/gi,
+              // Panel characteristics
+              /Panel Characteristics[\s\S]*?(?=\nApplications|\n\n)/gi,
+              // Thermal values tables
+              /Thermal Values[\s\S]*?(?=\nCodes|\n\n)/gi
+            ];
+            
+            const extractedContent: string[] = [];
+            patterns.forEach(pattern => {
+              const matches = fullContent.match(pattern);
+              if (matches) extractedContent.push(...matches);
+            });
+            
+            pdfContent = extractedContent.join('\n').substring(0, 800); // More content for thickness info
           }
           
           return {
