@@ -187,7 +187,11 @@ export class RAGService {
               // Properties and characteristics tables for fasteners
               /Typical Properties and Characteristics[\s\S]*?(?=\nInstallation|\n\n|$)/gi,
               // Size and weight specifications
-              /Size.*?Inches.*?Weight[\s\S]*?(?=\n\n|\nTypical|$)/gi
+              /Size.*?Inches.*?Weight[\s\S]*?(?=\n\n|\nTypical|$)/gi,
+              // HP Fastener size tables - specific pattern for HP fastener sizes
+              /1 ¼.*?(?:15 \(380\)|\d+ \(\d+\))[\s\S]*?(?=\n\n|\*|$)/gi,
+              // Any table with fastener sizes
+              /\d+\s*\(\d+\)[\s\S]*?(?=\n\n|\*|Typical|$)/gi
             ];
             
             const extractedContent: string[] = [];
@@ -196,7 +200,7 @@ export class RAGService {
               if (matches) extractedContent.push(...matches);
             });
             
-            pdfContent = extractedContent.join('\n').substring(0, 800); // More content for thickness info
+            pdfContent = extractedContent.join('\n').substring(0, 1200); // More content for detailed specifications
           }
           
           return {

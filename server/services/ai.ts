@@ -86,6 +86,13 @@ CRITICAL FOR THICKNESS AND SPECIFICATIONS QUERIES:
 - Include corresponding R-values and thermal properties when available
 - Search through all available product data, not just the basic thickness field
 
+CRITICAL FOR FASTENER NUMBER QUERIES (e.g., "#15 fastener", "#12 fastener"):
+- You MUST examine the fullPDFContent field in specifications to find actual fastener size tables
+- Look for size specifications like "15 (380)" or size ranges in the PDF content
+- HP Fastener includes sizes up to 15 inches - check the PDF content for exact specifications
+- InsulFast Fastener is specifically a #12 fastener according to its PDF
+- Do NOT guess based on product names - use the actual PDF specifications to determine sizes
+
 If you don't have enough information to answer a question, say so clearly and suggest what additional information would be helpful.
 
 PRIORITY: Focus primarily on Product Database information for all roofing system questions.
