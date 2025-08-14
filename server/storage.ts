@@ -25,7 +25,7 @@ export interface IStorage {
   createProductData(data: InsertProductData): Promise<ProductData>;
   getProductData(): Promise<ProductData[]>;
   searchProductData(query: string): Promise<ProductData[]>;
-  clearAllProductData?(): Promise<void>;
+  clearAllProductData(): Promise<void>;
 }
 
 export class MemStorage implements IStorage {
@@ -84,6 +84,7 @@ export class MemStorage implements IStorage {
     const session: ChatSession = {
       ...insertSession,
       id,
+      messageCount: 0,
       createdAt: new Date(),
       updatedAt: new Date(),
     };
@@ -124,6 +125,8 @@ export class MemStorage implements IStorage {
       id,
       sessionId: insertMessage.sessionId || null,
       sources: insertMessage.sources || null,
+      wordCount: null,
+      processingTimeMs: null,
       createdAt: new Date(),
     };
     this.chatMessages.set(id, message);
@@ -181,6 +184,11 @@ export class MemStorage implements IStorage {
       data.location?.toLowerCase().includes(lowerQuery) ||
       JSON.stringify(data.specifications).toLowerCase().includes(lowerQuery)
     );
+  }
+
+  async clearAllProductData(): Promise<void> {
+    this.productData.clear();
+    console.log(`[PRODUCT LOG] ${new Date().toISOString()} - Cleared all product data from memory`);
   }
 }
 
@@ -370,4 +378,4 @@ export class DatabaseStorage implements IStorage {
   }
 }
 
-export const storage = new DatabaseStorage();
+export const storage = new MemStorage();

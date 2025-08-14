@@ -291,7 +291,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const ragResponse = await ragService.searchAndGenerate(content, includeUploadedDocs);
 
       console.log(`[CONVERSATION LOG] AI Response generated`);
-      console.log(`[CONVERSATION LOG] Sources used: ${ragResponse.sources ? JSON.stringify(ragResponse.sources.map(s => s.source)) : 'None'}`);
+      console.log(`[CONVERSATION LOG] Sources used: ${ragResponse.sources ? JSON.stringify(ragResponse.sources.map(s => s.title)) : 'None'}`);
       console.log(`[CONVERSATION LOG] AI Response: ${ragResponse.response.substring(0, 200)}...`);
 
       // Save AI response

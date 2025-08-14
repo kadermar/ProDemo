@@ -32,7 +32,7 @@ export class PDFProcessor {
           extractedAt: new Date()
         }
       };
-    } catch (error) {
+    } catch (error: any) {
       throw new Error(`Failed to process PDF: ${error.message}`);
     }
   }
@@ -51,7 +51,7 @@ export class PDFProcessor {
           extractedAt: new Date()
         }
       };
-    } catch (error) {
+    } catch (error: any) {
       throw new Error(`Failed to extract text from PDF: ${error.message}`);
     }
   }
