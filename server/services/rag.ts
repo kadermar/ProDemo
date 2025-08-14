@@ -69,8 +69,27 @@ export class RAGService {
         )
         .slice(0, 2); // Limit to 2 assembly letters for context
       
-      // Prioritize product data - severely limit to prevent token overflow
-      const allProductData = productData.length > 0 ? productData.slice(0, 3) : (await storage.getProductData()).slice(0, 3);
+      // Prioritize product data - use search results if available, otherwise fallback to insulation-related products
+      let allProductData = productData;
+      if (productData.length === 0) {
+        // If no search results, try to find insulation-related products
+        const allProducts = await storage.getProductData();
+        allProductData = allProducts.filter(p => 
+          p.membraneType.toLowerCase().includes('insul') ||
+          p.projectName.toLowerCase().includes('insul') ||
+          p.system.toLowerCase().includes('insulation')
+        ).slice(0, 10); // Include up to 10 insulation products
+        
+        // If still no insulation products found, use general products
+        if (allProductData.length === 0) {
+          allProductData = allProducts.slice(0, 5);
+        }
+      } else {
+        // Limit search results to prevent token overflow but allow more than 3
+        allProductData = productData.slice(0, 8);
+      }
+      
+
       
       // Build context for AI - HEAVILY PRIORITIZE PRODUCT DATA
       const context: RAGContext = {

@@ -36,6 +36,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Search product data (MUST come before /api/products/:id)
+  app.get("/api/products/search", async (req, res) => {
+    try {
+      const query = req.query.q as string;
+      if (!query) {
+        return res.status(400).json({ error: "Search query is required" });
+      }
+
+      const products = await storage.searchProductData(query);
+      res.json(products);
+    } catch (error) {
+      res.status(500).json({ error: error instanceof Error ? error.message : 'Unknown error' });
+    }
+  });
+
   // Get all product data (product sheets from zip file)
   app.get("/api/products", async (req, res) => {
     try {
@@ -328,31 +343,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const sessionId = req.query.sessionId ? parseInt(req.query.sessionId as string) : undefined;
       await storage.clearChatMessages(sessionId);
       res.json({ message: sessionId ? "Session messages cleared" : "All chat history cleared" });
-    } catch (error) {
-      res.status(500).json({ error: error instanceof Error ? error.message : 'Unknown error' });
-    }
-  });
-
-  // Get product data
-  app.get("/api/products", async (req, res) => {
-    try {
-      const products = await storage.getProductData();
-      res.json(products);
-    } catch (error) {
-      res.status(500).json({ error: error instanceof Error ? error.message : 'Unknown error' });
-    }
-  });
-
-  // Search product data
-  app.get("/api/products/search", async (req, res) => {
-    try {
-      const query = req.query.q as string;
-      if (!query) {
-        return res.status(400).json({ error: "Search query is required" });
-      }
-
-      const products = await storage.searchProductData(query);
-      res.json(products);
     } catch (error) {
       res.status(500).json({ error: error instanceof Error ? error.message : 'Unknown error' });
     }
