@@ -5,21 +5,22 @@ import { ChatHistorySidebar } from "@/components/chat-history-sidebar";
 import { Settings, FolderOpen, History } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useSession } from "@/hooks/use-session";
 import logoImage from "@assets/image_1754430327349.png";
 
 export default function ChatPage() {
   const [isLibraryOpen, setIsLibraryOpen] = useState(true);
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
-  const [currentSessionId, setCurrentSessionId] = useState<number | undefined>(undefined);
   const isMobile = useIsMobile();
+  const { sessionId: currentSessionId, newSession, switchSession } = useSession();
 
   const handleSessionSelect = (sessionId: number) => {
-    setCurrentSessionId(sessionId);
+    switchSession(sessionId);
     if (isMobile) setIsHistoryOpen(false);
   };
 
-  const handleNewSession = () => {
-    setCurrentSessionId(undefined);
+  const handleNewSession = async () => {
+    await newSession();
     if (isMobile) setIsHistoryOpen(false);
   };
 
