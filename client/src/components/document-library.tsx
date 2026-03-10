@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { X, Search, FileText, ShieldAlert, BookOpen, ChevronDown, SlidersHorizontal } from "lucide-react";
+import { X, Search, FileText, ShieldAlert, BookOpen, ChevronDown, ChevronRight, SlidersHorizontal } from "lucide-react";
 import { useCatalog, type CatalogProduct } from "@/hooks/use-catalog";
 import { CatalogProductModal } from "./catalog-product-modal";
 
@@ -25,21 +25,19 @@ const categoryColor = (cat: string) =>
 const isSDS   = (d: string) => d?.toLowerCase().includes("safety");
 const isTDB   = (d: string) => !isSDS(d) && (d?.toLowerCase().includes("technical") || d?.toLowerCase().includes("bulletin"));
 const isPDS   = (d: string) => !isSDS(d) && !isTDB(d) && d?.toLowerCase().includes("product");
-const isOther = (d: string) => !isSDS(d) && !isTDB(d) && !isPDS(d);
 
 function docTypeKey(d: string) {
-  if (isSDS(d))   return "sds";
-  if (isTDB(d))   return "tdb";
-  if (isPDS(d))   return "product";
+  if (isSDS(d)) return "sds";
+  if (isTDB(d)) return "tdb";
+  if (isPDS(d)) return "product";
   return "other";
 }
 
-const DOC_TYPE_OPTIONS = [
-  { value: "",        label: "All document types" },
-  { value: "product", label: "Product Sheets" },
-  { value: "sds",     label: "Safety Data Sheets" },
-  { value: "tdb",     label: "Tech Bulletins" },
-  { value: "other",   label: "Other" },
+const DOC_TYPE_PILLS = [
+  { value: "product", label: "Product Sheets",      color: "bg-zinc-800 text-white border-zinc-800" },
+  { value: "sds",     label: "Safety Data",          color: "bg-orange-100 text-orange-700 border-orange-300" },
+  { value: "tdb",     label: "Tech Bulletins",       color: "bg-sky-100 text-sky-700 border-sky-300" },
+  { value: "other",   label: "Other",                color: "bg-zinc-100 text-zinc-700 border-zinc-300" },
 ];
 
 function docIcon(docType: string) {
@@ -66,78 +64,131 @@ function docTypeLabel(docType: string) {
   return docType;
 }
 
-function FilterSelect({
-  value,
-  onChange,
+function toggle(set: Set<string>, value: string): Set<string> {
+  const next = new Set(set);
+  if (next.has(value)) next.delete(value); else next.add(value);
+  return next;
+}
+
+// Collapsible filter section with pill multi-select
+function FilterSection({
+  label,
   options,
-  placeholder,
+  selected,
+  onToggle,
+  searchable = false,
 }: {
-  value: string;
-  onChange: (v: string) => void;
-  options: { value: string; label: string }[];
-  placeholder: string;
+  label: string;
+  options: { value: string; label: string; color?: string }[];
+  selected: Set<string>;
+  onToggle: (v: string) => void;
+  searchable?: boolean;
 }) {
+  const [open, setOpen] = useState(false);
+  const [search, setSearch] = useState("");
+
+  const visible = searchable && search
+    ? options.filter((o) => o.label.toLowerCase().includes(search.toLowerCase()))
+    : options;
+
   return (
-    <div className="relative">
-      <select
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        className={`w-full appearance-none text-[11px] h-7 pl-2.5 pr-6 rounded-lg border bg-zinc-50 transition-colors cursor-pointer outline-none focus:ring-1 focus:ring-primary/30 ${
-          value ? "border-primary/40 text-zinc-800 bg-blue-50/50" : "border-zinc-200 text-zinc-500"
-        }`}
+    <div className="border-b border-zinc-100 last:border-0">
+      <button
+        onClick={() => setOpen((v) => !v)}
+        className="w-full flex items-center justify-between px-4 py-2 hover:bg-zinc-50 transition-colors"
       >
-        <option value="">{placeholder}</option>
-        {options.map((o) => (
-          <option key={o.value} value={o.value}>
-            {o.label}
-          </option>
-        ))}
-      </select>
-      <ChevronDown className="absolute right-1.5 top-1.5 w-3 h-3 text-zinc-400 pointer-events-none" />
+        <span className="text-[11px] font-medium text-zinc-600">{label}</span>
+        <div className="flex items-center gap-1.5">
+          {selected.size > 0 && (
+            <span className="text-[10px] font-semibold bg-primary text-white rounded-full px-1.5 py-0.5 leading-none">
+              {selected.size}
+            </span>
+          )}
+          {open
+            ? <ChevronDown className="w-3 h-3 text-zinc-400" />
+            : <ChevronRight className="w-3 h-3 text-zinc-400" />}
+        </div>
+      </button>
+
+      {open && (
+        <div className="px-4 pb-3 space-y-2">
+          {searchable && (
+            <div className="relative">
+              <Search className="absolute left-2 top-1.5 w-3 h-3 text-zinc-400 pointer-events-none" />
+              <input
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder={`Search ${label.toLowerCase()}…`}
+                className="w-full pl-6 pr-2 h-6 text-[11px] bg-zinc-50 border border-zinc-200 rounded-md outline-none focus:ring-1 focus:ring-primary/30"
+              />
+            </div>
+          )}
+          <div className={`flex flex-wrap gap-1 ${searchable ? "max-h-36 overflow-y-auto" : ""}`}>
+            {visible.map((o) => {
+              const active = selected.has(o.value);
+              return (
+                <button
+                  key={o.value}
+                  onClick={() => onToggle(o.value)}
+                  className={`text-[11px] px-2 py-0.5 rounded-full border transition-colors ${
+                    active
+                      ? o.color ?? "bg-primary text-white border-primary"
+                      : "text-zinc-500 border-zinc-200 hover:border-zinc-300 bg-white"
+                  }`}
+                >
+                  {o.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
 
 export function DocumentLibrary({ isOpen, onClose }: DocumentLibraryProps) {
-  const [searchQuery, setSearchQuery]     = useState("");
-  const [brandFilter, setBrandFilter]     = useState("");
-  const [categoryFilter, setCategoryFilter] = useState("");
-  const [docTypeFilter, setDocTypeFilter] = useState("");
-  const [showFilters, setShowFilters]     = useState(false);
+  const [searchQuery, setSearchQuery]         = useState("");
+  const [selectedBrands, setSelectedBrands]   = useState<Set<string>>(new Set());
+  const [selectedCategories, setSelectedCategories] = useState<Set<string>>(new Set());
+  const [selectedDocTypes, setSelectedDocTypes] = useState<Set<string>>(new Set());
+  const [showFilters, setShowFilters]         = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<CatalogProduct | null>(null);
 
   const { products: allProducts, isLoading } = useCatalog(searchQuery || undefined);
 
-  // Derive sorted unique options from the full unfiltered list
-  const brandOptions = useMemo(() => {
-    const set = new Set(allProducts.map((p) => p.manufacturer).filter(Boolean));
-    return [...set].sort((a, b) => a.localeCompare(b, undefined, { sensitivity: "base" }))
-      .map((v) => ({ value: v, label: v }));
-  }, [allProducts]);
+  const brandOptions = useMemo(() =>
+    [...new Set(allProducts.map((p) => p.manufacturer).filter(Boolean))]
+      .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: "base" }))
+      .map((v) => ({ value: v, label: v })),
+    [allProducts]
+  );
 
-  const categoryOptions = useMemo(() => {
-    const set = new Set(allProducts.map((p) => p.product_category).filter(Boolean));
-    return [...set].sort((a, b) => a.localeCompare(b, undefined, { sensitivity: "base" }))
-      .map((v) => ({ value: v, label: v.charAt(0).toUpperCase() + v.slice(1) }));
-  }, [allProducts]);
+  const categoryOptions = useMemo(() =>
+    [...new Set(allProducts.map((p) => p.product_category).filter(Boolean))]
+      .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: "base" }))
+      .map((v) => ({ value: v, label: v.charAt(0).toUpperCase() + v.slice(1) })),
+    [allProducts]
+  );
 
-  const activeFilterCount = [brandFilter, categoryFilter, docTypeFilter].filter(Boolean).length;
+  const activeFilterCount = selectedBrands.size + selectedCategories.size + selectedDocTypes.size;
 
-  const products = useMemo(() => {
-    return [...allProducts]
+  const products = useMemo(() =>
+    [...allProducts]
       .sort((a, b) => a.product_name.localeCompare(b.product_name, undefined, { sensitivity: "base" }))
       .filter((p) => {
-        if (brandFilter    && p.manufacturer !== brandFilter)           return false;
-        if (categoryFilter && p.product_category !== categoryFilter)    return false;
-        if (docTypeFilter  && docTypeKey(p.document_type) !== docTypeFilter) return false;
+        if (selectedBrands.size     && !selectedBrands.has(p.manufacturer))           return false;
+        if (selectedCategories.size && !selectedCategories.has(p.product_category))   return false;
+        if (selectedDocTypes.size   && !selectedDocTypes.has(docTypeKey(p.document_type))) return false;
         return true;
-      });
-  }, [allProducts, brandFilter, categoryFilter, docTypeFilter]);
+      }),
+    [allProducts, selectedBrands, selectedCategories, selectedDocTypes]
+  );
 
   const clearFilters = () => {
-    setBrandFilter("");
-    setCategoryFilter("");
-    setDocTypeFilter("");
+    setSelectedBrands(new Set());
+    setSelectedCategories(new Set());
+    setSelectedDocTypes(new Set());
   };
 
   return (
@@ -182,7 +233,7 @@ export function DocumentLibrary({ isOpen, onClose }: DocumentLibraryProps) {
           </p>
 
           {/* Search */}
-          <div className="relative mb-2">
+          <div className="relative">
             <Search className="absolute left-2.5 top-2 w-3.5 h-3.5 text-zinc-400 pointer-events-none" />
             <Input
               placeholder="Search products, manufacturers…"
@@ -192,38 +243,38 @@ export function DocumentLibrary({ isOpen, onClose }: DocumentLibraryProps) {
             />
           </div>
 
-          {/* Expandable filters */}
-          {showFilters && (
-            <div className="space-y-1.5 pt-1 pb-0.5">
-              <FilterSelect
-                value={brandFilter}
-                onChange={setBrandFilter}
-                options={brandOptions}
-                placeholder="All brands"
-              />
-              <FilterSelect
-                value={categoryFilter}
-                onChange={setCategoryFilter}
-                options={categoryOptions}
-                placeholder="All product types"
-              />
-              <FilterSelect
-                value={docTypeFilter}
-                onChange={setDocTypeFilter}
-                options={DOC_TYPE_OPTIONS.slice(1)}
-                placeholder="All document types"
-              />
-              {activeFilterCount > 0 && (
-                <button
-                  onClick={clearFilters}
-                  className="text-[11px] text-primary hover:underline pt-0.5"
-                >
-                  Clear {activeFilterCount} filter{activeFilterCount > 1 ? "s" : ""}
-                </button>
-              )}
-            </div>
+          {/* Clear link */}
+          {activeFilterCount > 0 && (
+            <button onClick={clearFilters} className="text-[11px] text-primary hover:underline mt-1.5 block">
+              Clear {activeFilterCount} filter{activeFilterCount > 1 ? "s" : ""}
+            </button>
           )}
         </div>
+
+        {/* Filter panel */}
+        {showFilters && (
+          <div className="border-b border-zinc-100 shrink-0">
+            <FilterSection
+              label="Brand"
+              options={brandOptions}
+              selected={selectedBrands}
+              onToggle={(v) => setSelectedBrands(toggle(selectedBrands, v))}
+              searchable
+            />
+            <FilterSection
+              label="Product Type"
+              options={categoryOptions}
+              selected={selectedCategories}
+              onToggle={(v) => setSelectedCategories(toggle(selectedCategories, v))}
+            />
+            <FilterSection
+              label="Document Type"
+              options={DOC_TYPE_PILLS}
+              selected={selectedDocTypes}
+              onToggle={(v) => setSelectedDocTypes(toggle(selectedDocTypes, v))}
+            />
+          </div>
+        )}
 
         {/* Product List */}
         <div className="flex-1 overflow-y-auto min-h-0">
