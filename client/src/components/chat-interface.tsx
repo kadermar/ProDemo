@@ -7,6 +7,8 @@ import { useDocuments } from "@/hooks/use-documents";
 import { useProducts } from "@/hooks/use-products";
 import { useToast } from "@/hooks/use-toast";
 import { Send, Mic, Trash2, FileText, Loader2, Upload, ExternalLink, X } from "lucide-react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { type ChatMessage, type ProductData } from "@shared/schema";
 import botLogo from "@assets/image_1754430429145.png";
 
@@ -366,8 +368,26 @@ function MessageBubble({
         <img src={botLogo} alt="Assistant" className="w-7 h-7 object-cover" />
       </div>
       <div className="flex-1 min-w-0">
-        <div className="bg-zinc-50 border border-zinc-100 rounded-xl rounded-tl-sm px-4 py-3.5 text-sm text-zinc-800 leading-relaxed whitespace-pre-wrap">
-          {message.content}
+        <div className="bg-zinc-50 border border-zinc-100 rounded-xl rounded-tl-sm px-4 py-3.5 text-sm text-zinc-800 leading-relaxed prose prose-sm prose-zinc max-w-none">
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            components={{
+              p: ({ children }) => <p className="mb-2 last:mb-0">{children}</p>,
+              ul: ({ children }) => <ul className="list-disc pl-4 mb-2 space-y-0.5">{children}</ul>,
+              ol: ({ children }) => <ol className="list-decimal pl-4 mb-2 space-y-0.5">{children}</ol>,
+              li: ({ children }) => <li className="leading-relaxed">{children}</li>,
+              strong: ({ children }) => <strong className="font-semibold text-zinc-900">{children}</strong>,
+              h1: ({ children }) => <h1 className="text-base font-semibold text-zinc-900 mt-3 mb-1">{children}</h1>,
+              h2: ({ children }) => <h2 className="text-sm font-semibold text-zinc-900 mt-3 mb-1">{children}</h2>,
+              h3: ({ children }) => <h3 className="text-sm font-medium text-zinc-900 mt-2 mb-1">{children}</h3>,
+              code: ({ children }) => <code className="bg-zinc-200 text-zinc-800 px-1 py-0.5 rounded text-xs font-mono">{children}</code>,
+              table: ({ children }) => <div className="overflow-x-auto mb-2"><table className="text-xs border-collapse w-full">{children}</table></div>,
+              th: ({ children }) => <th className="border border-zinc-200 bg-zinc-100 px-2 py-1 text-left font-medium">{children}</th>,
+              td: ({ children }) => <td className="border border-zinc-200 px-2 py-1">{children}</td>,
+            }}
+          >
+            {message.content}
+          </ReactMarkdown>
         </div>
 
         {sources.length > 0 && (
