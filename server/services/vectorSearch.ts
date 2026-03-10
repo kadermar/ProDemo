@@ -78,7 +78,7 @@ export async function getProductLibrary(): Promise<ProductSheet[]> {
     id: Number(r.id),
     product_name: nameFromFilename(r.source_file ?? ''),
     manufacturer: r.manufacturer ?? '',
-    product_category: r.product_category ?? '',
+    product_category: (r.product_category ?? '').replace(/_/g, ' '),
     document_type: r.document_type ?? '',
     source_file: r.source_file,
     chunk_count: Number(r.chunk_count),
