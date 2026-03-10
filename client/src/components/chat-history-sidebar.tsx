@@ -1,14 +1,6 @@
 import { useState } from "react";
 import { format } from "date-fns";
-import { 
-  MessageSquare, 
-  Plus, 
-  MoreVertical, 
-  Edit2, 
-  Trash2,
-  History,
-  X
-} from "lucide-react";
+import { MessageSquare, Plus, MoreVertical, Edit2, Trash2, History, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Input } from "@/components/ui/input";
@@ -18,7 +10,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Badge } from "@/components/ui/badge";
 import { useChatSessions, useCreateChatSession, useUpdateChatSession, useDeleteChatSession } from "@/hooks/use-chat-sessions";
 import type { ChatSession } from "@shared/schema";
 
@@ -30,12 +21,12 @@ interface ChatHistorySidebarProps {
   onNewSession: () => void;
 }
 
-export function ChatHistorySidebar({ 
-  isOpen, 
-  onClose, 
-  currentSessionId, 
-  onSessionSelect, 
-  onNewSession 
+export function ChatHistorySidebar({
+  isOpen,
+  onClose,
+  currentSessionId,
+  onSessionSelect,
+  onNewSession,
 }: ChatHistorySidebarProps) {
   const [editingSessionId, setEditingSessionId] = useState<number | null>(null);
   const [editingTitle, setEditingTitle] = useState("");
@@ -51,9 +42,7 @@ export function ChatHistorySidebar({
         title: `New Chat ${sessions.length + 1}`,
       });
       onSessionSelect(newSession.id);
-    } catch (error) {
-      console.error('Failed to create session:', error);
-    }
+    } catch {}
   };
 
   const handleEditSession = (session: ChatSession) => {
@@ -70,9 +59,7 @@ export function ChatHistorySidebar({
         });
         setEditingSessionId(null);
         setEditingTitle("");
-      } catch (error) {
-        console.error('Failed to update session:', error);
-      }
+      } catch {}
     }
   };
 
@@ -84,81 +71,69 @@ export function ChatHistorySidebar({
   const handleDeleteSession = async (sessionId: number) => {
     try {
       await deleteSessionMutation.mutateAsync(sessionId);
-      if (currentSessionId === sessionId) {
-        onNewSession();
-      }
-    } catch (error) {
-      console.error('Failed to delete session:', error);
-    }
-  };
-
-  const truncateTitle = (title: string, maxLength: number = 25) => {
-    return title.length > maxLength ? title.substring(0, maxLength) + "..." : title;
+      if (currentSessionId === sessionId) onNewSession();
+    } catch {}
   };
 
   return (
-    <div className={`
-      bg-white border-r border-gray-200 transition-all duration-300 ease-in-out
-      ${isOpen ? "w-80" : "w-0"}
-      flex flex-col overflow-hidden shadow-sm
-    `}>
+    <div className="bg-white border border-zinc-200 rounded-lg h-full flex flex-col overflow-hidden">
       {/* Header */}
-      <div className="p-4 border-b border-gray-200 bg-gray-50">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <History className="w-5 h-5 text-carlisle-primary" />
-            <h2 className="text-lg font-semibold text-carlisle-navy">Chat History</h2>
-          </div>
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={onClose}
-            className="text-gray-500 hover:text-gray-700"
-          >
-            <X className="w-4 h-4" />
-          </Button>
+      <div className="px-4 py-3.5 border-b border-zinc-100 flex items-center justify-between shrink-0">
+        <div className="flex items-center gap-2">
+          <History className="w-4 h-4 text-zinc-400" />
+          <span className="text-sm font-semibold text-zinc-800 tracking-tight">Chat History</span>
         </div>
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={onClose}
+          className="h-7 w-7 p-0 text-zinc-400 hover:text-zinc-700"
+        >
+          <X className="w-3.5 h-3.5" />
+        </Button>
       </div>
 
-      {/* New Chat Button */}
-      <div className="p-4 border-b border-gray-200">
+      {/* New Chat */}
+      <div className="px-3 py-2.5 border-b border-zinc-100 shrink-0">
         <Button
           onClick={handleCreateSession}
-          className="w-full bg-carlisle-primary hover:bg-carlisle-primary-dark text-white"
+          className="w-full h-8 text-xs gap-1.5 bg-primary hover:bg-primary/90 active:scale-[0.98] transition-all"
           disabled={createSessionMutation.isPending}
         >
-          <Plus className="w-4 h-4 mr-2" />
+          <Plus className="w-3.5 h-3.5" />
           New Chat
         </Button>
       </div>
 
-      {/* Sessions List */}
+      {/* Sessions */}
       <ScrollArea className="flex-1">
-        <div className="p-2 space-y-1">
+        <div className="p-2">
           {isLoading ? (
-            <div className="text-center text-gray-500 py-8">
-              Loading sessions...
+            <div className="space-y-1.5 px-1 py-2">
+              {[...Array(4)].map((_, i) => (
+                <div key={i} className="h-12 bg-zinc-50 rounded-lg animate-pulse" />
+              ))}
             </div>
           ) : sessions.length === 0 ? (
-            <div className="text-center text-gray-500 py-8">
-              <MessageSquare className="w-8 h-8 mx-auto mb-2 opacity-50" />
-              <p>No chat sessions yet</p>
-              <p className="text-sm">Start a new conversation</p>
+            <div className="text-center py-10 px-4">
+              <div className="w-9 h-9 rounded-xl bg-zinc-50 flex items-center justify-center mx-auto mb-3">
+                <MessageSquare className="w-4.5 h-4.5 text-zinc-300" />
+              </div>
+              <p className="text-xs font-medium text-zinc-500">No conversations yet</p>
+              <p className="text-xs text-zinc-400 mt-0.5">Start a new chat above</p>
             </div>
           ) : (
             sessions.map((session) => (
               <div
                 key={session.id}
-                className={`
-                  group rounded-lg p-3 cursor-pointer transition-colors border
-                  ${currentSessionId === session.id 
-                    ? "bg-carlisle-blue-light border-carlisle-primary/20 shadow-sm" 
-                    : "hover:bg-gray-50 border-transparent"
-                  }
-                `}
+                className={`group rounded-lg px-3 py-2.5 cursor-pointer transition-colors mb-0.5 ${
+                  currentSessionId === session.id
+                    ? "bg-blue-50 border border-blue-100"
+                    : "hover:bg-zinc-50 border border-transparent"
+                }`}
                 onClick={() => onSessionSelect(session.id)}
               >
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between gap-2">
                   <div className="flex-1 min-w-0">
                     {editingSessionId === session.id ? (
                       <Input
@@ -169,55 +144,48 @@ export function ChatHistorySidebar({
                           if (e.key === "Enter") handleSaveEdit();
                           if (e.key === "Escape") handleCancelEdit();
                         }}
-                        className="bg-white border-gray-300 text-gray-900 text-sm"
+                        className="h-6 text-xs px-1.5 bg-white"
                         autoFocus
                         onClick={(e) => e.stopPropagation()}
                       />
                     ) : (
-                      <div>
-                        <p className="font-medium text-sm truncate text-gray-900">
-                          {truncateTitle(session.title)}
+                      <>
+                        <p className={`text-xs font-medium truncate ${
+                          currentSessionId === session.id ? "text-primary" : "text-zinc-700"
+                        }`}>
+                          {session.title}
                         </p>
-                        <p className="text-xs text-gray-500 mt-1">
+                        <p className="text-xs text-zinc-400 mt-0.5">
                           {format(new Date(session.updatedAt), "MMM d, h:mm a")}
                         </p>
-                      </div>
+                      </>
                     )}
                   </div>
-                  
+
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="opacity-0 group-hover:opacity-100 text-gray-500 hover:text-gray-700 p-1"
+                        className="opacity-0 group-hover:opacity-100 h-6 w-6 p-0 text-zinc-400 hover:text-zinc-700 shrink-0"
                         onClick={(e) => e.stopPropagation()}
                       >
-                        <MoreVertical className="w-4 h-4" />
+                        <MoreVertical className="w-3.5 h-3.5" />
                       </Button>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent
-                      align="end"
-                      className="bg-white border-gray-200"
-                    >
+                    <DropdownMenuContent align="end" className="w-36">
                       <DropdownMenuItem
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleEditSession(session);
-                        }}
-                        className="text-gray-700 hover:bg-gray-50"
+                        onClick={(e) => { e.stopPropagation(); handleEditSession(session); }}
+                        className="text-xs gap-2"
                       >
-                        <Edit2 className="w-4 h-4 mr-2" />
+                        <Edit2 className="w-3.5 h-3.5" />
                         Rename
                       </DropdownMenuItem>
                       <DropdownMenuItem
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleDeleteSession(session.id);
-                        }}
-                        className="text-red-600 hover:bg-red-50"
+                        onClick={(e) => { e.stopPropagation(); handleDeleteSession(session.id); }}
+                        className="text-xs gap-2 text-red-600 focus:text-red-600"
                       >
-                        <Trash2 className="w-4 h-4 mr-2" />
+                        <Trash2 className="w-3.5 h-3.5" />
                         Delete
                       </DropdownMenuItem>
                     </DropdownMenuContent>
@@ -230,13 +198,10 @@ export function ChatHistorySidebar({
       </ScrollArea>
 
       {/* Footer */}
-      <div className="p-4 border-t border-gray-200 bg-gray-50">
-        <div className="flex items-center justify-between text-xs text-gray-600">
-          <span>{sessions.length} conversations</span>
-          <Badge variant="outline" className="text-xs text-gray-600 border-gray-300">
-            Product Assistant
-          </Badge>
-        </div>
+      <div className="px-4 py-3 border-t border-zinc-100 shrink-0">
+        <p className="text-xs text-zinc-400">
+          {sessions.length} conversation{sessions.length !== 1 ? "s" : ""}
+        </p>
       </div>
     </div>
   );

@@ -3,13 +3,28 @@ import { createServer, type Server } from "http";
 import multer from "multer";
 import path from "path";
 import fs from "fs";
+import { nanoid } from "nanoid";
+import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { storage } from "./storage";
 import { ragService } from "./services/rag";
 import { pdfProcessor } from "./services/pdf";
+import { uploadToS3, getPresignedUrl } from "./services/s3";
+import { getProductLibrary } from "./services/vectorSearch";
 import { insertDocumentSchema, insertChatSessionSchema, insertChatMessageSchema } from "@shared/schema";
 
-const upload = multer({ 
-  dest: 'uploads/',
+const s3 = new S3Client({
+  region: process.env.AWS_REGION!,
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
+  },
+});
+const BUCKET = process.env.AWS_S3_BUCKET_NAME!;
+
+// Use memory storage so we can stream the buffer directly to S3
+const upload = multer({
+  storage: multer.memoryStorage(),
   fileFilter: (req, file, cb) => {
     if (file.mimetype === 'application/pdf') {
       cb(null, true);
@@ -23,8 +38,53 @@ const upload = multer({
 });
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  // Initialize the product database
-  await ragService.initializeProductDatabase();
+
+  // ── Catalog endpoints ────────────────────────────────────────────────────────
+
+  // GET /api/catalog — all 1,249 product sheets from document_chunks (with optional ?q= filter)
+  app.get("/api/catalog", async (req, res) => {
+    try {
+      const products = await getProductLibrary();
+      const q = (req.query.q as string | undefined)?.toLowerCase();
+      const result = q
+        ? products.filter(
+            (p) =>
+              p.product_name.toLowerCase().includes(q) ||
+              p.manufacturer.toLowerCase().includes(q) ||
+              p.product_category.toLowerCase().includes(q)
+          )
+        : products;
+      res.json(result);
+    } catch (error) {
+      res.status(500).json({ error: error instanceof Error ? error.message : "Unknown error" });
+    }
+  });
+
+  // GET /api/catalog/pdf?key=raw-docs/... — presigned URL for product PDF (MUST be before /:id)
+  app.get("/api/catalog/pdf", async (req, res) => {
+    try {
+      const key = req.query.key as string;
+      if (!key) return res.status(400).json({ error: "key param required" });
+      const command = new GetObjectCommand({ Bucket: BUCKET, Key: key });
+      const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
+      res.json({ url, expiresIn: 3600 });
+    } catch (error) {
+      res.status(500).json({ error: error instanceof Error ? error.message : "Unknown error" });
+    }
+  });
+
+  // GET /api/catalog/:id — single product (MUST be after /pdf)
+  app.get("/api/catalog/:id", async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      const products = await getProductLibrary();
+      const product = products.find((p) => p.id === id);
+      if (!product) return res.status(404).json({ error: "Product not found" });
+      res.json(product);
+    } catch (error) {
+      res.status(500).json({ error: error instanceof Error ? error.message : "Unknown error" });
+    }
+  });
 
   // Get all documents (assembly letters)
   app.get("/api/documents", async (req, res) => {
@@ -90,7 +150,28 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Serve PDF files directly
+  // Generate a pre-signed S3 download URL for an uploaded document
+  app.get("/api/documents/:id/download", async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      const document = await storage.getDocument(id);
+      if (!document) {
+        return res.status(404).json({ error: "Document not found" });
+      }
+
+      const meta = document.metadata as Record<string, any>;
+      if (!meta?.s3Key) {
+        return res.status(400).json({ error: "Document is not hosted on S3" });
+      }
+
+      const url = await getPresignedUrl(meta.s3Key, 3600);
+      res.json({ url, expiresIn: 3600 });
+    } catch (error) {
+      res.status(500).json({ error: error instanceof Error ? error.message : 'Unknown error' });
+    }
+  });
+
+  // Serve PDF files directly (pre-loaded local product sheets)
   app.get("/api/documents/pdf/:filename", async (req, res) => {
     try {
       const filename = decodeURIComponent(req.params.filename);
@@ -137,15 +218,19 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       for (const file of files) {
         try {
-          // Process PDF
-          const pdfResult = await pdfProcessor.processFile(file.path, file.originalname);
-          
-          // Store document
+          // Extract text from buffer (no local disk needed)
+          const pdfResult = await pdfProcessor.extractTextFromBuffer(file.buffer, file.originalname);
+
+          // Upload original PDF to S3
+          const s3Key = `product-sheets/${nanoid()}-${file.originalname.replace(/\s+/g, '_')}`;
+          await uploadToS3(file.buffer, s3Key, 'application/pdf');
+
+          // Store document with s3Key in metadata
           const documentData = {
-            filename: file.filename,
+            filename: s3Key,
             originalName: file.originalname,
             content: pdfResult.text,
-            metadata: pdfResult.metadata
+            metadata: { ...pdfResult.metadata, s3Key }
           };
 
           const validation = insertDocumentSchema.safeParse(documentData);

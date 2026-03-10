@@ -1,7 +1,8 @@
 import OpenAI from "openai";
+import type { VectorChunk } from './vectorSearch';
 
 // the newest OpenAI model is "gpt-4o" which was released May 13, 2024. do not change this unless explicitly requested by the user
-const openai = new OpenAI({ 
+const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY || process.env.OPENAI_API_KEY_ENV_VAR || ""
 });
 
@@ -228,6 +229,67 @@ JSON.stringify(context.documents.filter(doc => doc.filename.includes('AL_') || d
 
     // Sort by relevance (product data first) and return top 5
     return sources.sort((a, b) => b.relevance - a.relevance).slice(0, 5);
+  }
+
+  async generateFromChunks(
+    query: string,
+    chunks: VectorChunk[]
+  ): Promise<AIResponse> {
+    const contextBlock = chunks
+      .map((c, i) => {
+        const meta = [
+          c.product_name && `Product: ${c.product_name}`,
+          c.manufacturer && `Manufacturer: ${c.manufacturer}`,
+          c.product_category && `Category: ${c.product_category}`,
+          c.section_type && `Section: ${c.section_type}`,
+          `Relevance: ${(c.similarity * 100).toFixed(1)}%`,
+        ]
+          .filter(Boolean)
+          .join(' | ');
+        return `[${i + 1}] ${meta}\n${c.chunk_text}`;
+      })
+      .join('\n\n---\n\n');
+
+    const systemPrompt = `You are a specialized roofing product expert with access to technical data sheets from leading manufacturers (Carlisle, Versico, Owens Corning, GAF, Johns Manville, Firestone, and others).
+
+Your role:
+1. Answer questions about roofing systems (TPO, EPDM, PVC, insulation, fasteners, accessories)
+2. Cite specific product specs, dimensions, R-values, wind speeds, warranty terms, installation requirements
+3. Compare products across manufacturers when relevant
+4. Reference the numbered context chunks below using [1], [2], etc.
+
+CONTEXT (retrieved by semantic search, ranked by relevance):
+${contextBlock}
+
+Guidelines:
+- Base answers primarily on the context above
+- If context doesn't fully answer the question, say so and share what you do know
+- Always cite your sources using [N] notation
+- For spec comparisons, use tables when helpful
+- If asked about a product not in the context, acknowledge the gap`;
+
+    const response = await openai.chat.completions.create({
+      model: "gpt-4o",
+      messages: [
+        { role: "system", content: systemPrompt },
+        { role: "user", content: query },
+      ],
+      temperature: 0.4,
+      max_tokens: 1500,
+    });
+
+    const content = response.choices[0].message.content || "";
+
+    // Build sources from the chunks that were actually retrieved
+    const sources = chunks.slice(0, 5).map((c, i) => ({
+      type: 'product' as const,
+      id: i + 1,
+      title: [c.manufacturer, c.product_name].filter(Boolean).join(' — ') || c.source_file || 'Unknown',
+      relevance: c.similarity,
+      excerpt: c.chunk_text.substring(0, 200) + (c.chunk_text.length > 200 ? '…' : ''),
+    }));
+
+    return { content, sources };
   }
 
   async summarizeDocument(content: string, filename: string): Promise<string> {

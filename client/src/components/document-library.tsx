@@ -1,145 +1,121 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
-import { useProducts } from "@/hooks/use-products";
-import { ProductModal } from "./product-modal";
-import { X, Search, FileText, Building, Shield, Wind } from "lucide-react";
-import pdfIcon from "@assets/image_1754431336073.png";
-import { type ProductData } from "@shared/schema";
+import { X, Search, FileText } from "lucide-react";
+import { useCatalog, type CatalogProduct } from "@/hooks/use-catalog";
+import { CatalogProductModal } from "./catalog-product-modal";
 
 interface DocumentLibraryProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
+const CATEGORY_COLORS: Record<string, string> = {
+  membrane:   "bg-blue-50 text-blue-700 border-blue-200",
+  insulation: "bg-amber-50 text-amber-700 border-amber-200",
+  fastener:   "bg-violet-50 text-violet-700 border-violet-200",
+  adhesive:   "bg-rose-50 text-rose-700 border-rose-200",
+  primer:     "bg-teal-50 text-teal-700 border-teal-200",
+  accessory:  "bg-green-50 text-green-700 border-green-200",
+};
+
+const categoryColor = (cat: string) =>
+  CATEGORY_COLORS[cat?.toLowerCase()] ?? "bg-zinc-100 text-zinc-600 border-zinc-200";
+
 export function DocumentLibrary({ isOpen, onClose }: DocumentLibraryProps) {
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedProduct, setSelectedProduct] = useState<ProductData | null>(null);
-  
-  const { products, isLoading } = useProducts();
+  const [selectedProduct, setSelectedProduct] = useState<CatalogProduct | null>(null);
 
-  const filteredProducts = products?.filter((product) =>
-    product.projectName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    product.manufacturer.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    product.system.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    product.membraneType.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    (product.location && product.location.toLowerCase().includes(searchQuery.toLowerCase()))
-  ) || [];
-
-  const getSystemColor = (system: string) => {
-    switch (system.toLowerCase()) {
-      case 'tpo': return "bg-carlisle-blue-light text-carlisle-primary";
-      case 'epdm': return "bg-orange-100 text-orange-700";
-      case 'pvc': return "bg-green-100 text-green-700";
-      default: return "bg-gray-100 text-carlisle-navy";
-    }
-  };
+  const { products, isLoading } = useCatalog(searchQuery || undefined);
 
   return (
     <>
-      <aside className="w-full h-full bg-white border-r border-gray-200 flex flex-col min-h-0">
-        {/* Library Header */}
-        <div className="p-4 border-b border-gray-200 bg-gray-50">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-semibold text-carlisle-navy">Product Library</h2>
+      <aside className="w-full h-full flex flex-col min-h-0">
+        {/* Header */}
+        <div className="px-4 py-3.5 border-b border-zinc-100 shrink-0">
+          <div className="flex items-center justify-between mb-1">
+            <span className="text-sm font-semibold text-zinc-800 tracking-tight">
+              Product Library
+            </span>
             <Button
               variant="ghost"
               size="sm"
               onClick={onClose}
-              className="lg:hidden"
+              className="h-7 w-7 p-0 text-zinc-400 hover:text-zinc-700 lg:hidden"
             >
-              <X className="w-4 h-4" />
+              <X className="w-3.5 h-3.5" />
             </Button>
           </div>
-
-          <div className="mb-4">
-            <p className="text-sm text-gray-600 mb-2">
-              Browse roofing system specifications from zip file product sheets
-            </p>
-            <div className="flex gap-2">
-              <Badge variant="outline" className="text-xs">
-                <FileText className="w-3 h-3 mr-1" />
-                {products.length} Product Sheets
-              </Badge>
-            </div>
-          </div>
-
-          {/* Search */}
+          <p className="text-xs text-zinc-400 mb-3">
+            {isLoading ? "Loading…" : `${products.length} product sheets`}
+          </p>
           <div className="relative">
-            <Search className="absolute left-3 top-2.5 w-4 h-4 text-gray-400" />
+            <Search className="absolute left-2.5 top-2.5 w-3.5 h-3.5 text-zinc-400 pointer-events-none" />
             <Input
-              placeholder="Search products..."
+              placeholder="Search products, manufacturers…"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10"
+              className="pl-8 h-8 text-xs bg-zinc-50 border-zinc-200 focus-visible:ring-1 focus-visible:ring-primary/30 focus-visible:border-primary/50"
             />
           </div>
         </div>
 
         {/* Product List */}
-        <div className="flex-1 overflow-y-auto p-4 space-y-3 min-h-0">
+        <div className="flex-1 overflow-y-auto min-h-0">
           {isLoading ? (
-            <div className="space-y-3">
-              {[...Array(3)].map((_, i) => (
-                <div key={i} className="bg-gray-50 rounded-lg p-3 animate-pulse">
-                  <div className="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
-                  <div className="h-3 bg-gray-200 rounded w-1/2"></div>
+            <div className="p-3 space-y-px">
+              {[...Array(8)].map((_, i) => (
+                <div key={i} className="px-3 py-3 animate-pulse">
+                  <div className="h-3 bg-zinc-100 rounded w-3/4 mb-2" />
+                  <div className="h-2.5 bg-zinc-100 rounded w-1/2" />
                 </div>
               ))}
             </div>
-          ) : filteredProducts.length === 0 ? (
-            <div className="text-center py-8 text-gray-500">
-              <FileText className="w-12 h-12 mx-auto mb-2 text-gray-300" />
-              <p>No products found</p>
-              <p className="text-sm">Try adjusting your search terms</p>
+          ) : products.length === 0 ? (
+            <div className="text-center py-10 px-4">
+              <div className="w-9 h-9 rounded-xl bg-zinc-50 flex items-center justify-center mx-auto mb-3">
+                <FileText className="w-4.5 h-4.5 text-zinc-300" />
+              </div>
+              <p className="text-xs font-medium text-zinc-500">No results found</p>
+              <p className="text-xs text-zinc-400 mt-0.5">Try different search terms</p>
             </div>
           ) : (
-            filteredProducts.map((product) => (
-              <Card
-                key={product.id}
-                className="cursor-pointer hover:shadow-md transition-shadow"
-                onClick={() => setSelectedProduct(product)}
-              >
-                <CardContent className="p-3">
-                  <div className="flex items-start space-x-3">
-                    <img src={pdfIcon} alt="PDF" className="w-5 h-5 mt-1 flex-shrink-0" />
+            <div className="divide-y divide-zinc-100">
+              {products.map((product) => (
+                <button
+                  key={product.id}
+                  className="w-full text-left px-4 py-3 hover:bg-zinc-50 transition-colors group"
+                  onClick={() => setSelectedProduct(product)}
+                >
+                  <div className="flex items-start gap-2.5">
+                    <div className="w-7 h-7 rounded-lg bg-zinc-100 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-zinc-200 transition-colors">
+                      <FileText className="w-3.5 h-3.5 text-zinc-400" />
+                    </div>
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-medium text-gray-900 truncate">
-                        {product.projectName}
-                      </h3>
-                      <p className="text-sm text-gray-500 mt-1">
-                        {product.manufacturer} • {product.location}
+                      <p className="text-xs font-medium text-zinc-800 truncate leading-snug">
+                        {product.product_name}
                       </p>
-                      <div className="flex items-center flex-wrap gap-2 mt-2">
-                        <Badge variant="outline" className="text-gray-600 border-gray-200">
-                          {product.manufacturer}
-                        </Badge>
-                        <Badge variant="outline" className="text-purple-600 border-purple-200">
-                          {product.specifications?.category || 
-                           (product.membraneType.includes('Primer') ? 'Primer' :
-                            product.membraneType.includes('Walkway') ? 'Walkway' :
-                            product.membraneType.includes('Adhesive') ? 'Adhesive' :
-                            product.membraneType.includes('Sealant') ? 'Sealant' :
-                            product.membraneType.includes('Fastener') ? 'Fastener' :
-                            product.membraneType.includes('Membrane') ? 'Membrane' : 'Other')}
-                        </Badge>
-                        <Badge className={getSystemColor(product.system)}>
-                          {product.system}
-                        </Badge>
+                      <p className="text-xs text-zinc-400 mt-0.5 truncate">
+                        {product.manufacturer}
+                      </p>
+                      <div className="flex items-center flex-wrap gap-1.5 mt-1.5">
+                        <span className={`inline-flex text-[10px] font-medium px-1.5 py-0.5 rounded border ${categoryColor(product.product_category)}`}>
+                          {product.product_category}
+                        </span>
+                        <span className="inline-flex text-[10px] text-zinc-400 border border-zinc-200 px-1.5 py-0.5 rounded">
+                          {product.document_type}
+                        </span>
                       </div>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
-            ))
+                </button>
+              ))}
+            </div>
           )}
         </div>
       </aside>
 
-      {/* Product Modal */}
-      <ProductModal
+      <CatalogProductModal
         product={selectedProduct}
         onClose={() => setSelectedProduct(null)}
       />
