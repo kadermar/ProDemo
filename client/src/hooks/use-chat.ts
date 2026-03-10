@@ -21,10 +21,30 @@ export function useChat(sessionId?: number) {
       });
       return response;
     },
+    onMutate: async (content: string) => {
+      await queryClient.cancelQueries({ queryKey: ["/api/chat/messages", sessionId] });
+      const previous = queryClient.getQueryData(["/api/chat/messages", sessionId]);
+      const optimisticMessage: ChatMessage = {
+        id: Date.now(),
+        content,
+        role: "user",
+        sessionId: sessionId ?? null,
+        sources: null,
+        createdAt: new Date(),
+      } as ChatMessage;
+      queryClient.setQueryData(
+        ["/api/chat/messages", sessionId],
+        (old: ChatMessage[] = []) => [...old, optimisticMessage]
+      );
+      return { previous };
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/chat/messages", sessionId] });
     },
-    onError: (error) => {
+    onError: (error, _content, context: any) => {
+      if (context?.previous) {
+        queryClient.setQueryData(["/api/chat/messages", sessionId], context.previous);
+      }
       toast({
         title: "Error sending message",
         description: error.message,
