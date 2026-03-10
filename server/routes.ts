@@ -18,15 +18,15 @@ const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
 function chatRateLimit(req: Request, res: Response, next: NextFunction) {
   const ip = req.headers["x-forwarded-for"]?.toString().split(",")[0].trim() || req.socket.remoteAddress || "unknown";
   const now = Date.now();
-  const windowMs = 60 * 60 * 1000; // 1 hour
-  const limit = 20;
+  const windowMs = 60 * 1000; // 1 minute
+  const limit = 5;
   const entry = rateLimitMap.get(ip);
   if (!entry || now > entry.resetAt) {
     rateLimitMap.set(ip, { count: 1, resetAt: now + windowMs });
     return next();
   }
   if (entry.count >= limit) {
-    return res.status(429).json({ error: "Rate limit exceeded. Maximum 20 messages per hour." });
+    return res.status(429).json({ error: "Rate limit exceeded. Maximum 5 messages per minute." });
   }
   entry.count++;
   next();
