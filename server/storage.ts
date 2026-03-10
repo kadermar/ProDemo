@@ -7,6 +7,7 @@ export interface IStorage {
   createDocument(document: InsertDocument): Promise<Document>;
   getDocuments(): Promise<Document[]>;
   getDocument(id: number): Promise<Document | undefined>;
+  getDocumentByOriginalName(originalName: string): Promise<Document | undefined>;
   searchDocuments(query: string): Promise<Document[]>;
   
   // Chat session operations
@@ -68,6 +69,12 @@ export class MemStorage implements IStorage {
 
   async getDocument(id: number): Promise<Document | undefined> {
     return this.documents.get(id);
+  }
+
+  async getDocumentByOriginalName(originalName: string): Promise<Document | undefined> {
+    return Array.from(this.documents.values())
+      .sort((a, b) => b.uploadedAt.getTime() - a.uploadedAt.getTime())
+      .find(d => d.originalName === originalName);
   }
 
   async searchDocuments(query: string): Promise<Document[]> {
@@ -215,6 +222,16 @@ export class DatabaseStorage implements IStorage {
       .from(documents)
       .where(eq(documents.id, id));
     return document || undefined;
+  }
+
+  async getDocumentByOriginalName(originalName: string): Promise<Document | undefined> {
+    const [doc] = await db
+      .select()
+      .from(documents)
+      .where(eq(documents.originalName, originalName))
+      .orderBy(desc(documents.uploadedAt))
+      .limit(1);
+    return doc || undefined;
   }
 
   async searchDocuments(query: string): Promise<Document[]> {
@@ -378,4 +395,4 @@ export class DatabaseStorage implements IStorage {
   }
 }
 
-export const storage = new MemStorage();
+export const storage = new DatabaseStorage();

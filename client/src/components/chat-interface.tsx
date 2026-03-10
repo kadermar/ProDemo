@@ -89,7 +89,7 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
 
           const fileMessage = message
             ? `${message}\n\n[Attached files: ${fileNames}]`
-            : `Please analyze the uploaded files: ${fileNames}`;
+            : `Analyze this assembly letter and generate a compliance checklist with job requirements, installation steps, and recommended products. Cross-reference any product specs against current manufacturer data.\n\n[Attached files: ${fileNames}]`;
           await sendMessage(fileMessage);
         } catch (error: any) {
           toast({ title: "Upload failed", description: error.message, variant: "destructive" });
@@ -226,7 +226,7 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
               ref={textareaRef}
               placeholder={
                 stagedFiles.length > 0
-                  ? "Ask about attached files, or send to analyze..."
+                  ? "Ask a question, or press Send to analyze the assembly letter..."
                   : "Ask about specifications, warranties, membrane types..."
               }
               value={input}

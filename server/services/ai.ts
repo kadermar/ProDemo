@@ -299,6 +299,83 @@ Guidelines:
     return { content, sources };
   }
 
+  async analyzeAssemblyLetter(
+    docText: string,
+    filename: string,
+    productChunks: VectorChunk[],
+    conversationHistory: Array<{ role: string; content: string }> = []
+  ): Promise<AIResponse> {
+    const productContext = productChunks
+      .map((c, i) => {
+        const meta = [
+          c.product_name && `Product: ${c.product_name}`,
+          c.manufacturer && `Manufacturer: ${c.manufacturer}`,
+          c.product_category && `Category: ${c.product_category}`,
+          c.section_type && `Section: ${c.section_type}`,
+          `Relevance: ${(c.similarity * 100).toFixed(1)}%`,
+        ].filter(Boolean).join(' | ');
+        return `[${i + 1}] ${meta}\n${c.chunk_text}`;
+      }).join('\n\n---\n\n');
+
+    const systemPrompt = `You are a specialized roofing systems analyst. Parse the assembly letter and produce three sections.
+
+## Project Summary
+2–4 bullets: project name/location, membrane system, attachment method, warranty requirement.
+
+## Compliance Checklist
+A numbered, field-ready checklist a crew foreman can use on-site. Each item must:
+- Be a concrete, actionable task
+- Reference the specific spec from the assembly letter that requires it
+- Include the matching product from the data sheets below using [N] citation wherever one applies
+- Cover the full scope: substrate prep → insulation → membrane → fastening/adhesion → seaming → flashing → penetrations → QA inspection points → warranty documentation
+
+Format each item as:
+☐ [Task] — *Spec: [requirement from letter]* | *Product: [Manufacturer — Product Name [N]]*
+
+If no product from the data sheets matches a required spec, write "Product: see project specs".
+
+## Spec Discrepancies
+Cross-reference every product name, model number, thickness, R-value, warranty term, and spec value mentioned in the assembly letter against the current manufacturer data sheets provided below. For each discrepancy found, list:
+- **What the letter specifies** (exact quote or value)
+- **What the current published spec shows** (from the data sheet, with [N] citation)
+- **Risk level**: High (spec value differs and affects performance/warranty), Medium (product name/SKU may be outdated), or Low (minor wording difference)
+
+If no discrepancies are found, write "No discrepancies detected against available product data."
+
+PRODUCT DATA SHEETS (retrieved by semantic search):
+${productContext}
+
+ASSEMBLY LETTER TEXT:
+${docText.substring(0, 12000)}`;
+
+    const history = conversationHistory.slice(-6).map(m => ({
+      role: m.role as 'user' | 'assistant',
+      content: m.content,
+    }));
+
+    const response = await openai.chat.completions.create({
+      model: 'gpt-4.1',
+      messages: [
+        { role: 'system', content: systemPrompt },
+        ...history,
+        { role: 'user', content: `Analyze assembly letter: ${filename}` },
+      ],
+      temperature: 0.3,
+      max_tokens: 1500,
+    });
+
+    const content = response.choices[0].message.content || '';
+    const sources = productChunks.slice(0, 5).map((c, i) => ({
+      type: 'product' as const,
+      id: i + 1,
+      title: [c.manufacturer, c.product_name].filter(Boolean).join(' — ') || c.source_file || 'Unknown',
+      relevance: c.similarity,
+      excerpt: c.chunk_text.substring(0, 200) + (c.chunk_text.length > 200 ? '…' : ''),
+    }));
+
+    return { content, sources };
+  }
+
   async summarizeDocument(content: string, filename: string): Promise<string> {
     try {
       const response = await openai.chat.completions.create({

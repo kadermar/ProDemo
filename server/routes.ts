@@ -411,8 +411,30 @@ export async function registerRoutes(app: Express): Promise<Server> {
         ? (await storage.getChatMessages(sessionId)).filter(m => m.id !== userMessage.id)
         : [];
 
+      // Resolve uploaded document content from DB
+      let uploadedDocText: string | undefined;
+      let uploadedDocFilename: string | undefined;
+      const attachedMatch = content.match(/\[Attached files:\s*([^\]]+)\]/);
+      if (attachedMatch) {
+        const firstName = attachedMatch[1].split(',')[0].trim();
+        if (firstName) {
+          try {
+            const doc = await storage.getDocumentByOriginalName(firstName);
+            if (doc?.content) {
+              uploadedDocText = doc.content;
+              uploadedDocFilename = doc.originalName;
+              console.log(`[CONVERSATION LOG] Resolved uploaded doc: ${firstName} (ID: ${doc.id})`);
+            } else {
+              console.warn(`[CONVERSATION LOG] Could not find uploaded doc in DB for: ${firstName}`);
+            }
+          } catch (err) {
+            console.error(`[CONVERSATION LOG] Error resolving uploaded doc:`, err);
+          }
+        }
+      }
+
       console.log(`[CONVERSATION LOG] Include uploaded docs: ${includeUploadedDocs}`);
-      const ragResponse = await ragService.searchAndGenerate(content, includeUploadedDocs, previousMessages);
+      const ragResponse = await ragService.searchAndGenerate(content, includeUploadedDocs, previousMessages, uploadedDocText, uploadedDocFilename);
 
       console.log(`[CONVERSATION LOG] AI Response generated`);
       console.log(`[CONVERSATION LOG] Sources used: ${ragResponse.sources ? JSON.stringify(ragResponse.sources.map(s => s.title)) : 'None'}`);
