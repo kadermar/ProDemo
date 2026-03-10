@@ -1,8 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { createRequire } from 'module';
-const require = createRequire(import.meta.url);
-const pdfParse = require('pdf-parse');
+import pdfParse from 'pdf-parse';
 
 export interface PDFProcessingResult {
   text: string;
