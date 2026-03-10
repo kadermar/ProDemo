@@ -35,6 +35,8 @@ export interface ProductSheet {
 }
 
 let productLibraryCache: ProductSheet[] | null = null;
+// Invalidate cache every hour so name/type fixes are picked up
+setInterval(() => { productLibraryCache = null; }, 60 * 60 * 1000);
 
 export async function getProductLibrary(): Promise<ProductSheet[]> {
   if (productLibraryCache) return productLibraryCache;
@@ -42,12 +44,21 @@ export async function getProductLibrary(): Promise<ProductSheet[]> {
   const result = await pool.query(`
     SELECT
       ROW_NUMBER() OVER (ORDER BY source_file) AS id,
-      MIN(product_name)      AS product_name,
-      MIN(manufacturer)      AS manufacturer,
-      MIN(product_category)  AS product_category,
-      MIN(document_type)     AS document_type,
+      REGEXP_REPLACE(
+        MIN(product_name),
+        '^(?:material|Material)\s+(?:name|Name)\s*:\s*',
+        ''
+      ) AS product_name,
+      MIN(manufacturer) AS manufacturer,
+      MIN(product_category) AS product_category,
+      CASE
+        WHEN MIN(document_type) ILIKE '%safety%'
+          OR bool_or(chunk_text ILIKE '%safety data sheet%')
+        THEN 'safety data sheet'
+        ELSE MIN(document_type)
+      END AS document_type,
       source_file,
-      COUNT(*)               AS chunk_count
+      COUNT(*) AS chunk_count
     FROM document_chunks
     WHERE source_file IS NOT NULL
     GROUP BY source_file
