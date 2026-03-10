@@ -48,16 +48,6 @@ export function ChatInterface({ sessionId }: ChatInterfaceProps) {
   };
 
   useEffect(() => {
-    const clearChatOnLoad = async () => {
-      try {
-        await fetch("/api/chat/clear", { method: "POST", credentials: "include" });
-        clearMessages();
-      } catch {}
-    };
-    clearChatOnLoad();
-  }, [clearMessages]);
-
-  useEffect(() => {
     scrollToBottom();
     if (messages.length === 0) setShowQuickQueries(true);
   }, [messages]);
