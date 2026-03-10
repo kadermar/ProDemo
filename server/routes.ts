@@ -387,8 +387,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
                                   content.includes('PDF') ||
                                   content.includes('based on this');
       
+      // Fetch previous messages for conversation context
+      const previousMessages = sessionId
+        ? (await storage.getChatMessages(sessionId)).filter(m => m.id !== userMessage.id)
+        : [];
+
       console.log(`[CONVERSATION LOG] Include uploaded docs: ${includeUploadedDocs}`);
-      const ragResponse = await ragService.searchAndGenerate(content, includeUploadedDocs);
+      const ragResponse = await ragService.searchAndGenerate(content, includeUploadedDocs, previousMessages);
 
       console.log(`[CONVERSATION LOG] AI Response generated`);
       console.log(`[CONVERSATION LOG] Sources used: ${ragResponse.sources ? JSON.stringify(ragResponse.sources.map(s => s.title)) : 'None'}`);

@@ -4,7 +4,8 @@ import { aiService } from './ai';
 export class RAGService {
   async searchAndGenerate(
     query: string,
-    _includeUploadedDocs: boolean = false
+    _includeUploadedDocs: boolean = false,
+    conversationHistory: Array<{ role: string; content: string }> = []
   ): Promise<{
     response: string;
     sources: Array<{
@@ -17,7 +18,7 @@ export class RAGService {
   }> {
     try {
       const chunks = await searchChunks(query, 8);
-      const aiResponse = await aiService.generateFromChunks(query, chunks);
+      const aiResponse = await aiService.generateFromChunks(query, chunks, conversationHistory);
       return {
         response: aiResponse.content,
         sources: aiResponse.sources,

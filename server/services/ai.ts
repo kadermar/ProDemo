@@ -233,7 +233,8 @@ JSON.stringify(context.documents.filter(doc => doc.filename.includes('AL_') || d
 
   async generateFromChunks(
     query: string,
-    chunks: VectorChunk[]
+    chunks: VectorChunk[],
+    conversationHistory: Array<{ role: string; content: string }> = []
   ): Promise<AIResponse> {
     const contextBlock = chunks
       .map((c, i) => {
@@ -268,10 +269,16 @@ Guidelines:
 - For spec comparisons, use tables when helpful
 - If asked about a product not in the context, acknowledge the gap`;
 
+    const history = conversationHistory.slice(-10).map(m => ({
+      role: m.role as 'user' | 'assistant',
+      content: m.content,
+    }));
+
     const response = await openai.chat.completions.create({
       model: "gpt-4o",
       messages: [
         { role: "system", content: systemPrompt },
+        ...history,
         { role: "user", content: query },
       ],
       temperature: 0.4,
