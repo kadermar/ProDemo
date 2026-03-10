@@ -145,7 +145,7 @@ JSON.stringify(context.documents.filter(doc => doc.filename.includes('AL_') || d
 })), null, 2) : ''}`;
 
       const response = await openai.chat.completions.create({
-        model: "gpt-4.1",
+        model: "gpt-5.1",
         messages: [
           { role: "system", content: systemPrompt },
           { role: "user", content: query }
@@ -275,7 +275,7 @@ Guidelines:
     }));
 
     const response = await openai.chat.completions.create({
-      model: "gpt-4.1",
+      model: "gpt-5.1",
       messages: [
         { role: "system", content: systemPrompt },
         ...history,
@@ -354,7 +354,7 @@ ${docText.substring(0, 12000)}`;
     }));
 
     const response = await openai.chat.completions.create({
-      model: 'gpt-4.1',
+      model: 'gpt-5.1',
       messages: [
         { role: 'system', content: systemPrompt },
         ...history,
@@ -379,7 +379,7 @@ ${docText.substring(0, 12000)}`;
   async summarizeDocument(content: string, filename: string): Promise<string> {
     try {
       const response = await openai.chat.completions.create({
-        model: "gpt-4.1",
+        model: "gpt-5.1",
         messages: [
           {
             role: "system",
