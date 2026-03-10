@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { X, Search, FileText, ShieldAlert } from "lucide-react";
+import { X, Search, FileText, ShieldAlert, BookOpen, MoreHorizontal } from "lucide-react";
 import { useCatalog, type CatalogProduct } from "@/hooks/use-catalog";
 import { CatalogProductModal } from "./catalog-product-modal";
 
@@ -22,10 +22,44 @@ const CATEGORY_COLORS: Record<string, string> = {
 const categoryColor = (cat: string) =>
   CATEGORY_COLORS[cat?.toLowerCase()] ?? "bg-zinc-100 text-zinc-600 border-zinc-200";
 
-const isSDS = (docType: string) =>
-  docType?.toLowerCase().includes("safety");
+const isSDS = (docType: string) => docType?.toLowerCase().includes("safety");
+const isTDB = (docType: string) => !isSDS(docType) && (docType?.toLowerCase().includes("technical") || docType?.toLowerCase().includes("bulletin"));
+const isPDS = (docType: string) => !isSDS(docType) && !isTDB(docType) && docType?.toLowerCase().includes("product");
+const isOther = (docType: string) => !isSDS(docType) && !isTDB(docType) && !isPDS(docType);
 
-type FilterTab = "all" | "product" | "sds";
+type FilterTab = "all" | "product" | "sds" | "tdb" | "other";
+
+const TAB_CONFIG: { id: FilterTab; label: string; activeClass: string }[] = [
+  { id: "all",     label: "All",            activeClass: "bg-zinc-800 text-white border-zinc-800" },
+  { id: "product", label: "Product Sheets", activeClass: "bg-zinc-800 text-white border-zinc-800" },
+  { id: "sds",     label: "Safety Data",    activeClass: "bg-orange-50 text-orange-700 border-orange-200" },
+  { id: "tdb",     label: "Tech Bulletins", activeClass: "bg-sky-50 text-sky-700 border-sky-200" },
+  { id: "other",   label: "Other",          activeClass: "bg-zinc-100 text-zinc-700 border-zinc-300" },
+];
+
+function docIcon(docType: string) {
+  if (isSDS(docType)) return <ShieldAlert className="w-3.5 h-3.5 text-orange-400" />;
+  if (isTDB(docType)) return <BookOpen className="w-3.5 h-3.5 text-sky-400" />;
+  return <FileText className="w-3.5 h-3.5 text-zinc-400" />;
+}
+
+function docIconBg(docType: string, hover: boolean) {
+  if (isSDS(docType)) return hover ? "bg-orange-100" : "bg-orange-50";
+  if (isTDB(docType)) return hover ? "bg-sky-100" : "bg-sky-50";
+  return hover ? "bg-zinc-200" : "bg-zinc-100";
+}
+
+function docTypeBadge(docType: string) {
+  if (isSDS(docType)) return "bg-orange-50 text-orange-600 border-orange-200";
+  if (isTDB(docType)) return "bg-sky-50 text-sky-600 border-sky-200";
+  return "text-zinc-400 border-zinc-200";
+}
+
+function docTypeLabel(docType: string) {
+  if (isSDS(docType)) return "Safety Data Sheet";
+  if (isTDB(docType)) return "Tech Bulletin";
+  return docType;
+}
 
 export function DocumentLibrary({ isOpen, onClose }: DocumentLibraryProps) {
   const [searchQuery, setSearchQuery] = useState("");
@@ -34,9 +68,15 @@ export function DocumentLibrary({ isOpen, onClose }: DocumentLibraryProps) {
 
   const { products: allProducts, isLoading } = useCatalog(searchQuery || undefined);
 
-  const products = allProducts.filter((p) => {
-    if (activeTab === "sds") return isSDS(p.document_type);
-    if (activeTab === "product") return !isSDS(p.document_type);
+  const sorted = [...allProducts].sort((a, b) =>
+    a.product_name.localeCompare(b.product_name, undefined, { sensitivity: "base" })
+  );
+
+  const products = sorted.filter((p) => {
+    if (activeTab === "sds")     return isSDS(p.document_type);
+    if (activeTab === "tdb")     return isTDB(p.document_type);
+    if (activeTab === "product") return isPDS(p.document_type);
+    if (activeTab === "other")   return isOther(p.document_type);
     return true;
   });
 
@@ -61,23 +101,24 @@ export function DocumentLibrary({ isOpen, onClose }: DocumentLibraryProps) {
           <p className="text-xs text-zinc-400 mb-2">
             {isLoading ? "Loading…" : `${products.length} sheets`}
           </p>
-          <div className="flex gap-1 mb-3">
-            {(["all", "product", "sds"] as FilterTab[]).map((tab) => (
+
+          {/* Filter tabs — wrap onto two rows if needed */}
+          <div className="flex flex-wrap gap-1 mb-3">
+            {TAB_CONFIG.map(({ id, label, activeClass }) => (
               <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
+                key={id}
+                onClick={() => setActiveTab(id)}
                 className={`text-[11px] px-2.5 py-1 rounded-full border transition-colors ${
-                  activeTab === tab
-                    ? tab === "sds"
-                      ? "bg-orange-50 text-orange-700 border-orange-200 font-medium"
-                      : "bg-zinc-800 text-white border-zinc-800 font-medium"
+                  activeTab === id
+                    ? `${activeClass} font-medium`
                     : "text-zinc-500 border-zinc-200 hover:border-zinc-300"
                 }`}
               >
-                {tab === "all" ? "All" : tab === "product" ? "Product Sheets" : "Safety Data"}
+                {label}
               </button>
             ))}
           </div>
+
           <div className="relative">
             <Search className="absolute left-2.5 top-2.5 w-3.5 h-3.5 text-zinc-400 pointer-events-none" />
             <Input
@@ -117,10 +158,8 @@ export function DocumentLibrary({ isOpen, onClose }: DocumentLibraryProps) {
                   onClick={() => setSelectedProduct(product)}
                 >
                   <div className="flex items-start gap-2.5">
-                    <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 mt-0.5 transition-colors ${isSDS(product.document_type) ? "bg-orange-50 group-hover:bg-orange-100" : "bg-zinc-100 group-hover:bg-zinc-200"}`}>
-                      {isSDS(product.document_type)
-                        ? <ShieldAlert className="w-3.5 h-3.5 text-orange-400" />
-                        : <FileText className="w-3.5 h-3.5 text-zinc-400" />}
+                    <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 mt-0.5 transition-colors ${docIconBg(product.document_type, false)} group-hover:${docIconBg(product.document_type, true)}`}>
+                      {docIcon(product.document_type)}
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-xs font-medium text-zinc-800 truncate leading-snug">
@@ -133,8 +172,8 @@ export function DocumentLibrary({ isOpen, onClose }: DocumentLibraryProps) {
                         <span className={`inline-flex text-[10px] font-medium px-1.5 py-0.5 rounded border ${categoryColor(product.product_category)}`}>
                           {product.product_category}
                         </span>
-                        <span className={`inline-flex text-[10px] px-1.5 py-0.5 rounded border ${isSDS(product.document_type) ? "bg-orange-50 text-orange-600 border-orange-200" : "text-zinc-400 border-zinc-200"}`}>
-                          {isSDS(product.document_type) ? "Safety Data Sheet" : product.document_type}
+                        <span className={`inline-flex text-[10px] px-1.5 py-0.5 rounded border ${docTypeBadge(product.document_type)}`}>
+                          {docTypeLabel(product.document_type)}
                         </span>
                       </div>
                     </div>
