@@ -38,41 +38,17 @@ let productLibraryCache: ProductSheet[] | null = null;
 // Invalidate cache every hour so name/type fixes are picked up
 setInterval(() => { productLibraryCache = null; }, 60 * 60 * 1000);
 
-// Strip "Material Name:" prefix from SDS product names
-function stripMaterialNamePrefix(name: string): string {
-  return name.replace(/^material\s+name\s*:\s*/i, '').trim();
-}
-
-// Detect spaced-out OCR text like "T E C H N I C A L  D A T A  B U L L E T I N"
-function isSpacedOutJunk(name: string): boolean {
-  const collapsed = name.replace(/\s+/g, '').toLowerCase();
-  return (
-    collapsed.includes('technicaldatabulletin') ||
-    collapsed.includes('safetydatasheet') ||
-    collapsed.includes('productdatasheet') ||
-    name.length > 4 && /^([a-z]\s){4,}/i.test(name)
-  );
-}
-
-// Extract a readable name from the source filename
+// Always derive product name from the PDF filename — more reliable than extracted metadata
 function nameFromFilename(sourceFile: string): string {
   const base = sourceFile.split('/').pop() ?? sourceFile;
-  // Remove extension
+  // Remove .pdf extension
   let name = base.replace(/\.pdf$/i, '');
-  // Remove leading numeric ID like "10001_en_" or "600491 " or "600491_"
+  // Remove leading numeric ID, optional language tag e.g. "10001_en_" / "600491 " / "600491_"
   name = name.replace(/^\d+[\s_]+(?:en[\s_]+)?/i, '');
-  // Remove trailing doc-type suffixes
-  name = name.replace(/[\s_]+(Product[\s_]+Data[\s_]+Sheet|PDS|PDSTDB|Safety[\s_]+Data[\s_]+Sheet|SDS|TDB|Technical[\s_]+Data[\s_]+Bulletin)[\s\w\-]*$/i, '');
-  // Replace underscores/hyphens with spaces and trim
+  // Remove trailing document-type suffixes (and anything after them)
+  name = name.replace(/[\s_]+(Product[\s_]+Data[\s_]+Sheet|Safety[\s_]+Data[\s_]+Sheet|Technical[\s_]+Data[\s_]+Bulletin|PDSTDB|PDSTD|PDS|SDS|TDB|PRESS|PUBLIC)[\s\w\-]*$/i, '');
+  // Replace underscores/hyphens with spaces and collapse whitespace
   return name.replace(/[_\-]+/g, ' ').replace(/\s+/g, ' ').trim();
-}
-
-function cleanProductName(rawName: string, sourceFile: string): string {
-  let name = stripMaterialNamePrefix(rawName);
-  if (!name || isSpacedOutJunk(name)) {
-    name = nameFromFilename(sourceFile);
-  }
-  return name || rawName;
 }
 
 export async function getProductLibrary(): Promise<ProductSheet[]> {
