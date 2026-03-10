@@ -1,4 +1,4 @@
-import type { Express } from "express";
+import type { Express, Request, Response, NextFunction } from "express";
 import { createServer, type Server } from "http";
 import multer from "multer";
 import path from "path";
@@ -12,6 +12,25 @@ import { pdfProcessor } from "./services/pdf";
 import { uploadToS3, getPresignedUrl } from "./services/s3";
 import { getProductLibrary } from "./services/vectorSearch";
 import { insertDocumentSchema, insertChatSessionSchema, insertChatMessageSchema } from "@shared/schema";
+
+// Simple in-memory rate limiter: 20 messages per IP per hour
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+function chatRateLimit(req: Request, res: Response, next: NextFunction) {
+  const ip = req.headers["x-forwarded-for"]?.toString().split(",")[0].trim() || req.socket.remoteAddress || "unknown";
+  const now = Date.now();
+  const windowMs = 60 * 60 * 1000; // 1 hour
+  const limit = 20;
+  const entry = rateLimitMap.get(ip);
+  if (!entry || now > entry.resetAt) {
+    rateLimitMap.set(ip, { count: 1, resetAt: now + windowMs });
+    return next();
+  }
+  if (entry.count >= limit) {
+    return res.status(429).json({ error: "Rate limit exceeded. Maximum 20 messages per hour." });
+  }
+  entry.count++;
+  next();
+}
 
 const s3 = new S3Client({
   region: process.env.AWS_REGION!,
@@ -356,7 +375,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Send chat message and get AI response
-  app.post("/api/chat/message", async (req, res) => {
+  app.post("/api/chat/message", chatRateLimit, async (req, res) => {
     try {
       const { content, sessionId } = req.body;
       if (!content) {
