@@ -76,7 +76,7 @@ export async function getProductLibrary(): Promise<ProductSheet[]> {
 
   productLibraryCache = result.rows.map((r: any) => ({
     id: Number(r.id),
-    product_name: cleanProductName(r.product_name ?? '', r.source_file ?? ''),
+    product_name: nameFromFilename(r.source_file ?? ''),
     manufacturer: r.manufacturer ?? '',
     product_category: r.product_category ?? '',
     document_type: r.document_type ?? '',
