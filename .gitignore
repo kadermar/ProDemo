@@ -7,7 +7,6 @@ vite.config.ts.*
 .env
 pipeline/.env
 .local/
-api/index.js
 __pycache__/
 pipeline/.venv/
 pipeline/logs/
