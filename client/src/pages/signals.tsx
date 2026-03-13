@@ -287,9 +287,13 @@ const highCount        = SIGNALS.filter(s => s.level === "high").length;
 const mediumCount      = SIGNALS.filter(s => s.level === "medium").length;
 const implementedCount = SIGNALS.filter(s => s.level === "implemented").length;
 const totalOpen        = SIGNALS.filter(s => s.level !== "implemented").length;
+const openCount        = SIGNALS.filter(s => s.status === "open").length;
+const reviewCount      = SIGNALS.filter(s => s.status === "review").length;
 
 const FILTERS = [
   "All",
+  `Open (${openCount})`,
+  `Under Review (${reviewCount})`,
   `Critical (${criticalCount})`,
   `High (${highCount})`,
   `Medium (${mediumCount})`,
@@ -298,10 +302,12 @@ const FILTERS = [
 
 function matchesFilter(sig: typeof SIGNALS[0], filter: string): boolean {
   if (filter === "All") return true;
-  if (filter.startsWith("Critical"))    return sig.level === "critical";
-  if (filter.startsWith("High"))        return sig.level === "high";
-  if (filter.startsWith("Medium"))      return sig.level === "medium";
-  if (filter.startsWith("Implemented")) return sig.level === "implemented";
+  if (filter.startsWith("Open"))         return sig.status === "open";
+  if (filter.startsWith("Under Review")) return sig.status === "review";
+  if (filter.startsWith("Critical"))     return sig.level === "critical";
+  if (filter.startsWith("High"))         return sig.level === "high";
+  if (filter.startsWith("Medium"))       return sig.level === "medium";
+  if (filter.startsWith("Implemented"))  return sig.level === "implemented";
   return true;
 }
 
