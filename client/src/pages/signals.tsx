@@ -133,7 +133,44 @@ const ROLE_IMPACT = [
   { name: "Sales Rep",        count: "2 signals", color: "#808488" },
 ];
 
-const FILTERS = ["All", "Critical (3)", "High (4)", "Assembly Letter", "Inspection", "Product Library"];
+const criticalCount    = SIGNALS.filter(s => s.level === "critical").length;
+const highCount        = SIGNALS.filter(s => s.level === "high").length;
+const mediumCount      = SIGNALS.filter(s => s.level === "medium").length;
+const implementedCount = SIGNALS.filter(s => s.level === "implemented").length;
+const totalOpen        = SIGNALS.filter(s => s.level !== "implemented").length;
+
+const FILTERS = [
+  "All",
+  `Critical (${criticalCount})`,
+  ...(highCount   > 0 ? [`High (${highCount})`]   : []),
+  ...(mediumCount > 0 ? [`Medium (${mediumCount})`] : []),
+  "Assembly Letter",
+  "Inspection",
+  "Product Library",
+];
+
+function matchesFilter(sig: typeof SIGNALS[0], filter: string): boolean {
+  if (filter === "All") return true;
+  if (filter.startsWith("Critical")) return sig.level === "critical";
+  if (filter.startsWith("High"))     return sig.level === "high";
+  if (filter.startsWith("Medium"))   return sig.level === "medium";
+  if (filter === "Assembly Letter")  return sig.stage.toLowerCase().includes("assembly");
+  if (filter === "Inspection")       return sig.stage.toLowerCase().includes("inspection");
+  if (filter === "Product Library")  return sig.stage.toLowerCase().includes("product");
+  return true;
+}
+
+function matchesSearch(sig: typeof SIGNALS[0], query: string): boolean {
+  if (!query.trim()) return true;
+  const q = query.toLowerCase();
+  return (
+    sig.title.toLowerCase().includes(q) ||
+    sig.desc.toLowerCase().includes(q) ||
+    sig.stage.toLowerCase().includes(q) ||
+    sig.id.toLowerCase().includes(q) ||
+    sig.roles.some(r => r.toLowerCase().includes(q))
+  );
+}
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -169,9 +206,14 @@ function statusBadge(s: string): { bg: string; fg: string } {
 
 export default function SignalsPage() {
   const [activeFilter, setActiveFilter] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
   const [, navigate] = useLocation();
 
   const CARD_SHADOW = "0px 4px 24px 0px rgba(0,0,0,0.06)";
+
+  const visibleSignals = SIGNALS.filter(
+    sig => matchesFilter(sig, activeFilter) && matchesSearch(sig, searchQuery)
+  );
 
   return (
     <div className="min-h-screen bg-[#f8f8f8]" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
@@ -191,11 +233,11 @@ export default function SignalsPage() {
           {/* Summary KPI strip */}
           <div className="grid grid-cols-5 gap-4 mb-6">
             {[
-              { val: "3",  label: "Critical",    color: "#ef4444" },
-              { val: "4",  label: "High Priority",color: "#f59e0b" },
-              { val: "5",  label: "Medium",       color: "#0039c9" },
-              { val: "6",  label: "Implemented",  color: "#2a8a4a" },
-              { val: "12", label: "Total Open",   color: "#121212" },
+              { val: String(criticalCount),    label: "Critical",      color: "#ef4444" },
+              { val: String(highCount),         label: "High Priority", color: "#f59e0b" },
+              { val: String(mediumCount),       label: "Medium",        color: "#0039c9" },
+              { val: String(implementedCount),  label: "Implemented",   color: "#2a8a4a" },
+              { val: String(totalOpen),         label: "Total Open",    color: "#121212" },
             ].map(s => (
               <div key={s.label} className="bg-white rounded-[8px] px-6 py-5" style={{ boxShadow: CARD_SHADOW }}>
                 <div className="text-[32px] font-normal leading-none mb-2" style={{ color: s.color }}>{s.val}</div>
@@ -220,9 +262,16 @@ export default function SignalsPage() {
                 {f}
               </button>
             ))}
-            <div className="ml-auto bg-white rounded-[8px] px-4 py-1.5 text-[13px] flex items-center gap-2" style={{ boxShadow: CARD_SHADOW, color: "#808488" }}>
+            <div className="ml-auto bg-white rounded-[8px] px-4 py-1.5 text-[13px] flex items-center gap-2" style={{ boxShadow: CARD_SHADOW }}>
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#808488" strokeWidth="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-              Search signals...
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={e => setSearchQuery(e.target.value)}
+                placeholder="Search signals..."
+                className="outline-none bg-transparent w-40"
+                style={{ color: "#121212" }}
+              />
             </div>
           </div>
 
@@ -231,7 +280,12 @@ export default function SignalsPage() {
 
             {/* Signal cards */}
             <div className="flex flex-col gap-4">
-              {SIGNALS.map(sig => {
+              {visibleSignals.length === 0 && (
+                <div className="bg-white rounded-[8px] p-10 text-center" style={{ boxShadow: CARD_SHADOW, color: "#808488" }}>
+                  No signals match your filter or search.
+                </div>
+              )}
+              {visibleSignals.map(sig => {
                 const lc = levelColor(sig.level);
                 const lb = levelBadge(sig.level);
                 const sb = statusBadge(sig.status);
