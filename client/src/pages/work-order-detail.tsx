@@ -175,13 +175,46 @@ function StageStepper({ currentStage }: { currentStage: string }) {
   );
 }
 
-const DOCS = [
-  "Submittal Package.zip",
-  "Assembly Letter Draft.pdf",
-  "Technical Data Sheets.pdf",
-  "Wind Uplift Calc.pdf",
-  "Product Spec Sheet.pdf",
-];
+const STAGE_DOCS: Record<string, { name: string; size: string }[]> = {
+  proposal: [
+    { name: "Contractor Proposal Form.pdf",   size: "84 KB"  },
+    { name: "Product Spec Sheet.pdf",         size: "96 KB"  },
+    { name: "Site Assessment Form.pdf",       size: "52 KB"  },
+    { name: "Project Scope Summary.pdf",      size: "118 KB" },
+  ],
+  assembly: [
+    { name: "Assembly Letter Draft.pdf",      size: "142 KB" },
+    { name: "Product Spec Sheet.pdf",         size: "96 KB"  },
+    { name: "Technical Data Sheets.pdf",      size: "210 KB" },
+    { name: "Wind Uplift Calc.pdf",           size: "215 KB" },
+  ],
+  submittal: [
+    { name: "Submittal Package.zip",          size: "1.4 MB" },
+    { name: "Assembly Letter.pdf",            size: "142 KB" },
+    { name: "Technical Data Sheets.pdf",      size: "210 KB" },
+    { name: "Wind Uplift Calc.pdf",           size: "215 KB" },
+    { name: "Product Spec Sheet.pdf",         size: "96 KB"  },
+  ],
+  quote: [
+    { name: "Quote Request.pdf",              size: "74 KB"  },
+    { name: "Pricing Summary.pdf",            size: "88 KB"  },
+    { name: "Submittal Package.zip",          size: "1.4 MB" },
+    { name: "Product Spec Sheet.pdf",         size: "96 KB"  },
+  ],
+  noa: [
+    { name: "NOA Application.pdf",            size: "130 KB" },
+    { name: "Warranty Request Form.pdf",      size: "68 KB"  },
+    { name: "Assembly Letter.pdf",            size: "142 KB" },
+    { name: "Product Spec Sheet.pdf",         size: "96 KB"  },
+  ],
+  inspection: [
+    { name: "FSR Inspection Checklist.pdf",   size: "92 KB"  },
+    { name: "Site Photos.zip",                size: "3.2 MB" },
+    { name: "Assembly Letter.pdf",            size: "142 KB" },
+    { name: "Submittal Package.zip",          size: "1.4 MB" },
+    { name: "FSR Report Draft.pdf",           size: "178 KB" },
+  ],
+};
 
 // ── Page ──────────────────────────────────────────────────────────────────────
 
@@ -524,11 +557,11 @@ export default function WorkOrderDetailPage() {
                 <h3 className="text-[20px] font-medium text-[#121212] mb-3">Recent Documents</h3>
                 <div className="bg-white rounded-[8px] overflow-hidden flex flex-col">
                   <div className="flex flex-col gap-[34px] px-10 py-6">
-                    {DOCS.map((doc, i) => (
+                    {(STAGE_DOCS[wo.currentStage] ?? []).map((doc, i) => (
                       <div key={i} className="flex items-center gap-[10px]">
                         <div className="flex flex-col gap-[6px] flex-1 min-w-0">
-                          <p className="text-[16px] font-semibold text-[#404a62] leading-[1.4] truncate">{doc}</p>
-                          <p className="text-[12px] font-normal text-[#404a62] leading-[1.4]">{wo.submitted} | 2.1MB | by {wo.analyst}</p>
+                          <p className="text-[16px] font-semibold text-[#404a62] leading-[1.4] truncate">{doc.name}</p>
+                          <p className="text-[12px] font-normal text-[#404a62] leading-[1.4]">{wo.submitted} | {doc.size} | by {wo.analyst}</p>
                         </div>
                         <div className="flex items-center justify-between shrink-0" style={{ width: 48 }}>
                           <img src={ASSET_DOC_DL} alt="Download" style={{ width: 19, height: 20 }} />
