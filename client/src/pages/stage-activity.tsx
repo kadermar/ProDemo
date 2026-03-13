@@ -69,12 +69,24 @@ const STAGE_DATA: Record<string, StageDetail> = {
     tableTitle: "Work Orders in Proposal Stage",
     tableNote: "Sorted by submission date · All proposal types",
     workOrders: [
-      { id: "PR-1104", contractor: "Apex Roofing LLC",    region: "Atlanta",     product: "EPDM",    productColor: "blue", analyst: "K. Torres",  submitted: "Mar 10", age: "1d",  ageColor: null,   revision: "None",    revColor: "muted", status: "On Track",  statusColor: "ok"   },
-      { id: "PR-1108", contractor: "Summit Commercial",   region: "New York",   product: "TPO 80mil", productColor: "blue", analyst: "J. Kim",   submitted: "Mar 10", age: "1d",  ageColor: null,   revision: "None",    revColor: "muted", status: "On Track",  statusColor: "ok"   },
-      { id: "PR-1095", contractor: "Trident Contractors", region: "Chicago",    product: "PVC 60mil", productColor: "blue", analyst: "K. Torres", submitted: "Mar 9", age: "2d",  ageColor: null,   revision: "None",    revColor: "muted", status: "On Track",  statusColor: "ok"   },
-      { id: "PR-1088", contractor: "Keystone Roofing",   region: "New York",   product: "EPDM",    productColor: "blue", analyst: "J. Kim",    submitted: "Mar 8",  age: "3d",  ageColor: null,   revision: "None",    revColor: "muted", status: "In Review", statusColor: "warn" },
-      { id: "PR-1074", contractor: "Horizon Commercial", region: "Dallas",     product: "TPO 60mil", productColor: "blue", analyst: "K. Torres", submitted: "Mar 7", age: "4d",  ageColor: "warn", revision: "None",    revColor: "muted", status: "In Review", statusColor: "warn" },
-      { id: "PR-1061", contractor: "Atlas Roofing Co.",  region: "Los Angeles", product: "PVC 50mil", productColor: "blue", analyst: "J. Kim",   submitted: "Mar 6",  age: "5d",  ageColor: "warn", revision: "None",    revColor: "muted", status: "Overdue",   statusColor: "risk" },
+      { id: "PR-1104", contractor: "Apex Roofing LLC",       region: "Atlanta",      product: "EPDM",      productColor: "blue", analyst: "K. Torres", submitted: "Mar 10", age: "1d",  ageColor: null,   revision: "None",    revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "PR-1108", contractor: "Summit Commercial",      region: "New York",     product: "TPO 80mil", productColor: "blue", analyst: "J. Kim",    submitted: "Mar 10", age: "1d",  ageColor: null,   revision: "None",    revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "PR-1112", contractor: "Crest Roofing Group",    region: "Houston",      product: "TPO 60mil", productColor: "blue", analyst: "K. Torres", submitted: "Mar 10", age: "1d",  ageColor: null,   revision: "None",    revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "PR-1115", contractor: "Pinnacle Commercial",    region: "Phoenix",      product: "EPDM",      productColor: "blue", analyst: "J. Kim",    submitted: "Mar 10", age: "1d",  ageColor: null,   revision: "None",    revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "PR-1095", contractor: "Trident Contractors",    region: "Chicago",      product: "PVC 60mil", productColor: "blue", analyst: "K. Torres", submitted: "Mar 9",  age: "2d",  ageColor: null,   revision: "None",    revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "PR-1097", contractor: "Blue Ridge Roofing",     region: "Charlotte",    product: "TPO 80mil", productColor: "blue", analyst: "J. Kim",    submitted: "Mar 9",  age: "2d",  ageColor: null,   revision: "None",    revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "PR-1099", contractor: "Vanguard Building Svc.", region: "Miami",        product: "PVC 50mil", productColor: "blue", analyst: "K. Torres", submitted: "Mar 9",  age: "2d",  ageColor: null,   revision: "None",    revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "PR-1088", contractor: "Keystone Roofing",       region: "New York",     product: "EPDM",      productColor: "blue", analyst: "J. Kim",    submitted: "Mar 8",  age: "3d",  ageColor: null,   revision: "None",    revColor: "muted", status: "In Review", statusColor: "warn" },
+      { id: "PR-1090", contractor: "Meridian Contractors",   region: "Boston",       product: "TPO 60mil", productColor: "blue", analyst: "K. Torres", submitted: "Mar 8",  age: "3d",  ageColor: null,   revision: "None",    revColor: "muted", status: "In Review", statusColor: "warn" },
+      { id: "PR-1083", contractor: "Ironclad Roofing Co.",   region: "Denver",       product: "EPDM",      productColor: "blue", analyst: "J. Kim",    submitted: "Mar 8",  age: "3d",  ageColor: null,   revision: "None",    revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "PR-1079", contractor: "Skyline Commercial",     region: "Nashville",    product: "PVC 60mil", productColor: "blue", analyst: "K. Torres", submitted: "Mar 7",  age: "4d",  ageColor: "warn", revision: "None",    revColor: "muted", status: "In Review", statusColor: "warn" },
+      { id: "PR-1074", contractor: "Horizon Commercial",     region: "Dallas",       product: "TPO 60mil", productColor: "blue", analyst: "K. Torres", submitted: "Mar 7",  age: "4d",  ageColor: "warn", revision: "None",    revColor: "muted", status: "In Review", statusColor: "warn" },
+      { id: "PR-1071", contractor: "Rampart Building Grp.",  region: "San Antonio",  product: "EPDM",      productColor: "blue", analyst: "J. Kim",    submitted: "Mar 7",  age: "4d",  ageColor: "warn", revision: "Minor",   revColor: "warn",  status: "In Review", statusColor: "warn" },
+      { id: "PR-1068", contractor: "Pacific Crest Roofing",  region: "Los Angeles",  product: "TPO 80mil", productColor: "blue", analyst: "K. Torres", submitted: "Mar 7",  age: "4d",  ageColor: "warn", revision: "None",    revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "PR-1061", contractor: "Atlas Roofing Co.",      region: "Los Angeles",  product: "PVC 50mil", productColor: "blue", analyst: "J. Kim",    submitted: "Mar 6",  age: "5d",  ageColor: "warn", revision: "None",    revColor: "muted", status: "Overdue",   statusColor: "risk" },
+      { id: "PR-1057", contractor: "Cascade Commercial",     region: "Seattle",      product: "EPDM",      productColor: "blue", analyst: "K. Torres", submitted: "Mar 6",  age: "5d",  ageColor: "warn", revision: "Minor",   revColor: "warn",  status: "Overdue",   statusColor: "risk" },
+      { id: "PR-1052", contractor: "Fortis Roofing LLC",     region: "Indianapolis", product: "TPO 60mil", productColor: "blue", analyst: "J. Kim",    submitted: "Mar 5",  age: "6d",  ageColor: "warn", revision: "None",    revColor: "muted", status: "In Review", statusColor: "warn" },
+      { id: "PR-1048", contractor: "Sterling Contractors",   region: "Kansas City",  product: "PVC 60mil", productColor: "blue", analyst: "K. Torres", submitted: "Mar 5",  age: "6d",  ageColor: "warn", revision: "None",    revColor: "muted", status: "On Track",  statusColor: "ok"   },
     ],
     woTotal: 124,
     woBadge: "2 proposals nearing SLA",
@@ -130,14 +142,24 @@ const STAGE_DATA: Record<string, StageDetail> = {
     tableTitle: "Work Orders in Assembly Letter Stage",
     tableNote: "Sorted by age · EPDM jobs flagged due to SIG-001 product library gap",
     workOrders: [
-      { id: "AL-2847", contractor: "Apex Roofing LLC",    region: "Atlanta",     product: "EPDM",     productColor: "risk", analyst: "J. Hoffman", submitted: "Mar 3",  age: "8d ↑", ageColor: "risk", revision: "2nd revision", revColor: "risk", status: "Overdue",   statusColor: "risk" },
-      { id: "AL-2851", contractor: "Summit Commercial",   region: "New York",   product: "EPDM",     productColor: "risk", analyst: "S. Patel",  submitted: "Mar 4",  age: "7d ↑", ageColor: "risk", revision: "1st revision", revColor: "warn", status: "Overdue",   statusColor: "risk" },
-      { id: "AL-2863", contractor: "Trident Contractors", region: "Chicago",    product: "TPO 80mil", productColor: "blue", analyst: "J. Hoffman", submitted: "Mar 5", age: "6d ↑", ageColor: "risk", revision: "None",         revColor: "muted", status: "Overdue",   statusColor: "risk" },
-      { id: "AL-2871", contractor: "Keystone Roofing",   region: "New York",   product: "PVC 60mil", productColor: "blue", analyst: "T. Nguyen", submitted: "Mar 7",  age: "4d",   ageColor: "warn", revision: "None",         revColor: "muted", status: "In Review", statusColor: "warn" },
-      { id: "AL-2879", contractor: "Horizon Commercial", region: "Dallas",     product: "EPDM",     productColor: "risk", analyst: "S. Patel",  submitted: "Mar 8",  age: "3d",   ageColor: "warn", revision: "1st revision", revColor: "risk", status: "Pending",   statusColor: "warn" },
-      { id: "AL-2882", contractor: "Atlas Roofing Co.",  region: "Los Angeles", product: "TPO 60mil", productColor: "blue", analyst: "T. Nguyen", submitted: "Mar 9",  age: "2d",   ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
-      { id: "AL-2885", contractor: "Meridian Systems",   region: "Chicago",    product: "PVC 50mil", productColor: "blue", analyst: "J. Hoffman", submitted: "Mar 10", age: "1d", ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
-      { id: "AL-2888", contractor: "Crown Commercial",   region: "Atlanta",    product: "EPDM",     productColor: "risk", analyst: "S. Patel",  submitted: "Mar 10", age: "1d",   ageColor: null,   revision: "Flagged",      revColor: "warn", status: "Watch",     statusColor: "warn" },
+      { id: "AL-2847", contractor: "Apex Roofing LLC",       region: "Atlanta",      product: "EPDM",      productColor: "risk", analyst: "J. Hoffman", submitted: "Mar 3",  age: "8d ↑", ageColor: "risk", revision: "2nd revision", revColor: "risk",  status: "Overdue",   statusColor: "risk" },
+      { id: "AL-2851", contractor: "Summit Commercial",      region: "New York",     product: "EPDM",      productColor: "risk", analyst: "S. Patel",   submitted: "Mar 4",  age: "7d ↑", ageColor: "risk", revision: "1st revision", revColor: "warn",  status: "Overdue",   statusColor: "risk" },
+      { id: "AL-2854", contractor: "Rampart Building Grp.",  region: "Dallas",       product: "EPDM",      productColor: "risk", analyst: "T. Nguyen",  submitted: "Mar 4",  age: "7d ↑", ageColor: "risk", revision: "2nd revision", revColor: "risk",  status: "Overdue",   statusColor: "risk" },
+      { id: "AL-2858", contractor: "Ironclad Roofing Co.",   region: "Phoenix",      product: "EPDM",      productColor: "risk", analyst: "J. Hoffman", submitted: "Mar 5",  age: "6d ↑", ageColor: "risk", revision: "1st revision", revColor: "warn",  status: "Overdue",   statusColor: "risk" },
+      { id: "AL-2863", contractor: "Trident Contractors",    region: "Chicago",      product: "TPO 80mil", productColor: "blue", analyst: "J. Hoffman", submitted: "Mar 5",  age: "6d ↑", ageColor: "risk", revision: "None",         revColor: "muted", status: "Overdue",   statusColor: "risk" },
+      { id: "AL-2866", contractor: "Pacific Crest Roofing",  region: "Los Angeles",  product: "EPDM",      productColor: "risk", analyst: "S. Patel",   submitted: "Mar 6",  age: "5d",   ageColor: "warn", revision: "1st revision", revColor: "warn",  status: "Overdue",   statusColor: "risk" },
+      { id: "AL-2871", contractor: "Keystone Roofing",       region: "New York",     product: "PVC 60mil", productColor: "blue", analyst: "T. Nguyen",  submitted: "Mar 7",  age: "4d",   ageColor: "warn", revision: "None",         revColor: "muted", status: "In Review", statusColor: "warn" },
+      { id: "AL-2874", contractor: "Blue Ridge Roofing",     region: "Charlotte",    product: "TPO 60mil", productColor: "blue", analyst: "J. Hoffman", submitted: "Mar 7",  age: "4d",   ageColor: "warn", revision: "None",         revColor: "muted", status: "In Review", statusColor: "warn" },
+      { id: "AL-2876", contractor: "Crest Roofing Group",    region: "Houston",      product: "EPDM",      productColor: "risk", analyst: "S. Patel",   submitted: "Mar 7",  age: "4d",   ageColor: "warn", revision: "1st revision", revColor: "warn",  status: "Pending",   statusColor: "warn" },
+      { id: "AL-2879", contractor: "Horizon Commercial",     region: "Dallas",       product: "EPDM",      productColor: "risk", analyst: "S. Patel",   submitted: "Mar 8",  age: "3d",   ageColor: "warn", revision: "1st revision", revColor: "risk",  status: "Pending",   statusColor: "warn" },
+      { id: "AL-2880", contractor: "Vanguard Building Svc.", region: "Miami",        product: "PVC 50mil", productColor: "blue", analyst: "T. Nguyen",  submitted: "Mar 8",  age: "3d",   ageColor: "warn", revision: "None",         revColor: "muted", status: "In Review", statusColor: "warn" },
+      { id: "AL-2882", contractor: "Atlas Roofing Co.",      region: "Los Angeles",  product: "TPO 60mil", productColor: "blue", analyst: "T. Nguyen",  submitted: "Mar 9",  age: "2d",   ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "AL-2883", contractor: "Skyline Commercial",     region: "Nashville",    product: "TPO 80mil", productColor: "blue", analyst: "J. Hoffman", submitted: "Mar 9",  age: "2d",   ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "AL-2885", contractor: "Meridian Systems",       region: "Chicago",      product: "PVC 50mil", productColor: "blue", analyst: "J. Hoffman", submitted: "Mar 10", age: "1d",   ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "AL-2886", contractor: "Sterling Contractors",   region: "Kansas City",  product: "PVC 60mil", productColor: "blue", analyst: "S. Patel",   submitted: "Mar 10", age: "1d",   ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "AL-2887", contractor: "Pinnacle Commercial",    region: "San Antonio",  product: "TPO 60mil", productColor: "blue", analyst: "T. Nguyen",  submitted: "Mar 10", age: "1d",   ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "AL-2888", contractor: "Crown Commercial",       region: "Atlanta",      product: "EPDM",      productColor: "risk", analyst: "S. Patel",   submitted: "Mar 10", age: "1d",   ageColor: null,   revision: "Flagged",      revColor: "warn",  status: "Watch",     statusColor: "warn" },
+      { id: "AL-2889", contractor: "Fortis Roofing LLC",     region: "Indianapolis", product: "TPO 80mil", productColor: "blue", analyst: "J. Hoffman", submitted: "Mar 10", age: "1d",   ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
     ],
     woTotal: 89,
     woBadge: "5 EPDM jobs linked to SIG-001 product gap",
@@ -195,12 +217,22 @@ const STAGE_DATA: Record<string, StageDetail> = {
     tableTitle: "Work Orders in Submittal Stage",
     tableNote: "Sorted by submission date · Healthy queue",
     workOrders: [
-      { id: "SB-0441", contractor: "Apex Roofing LLC",    region: "Atlanta",     product: "TPO 80mil", productColor: "blue", analyst: "T. Nguyen",  submitted: "Mar 9",  age: "2d",   ageColor: null,   revision: "None",    revColor: "muted", status: "On Track",  statusColor: "ok"   },
-      { id: "SB-0438", contractor: "Summit Commercial",   region: "New York",   product: "PVC 60mil", productColor: "blue", analyst: "J. Hoffman", submitted: "Mar 8",  age: "3d",   ageColor: null,   revision: "None",    revColor: "muted", status: "On Track",  statusColor: "ok"   },
-      { id: "SB-0431", contractor: "Trident Contractors", region: "Chicago",    product: "EPDM",     productColor: "blue", analyst: "S. Patel",   submitted: "Mar 7",  age: "4d",   ageColor: "warn", revision: "None",    revColor: "muted", status: "In Review", statusColor: "warn" },
-      { id: "SB-0428", contractor: "Keystone Roofing",   region: "New York",   product: "TPO 60mil", productColor: "blue", analyst: "T. Nguyen",  submitted: "Mar 6",  age: "5d",   ageColor: "warn", revision: "1st revision", revColor: "warn", status: "Overdue", statusColor: "risk" },
-      { id: "SB-0422", contractor: "Horizon Commercial", region: "Dallas",     product: "PVC 50mil", productColor: "blue", analyst: "J. Hoffman", submitted: "Mar 8",  age: "3d",   ageColor: null,   revision: "None",    revColor: "muted", status: "On Track",  statusColor: "ok"   },
-      { id: "SB-0418", contractor: "Atlas Roofing Co.",  region: "Los Angeles", product: "EPDM",     productColor: "blue", analyst: "S. Patel",   submitted: "Mar 9",  age: "2d",   ageColor: null,   revision: "None",    revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "SB-0441", contractor: "Apex Roofing LLC",       region: "Atlanta",      product: "TPO 80mil", productColor: "blue", analyst: "T. Nguyen",  submitted: "Mar 9",  age: "2d",  ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "SB-0440", contractor: "Crest Roofing Group",    region: "Houston",      product: "PVC 60mil", productColor: "blue", analyst: "J. Hoffman", submitted: "Mar 9",  age: "2d",  ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "SB-0438", contractor: "Summit Commercial",      region: "New York",     product: "PVC 60mil", productColor: "blue", analyst: "J. Hoffman", submitted: "Mar 8",  age: "3d",  ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "SB-0436", contractor: "Pinnacle Commercial",    region: "Phoenix",      product: "TPO 80mil", productColor: "blue", analyst: "T. Nguyen",  submitted: "Mar 8",  age: "3d",  ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "SB-0434", contractor: "Meridian Contractors",   region: "Boston",       product: "EPDM",      productColor: "blue", analyst: "S. Patel",   submitted: "Mar 8",  age: "3d",  ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "SB-0431", contractor: "Trident Contractors",    region: "Chicago",      product: "EPDM",      productColor: "blue", analyst: "S. Patel",   submitted: "Mar 7",  age: "4d",  ageColor: "warn", revision: "None",         revColor: "muted", status: "In Review", statusColor: "warn" },
+      { id: "SB-0430", contractor: "Blue Ridge Roofing",     region: "Charlotte",    product: "PVC 50mil", productColor: "blue", analyst: "T. Nguyen",  submitted: "Mar 7",  age: "4d",  ageColor: "warn", revision: "None",         revColor: "muted", status: "In Review", statusColor: "warn" },
+      { id: "SB-0428", contractor: "Keystone Roofing",       region: "New York",     product: "TPO 60mil", productColor: "blue", analyst: "T. Nguyen",  submitted: "Mar 6",  age: "5d",  ageColor: "warn", revision: "1st revision", revColor: "warn",  status: "Overdue",   statusColor: "risk" },
+      { id: "SB-0426", contractor: "Pacific Crest Roofing",  region: "Los Angeles",  product: "TPO 80mil", productColor: "blue", analyst: "J. Hoffman", submitted: "Mar 6",  age: "5d",  ageColor: "warn", revision: "None",         revColor: "muted", status: "In Review", statusColor: "warn" },
+      { id: "SB-0424", contractor: "Skyline Commercial",     region: "Nashville",    product: "PVC 60mil", productColor: "blue", analyst: "S. Patel",   submitted: "Mar 6",  age: "5d",  ageColor: "warn", revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "SB-0422", contractor: "Horizon Commercial",     region: "Dallas",       product: "PVC 50mil", productColor: "blue", analyst: "J. Hoffman", submitted: "Mar 8",  age: "3d",  ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "SB-0420", contractor: "Sterling Contractors",   region: "Kansas City",  product: "TPO 60mil", productColor: "blue", analyst: "T. Nguyen",  submitted: "Mar 8",  age: "3d",  ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "SB-0418", contractor: "Atlas Roofing Co.",      region: "Los Angeles",  product: "EPDM",      productColor: "blue", analyst: "S. Patel",   submitted: "Mar 9",  age: "2d",  ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "SB-0416", contractor: "Vanguard Building Svc.", region: "Miami",        product: "TPO 80mil", productColor: "blue", analyst: "J. Hoffman", submitted: "Mar 9",  age: "2d",  ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "SB-0414", contractor: "Fortis Roofing LLC",     region: "Indianapolis", product: "PVC 60mil", productColor: "blue", analyst: "T. Nguyen",  submitted: "Mar 10", age: "1d",  ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "SB-0412", contractor: "Rampart Building Grp.",  region: "San Antonio",  product: "TPO 60mil", productColor: "blue", analyst: "S. Patel",   submitted: "Mar 10", age: "1d",  ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
     ],
     woTotal: 67,
     woBadge: "3 jobs approaching SLA threshold",
@@ -256,12 +288,20 @@ const STAGE_DATA: Record<string, StageDetail> = {
     tableTitle: "Work Orders in Quote Stage",
     tableNote: "Sorted by quote value · Healthy mix of products",
     workOrders: [
-      { id: "QT-0781", contractor: "Apex Roofing LLC",    region: "Atlanta",     product: "TPO 80mil", productColor: "blue", analyst: "M. Davis",  submitted: "Mar 9",  age: "2d",   ageColor: null,   revision: "None",    revColor: "muted", status: "On Track",  statusColor: "ok"   },
-      { id: "QT-0776", contractor: "Summit Commercial",   region: "New York",   product: "PVC 60mil", productColor: "blue", analyst: "K. Torres", submitted: "Mar 8",  age: "3d",   ageColor: null,   revision: "None",    revColor: "muted", status: "On Track",  statusColor: "ok"   },
-      { id: "QT-0769", contractor: "Trident Contractors", region: "Chicago",    product: "EPDM",     productColor: "blue", analyst: "M. Davis",  submitted: "Mar 7",  age: "4d",   ageColor: "warn", revision: "1st revision", revColor: "warn", status: "In Review", statusColor: "warn" },
-      { id: "QT-0764", contractor: "Keystone Roofing",   region: "New York",   product: "TPO 60mil", productColor: "blue", analyst: "K. Torres", submitted: "Mar 6",  age: "5d",   ageColor: "warn", revision: "None",    revColor: "muted", status: "Overdue",  statusColor: "risk" },
-      { id: "QT-0758", contractor: "Horizon Commercial", region: "Dallas",     product: "EPDM",     productColor: "blue", analyst: "M. Davis",  submitted: "Mar 8",  age: "3d",   ageColor: null,   revision: "None",    revColor: "muted", status: "On Track",  statusColor: "ok"   },
-      { id: "QT-0753", contractor: "Atlas Roofing Co.",  region: "Los Angeles", product: "PVC 50mil", productColor: "blue", analyst: "K. Torres", submitted: "Mar 10", age: "1d",   ageColor: null,   revision: "None",    revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "QT-0781", contractor: "Apex Roofing LLC",       region: "Atlanta",      product: "TPO 80mil", productColor: "blue", analyst: "M. Davis",  submitted: "Mar 9",  age: "2d",  ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "QT-0779", contractor: "Crest Roofing Group",    region: "Houston",      product: "PVC 60mil", productColor: "blue", analyst: "K. Torres", submitted: "Mar 9",  age: "2d",  ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "QT-0776", contractor: "Summit Commercial",      region: "New York",     product: "PVC 60mil", productColor: "blue", analyst: "K. Torres", submitted: "Mar 8",  age: "3d",  ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "QT-0774", contractor: "Pinnacle Commercial",    region: "Phoenix",      product: "TPO 80mil", productColor: "blue", analyst: "M. Davis",  submitted: "Mar 8",  age: "3d",  ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "QT-0772", contractor: "Blue Ridge Roofing",     region: "Charlotte",    product: "EPDM",      productColor: "blue", analyst: "K. Torres", submitted: "Mar 8",  age: "3d",  ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "QT-0769", contractor: "Trident Contractors",    region: "Chicago",      product: "EPDM",      productColor: "blue", analyst: "M. Davis",  submitted: "Mar 7",  age: "4d",  ageColor: "warn", revision: "1st revision", revColor: "warn",  status: "In Review", statusColor: "warn" },
+      { id: "QT-0767", contractor: "Meridian Contractors",   region: "Boston",       product: "PVC 50mil", productColor: "blue", analyst: "K. Torres", submitted: "Mar 7",  age: "4d",  ageColor: "warn", revision: "None",         revColor: "muted", status: "In Review", statusColor: "warn" },
+      { id: "QT-0764", contractor: "Keystone Roofing",       region: "New York",     product: "TPO 60mil", productColor: "blue", analyst: "K. Torres", submitted: "Mar 6",  age: "5d",  ageColor: "warn", revision: "None",         revColor: "muted", status: "Overdue",   statusColor: "risk" },
+      { id: "QT-0762", contractor: "Pacific Crest Roofing",  region: "Los Angeles",  product: "TPO 80mil", productColor: "blue", analyst: "M. Davis",  submitted: "Mar 6",  age: "5d",  ageColor: "warn", revision: "None",         revColor: "muted", status: "In Review", statusColor: "warn" },
+      { id: "QT-0760", contractor: "Vanguard Building Svc.", region: "Miami",        product: "PVC 60mil", productColor: "blue", analyst: "K. Torres", submitted: "Mar 6",  age: "5d",  ageColor: "warn", revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "QT-0758", contractor: "Horizon Commercial",     region: "Dallas",       product: "EPDM",      productColor: "blue", analyst: "M. Davis",  submitted: "Mar 8",  age: "3d",  ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "QT-0756", contractor: "Skyline Commercial",     region: "Nashville",    product: "PVC 50mil", productColor: "blue", analyst: "M. Davis",  submitted: "Mar 9",  age: "2d",  ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "QT-0753", contractor: "Atlas Roofing Co.",      region: "Los Angeles",  product: "PVC 50mil", productColor: "blue", analyst: "K. Torres", submitted: "Mar 10", age: "1d",  ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "QT-0751", contractor: "Sterling Contractors",   region: "Kansas City",  product: "TPO 60mil", productColor: "blue", analyst: "M. Davis",  submitted: "Mar 10", age: "1d",  ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
     ],
     woTotal: 45,
     woBadge: "2 quotes approaching 72hr SLA",
@@ -317,12 +357,20 @@ const STAGE_DATA: Record<string, StageDetail> = {
     tableTitle: "Work Orders in NOA / Warranty Stage",
     tableNote: "Sorted by filing date · 6 jobs compounding from Assembly Letter delays",
     workOrders: [
-      { id: "WR-0312", contractor: "Apex Roofing LLC",    region: "Atlanta",     product: "TPO 80mil", productColor: "blue", analyst: "R. Chen",    submitted: "Mar 2",  age: "9d ↑",  ageColor: "risk", revision: "1st revision", revColor: "warn", status: "Overdue",   statusColor: "risk" },
-      { id: "WR-0308", contractor: "Summit Commercial",   region: "New York",   product: "EPDM",     productColor: "risk", analyst: "M. Okonkwo", submitted: "Mar 3",  age: "8d ↑",  ageColor: "risk", revision: "2nd revision", revColor: "risk", status: "Overdue",   statusColor: "risk" },
-      { id: "WR-0304", contractor: "Trident Contractors", region: "Chicago",    product: "PVC 60mil", productColor: "blue", analyst: "R. Chen",    submitted: "Mar 5",  age: "6d",    ageColor: "warn", revision: "None",         revColor: "muted", status: "In Review", statusColor: "warn" },
-      { id: "WR-0299", contractor: "Keystone Roofing",   region: "New York",   product: "TPO 60mil", productColor: "blue", analyst: "M. Okonkwo", submitted: "Mar 7",  age: "4d",    ageColor: "warn", revision: "None",         revColor: "muted", status: "In Review", statusColor: "warn" },
-      { id: "WR-0294", contractor: "Horizon Commercial", region: "Dallas",     product: "EPDM",     productColor: "risk", analyst: "R. Chen",    submitted: "Mar 8",  age: "3d",    ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
-      { id: "WR-0290", contractor: "Atlas Roofing Co.",  region: "Los Angeles", product: "PVC 50mil", productColor: "blue", analyst: "M. Okonkwo", submitted: "Mar 10", age: "1d",    ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "WR-0312", contractor: "Apex Roofing LLC",       region: "Atlanta",      product: "TPO 80mil", productColor: "blue", analyst: "R. Chen",    submitted: "Mar 2",  age: "9d ↑",  ageColor: "risk", revision: "1st revision", revColor: "warn",  status: "Overdue",   statusColor: "risk" },
+      { id: "WR-0308", contractor: "Summit Commercial",      region: "New York",     product: "EPDM",      productColor: "risk", analyst: "M. Okonkwo", submitted: "Mar 3",  age: "8d ↑",  ageColor: "risk", revision: "2nd revision", revColor: "risk",  status: "Overdue",   statusColor: "risk" },
+      { id: "WR-0304", contractor: "Trident Contractors",    region: "Chicago",      product: "PVC 60mil", productColor: "blue", analyst: "R. Chen",    submitted: "Mar 5",  age: "6d",    ageColor: "warn", revision: "None",         revColor: "muted", status: "In Review", statusColor: "warn" },
+      { id: "WR-0299", contractor: "Keystone Roofing",       region: "New York",     product: "TPO 60mil", productColor: "blue", analyst: "M. Okonkwo", submitted: "Mar 7",  age: "4d",    ageColor: "warn", revision: "None",         revColor: "muted", status: "In Review", statusColor: "warn" },
+      { id: "WR-0294", contractor: "Horizon Commercial",     region: "Dallas",       product: "EPDM",      productColor: "risk", analyst: "R. Chen",    submitted: "Mar 8",  age: "3d",    ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "WR-0290", contractor: "Atlas Roofing Co.",      region: "Los Angeles",  product: "PVC 50mil", productColor: "blue", analyst: "M. Okonkwo", submitted: "Mar 10", age: "1d",    ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "WR-0286", contractor: "Crest Roofing Group",    region: "Phoenix",      product: "TPO 60mil", productColor: "blue", analyst: "R. Chen",    submitted: "Mar 3",  age: "8d ↑",  ageColor: "risk", revision: "1st revision", revColor: "warn",  status: "Overdue",   statusColor: "risk" },
+      { id: "WR-0281", contractor: "Pinnacle Commercial",    region: "Seattle",      product: "EPDM",      productColor: "risk", analyst: "M. Okonkwo", submitted: "Mar 5",  age: "6d",    ageColor: "warn", revision: "None",         revColor: "muted", status: "In Review", statusColor: "warn" },
+      { id: "WR-0277", contractor: "Blue Ridge Roofing",     region: "Charlotte",    product: "PVC 60mil", productColor: "blue", analyst: "R. Chen",    submitted: "Mar 6",  age: "5d",    ageColor: "warn", revision: "None",         revColor: "muted", status: "In Review", statusColor: "warn" },
+      { id: "WR-0273", contractor: "Vanguard Contractors",   region: "Denver",       product: "TPO 80mil", productColor: "blue", analyst: "M. Okonkwo", submitted: "Mar 8",  age: "3d",    ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "WR-0269", contractor: "Ironclad Roofing",       region: "Miami",        product: "EPDM",      productColor: "risk", analyst: "R. Chen",    submitted: "Mar 9",  age: "2d",    ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "WR-0265", contractor: "Pacific Crest Systems",  region: "San Diego",    product: "PVC 50mil", productColor: "blue", analyst: "M. Okonkwo", submitted: "Mar 10", age: "1d",    ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "WR-0261", contractor: "Meridian Commercial",    region: "Austin",       product: "TPO 60mil", productColor: "blue", analyst: "R. Chen",    submitted: "Mar 10", age: "1d",    ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "WR-0258", contractor: "Cascade Roofing Co.",    region: "Portland",     product: "EPDM",      productColor: "risk", analyst: "M. Okonkwo", submitted: "Mar 11", age: "<1d",   ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
     ],
     woTotal: 38,
     woBadge: "6 NOA filings overdue — mostly compounding from Assembly delays",
@@ -379,13 +427,20 @@ const STAGE_DATA: Record<string, StageDetail> = {
     tableTitle: "Work Orders in Inspection Stage",
     tableNote: "Sorted by scheduled date · Re-inspect jobs flagged",
     workOrders: [
-      { id: "IN-0091", contractor: "Apex Roofing LLC",    region: "Atlanta",     product: "EPDM",     productColor: "risk", analyst: "P. Walsh",   submitted: "Feb 28", age: "11d ↑", ageColor: "risk", revision: "Re-inspect",   revColor: "risk", status: "Overdue",   statusColor: "risk" },
-      { id: "IN-0088", contractor: "Summit Commercial",   region: "New York",   product: "TPO 80mil", productColor: "blue", analyst: "L. Santos",  submitted: "Mar 2",  age: "9d ↑",  ageColor: "risk", revision: "Re-inspect",   revColor: "risk", status: "Overdue",   statusColor: "risk" },
-      { id: "IN-0084", contractor: "Trident Contractors", region: "Chicago",    product: "PVC 60mil", productColor: "blue", analyst: "P. Walsh",   submitted: "Mar 4",  age: "7d",    ageColor: "warn", revision: "None",         revColor: "muted", status: "Overdue",   statusColor: "risk" },
-      { id: "IN-0081", contractor: "Keystone Roofing",   region: "New York",   product: "EPDM",     productColor: "risk", analyst: "L. Santos",  submitted: "Mar 6",  age: "5d",    ageColor: "warn", revision: "1st revision", revColor: "warn", status: "In Review", statusColor: "warn" },
-      { id: "IN-0077", contractor: "Horizon Commercial", region: "Dallas",     product: "TPO 60mil", productColor: "blue", analyst: "P. Walsh",   submitted: "Mar 7",  age: "4d",    ageColor: "warn", revision: "None",         revColor: "muted", status: "In Review", statusColor: "warn" },
-      { id: "IN-0074", contractor: "Atlas Roofing Co.",  region: "Los Angeles", product: "PVC 50mil", productColor: "blue", analyst: "L. Santos",  submitted: "Mar 9",  age: "2d",    ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
-      { id: "IN-0071", contractor: "Meridian Systems",   region: "Houston",    product: "EPDM",     productColor: "risk", analyst: "P. Walsh",   submitted: "Mar 10", age: "1d",    ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "IN-0091", contractor: "Apex Roofing LLC",      region: "Atlanta",      product: "EPDM",      productColor: "risk", analyst: "P. Walsh",  submitted: "Feb 28", age: "11d ↑", ageColor: "risk", revision: "Re-inspect",   revColor: "risk",  status: "Overdue",   statusColor: "risk" },
+      { id: "IN-0088", contractor: "Summit Commercial",    region: "New York",     product: "TPO 80mil", productColor: "blue", analyst: "L. Santos", submitted: "Mar 2",  age: "9d ↑",  ageColor: "risk", revision: "Re-inspect",   revColor: "risk",  status: "Overdue",   statusColor: "risk" },
+      { id: "IN-0084", contractor: "Trident Contractors",  region: "Chicago",      product: "PVC 60mil", productColor: "blue", analyst: "P. Walsh",  submitted: "Mar 4",  age: "7d",    ageColor: "warn", revision: "None",         revColor: "muted", status: "Overdue",   statusColor: "risk" },
+      { id: "IN-0081", contractor: "Keystone Roofing",     region: "New York",     product: "EPDM",      productColor: "risk", analyst: "L. Santos", submitted: "Mar 6",  age: "5d",    ageColor: "warn", revision: "1st revision", revColor: "warn",  status: "In Review", statusColor: "warn" },
+      { id: "IN-0077", contractor: "Horizon Commercial",   region: "Dallas",       product: "TPO 60mil", productColor: "blue", analyst: "P. Walsh",  submitted: "Mar 7",  age: "4d",    ageColor: "warn", revision: "None",         revColor: "muted", status: "In Review", statusColor: "warn" },
+      { id: "IN-0074", contractor: "Atlas Roofing Co.",    region: "Los Angeles",  product: "PVC 50mil", productColor: "blue", analyst: "L. Santos", submitted: "Mar 9",  age: "2d",    ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "IN-0071", contractor: "Meridian Systems",     region: "Houston",      product: "EPDM",      productColor: "risk", analyst: "P. Walsh",  submitted: "Mar 10", age: "1d",    ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "IN-0068", contractor: "Crest Roofing Group",  region: "Phoenix",      product: "TPO 80mil", productColor: "blue", analyst: "L. Santos", submitted: "Mar 3",  age: "8d ↑",  ageColor: "risk", revision: "Re-inspect",   revColor: "risk",  status: "Overdue",   statusColor: "risk" },
+      { id: "IN-0065", contractor: "Pinnacle Commercial",  region: "Seattle",      product: "PVC 60mil", productColor: "blue", analyst: "P. Walsh",  submitted: "Mar 5",  age: "6d",    ageColor: "warn", revision: "None",         revColor: "muted", status: "In Review", statusColor: "warn" },
+      { id: "IN-0062", contractor: "Vanguard Contractors", region: "Denver",       product: "EPDM",      productColor: "risk", analyst: "L. Santos", submitted: "Mar 7",  age: "4d",    ageColor: "warn", revision: "1st revision", revColor: "warn",  status: "In Review", statusColor: "warn" },
+      { id: "IN-0059", contractor: "Ironclad Roofing",     region: "Miami",        product: "TPO 60mil", productColor: "blue", analyst: "P. Walsh",  submitted: "Mar 9",  age: "2d",    ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "IN-0056", contractor: "Blue Ridge Roofing",   region: "Charlotte",    product: "PVC 50mil", productColor: "blue", analyst: "L. Santos", submitted: "Mar 10", age: "1d",    ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "IN-0053", contractor: "Pacific Crest Systems",region: "San Diego",    product: "EPDM",      productColor: "risk", analyst: "P. Walsh",  submitted: "Mar 10", age: "1d",    ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
+      { id: "IN-0050", contractor: "Skyline Commercial",   region: "Nashville",    product: "TPO 60mil", productColor: "blue", analyst: "L. Santos", submitted: "Mar 11", age: "<1d",   ageColor: null,   revision: "None",         revColor: "muted", status: "On Track",  statusColor: "ok"   },
     ],
     woTotal: 28,
     woBadge: "6 re-inspect jobs — 3 linked to EPDM installation spec gap",
@@ -461,21 +516,33 @@ export default function StageActivityPage() {
   const [activeStage, setActiveStage] = useState(
     STAGE_TABS.find(s => s.key === stageParam) ? stageParam! : "proposal"
   );
+  const [woSearch, setWoSearch] = useState("");
   const [, navigate] = useLocation();
 
   useEffect(() => {
     if (stageParam && STAGE_TABS.find(s => s.key === stageParam)) {
       setActiveStage(stageParam);
+      setWoSearch("");
     }
   }, [stageParam]);
 
   const handleStageSelect = (key: string) => {
     setActiveStage(key);
+    setWoSearch("");
     navigate(`/stage-activity?stage=${key}`);
   };
 
   const d = STAGE_DATA[activeStage];
   const tab = STAGE_TABS.find(s => s.key === activeStage)!;
+  const q = woSearch.toLowerCase();
+  const filteredOrders = d.workOrders.filter(wo =>
+    wo.id.toLowerCase().includes(q) ||
+    wo.contractor.toLowerCase().includes(q) ||
+    wo.region.toLowerCase().includes(q) ||
+    wo.product.toLowerCase().includes(q) ||
+    wo.analyst.toLowerCase().includes(q) ||
+    wo.status.toLowerCase().includes(q)
+  );;
   const isHealthy = tab.health === "ok";
   const healthColor = HEALTH_COLOR[tab.health as keyof typeof HEALTH_COLOR];
   const barColor = (h: number) => h <= 40 ? "#2a8a4a" : h <= 60 ? "#c47a0a" : "#c0392b";
@@ -556,7 +623,29 @@ export default function StageActivityPage() {
 
           {/* Work order table */}
           <div className="bg-white rounded-[8px] p-6" style={{ boxShadow: CARD_SHADOW }}>
-            <h3 className="text-[16px] font-medium mb-0.5" style={{ color: "#121212" }}>{d.tableTitle}</h3>
+            <div className="flex items-center justify-between mb-0.5">
+              <h3 className="text-[16px] font-medium" style={{ color: "#121212" }}>{d.tableTitle}</h3>
+              <div className="flex items-center gap-2 rounded-[6px] px-3 py-1.5" style={{ background: "#f5f6f8", border: "1px solid #ececec" }}>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+                <input
+                  type="text"
+                  value={woSearch}
+                  onChange={e => setWoSearch(e.target.value)}
+                  placeholder="Search work orders…"
+                  className="text-[12.5px] bg-transparent outline-none w-44"
+                  style={{ color: "#121212" }}
+                />
+                {woSearch && (
+                  <button onClick={() => setWoSearch("")} style={{ color: "#9ca3af", lineHeight: 1 }}>
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                      <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                  </button>
+                )}
+              </div>
+            </div>
             <p className="text-[13px] mb-5" style={{ color: "#808488" }}>{d.tableNote}</p>
             <table className="w-full border-collapse">
               <thead>
@@ -568,7 +657,7 @@ export default function StageActivityPage() {
                 </tr>
               </thead>
               <tbody>
-                {d.workOrders.map(wo => {
+                {filteredOrders.map(wo => {
                   const pt = tagColors(wo.productColor);
                   const rt = tagColors(wo.revColor);
                   const st = tagColors(wo.statusColor);
@@ -603,7 +692,11 @@ export default function StageActivityPage() {
               </tbody>
             </table>
             <div className="flex items-center justify-between mt-4 pt-3" style={{ borderTop: "1px solid #f0f0f0" }}>
-              <span className="text-[12px]" style={{ color: "#808488" }}>Showing {d.workOrders.length} of {d.woTotal} · {d.woBadge}</span>
+              <span className="text-[12px]" style={{ color: "#808488" }}>
+                {woSearch
+                  ? `${filteredOrders.length} result${filteredOrders.length !== 1 ? "s" : ""} for "${woSearch}"`
+                  : `Showing ${d.workOrders.length} of ${d.woTotal} · ${d.woBadge}`}
+              </span>
               <button className="text-[13px] font-medium transition-opacity hover:opacity-70"
                 style={{ color: "#0039c9" }}>View All {d.woTotal} →</button>
             </div>

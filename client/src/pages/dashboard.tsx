@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useLocation } from "wouter";
 import img31 from "@assets/image31.png";
 import { AiAssistant } from "@/components/ai-assistant";
@@ -27,13 +27,15 @@ const STAGES = [
   { icon: "🔍", key: "inspection", name: "Inspection",      count: 28,  days: "avg 6.4d · SLA 5d",  badge: "8 overdue",  health: "warn" },
 ];
 
-const BUBBLES = [
-  { icon: "📋", name: "Proposal",        vol: 124, cyclePct: 60,  overdue: 0,  color: "success", cycleStr: "1.2d" },
-  { icon: "📐", name: "Assembly Letter", vol: 89,  cyclePct: 210, overdue: 14, color: "risk",    cycleStr: "2.1d" },
-  { icon: "📦", name: "Submittal",       vol: 67,  cyclePct: 80,  overdue: 0,  color: "blue",    cycleStr: "0.8d" },
-  { icon: "💬", name: "Quote",           vol: 45,  cyclePct: 75,  overdue: 1,  color: "success", cycleStr: "1.5d" },
-  { icon: "📜", name: "NOA / Warranty",  vol: 38,  cyclePct: 160, overdue: 6,  color: "warn",    cycleStr: "3.2d" },
-  { icon: "🔍", name: "Inspection",      vol: 28,  cyclePct: 128, overdue: 8,  color: "warn",    cycleStr: "6.4d" },
+const DRIVERS = [
+  { label: "Baseline\nCapacity",   group: "Base",       value:  1850000, type: "base"     },
+  { label: "Assembly\nLetter",     group: "Stage Drag",  value:  -340000, type: "negative" },
+  { label: "Inspection\nBacklog",  group: "Stage Drag",  value:  -290000, type: "negative" },
+  { label: "NOA /\nWarranty",      group: "Stage Drag",  value:  -180000, type: "negative" },
+  { label: "Quote\nDelay",         group: "Stage Drag",  value:   -38000, type: "negative" },
+  { label: "Proposal\nEfficiency", group: "Upside",      value:    62000, type: "positive" },
+  { label: "Submittal\nSpeed",     group: "Upside",      value:    44000, type: "positive" },
+  { label: "Net\nProjection",      group: "Total",       value:  1108000, type: "total"    },
 ];
 
 const CI_SIGNALS = [
@@ -43,12 +45,13 @@ const CI_SIGNALS = [
   { level: "high",     stage: "📜 NOA / Warranty",  title: "NOA Processing Delays",             desc: "Warranty Admin at 112% capacity. 6 contractors waiting >5 days.",                    stats: [{ label: "at risk", val: "$120K" }, { label: "wait", val: "3.2d" }] },
 ];
 
-const BUBBLE_COLORS = {
-  blue:    { stroke: "#0039c9", fill: "rgba(0,57,201,0.10)", text: "#0039c9" },
-  success: { stroke: "#2a8a4a", fill: "rgba(42,138,74,0.12)", text: "#2a8a4a" },
-  warn:    { stroke: "#c47a0a", fill: "rgba(196,122,10,0.12)", text: "#c47a0a" },
-  risk:    { stroke: "#c0392b", fill: "rgba(192,57,43,0.12)", text: "#c0392b" },
-};
+function fmt$K(n: number) {
+  const abs = Math.abs(n);
+  const sign = n < 0 ? "−" : n > 0 ? "+" : "";
+  if (abs >= 1000000) return `${sign}$${(abs / 1000000).toFixed(2)}M`;
+  if (abs >= 1000) return `${sign}$${Math.round(abs / 1000)}K`;
+  return `${sign}$${abs}`;
+}
 
 // ── Stat card (v2 style) ──────────────────────────────────────────────────────
 
@@ -89,94 +92,118 @@ function StatCard({ label, value, delta, deltaLabel, variant = "default" }: {
   );
 }
 
-// ── Bubble chart ──────────────────────────────────────────────────────────────
+// ── Performance Drivers Bridge Chart ─────────────────────────────────────────
 
-function BubbleChart() {
-  const [hovered, setHovered] = useState<string | null>(null);
-  const W = 560, H = 240;
-  const PAD = { top: 24, right: 44, bottom: 36, left: 48 };
-  const cW = W - PAD.left - PAD.right;
-  const cH = H - PAD.top - PAD.bottom;
-  const MAX_VOL = 140, MAX_PCT = 250;
-  const xPos = (v: number) => PAD.left + (v / MAX_VOL) * cW;
-  const yPos = (p: number) => PAD.top + cH - (p / MAX_PCT) * cH;
-  const radius = (o: number) => o === 0 ? 10 : 10 + Math.sqrt(o) * 3;
-  const slaY = yPos(100);
-  const yTicks = [0, 50, 100, 150, 200];
-  const xTicks = [0, 35, 70, 105, 140];
+function PerformanceDriversChart() {
+  // All coords in a fixed viewBox; SVG scales to fill container width
+  const W = 800, H = 460;
+  const padL = 48, padR = 12, padT = 80, padB = 56;
+  const chartW = W - padL - padR;
+  const chartH = H - padT - padB;
+  const n = DRIVERS.length;
+  const barW = Math.floor(chartW / n) - 10;
+  const gap = Math.floor((chartW - n * barW) / (n + 1));
+  const maxVal = 1850000;
+  const yScale = (v: number) => (v / maxVal) * chartH;
+
+  const bars: { x: number; yTop: number; h: number; fill: string; label: string; valLabel: string; group: string; isGroupStart: boolean }[] = [];
+  let running = 0;
+  let prevGroup = "";
+  DRIVERS.forEach((d) => {
+    const i = bars.length;
+    const x = padL + gap + i * (barW + gap);
+    let yTop: number, h: number, fill: string;
+    if (d.type === "base") {
+      h = yScale(d.value); yTop = padT + chartH - h; fill = "#1a3d2b"; running = d.value;
+    } else if (d.type === "total") {
+      h = yScale(d.value); yTop = padT + chartH - h; fill = "#0039c9";
+    } else if (d.type === "positive") {
+      h = yScale(d.value); yTop = padT + chartH - yScale(running) - h; fill = "#2a8a4a"; running += d.value;
+    } else {
+      h = yScale(Math.abs(d.value)); yTop = padT + chartH - yScale(running); fill = "#ef4444"; running += d.value;
+    }
+    const isGroupStart = d.group !== prevGroup;
+    prevGroup = d.group;
+    bars.push({ x, yTop, h: Math.max(h, 2), fill, label: d.label, valLabel: fmt$K(d.value), group: d.group, isGroupStart });
+  });
+
+  const gridVals = [0, 500000, 1000000, 1500000, 1850000];
 
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} style={{ width: "100%", height: "auto", display: "block" }}>
-      <defs>
-        <filter id="bub-sh" x="-20%" y="-20%" width="140%" height="140%">
-          <feDropShadow dx={0} dy={2} stdDeviation={4} floodOpacity={0.10}/>
-        </filter>
-        <clipPath id="bub-clip">
-          <rect x={PAD.left} y={PAD.top} width={cW} height={cH} />
-        </clipPath>
-      </defs>
-
-      {/* Chart background */}
-      <rect x={PAD.left} y={PAD.top} width={cW} height={cH} fill="#fafafa" rx={4} />
-
-      {/* Grid */}
-      {yTicks.map(t => <line key={t} x1={PAD.left} x2={PAD.left+cW} y1={yPos(t)} y2={yPos(t)} stroke="#ebebeb" strokeWidth={1} />)}
-      {xTicks.map(t => <line key={t} x1={xPos(t)} x2={xPos(t)} y1={PAD.top} y2={PAD.top+cH} stroke="#ebebeb" strokeWidth={1} />)}
-
-      {/* SLA line */}
-      <line x1={PAD.left} x2={PAD.left+cW} y1={slaY} y2={slaY} stroke="#0039c9" strokeWidth={1.5} strokeDasharray="5,3" opacity={0.45} />
-      <text x={PAD.left+cW+5} y={slaY+3} fontSize={7} fill="#0039c9" fontFamily="Inter,sans-serif" fontWeight="600">100%</text>
-
-      {/* Y axis */}
-      {yTicks.map(t => <text key={t} x={PAD.left-5} y={yPos(t)+3} textAnchor="end" fontSize={7} fill={t===100?"#0039c9":"#b0b0b0"} fontWeight={t===100?"600":"400"} fontFamily="Inter,sans-serif">{t}%</text>)}
-      <text x={9} y={PAD.top+cH/2} textAnchor="middle" fontSize={7} fill="#b0b0b0" fontFamily="Inter,sans-serif" transform={`rotate(-90 9 ${PAD.top+cH/2})`}>Cycle % of SLA</text>
-
-      {/* X axis */}
-      {xTicks.map(t => <text key={t} x={xPos(t)} y={PAD.top+cH+11} textAnchor="middle" fontSize={7} fill="#b0b0b0" fontFamily="Inter,sans-serif">{t}</text>)}
-      <text x={PAD.left+cW/2} y={H-2} textAnchor="middle" fontSize={7} fill="#b0b0b0" fontFamily="Inter,sans-serif">Work Order Volume</text>
-
-      {/* Bubbles clipped to chart area */}
-      <g clipPath="url(#bub-clip)">
-        {BUBBLES.map(b => {
-          const cx=xPos(b.vol), cy=yPos(b.cyclePct), r=radius(b.overdue);
-          const c=BUBBLE_COLORS[b.color as keyof typeof BUBBLE_COLORS];
+    <div style={{ width: "100%", flex: 1, display: "flex", flexDirection: "column", minHeight: 0 }}>
+      <svg viewBox={`0 0 ${W} ${H}`} width="100%" height="100%" style={{ display: "block", overflow: "visible", flex: 1, minHeight: 0 }}>
+        {/* Gridlines */}
+        {gridVals.map((v) => {
+          const y = padT + chartH - yScale(v);
           return (
-            <g key={b.name} style={{cursor:"pointer"}} onMouseEnter={()=>setHovered(b.name)} onMouseLeave={()=>setHovered(null)}>
-              <circle cx={cx} cy={cy} r={hovered===b.name ? r+2 : r} fill={c.fill} stroke={c.stroke} strokeWidth={1.8} />
-              {b.overdue>0 && <text x={cx} y={cy+3} textAnchor="middle" fontSize={8} fontWeight="700" fill={c.text} fontFamily="Inter,sans-serif">{b.overdue}</text>}
+            <g key={v}>
+              <line x1={padL} x2={W - padR} y1={y} y2={y} stroke="#f0f0f0" strokeWidth={1} />
+              <text x={padL - 5} y={y + 4} textAnchor="end" fontSize={8} fill="#c8c8c8">
+                {v === 0 ? "0" : v >= 1000000 ? `$${(v / 1000000).toFixed(1)}M` : `$${v / 1000}K`}
+              </text>
             </g>
           );
         })}
-      </g>
 
-      {/* Labels */}
-      {BUBBLES.map(b => {
-        const cx=xPos(b.vol), cy=yPos(b.cyclePct), r=radius(b.overdue);
-        const c=BUBBLE_COLORS[b.color as keyof typeof BUBBLE_COLORS];
-        const above = cy - r - 6;
-        const below = cy + r + 10;
-        const labelY = above < PAD.top + 4 ? below : above;
-        return <text key={b.name+"-lbl"} x={cx} y={labelY} textAnchor="middle" fontSize={8} fontWeight="600" fill={c.text} fontFamily="Inter,sans-serif">{b.name}</text>;
-      })}
+        {/* Group separators */}
+        {bars.filter(b => b.isGroupStart && b.group !== "Base").map((b, i) => (
+          <line key={i} x1={b.x - gap / 2} x2={b.x - gap / 2} y1={padT - 36} y2={padT + chartH} stroke="#e8e8e8" strokeWidth={1} strokeDasharray="4 3" />
+        ))}
 
-      {/* Tooltips — rendered last so they appear on top */}
-      {BUBBLES.map(b => {
-        if (hovered !== b.name) return null;
-        const cx=xPos(b.vol), cy=yPos(b.cyclePct), r=radius(b.overdue);
-        const c=BUBBLE_COLORS[b.color as keyof typeof BUBBLE_COLORS];
-        const ttW=130, ttH=50;
-        const ttX = cx + r + 6 + ttW > W ? cx - r - 6 - ttW : cx + r + 6;
-        const ttY = Math.max(PAD.top, Math.min(cy - ttH/2, PAD.top + cH - ttH));
-        return (
-          <g key={b.name+"-tip"}>
-            <rect x={ttX} y={ttY} width={ttW} height={ttH} fill="white" stroke="#e5e5e5" strokeWidth={1} rx={5} filter="url(#bub-sh)" />
-            <text x={ttX+8} y={ttY+14} fontSize={10} fontWeight="600" fill="#121212" fontFamily="Inter,sans-serif">{b.name}</text>
-            <text x={ttX+8} y={ttY+27} fontSize={9} fill="#808488" fontFamily="Inter,sans-serif">{b.vol} WOs · {b.cycleStr} avg</text>
-            <text x={ttX+8} y={ttY+41} fontSize={9} fill={c.text} fontFamily="Inter,sans-serif" fontWeight="600">{b.cyclePct}% of SLA{b.overdue>0?` · ${b.overdue} overdue`:""}</text>
+        {/* Group headers */}
+        {(["Base", "Stage Drag", "Upside", "Total"] as const).map((grp) => {
+          const grpBars = bars.filter((_, i) => DRIVERS[i].group === grp);
+          if (!grpBars.length) return null;
+          const midX = (grpBars[0].x + grpBars[grpBars.length - 1].x + barW) / 2;
+          return (
+            <text key={grp} x={midX} y={padT - 30} textAnchor="middle" fontSize={9} fontWeight="700"
+              fill={grp === "Stage Drag" ? "#ef4444" : grp === "Upside" ? "#2a8a4a" : "#909090"}>
+              {grp.toUpperCase()}
+            </text>
+          );
+        })}
+
+        {/* Connectors */}
+        {bars.map((b, i) => {
+          if (i === 0 || i === bars.length - 1) return null;
+          const prev = bars[i - 1];
+          const connY = DRIVERS[i].type === "positive" ? prev.yTop : prev.yTop + prev.h;
+          return <line key={i} x1={prev.x + barW} x2={b.x} y1={connY} y2={connY} stroke="#d0d0d0" strokeWidth={1} strokeDasharray="4 3" />;
+        })}
+
+        {/* Bars */}
+        {bars.map((b, i) => (
+          <g key={i}>
+            <rect x={b.x} y={b.yTop} width={barW} height={b.h} fill={b.fill} rx={3} opacity={0.9} />
+            <text x={b.x + barW / 2} y={b.yTop - 7} textAnchor="middle" fontSize={9} fill={b.fill} fontWeight="700">
+              {b.valLabel}
+            </text>
+            {b.label.split("\n").map((line, li) => (
+              <text key={li} x={b.x + barW / 2} y={padT + chartH + 13 + li * 12} textAnchor="middle" fontSize={8} fill="#909090">
+                {line}
+              </text>
+            ))}
           </g>
-        );
-      })}
-    </svg>
+        ))}
+
+        {/* Baseline axis */}
+        <line x1={padL} x2={W - padR} y1={padT + chartH} y2={padT + chartH} stroke="#d8d8d8" strokeWidth={1} />
+      </svg>
+
+      <div className="flex gap-5 mt-3 flex-shrink-0" style={{ paddingLeft: padL }}>
+        {[
+          { color: "#1a3d2b", label: "Baseline capacity" },
+          { color: "#ef4444", label: "Stage drag" },
+          { color: "#2a8a4a", label: "Efficiency upside" },
+          { color: "#0039c9", label: "Net projection" },
+        ].map(({ color, label }) => (
+          <div key={label} className="flex items-center gap-1.5">
+            <div className="rounded-sm" style={{ width: 9, height: 9, background: color, flexShrink: 0 }} />
+            <span className="text-[11px] text-[#808488]">{label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -303,6 +330,11 @@ const NAV_ITEMS = [
 
 export default function DashboardPage() {
   const [, navigate] = useLocation();
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchVal, setSearchVal] = useState("");
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  useEffect(() => { if (searchOpen) searchInputRef.current?.focus(); }, [searchOpen]);
+  function closeSearch() { setSearchOpen(false); setSearchVal(""); }
 
   return (
     <div className="min-h-screen bg-[#f6f7fa]" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
@@ -330,6 +362,19 @@ export default function DashboardPage() {
           <img src={ASSET_LOGO} alt="PRO" className="shrink-0" style={{ height: 28, width: 110, objectFit: "contain", objectPosition: "left" }} />
 
           <div className="flex gap-2 items-center p-1 rounded-[8px]" style={{ backdropFilter: "blur(50px)", boxShadow: "inset 0px 1px 0px 0px rgba(255,255,255,0.1)" }}>
+            {searchOpen ? (
+              <div className="flex items-center gap-2 rounded-[8px] px-3" style={{ width: 260, height: 43, background: "rgba(255,255,255,0.10)", boxShadow: "inset 0px 1px 0px 0px rgba(255,255,255,0.12)" }}>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input ref={searchInputRef} type="text" value={searchVal} onChange={e => setSearchVal(e.target.value)} onKeyDown={e => e.key === "Escape" && closeSearch()} placeholder="Search…" className="flex-1 bg-transparent outline-none text-[14px] text-white placeholder:text-white/40" />
+                <button onClick={closeSearch} className="text-white/40 hover:text-white/80 transition-colors">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+              </div>
+            ) : (
+              <button className="flex items-center justify-center rounded-[8px] transition-opacity hover:opacity-70" style={{ width: 43, height: 43, color: "white" }} onClick={() => setSearchOpen(true)}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              </button>
+            )}
             {NAV_ITEMS.map(({ label, href }) => {
               const isActive = label === "Dashboard";
               return (
@@ -391,22 +436,11 @@ export default function DashboardPage() {
 
           {/* Bubble chart + CI signals */}
           <div className="grid gap-5 mb-5" style={{ gridTemplateColumns: "1fr 400px" }}>
-            <div className="bg-white rounded-[8px] p-8" style={{ boxShadow: "0px 4px 24px 0px rgba(0,0,0,0.06)" }}>
-              <h3 className="text-[20px] font-medium text-[#121212] mb-0.5">Stage Health — Volume vs Cycle Time</h3>
-              <p className="text-[13px] text-[#808488] mb-5">X = work order volume · Y = cycle time as % of SLA · Bubble size = overdue count</p>
-              <BubbleChart />
-              <div className="flex items-center gap-5 mt-4 flex-wrap">
-                {[
-                  { bg: "rgba(192,57,43,0.12)", stroke: "#c0392b", label: "Over SLA (Critical)" },
-                  { bg: "rgba(196,122,10,0.12)", stroke: "#c47a0a", label: "Over SLA (High)" },
-                  { bg: "rgba(42,138,74,0.12)",  stroke: "#2a8a4a", label: "Within SLA" },
-                ].map(l => (
-                  <div key={l.label} className="flex items-center gap-1.5">
-                    <div className="w-3 h-3 rounded-full" style={{ background: l.bg, border: `2px solid ${l.stroke}` }} />
-                    <span className="text-[11.5px] text-[#808488]">{l.label}</span>
-                  </div>
-                ))}
-                <span className="ml-auto text-[11px] text-[#808488]">Number inside bubble = overdue count</span>
+            <div className="bg-white rounded-[8px] p-8 flex flex-col" style={{ boxShadow: "0px 4px 24px 0px rgba(0,0,0,0.06)" }}>
+              <h3 className="text-[20px] font-medium text-[#121212] mb-0.5">Performance Drivers</h3>
+              <p className="text-[13px] text-[#808488] mb-5">Baseline capacity · Stage drag by bottleneck · Net pipeline projection</p>
+              <div className="flex-1 flex flex-col min-h-0">
+                <PerformanceDriversChart />
               </div>
             </div>
             <CiSignals />

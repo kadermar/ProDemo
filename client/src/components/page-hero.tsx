@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useState, useRef, useEffect } from "react";
 import { useLocation } from "wouter";
 import img31 from "@assets/image31.png";
 
@@ -13,7 +13,7 @@ const NAV_ITEMS = [
   { label: "Signals",          href: "/signals",          key: "signals"          },
   { label: "Stage Activity",   href: "/stage-activity",   key: "stage-activity"   },
   { label: "Field Experience", href: "/field-experience", key: "field-experience" },
-  { label: "Chat",             href: "/",                 key: "chat"             },
+  { label: "Assistant",        href: "/chat",             key: "chat"             },
 ];
 
 interface PageHeroProps {
@@ -24,6 +24,11 @@ interface PageHeroProps {
 
 export function PageHero({ title, active, action }: PageHeroProps) {
   const [, navigate] = useLocation();
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchVal, setSearchVal] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
+  useEffect(() => { if (searchOpen) inputRef.current?.focus(); }, [searchOpen]);
+  function closeSearch() { setSearchOpen(false); setSearchVal(""); }
 
   return (
     <div
@@ -51,6 +56,19 @@ export function PageHero({ title, active, action }: PageHeroProps) {
         <img src={ASSET_LOGO} alt="PRO" className="shrink-0" style={{ height: 28, width: 110, objectFit: "contain", objectPosition: "left" }} />
 
         <div className="flex gap-2 items-center p-1 rounded-[8px]" style={{ backdropFilter: "blur(50px)", boxShadow: "inset 0px 1px 0px 0px rgba(255,255,255,0.1)" }}>
+          {searchOpen ? (
+            <div className="flex items-center gap-2 rounded-[8px] px-3" style={{ width: 260, height: 43, background: "rgba(255,255,255,0.10)", boxShadow: "inset 0px 1px 0px 0px rgba(255,255,255,0.12)" }}>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input ref={inputRef} type="text" value={searchVal} onChange={e => setSearchVal(e.target.value)} onKeyDown={e => e.key === "Escape" && closeSearch()} placeholder="Search…" className="flex-1 bg-transparent outline-none text-[14px] text-white placeholder:text-white/40" />
+              <button onClick={closeSearch} className="text-white/40 hover:text-white/80 transition-colors">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </button>
+            </div>
+          ) : (
+            <button className="flex items-center justify-center rounded-[8px] transition-opacity hover:opacity-70" style={{ width: 43, height: 43, color: "white" }} onClick={() => setSearchOpen(true)}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </button>
+          )}
           {NAV_ITEMS.map(({ label, href, key }) => {
             const isActive = key === active;
             return (

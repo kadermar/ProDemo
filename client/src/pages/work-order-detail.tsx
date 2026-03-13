@@ -5,6 +5,18 @@ import { ProNav } from "@/components/pro-nav";
 import { AiAssistant } from "@/components/ai-assistant";
 import { STAGE_ICONS } from "@/lib/stage-icons";
 
+// ── Building photos (cycled by work order ID) ────────────────────────────────
+const BUILDING_IMGS = [
+  "https://www.figma.com/api/mcp/asset/17be5c39-270c-440d-8f32-3ee0d09fce99",
+  "https://www.figma.com/api/mcp/asset/110e2863-272b-4fc3-a15c-58b4240a7c5c",
+  "https://www.figma.com/api/mcp/asset/37ce90d4-43b1-4906-9452-1ad803ee3484",
+];
+
+function buildingImg(id: string): string {
+  const n = parseInt(id.replace(/\D/g, "").slice(-3) || "0", 10);
+  return BUILDING_IMGS[n % BUILDING_IMGS.length];
+}
+
 // ── Figma asset URLs (expire 7 days from 2026-03-12) ─────────────────────────
 const ASSET_SEND      = "https://www.figma.com/api/mcp/asset/fb9106ff-4ee5-4565-b2e0-c279aa2f2467";
 const ASSET_UPLOAD    = "https://www.figma.com/api/mcp/asset/eedca955-7ce8-41e4-93da-e96dc3fdd349";
@@ -323,6 +335,11 @@ export default function WorkOrderDetailPage() {
 
             {/* ── LEFT column ── */}
             <div className="flex flex-col gap-8" style={{ width: 795, flexShrink: 0 }}>
+
+              {/* Building photo */}
+              <div className="rounded-[8px] overflow-hidden" style={{ height: 280 }}>
+                <img src={buildingImg(wo.id)} alt={wo.contractor} className="w-full h-full object-cover" />
+              </div>
 
               {/* Pipeline Stepper */}
               <StageStepper currentStage={wo.currentStage} />

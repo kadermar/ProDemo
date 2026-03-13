@@ -66,6 +66,7 @@
 
   body {
     @apply bg-background text-foreground antialiased;
+    background-color: #f6f7fa;
     font-family: 'Outfit', sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
   }

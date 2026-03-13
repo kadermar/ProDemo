@@ -1,4 +1,5 @@
 import { useLocation } from "wouter";
+import { ProNav } from "@/components/pro-nav";
 
 const STAGES_DATA = [
   { name: "Proposal",        vol: 124, cyclePct: 60,  overdue: 0,  atRisk: 0,      cycleStr: "1.2d", sla: "2d",  health: "ok"   },
@@ -90,7 +91,7 @@ function GaugeSVG({ stage }: { stage: typeof STAGES_DATA[0] }) {
 
   const endDeg = startDeg + totalDeg;
   const pct100Deg = startDeg + (100 / maxPct) * totalDeg;
-  const needlePct = Math.min(s.cyclePct, maxPct);
+  const needlePct = Math.min(stage.cyclePct, maxPct);
   const needleDeg = startDeg + (needlePct / maxPct) * totalDeg;
   const needleEnd = polarToXY(needleDeg);
   const color = healthColor(stage.health);
@@ -748,6 +749,214 @@ function Chart10() {
   );
 }
 
+/* ─── Option 11 ─── Performance Drivers Bridge Chart ────────────── */
+const DRIVERS = [
+  { label: "Baseline\nCapacity",  group: "Base",         value: 1850000, type: "base"     },
+  { label: "Assembly\nLetter",    group: "Stage Drag",   value: -340000, type: "negative" },
+  { label: "Inspection\nBacklog", group: "Stage Drag",   value: -290000, type: "negative" },
+  { label: "NOA /\nWarranty",     group: "Stage Drag",   value: -180000, type: "negative" },
+  { label: "Quote\nDelay",        group: "Stage Drag",   value: -38000,  type: "negative" },
+  { label: "Proposal\nEfficiency",group: "Upside",       value: 62000,   type: "positive" },
+  { label: "Submittal\nSpeed",    group: "Upside",       value: 44000,   type: "positive" },
+  { label: "Net\nProjection",     group: "Total",        value: 1108000, type: "total"    },
+];
+
+function fmt$K(n: number) {
+  const abs = Math.abs(n);
+  const sign = n < 0 ? "−" : n > 0 ? "+" : "";
+  if (abs >= 1000000) return `${sign}$${(abs / 1000000).toFixed(2)}M`;
+  if (abs >= 1000) return `${sign}$${Math.round(abs / 1000)}K`;
+  return `${sign}$${abs}`;
+}
+
+function Chart11() {
+  const svgW = 760, svgH = 300;
+  const padL = 40, padR = 20, padT = 56, padB = 56;
+  const chartW = svgW - padL - padR;
+  const chartH = svgH - padT - padB;
+  const n = DRIVERS.length;
+  const barW = Math.floor(chartW / n) - 14;
+  const gap = Math.floor((chartW - n * barW) / (n + 1));
+
+  const maxVal = 1850000;
+  const yScale = (v: number) => (v / maxVal) * chartH;
+
+  // Compute running totals for waterfall positioning
+  const bars: {
+    x: number; yTop: number; h: number;
+    fill: string; stroke: string;
+    label: string; valLabel: string;
+    groupLabel: string; isGroupStart: boolean;
+  }[] = [];
+
+  let running = 0;
+  let prevGroup = "";
+  DRIVERS.forEach((d, i) => {
+    const x = padL + gap + i * (barW + gap);
+    let yTop: number, h: number, fill: string, stroke: string;
+
+    if (d.type === "base") {
+      h = yScale(d.value);
+      yTop = padT + chartH - h;
+      fill = "#1a3d2b";
+      stroke = "#1a3d2b";
+      running = d.value;
+    } else if (d.type === "total") {
+      h = yScale(d.value);
+      yTop = padT + chartH - h;
+      fill = "#0039c9";
+      stroke = "#0039c9";
+    } else if (d.type === "positive") {
+      h = yScale(d.value);
+      yTop = padT + chartH - yScale(running) - h;
+      fill = "#2a8a4a";
+      stroke = "#2a8a4a";
+      running += d.value;
+    } else {
+      h = yScale(Math.abs(d.value));
+      yTop = padT + chartH - yScale(running);
+      fill = "#ef4444";
+      stroke = "#ef4444";
+      running += d.value;
+    }
+
+    const isGroupStart = d.group !== prevGroup;
+    prevGroup = d.group;
+
+    bars.push({
+      x, yTop, h: Math.max(h, 2),
+      fill, stroke,
+      label: d.label,
+      valLabel: fmt$K(d.value),
+      groupLabel: d.group,
+      isGroupStart,
+    });
+  });
+
+  // Y-axis gridlines
+  const gridVals = [0, 500000, 1000000, 1500000, 1850000];
+
+  return (
+    <div>
+      {/* Group labels */}
+      <svg viewBox={`0 0 ${svgW} ${svgH}`} width="100%" style={{ maxWidth: svgW, display: "block" }}>
+        {/* Gridlines */}
+        {gridVals.map((v) => {
+          const y = padT + chartH - yScale(v);
+          return (
+            <g key={v}>
+              <line x1={padL} x2={svgW - padR} y1={y} y2={y} stroke="#f0f0f0" strokeWidth={1} />
+              <text x={padL - 4} y={y + 4} textAnchor="end" fontSize={9} fill="#c0c0c0">
+                {v === 0 ? "0" : v >= 1000000 ? `$${(v/1000000).toFixed(1)}M` : `$${v/1000}K`}
+              </text>
+            </g>
+          );
+        })}
+
+        {/* Connector lines between bars */}
+        {bars.map((b, i) => {
+          if (i === 0 || i === bars.length - 1) return null;
+          const prev = bars[i - 1];
+          const connY = DRIVERS[i].type === "positive"
+            ? prev.yTop
+            : prev.yTop + prev.h;
+          return (
+            <line
+              key={i}
+              x1={prev.x + barW} x2={b.x}
+              y1={connY} y2={connY}
+              stroke="#d0d0d0" strokeWidth={1} strokeDasharray="4 3"
+            />
+          );
+        })}
+
+        {/* Group separators (dashed vertical) */}
+        {bars.filter(b => b.isGroupStart && b.groupLabel !== "Base").map((b, i) => (
+          <line
+            key={i}
+            x1={b.x - gap / 2} x2={b.x - gap / 2}
+            y1={padT - 20} y2={padT + chartH + 2}
+            stroke="#e0e0e0" strokeWidth={1} strokeDasharray="4 3"
+          />
+        ))}
+
+        {/* Group header labels */}
+        {(["Base", "Stage Drag", "Upside", "Total"] as string[]).map((grp) => {
+          const grpBars = bars.filter((_, i) => DRIVERS[i].group === grp);
+          if (grpBars.length === 0) return null;
+          const midX = (grpBars[0].x + grpBars[grpBars.length - 1].x + barW) / 2;
+          return (
+            <text
+              key={grp}
+              x={midX} y={padT - 8}
+              textAnchor="middle" fontSize={10}
+              fill={grp === "Stage Drag" ? "#ef4444" : grp === "Upside" ? "#2a8a4a" : "#808488"}
+              fontWeight="700"
+              style={{ textTransform: "uppercase", letterSpacing: "0.08em" }}
+            >
+              {grp}
+            </text>
+          );
+        })}
+
+        {/* Bars */}
+        {bars.map((b, i) => (
+          <g key={i}>
+            <rect
+              x={b.x} y={b.yTop}
+              width={barW} height={b.h}
+              fill={b.fill} rx={3} opacity={0.9}
+            />
+            {/* Value label above/below bar */}
+            <text
+              x={b.x + barW / 2}
+              y={DRIVERS[i].type === "negative" ? b.yTop - 5 : b.yTop - 5}
+              textAnchor="middle" fontSize={10}
+              fill={b.fill} fontWeight="700"
+            >
+              {b.valLabel}
+            </text>
+            {/* Stage name below chart */}
+            {b.label.split("\n").map((line, li) => (
+              <text
+                key={li}
+                x={b.x + barW / 2}
+                y={padT + chartH + 16 + li * 12}
+                textAnchor="middle" fontSize={9}
+                fill="#808488"
+              >
+                {line}
+              </text>
+            ))}
+          </g>
+        ))}
+
+        {/* Baseline axis */}
+        <line
+          x1={padL} x2={svgW - padR}
+          y1={padT + chartH} y2={padT + chartH}
+          stroke="#d0d0d0" strokeWidth={1}
+        />
+      </svg>
+
+      {/* Legend */}
+      <div className="flex gap-5 mt-2 pl-10">
+        {[
+          { color: "#1a3d2b", label: "Baseline" },
+          { color: "#ef4444", label: "SLA Drag (revenue at risk)" },
+          { color: "#2a8a4a", label: "Efficiency Upside" },
+          { color: "#0039c9", label: "Net Projection" },
+        ].map(({ color, label }) => (
+          <div key={label} className="flex items-center gap-1.5">
+            <div className="rounded-sm" style={{ width: 10, height: 10, background: color }} />
+            <span className="text-[11px] text-[#808488]">{label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 /* ─── Page ──────────────────────────────────────────────────────── */
 const CHARTS: {
   name: string;
@@ -764,6 +973,7 @@ const CHARTS: {
   { name: "Slope / Trend Chart",           desc: "Last month vs this month SLA performance · Lines show trajectory — improving, worsening, or flat",               component: Chart8  },
   { name: "Pipeline Funnel with Risk Overlay", desc: "Volume flows left to right · Red overlay shows stalled jobs · $ at risk labeled per stage",                 component: Chart9  },
   { name: "Radar / Spider Chart",          desc: "Hexagonal chart · Each axis = one stage · Shape shows where the operation is out of balance",                    component: Chart10 },
+  { name: "Performance Drivers Bridge",    desc: "Waterfall chart · Baseline capacity minus stage drag plus efficiency upside = net projection · Speaks executive language", component: Chart11 },
 ];
 
 export default function ChartGalleryPage() {
@@ -771,13 +981,13 @@ export default function ChartGalleryPage() {
 
   return (
     <div className="min-h-screen bg-[#f8f8f8]" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
-      {/* Header */}
-      <div className="bg-[#121212]" style={{ padding: "40px 120px" }}>
+      <ProNav active="dashboard" />
+      {/* Sub-header */}
+      <div className="bg-[#121212]" style={{ padding: "24px 120px 28px" }}>
         <div className="flex items-center justify-between">
           <div>
             <p className="text-[#808488] text-[13px] mb-1">Dashboard · Stage Health Chart</p>
-            <h1 className="text-white text-[36px] font-medium leading-none">10 Chart Options</h1>
-            <p className="text-[#808488] text-[14px] mt-2">Review each visualization and tell me which to use</p>
+            <h1 className="text-white text-[28px] font-medium leading-none">11 Chart Options</h1>
           </div>
           <button
             onClick={() => navigate("/dashboard")}

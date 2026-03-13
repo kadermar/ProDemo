@@ -19,10 +19,38 @@ const INITIAL_MESSAGES: Message[] = [
   },
 ];
 
+function TypingDots() {
+  return (
+    <div className="flex items-center gap-1 px-3 py-2" style={{ minWidth: 48 }}>
+      {[0, 1, 2].map((i) => (
+        <span
+          key={i}
+          style={{
+            width: 7,
+            height: 7,
+            borderRadius: "50%",
+            background: "#c0c8d8",
+            display: "inline-block",
+            animation: "carlieTyping 1.2s ease-in-out infinite",
+            animationDelay: `${i * 0.2}s`,
+          }}
+        />
+      ))}
+      <style>{`
+        @keyframes carlieTyping {
+          0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+          30% { transform: translateY(-4px); opacity: 1; }
+        }
+      `}</style>
+    </div>
+  );
+}
+
 export function AiAssistant() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>(INITIAL_MESSAGES);
   const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -69,18 +97,20 @@ export function AiAssistant() {
     return "I can help with revenue risk, pipeline health, city performance, contractor accounts, cycle times, product library gaps, and active signals. What would you like to dig into?";
   }
 
-  function send() {
-    const text = input.trim();
-    if (!text) return;
+  function send(overrideText?: string) {
+    const text = (overrideText ?? input).trim();
+    if (!text || loading) return;
     const userMsg: Message = { id: Date.now(), role: "user", text };
     setMessages((prev) => [...prev, userMsg]);
     setInput("");
+    setLoading(true);
     setTimeout(() => {
+      setLoading(false);
       setMessages((prev) => [
         ...prev,
         { id: Date.now() + 1, role: "ai", text: getResponse(text) },
       ]);
-    }, 700);
+    }, 900);
   }
 
   return (
@@ -156,6 +186,27 @@ export function AiAssistant() {
                 </div>
               </div>
             ))}
+            {loading && (
+              <div className="flex justify-start">
+                <div
+                  className="shrink-0 rounded-full flex items-center justify-center mr-2 mt-0.5"
+                  style={{ width: 28, height: 28, background: "linear-gradient(135deg, #0039c9 0%, #082e83 100%)" }}
+                >
+                  <svg width="14" height="14" viewBox="0 0 128 88" fill="white">
+                    <path fillRule="evenodd" clipRule="evenodd" d="M34.3638 36.58L25.0448 43.9347H39.4533L31.6863 45.8456L27.0977 59.7698C26.4058 61.8693 24.9774 63.6459 23.0778 64.7699L21 65.999H45.939L45.7264 65.5802C44.8972 63.947 44.7595 62.0478 45.3446 60.3117L52.6539 38.6228C52.9921 37.6194 52.2475 36.5796 51.1909 36.5797L34.3638 36.58Z"/>
+                  </svg>
+                </div>
+                <div
+                  style={{
+                    borderRadius: "16px 16px 16px 4px",
+                    background: "white",
+                    boxShadow: "0 1px 3px rgba(0,0,0,0.08)",
+                  }}
+                >
+                  <TypingDots />
+                </div>
+              </div>
+            )}
             <div ref={bottomRef} />
           </div>
 
@@ -173,18 +224,7 @@ export function AiAssistant() {
               ].map((prompt) => (
                 <button
                   key={prompt}
-                  onClick={() => {
-                    setInput(prompt);
-                    const userMsg: Message = { id: Date.now(), role: "user", text: prompt };
-                    setMessages((prev) => [...prev, userMsg]);
-                    setTimeout(() => {
-                      setMessages((prev) => [
-                        ...prev,
-                        { id: Date.now() + 1, role: "ai", text: getResponse(prompt) },
-                      ]);
-                    }, 700);
-                    setInput("");
-                  }}
+                  onClick={() => send(prompt)}
                   className="text-[11.5px] font-medium px-2.5 py-1.5 rounded-full transition-colors hover:bg-[#0039c9] hover:text-white"
                   style={{ background: "white", color: "#0039c9", border: "1px solid #d0d8f5", lineHeight: 1 }}
                 >
@@ -211,7 +251,7 @@ export function AiAssistant() {
               placeholder="Ask Carlie anything..."
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && send()}
+              onKeyDown={(e) => { if (e.key === "Enter") send(); }}
             />
             <button
               onClick={send}
@@ -219,7 +259,8 @@ export function AiAssistant() {
               style={{
                 width: 36,
                 height: 36,
-                background: input.trim() ? "#3ed851" : "#e5e7eb",
+                background: input.trim() && !loading ? "#3ed851" : "#e5e7eb",
+                opacity: loading ? 0.5 : 1,
               }}
             >
               <img src={ASSET_SEND} alt="Send" style={{ width: 16, height: 16, objectFit: "contain" }} />
