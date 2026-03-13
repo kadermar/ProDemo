@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLocation } from "wouter";
+import img31 from "@assets/image31.png";
 import { JOBS } from "@/data/jobs";
 import { AiAssistant } from "@/components/ai-assistant";
 
@@ -127,6 +128,14 @@ export default function DashboardV2Page() {
           }}
         />
 
+        {/* Diagonal stripe */}
+        <div className="absolute pointer-events-none" style={{
+          left: "50%", bottom: -626, transform: "translateX(-50%) skewX(-18deg) scaleY(0.95)",
+          width: 2821, height: 1375, mixBlendMode: "overlay",
+        }}>
+          <img src={img31} alt="" className="absolute w-full" style={{ top: "-9.27%", height: "118.53%", maxWidth: "none" }} />
+        </div>
+
         {/* Nav */}
         <div
           className="absolute top-0 left-0 right-0 flex items-center justify-between"
@@ -148,13 +157,13 @@ export default function DashboardV2Page() {
               boxShadow: "inset 0px 1px 0px 0px rgba(255,255,255,0.1)",
             }}
           >
-            {["Dashboard", "Signals", "Stage Activity", "Field Experience", "Chat"].map((label) => {
+            {["Dashboard", "Signals", "Stage Activity", "Field Experience", "Assistant"].map((label) => {
               const hrefs: Record<string, string> = {
-                Dashboard: "/dashboard-v2",
+                Dashboard: "/dashboard",
                 Signals: "/signals",
                 "Stage Activity": "/stage-activity",
                 "Field Experience": "/field-experience",
-                Chat: "/",
+                Assistant: "/chat",
               };
               const isActive = label === "Dashboard";
               return (

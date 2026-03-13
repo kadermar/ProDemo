@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLocation } from "wouter";
+import img31 from "@assets/image31.png";
 import { AiAssistant } from "@/components/ai-assistant";
 import { STAGE_ICONS as SHARED_STAGE_ICONS, StageBadge } from "@/lib/stage-icons";
 
@@ -297,7 +298,7 @@ const NAV_ITEMS = [
   { label: "Signals",          href: "/signals"         },
   { label: "Stage Activity",   href: "/stage-activity"  },
   { label: "Field Experience", href: "/field-experience"},
-  { label: "Chat",             href: "/"                },
+  { label: "Assistant",        href: "/chat"             },
 ];
 
 export default function DashboardPage() {
@@ -315,6 +316,14 @@ export default function DashboardPage() {
           backgroundImage: `url(${ASSET_ELLIPSE})`,
           backgroundSize: "contain", backgroundRepeat: "no-repeat",
         }} />
+
+        {/* Diagonal stripe */}
+        <div className="absolute pointer-events-none" style={{
+          left: "50%", bottom: -626, transform: "translateX(-50%) skewX(-18deg) scaleY(0.95)",
+          width: 2821, height: 1375, mixBlendMode: "overlay",
+        }}>
+          <img src={img31} alt="" className="absolute w-full" style={{ top: "-9.27%", height: "118.53%", maxWidth: "none" }} />
+        </div>
 
         {/* Nav */}
         <div className="absolute top-0 left-0 right-0 flex items-center justify-between" style={{ padding: "42px 120px 0" }}>
