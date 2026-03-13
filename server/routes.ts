@@ -552,6 +552,39 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // GET /api/dashboard — synthetic operational data for the intelligence dashboard
+  app.get("/api/dashboard", (_req, res) => {
+    res.json({
+      kpis: {
+        activeWorkOrders: 391,
+        overdueActions: 23,
+        avgAssemblyLetterCycle: "2.1d",
+        warrantyIssuanceRate: "94%",
+        openCiSignals: 12,
+        criticalSignals: 3,
+      },
+      stages: [
+        { key: "proposal", icon: "📋", name: "Proposal", count: 124, avgDays: 1.2, slaDays: 2, overdue: 0, health: "ok" },
+        { key: "assembly", icon: "📐", name: "Assembly Letter", count: 89, avgDays: 2.1, slaDays: 1, overdue: 14, health: "risk" },
+        { key: "submittal", icon: "📦", name: "Submittal", count: 67, avgDays: 0.8, slaDays: 1, overdue: 0, health: "ok" },
+        { key: "quote", icon: "💬", name: "Quote", count: 45, avgDays: 1.5, slaDays: 2, overdue: 1, health: "ok" },
+        { key: "noa", icon: "📜", name: "NOA / Warranty", count: 38, avgDays: 3.2, slaDays: 2, overdue: 6, health: "warn" },
+        { key: "inspection", icon: "🔍", name: "Inspection", count: 28, avgDays: 6.4, slaDays: 5, overdue: 8, health: "warn" },
+      ],
+      signals: [
+        { id: "SIG-002", level: "critical", stage: "Assembly Letter", title: "Design Analyst Queue Overloaded", overdue: 14, value: "$220K" },
+        { id: "SIG-001", level: "critical", stage: "Product Library", title: "EPDM Seam Tape Spec Gap", overdue: 23, value: "+1.4d" },
+        { id: "SIG-007", level: "critical", stage: "Inspection", title: "FSR Backlog — SE Region", overdue: 8, value: "$480K" },
+        { id: "SIG-005", level: "high", stage: "NOA / Warranty", title: "NOA Processing Delays", overdue: 6, value: "$120K" },
+      ],
+      productLibrary: {
+        ytdClosed: 456,
+        pipelineValue: "$18.4M",
+        hourssaved: 6840,
+      },
+    });
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }

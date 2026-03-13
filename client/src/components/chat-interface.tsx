@@ -14,15 +14,23 @@ import botLogo from "@assets/image_1754430429145.png";
 
 interface ChatInterfaceProps {
   sessionId?: number;
+  initialQuery?: string;
 }
 
-export function ChatInterface({ sessionId }: ChatInterfaceProps) {
-  const [input, setInput] = useState("");
+export function ChatInterface({ sessionId, initialQuery }: ChatInterfaceProps) {
+  const [input, setInput] = useState(initialQuery ?? "");
   const [isTyping, setIsTyping] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [stagedFiles, setStagedFiles] = useState<File[]>([]);
   const [selectedProduct, setSelectedProduct] = useState<ProductData | null>(null);
   const [showQuickQueries, setShowQuickQueries] = useState(true);
+
+  useEffect(() => {
+    if (initialQuery) {
+      setInput(initialQuery);
+      setShowQuickQueries(false);
+    }
+  }, [initialQuery]);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
