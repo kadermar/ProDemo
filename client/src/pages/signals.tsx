@@ -291,21 +291,17 @@ const totalOpen        = SIGNALS.filter(s => s.level !== "implemented").length;
 const FILTERS = [
   "All",
   `Critical (${criticalCount})`,
-  ...(highCount   > 0 ? [`High (${highCount})`]   : []),
-  ...(mediumCount > 0 ? [`Medium (${mediumCount})`] : []),
-  "Assembly Letter",
-  "Inspection",
-  "Product Library",
+  `High (${highCount})`,
+  `Medium (${mediumCount})`,
+  `Implemented (${implementedCount})`,
 ];
 
 function matchesFilter(sig: typeof SIGNALS[0], filter: string): boolean {
   if (filter === "All") return true;
-  if (filter.startsWith("Critical")) return sig.level === "critical";
-  if (filter.startsWith("High"))     return sig.level === "high";
-  if (filter.startsWith("Medium"))   return sig.level === "medium";
-  if (filter === "Assembly Letter")  return sig.stage.toLowerCase().includes("assembly");
-  if (filter === "Inspection")       return sig.stage.toLowerCase().includes("inspection");
-  if (filter === "Product Library")  return sig.stage.toLowerCase().includes("product");
+  if (filter.startsWith("Critical"))    return sig.level === "critical";
+  if (filter.startsWith("High"))        return sig.level === "high";
+  if (filter.startsWith("Medium"))      return sig.level === "medium";
+  if (filter.startsWith("Implemented")) return sig.level === "implemented";
   return true;
 }
 
