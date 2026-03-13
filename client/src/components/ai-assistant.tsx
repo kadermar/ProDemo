@@ -126,7 +126,7 @@ export function AiAssistant() {
             height: 560,
             borderRadius: 12,
             boxShadow: "0 24px 64px rgba(0,0,0,0.28)",
-            fontFamily: "'Inter', system-ui, sans-serif",
+            fontFamily: "'Outfit', sans-serif",
           }}
         >
           {/* Header */}
