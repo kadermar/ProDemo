@@ -7,26 +7,7 @@ import { STAGE_ICONS, StageBadge, ROLE_ICONS } from "@/lib/stage-icons";
 // ── Data ─────────────────────────────────────────────────────────────────────
 
 const SIGNALS = [
-  {
-    id: "SIG-002",
-    level: "critical",
-    stage: "📐 Assembly Letter",
-    title: "Design Analyst Queue Overloaded — 14 Letters Past SLA",
-    roles: ["🔬 Design Analyst", "🏗 Contractor", "💼 Sales Rep"],
-    desc: "14 assembly letters have exceeded the 48-hour SLA threshold. The queue of 89 active letters is 2.1× above normal capacity for the current analyst team. Root cause is compounded by high EPDM revision rates (SIG-001) looping jobs back into the queue.",
-    evidence: [
-      { val: "14", valColor: "risk", label: "overdue items" },
-      { val: "89", valColor: null, label: "queue depth" },
-      { val: "2.1d", valColor: "risk", label: "avg vs 1d SLA" },
-      { val: "$220K", valColor: "risk", label: "jobs on hold" },
-    ],
-    rec: "Immediate: Re-route 8 non-wind-uplift letters to secondary analyst. Medium-term: Resolve SIG-001 product gap to eliminate revision loops before they re-enter the queue.",
-    libLink: null,
-    status: "review",
-    statusLabel: "Under Review",
-    date: "Detected Mar 5, 2026",
-    action: "Open in Work Orders →",
-  },
+  // ── Critical ────────────────────────────────────────────────────────────────
   {
     id: "SIG-001",
     level: "critical",
@@ -35,10 +16,10 @@ const SIGNALS = [
     roles: ["🔬 Design Analyst", "🏗 Contractor", "📐 Architect"],
     desc: "The product library is missing seam tape sub-type differentiation for EPDM systems (lap sealant vs. cover tape vs. splice tape width variants). Contractors and architects are referencing incorrect products in their assembly letter requests, triggering revisions that loop jobs back to the design analyst queue — directly fueling SIG-002.",
     evidence: [
-      { val: "31%", valColor: "risk", label: "revision rate" },
-      { val: "23", valColor: null, label: "letters reworked" },
-      { val: "+1.4d", valColor: "risk", label: "cycle time added" },
-      { val: "$48K", valColor: "risk", label: "est. revenue risk" },
+      { val: "31%",  valColor: "risk", label: "revision rate"      },
+      { val: "23",   valColor: null,   label: "letters reworked"   },
+      { val: "+1.4d",valColor: "risk", label: "cycle time added"   },
+      { val: "$48K", valColor: "risk", label: "est. revenue risk"  },
     ],
     rec: "Add seam tape sub-type filtering to EPDM product library. Differentiate lap sealant, cover tape, and splice tape with compatible spec sheets and SKU cross-reference. Estimated 2-day fix; will reduce queue backlog by ~8 jobs/week.",
     libLink: "EPDM Membranes — Seam Tape variants missing sub-type data",
@@ -48,6 +29,26 @@ const SIGNALS = [
     action: "Update Product Library →",
   },
   {
+    id: "SIG-002",
+    level: "critical",
+    stage: "📐 Assembly Letter",
+    title: "Design Analyst Queue Overloaded — 14 Letters Past SLA",
+    roles: ["🔬 Design Analyst", "🏗 Contractor", "💼 Sales Rep"],
+    desc: "14 assembly letters have exceeded the 48-hour SLA threshold. The queue of 89 active letters is 2.1× above normal capacity for the current analyst team. Root cause is compounded by high EPDM revision rates (SIG-001) looping jobs back into the queue.",
+    evidence: [
+      { val: "14",    valColor: "risk", label: "overdue items" },
+      { val: "89",    valColor: null,   label: "queue depth"   },
+      { val: "2.1d",  valColor: "risk", label: "avg vs 1d SLA" },
+      { val: "$220K", valColor: "risk", label: "jobs on hold"  },
+    ],
+    rec: "Immediate: Re-route 8 non-wind-uplift letters to secondary analyst. Medium-term: Resolve SIG-001 product gap to eliminate revision loops before they re-enter the queue.",
+    libLink: null,
+    status: "review",
+    statusLabel: "Under Review",
+    date: "Detected Mar 5, 2026",
+    action: "Open in Work Orders →",
+  },
+  {
     id: "SIG-007",
     level: "critical",
     stage: "🔍 Inspection",
@@ -55,10 +56,10 @@ const SIGNALS = [
     roles: ["🔍 Field Service Rep", "📜 Warranty Admin", "🏢 Building Owner"],
     desc: "8 warranty inspections in Atlanta are 7+ days past their scheduled date. Two FSRs are at full capacity; no reallocation has been triggered. Building owners and contractors are receiving no status updates, risking NPS deterioration.",
     evidence: [
-      { val: "8", valColor: "risk", label: "overdue jobs" },
-      { val: "7+ days", valColor: "risk", label: "past scheduled" },
-      { val: "$480K", valColor: null, label: "warranty fee risk" },
-      { val: "Atlanta", valColor: null, label: "geography" },
+      { val: "8",     valColor: "risk", label: "overdue jobs"      },
+      { val: "7+ days",valColor:"risk", label: "past scheduled"    },
+      { val: "$480K", valColor: null,   label: "warranty fee risk" },
+      { val: "Atlanta",valColor: null,  label: "geography"         },
     ],
     rec: "Reallocate 3 inspections to Mid-Atlantic FSR team. Trigger automated status notification to affected contractors and building owners. Escalate to regional manager if not cleared within 48 hrs.",
     libLink: null,
@@ -66,6 +67,48 @@ const SIGNALS = [
     statusLabel: "Open",
     date: "Detected Mar 3, 2026",
     action: "Assign FSR →",
+  },
+
+  // ── High ─────────────────────────────────────────────────────────────────────
+  {
+    id: "SIG-003",
+    level: "high",
+    stage: "📜 NOA / Warranty",
+    title: "PVC Multi-Ply Warranty Re-Review Backlog — 12 Applications",
+    roles: ["📜 Warranty Admin", "🔬 Design Analyst", "🏗 Contractor"],
+    desc: "12 PVC multi-ply NOA applications have been flagged for second technical review because warranty stacking rules for these systems are not documented in the product library. Analysts are making ad-hoc calls to the product team, adding 1–2 days per application and consuming capacity needed elsewhere.",
+    evidence: [
+      { val: "12",   valColor: "warn", label: "in re-review"   },
+      { val: "+1.8d",valColor: "warn", label: "avg delay each" },
+      { val: "$95K", valColor: "warn", label: "fees delayed"   },
+      { val: "PVC",  valColor: null,   label: "system type"    },
+    ],
+    rec: "Publish a PVC multi-ply warranty stacking decision guide to the product library. Establish a fast-track review path for standard multi-ply configurations. Estimated 3-day documentation effort eliminates ad-hoc escalations entirely.",
+    libLink: "PVC multi-ply warranty stacking rules not documented",
+    status: "open",
+    statusLabel: "Open",
+    date: "Detected Feb 28, 2026",
+    action: "View Re-Review Queue →",
+  },
+  {
+    id: "SIG-004",
+    level: "high",
+    stage: "🔍 Inspection",
+    title: "EPDM Installation Spec Mismatch — 6 Failed Inspections",
+    roles: ["🔍 Field Service Rep", "🏗 Contractor", "🔬 Design Analyst"],
+    desc: "6 inspections have failed because seam lap distances in the field did not match the product library's EPDM guidance. Contractors are using outdated spec sheets downloaded before the Feb 2026 library update. Each failure requires rescheduling and adds ~3.2 days plus $1.8K re-inspection cost.",
+    evidence: [
+      { val: "6",     valColor: "warn", label: "failed inspections"  },
+      { val: "+3.2d", valColor: "warn", label: "per re-inspection"   },
+      { val: "$10.8K",valColor: "warn", label: "re-inspect cost"     },
+      { val: "EPDM",  valColor: null,   label: "system type"         },
+    ],
+    rec: "Push updated EPDM seam lap spec sheets to all active contractors via the portal. Add a version-mismatch warning to the product library download flow. Cross-reference with SIG-001 — same root-cause library gap.",
+    libLink: "EPDM seam lap distance spec out of date in library",
+    status: "open",
+    statusLabel: "Open",
+    date: "Detected Mar 2, 2026",
+    action: "View Inspection Queue →",
   },
   {
     id: "SIG-005",
@@ -75,10 +118,10 @@ const SIGNALS = [
     roles: ["📜 Warranty Admin", "🏗 Contractor", "💼 Sales Rep"],
     desc: "Warranty Admin capacity is at 112% this month. 6 contractors have been waiting more than 5 days for NOA approval; 2 of these involve PVC multi-ply systems where warranty stacking guidance is unclear, requiring additional back-and-forth with technical services.",
     evidence: [
-      { val: "6", valColor: "warn", label: "contractors waiting" },
-      { val: "5+ days", valColor: null, label: "avg wait time" },
-      { val: "$120K", valColor: "warn", label: "fees at risk" },
-      { val: "112%", valColor: null, label: "admin capacity" },
+      { val: "6",     valColor: "warn", label: "contractors waiting" },
+      { val: "5+ days",valColor: null,  label: "avg wait time"      },
+      { val: "$120K", valColor: "warn", label: "fees at risk"        },
+      { val: "112%",  valColor: null,   label: "admin capacity"      },
     ],
     rec: "Prioritize the 4 standard NOAs immediately. Publish a PVC warranty stacking decision guide to prevent future escalations (see SIG-003). Flag to sales rep for contractor relationship management.",
     libLink: "PVC multi-ply warranty stacking data missing",
@@ -88,6 +131,110 @@ const SIGNALS = [
     action: "View NOA Queue →",
   },
   {
+    id: "SIG-009",
+    level: "high",
+    stage: "📐 Assembly Letter",
+    title: "Insulation R-Value / ASHRAE 90.1 Data Gap — 9 Jobs Affected",
+    roles: ["🔬 Design Analyst", "📐 Architect", "🏗 Contractor"],
+    desc: "The product library is missing ASHRAE 90.1-2022 R-value compliance data for polyisocyanurate insulation in climate zones 5–7. 9 assembly letters have stalled at the design analyst review step because analysts cannot confirm code compliance without pulling the standard manually.",
+    evidence: [
+      { val: "9",    valColor: "warn", label: "jobs stalled"      },
+      { val: "+0.9d",valColor: "warn", label: "avg added per job" },
+      { val: "CZ 5–7",valColor: null,  label: "climate zones"     },
+      { val: "$62K", valColor: "warn", label: "fees at risk"      },
+    ],
+    rec: "Add ASHRAE 90.1-2022 R-value tables for polyiso insulation, segmented by climate zone, to the product library. Attach compliance quick-reference to each affected product SKU. Estimated 1-day fix.",
+    libLink: "Polyiso insulation R-value / ASHRAE 90.1-2022 data missing",
+    status: "open",
+    statusLabel: "Open",
+    date: "Detected Mar 6, 2026",
+    action: "Update Product Library →",
+  },
+
+  // ── Medium ───────────────────────────────────────────────────────────────────
+  {
+    id: "SIG-006",
+    level: "medium",
+    stage: "📦 Submittal",
+    title: "Submittal Package Version Mismatch — 3 Packages Outdated",
+    roles: ["🔬 Design Analyst", "📦 Submittal Specialist", "🏗 Contractor"],
+    desc: "3 submittal packages were sent to contractors referencing an older spec revision. The product library was updated in late February but the submittal wizard cached the prior version. While no rejections have occurred yet, the mismatch creates confusion at the Quote stage if the contractor references the wrong spec sheet.",
+    evidence: [
+      { val: "3",     valColor: null, label: "packages affected" },
+      { val: "+0.3d", valColor: null, label: "avg delay if caught"},
+      { val: "Feb",   valColor: null, label: "library update month"},
+      { val: "TPO",   valColor: null, label: "system type"       },
+    ],
+    rec: "Force-refresh submittal wizard cache against current product library. Add a spec-version timestamp to all generated packages so analysts can spot mismatches at a glance.",
+    libLink: null,
+    status: "open",
+    statusLabel: "Open",
+    date: "Detected Mar 7, 2026",
+    action: "View Submittal Queue →",
+  },
+  {
+    id: "SIG-010",
+    level: "medium",
+    stage: "📋 Proposal",
+    title: "Incomplete Submission Forms — 6 Contractors Missing Required Fields",
+    roles: ["🏗 Contractor", "💼 Sales Rep", "🔬 Design Analyst"],
+    desc: "6 active proposals are missing required job-scope fields (roof area, deck type, or drainage configuration) needed to generate an accurate assembly letter. Submissions with missing data create a back-and-forth correction loop before the job can advance, adding half a day to average cycle time.",
+    evidence: [
+      { val: "6",     valColor: null, label: "incomplete forms"   },
+      { val: "+0.5d", valColor: null, label: "avg cycle added"    },
+      { val: "3",     valColor: null, label: "field types missing"},
+      { val: "Low",   valColor: null, label: "revenue risk"       },
+    ],
+    rec: "Add inline validation to the contractor proposal submission form for the 3 most-missed fields. Trigger an automated reminder email 24 hours after an incomplete submission. Sales rep should follow up within 48 hours.",
+    libLink: null,
+    status: "open",
+    statusLabel: "Open",
+    date: "Detected Mar 8, 2026",
+    action: "View Proposals →",
+  },
+  {
+    id: "SIG-011",
+    level: "medium",
+    stage: "💬 Quote",
+    title: "PVC Multi-Ply Warranty Stacking Guidance Missing — 5 Quotes Stalled",
+    roles: ["💼 Sales Rep", "🏗 Contractor", "💲 Pricing Team"],
+    desc: "5 quotes are stalled because sales reps cannot confirm warranty stacking eligibility for PVC multi-ply roofing systems without calling the product team directly. The product library does not document stacking rules for this configuration, creating delays and inconsistent answers to contractors.",
+    evidence: [
+      { val: "5",     valColor: null, label: "quotes stalled"   },
+      { val: "+0.8d", valColor: null, label: "avg delay per job"},
+      { val: "PVC",   valColor: null, label: "system type"      },
+      { val: "$38K",  valColor: null, label: "fees on hold"     },
+    ],
+    rec: "Add PVC multi-ply warranty stacking decision table to the product library. Cross-reference with SIG-003 — same documentation gap appearing at two pipeline stages.",
+    libLink: "PVC multi-ply warranty stacking rules not documented",
+    status: "open",
+    statusLabel: "Open",
+    date: "Detected Mar 9, 2026",
+    action: "View Quote Queue →",
+  },
+  {
+    id: "SIG-012",
+    level: "medium",
+    stage: "📚 Product Library",
+    title: "IBC 2021 Compliance References Outdated — 3 Western States",
+    roles: ["🔬 Design Analyst", "📐 Architect", "📦 Submittal Specialist"],
+    desc: "Code compliance references in the product library for California, Oregon, and Nevada still reflect IBC 2018 section numbers. IBC 2021 was adopted by all three states in Q4 2025. Analysts catching this manually are adding correction steps to submittal reviews; those who miss it risk producing non-compliant packages.",
+    evidence: [
+      { val: "3",    valColor: null, label: "states affected"    },
+      { val: "IBC",  valColor: null, label: "code standard"      },
+      { val: "2021", valColor: null, label: "current edition"     },
+      { val: "6 SKUs",valColor: null, label: "docs to update"    },
+    ],
+    rec: "Update IBC 2021 section cross-references for all affected product SKUs sold in CA, OR, and NV. Flag the 6 specific SKUs for expedited review. Estimated 1-day update.",
+    libLink: "IBC 2021 compliance section references need update (CA, OR, NV)",
+    status: "open",
+    statusLabel: "Open",
+    date: "Detected Mar 10, 2026",
+    action: "Update Product Library →",
+  },
+
+  // ── Implemented ───────────────────────────────────────────────────────────────
+  {
     id: "SIG-008",
     level: "implemented",
     stage: "📚 Product Library",
@@ -95,10 +242,10 @@ const SIGNALS = [
     roles: ["🔬 Design Analyst", "📦 Submittal Specialist"],
     desc: "Third-party equivalent cross-references for 90-mil TPO were missing, causing submittal package errors. Product library updated with competitor cross-reference table. Revision rate dropped from 18% to 4% post-implementation.",
     evidence: [
-      { val: "78%", valColor: "success", label: "revision reduction" },
-      { val: "4%", valColor: "success", label: "new revision rate" },
-      { val: "3", valColor: null, label: "docs updated" },
-      { val: "12 days", valColor: null, label: "to resolve" },
+      { val: "78%",    valColor: "success", label: "revision reduction" },
+      { val: "4%",     valColor: "success", label: "new revision rate"  },
+      { val: "3",      valColor: null,      label: "docs updated"       },
+      { val: "12 days",valColor: null,      label: "to resolve"         },
     ],
     rec: "",
     libLink: null,
@@ -110,27 +257,29 @@ const SIGNALS = [
 ];
 
 const STAGE_BREAKDOWN = [
-  { key: "assembly",      name: "Assembly Letter", sub: "Design Analyst bottleneck", count: "3 signals", countColor: "#ef4444", detail: "2 critical" },
-  { key: "inspection",    name: "Inspection",      sub: "FSR capacity",              count: "2 signals", countColor: "#ef4444", detail: "1 critical" },
-  { key: "noa",           name: "NOA / Warranty",  sub: "Warranty Admin overload",   count: "2 signals", countColor: "#f59e0b", detail: "2 high" },
-  { key: "productLibrary",name: "Product Library", sub: "Spec data gaps",            count: "3 signals", countColor: "#f59e0b", detail: "driving revisions" },
-  { key: "submittal",     name: "Submittal",       sub: "Bid package errors",        count: "2 signals", countColor: "#0039c9", detail: "medium" },
+  { key: "assembly",      name: "Assembly Letter", sub: "Design Analyst bottleneck", count: "2 signals", countColor: "#ef4444", detail: "1 critical, 1 high"    },
+  { key: "inspection",    name: "Inspection",      sub: "FSR capacity & spec gap",   count: "2 signals", countColor: "#ef4444", detail: "1 critical, 1 high"    },
+  { key: "noa",           name: "NOA / Warranty",  sub: "Warranty Admin overload",   count: "2 signals", countColor: "#f59e0b", detail: "2 high"                },
+  { key: "productLibrary",name: "Product Library", sub: "Spec & compliance gaps",    count: "3 signals", countColor: "#ef4444", detail: "1 critical, 1 medium"  },
+  { key: "submittal",     name: "Submittal",       sub: "Version & compliance",      count: "1 signal",  countColor: "#0039c9", detail: "medium"                },
+  { key: "quote",         name: "Quote",           sub: "Warranty stacking unknown", count: "1 signal",  countColor: "#0039c9", detail: "medium"                },
+  { key: "proposal",      name: "Proposal",        sub: "Incomplete submission data",count: "1 signal",  countColor: "#808488", detail: "medium"                },
 ];
 
 const RISK_SCORES = [
   { name: "EPDM Seam Tape",    pct: 72, color: "#ef4444" },
   { name: "PVC Warranty",      pct: 58, color: "#f59e0b" },
   { name: "Insulation R-Value",pct: 47, color: "#f59e0b" },
-  { name: "PVC Multi-Ply",     pct: 38, color: "#0039c9" },
-  { name: "TPO Standard",      pct: 15, color: "#3ed851" },
+  { name: "IBC 2021 Compliance",pct: 35, color: "#0039c9" },
+  { name: "TPO Standard",      pct: 8,  color: "#3ed851" },
 ];
 
 const ROLE_IMPACT = [
-  { name: "Design Analyst",   count: "5 signals", color: "#ef4444" },
-  { name: "Field Service Rep",count: "3 signals", color: "#ef4444" },
+  { name: "Design Analyst",   count: "7 signals", color: "#ef4444" },
+  { name: "Contractor",       count: "5 signals", color: "#ef4444" },
   { name: "Warranty Admin",   count: "3 signals", color: "#f59e0b" },
-  { name: "Contractor",       count: "4 signals", color: "#0039c9" },
-  { name: "Sales Rep",        count: "2 signals", color: "#808488" },
+  { name: "Field Service Rep",count: "2 signals", color: "#f59e0b" },
+  { name: "Sales Rep",        count: "3 signals", color: "#0039c9" },
 ];
 
 const criticalCount    = SIGNALS.filter(s => s.level === "critical").length;
@@ -327,8 +476,13 @@ export default function SignalsPage() {
                         className="flex items-center gap-2 px-3 py-2.5 rounded-[8px] mb-4 cursor-pointer transition-opacity hover:opacity-80"
                         style={{ background: "rgba(0,57,201,0.06)", border: "1px solid rgba(0,57,201,0.12)" }}
                         onClick={() => {
-                          if (sig.id === "SIG-001") navigate("/chat?q=What EPDM seam tape sub-types should be added to the product library?");
+                          if      (sig.id === "SIG-001") navigate("/chat?q=What EPDM seam tape sub-types should be added to the product library?");
+                          else if (sig.id === "SIG-003") navigate("/chat?q=What PVC multi-ply warranty stacking rules need to be added to resolve the NOA re-review backlog?");
+                          else if (sig.id === "SIG-004") navigate("/chat?q=What EPDM seam lap distance spec updates are needed in the product library?");
                           else if (sig.id === "SIG-005") navigate("/chat?q=What PVC multi-ply warranty stacking guidance is missing from the product library?");
+                          else if (sig.id === "SIG-009") navigate("/chat?q=What ASHRAE 90.1-2022 R-value data is missing for polyiso insulation in the product library?");
+                          else if (sig.id === "SIG-011") navigate("/chat?q=What PVC multi-ply warranty stacking guidance is needed to unblock stalled quotes?");
+                          else if (sig.id === "SIG-012") navigate("/chat?q=Which IBC 2021 compliance references need updating in the product library for California, Oregon, and Nevada?");
                         }}
                       >
                         <span className="text-[15px]">📚</span>
@@ -354,11 +508,18 @@ export default function SignalsPage() {
                         className="text-[13px] font-medium transition-opacity hover:opacity-70"
                         style={{ color: "#0039c9" }}
                         onClick={() => {
-                          if (sig.id === "SIG-001") navigate("/chat?q=What EPDM seam tape sub-types should be added to the product library?");
+                          if      (sig.id === "SIG-001") navigate("/chat?q=What EPDM seam tape sub-types should be added to the product library?");
                           else if (sig.id === "SIG-002") navigate("/stage-activity?stage=assembly");
+                          else if (sig.id === "SIG-003") navigate("/stage-activity?stage=noa");
+                          else if (sig.id === "SIG-004") navigate("/stage-activity?stage=inspection");
                           else if (sig.id === "SIG-005") navigate("/stage-activity?stage=noa");
+                          else if (sig.id === "SIG-006") navigate("/stage-activity?stage=submittal");
                           else if (sig.id === "SIG-007") navigate("/field-experience");
                           else if (sig.id === "SIG-008") navigate("/chat?q=Show me the TPO 90-mil third-party equivalent cross-reference that was added to the product library");
+                          else if (sig.id === "SIG-009") navigate("/chat?q=What ASHRAE 90.1-2022 R-value data is missing for polyiso insulation in the product library?");
+                          else if (sig.id === "SIG-010") navigate("/stage-activity?stage=proposal");
+                          else if (sig.id === "SIG-011") navigate("/stage-activity?stage=quote");
+                          else if (sig.id === "SIG-012") navigate("/chat?q=Which IBC 2021 compliance references need updating in the product library for California, Oregon, and Nevada?");
                         }}
                       >{sig.action}</button>
                     </div>
