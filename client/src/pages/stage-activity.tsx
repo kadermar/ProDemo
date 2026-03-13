@@ -849,15 +849,6 @@ export default function StageActivityPage() {
           </div>
         </div>
 
-        {/* Footer */}
-        <div className="mt-6 pt-4 flex justify-between" style={{ borderTop: "1px solid #f0f0f0" }}>
-          <span className="text-[11.5px]" style={{ color: "#808488" }}>Pro Intelligence · Stage Activity · Roles & Responsibilities Matrix v1.2</span>
-          <div className="flex gap-4">
-            <button onClick={() => navigate("/dashboard")} className="text-[11.5px] font-medium transition-opacity hover:opacity-70" style={{ color: "#0039c9" }}>← Operations Overview</button>
-            <button onClick={() => navigate("/signals")} className="text-[11.5px] font-medium transition-opacity hover:opacity-70" style={{ color: "#0039c9" }}>Intelligence Signals</button>
-            <button className="text-[11.5px] font-medium transition-opacity hover:opacity-70" style={{ color: "#0039c9" }}>Export Stage Report</button>
-          </div>
-        </div>
       </div>
       </div>
       <AiAssistant />

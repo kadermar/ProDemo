@@ -26,7 +26,7 @@ export default function ChatPage() {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-zinc-100">
+    <div className="flex flex-col h-screen bg-zinc-100" style={{ fontFamily: "'Outfit', sans-serif" }}>
       <ProNav active="chat" />
 
       {/* Chat toolbar */}

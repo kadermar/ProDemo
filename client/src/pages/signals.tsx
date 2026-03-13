@@ -591,15 +591,6 @@ export default function SignalsPage() {
             </div>
           </div>
 
-          {/* Footer */}
-          <div className="mt-6 pt-4 flex justify-between" style={{ borderTop: "1px solid #f0f0f0" }}>
-            <span className="text-[11.5px]" style={{ color: "#808488" }}>Pro Intelligence · Signals refresh every 6 hours · Fiscal Year 2026</span>
-            <div className="flex gap-4">
-              <button onClick={() => navigate("/dashboard")} className="text-[11.5px] font-medium transition-opacity hover:opacity-70" style={{ color: "#0039c9" }}>← Operations Overview</button>
-              <button onClick={() => navigate("/stage-activity")} className="text-[11.5px] font-medium transition-opacity hover:opacity-70" style={{ color: "#0039c9" }}>Stage Activity</button>
-              <button className="text-[11.5px] font-medium transition-opacity hover:opacity-70" style={{ color: "#0039c9" }}>Export Signals</button>
-            </div>
-          </div>
 
         </div>
       </div>

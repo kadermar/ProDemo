@@ -145,7 +145,7 @@ export function ChatInterface({ sessionId, initialQuery }: ChatInterfaceProps) {
   };
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full" style={{ fontFamily: "'Outfit', sans-serif" }}>
       {/* Header */}
       <div className="px-5 py-3.5 border-b border-zinc-100 flex items-center justify-between shrink-0">
         <div>
