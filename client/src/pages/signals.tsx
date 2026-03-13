@@ -292,11 +292,11 @@ const reviewCount      = SIGNALS.filter(s => s.status === "review").length;
 
 const FILTERS = [
   "All",
-  `Open (${openCount})`,
-  `Under Review (${reviewCount})`,
   `Critical (${criticalCount})`,
   `High (${highCount})`,
   `Medium (${mediumCount})`,
+  `Open (${openCount})`,
+  `Under Review (${reviewCount})`,
   `Implemented (${implementedCount})`,
 ];
 
