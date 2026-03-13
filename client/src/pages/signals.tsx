@@ -273,8 +273,8 @@ export default function SignalsPage() {
                         className="flex items-center gap-2 px-3 py-2.5 rounded-[8px] mb-4 cursor-pointer transition-opacity hover:opacity-80"
                         style={{ background: "rgba(0,57,201,0.06)", border: "1px solid rgba(0,57,201,0.12)" }}
                         onClick={() => {
-                          if (sig.id === "SIG-001") navigate("/?q=What EPDM seam tape sub-types should be added to the product library?");
-                          else if (sig.id === "SIG-005") navigate("/?q=What PVC multi-ply warranty stacking guidance is missing from the product library?");
+                          if (sig.id === "SIG-001") navigate("/chat?q=What EPDM seam tape sub-types should be added to the product library?");
+                          else if (sig.id === "SIG-005") navigate("/chat?q=What PVC multi-ply warranty stacking guidance is missing from the product library?");
                         }}
                       >
                         <span className="text-[15px]">📚</span>
@@ -300,10 +300,11 @@ export default function SignalsPage() {
                         className="text-[13px] font-medium transition-opacity hover:opacity-70"
                         style={{ color: "#0039c9" }}
                         onClick={() => {
-                          if (sig.id === "SIG-001") navigate("/?q=What EPDM seam tape sub-types should be added to the product library?");
-                          else if (sig.id === "SIG-005") navigate("/?q=What PVC multi-ply warranty stacking guidance is missing from the product library?");
+                          if (sig.id === "SIG-001") navigate("/chat?q=What EPDM seam tape sub-types should be added to the product library?");
                           else if (sig.id === "SIG-002") navigate("/stage-activity?stage=assembly");
-                          else if (sig.id === "SIG-007") navigate("/stage-activity?stage=inspection");
+                          else if (sig.id === "SIG-005") navigate("/stage-activity?stage=noa");
+                          else if (sig.id === "SIG-007") navigate("/field-experience");
+                          else if (sig.id === "SIG-008") navigate("/chat?q=Show me the TPO 90-mil third-party equivalent cross-reference that was added to the product library");
                         }}
                       >{sig.action}</button>
                     </div>
