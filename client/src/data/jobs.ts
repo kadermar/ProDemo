@@ -50,10 +50,10 @@ export interface ChatMessage {
   isSystem?: boolean;
 }
 
-const AVATAR_MARK  = "https://www.figma.com/api/mcp/asset/c61889a4-9941-4cd9-9b16-0d2e9451a7f1";
-const AVATAR_JON   = "https://www.figma.com/api/mcp/asset/b92d1862-899a-4117-a66f-284dd2a85038";
-const AVATAR_ROB   = "https://www.figma.com/api/mcp/asset/466b1027-8bba-4dec-83f8-1a3b3860afce";
-const AVATAR_LISA  = "https://www.figma.com/api/mcp/asset/230a6041-8009-48a1-b644-59c95ee388c9";
+const AVATAR_MARK  = "https://randomuser.me/api/portraits/men/32.jpg";
+const AVATAR_JON   = "https://randomuser.me/api/portraits/men/45.jpg";
+const AVATAR_ROB   = "https://randomuser.me/api/portraits/women/28.jpg";
+const AVATAR_LISA  = "https://randomuser.me/api/portraits/women/42.jpg";
 
 export const JOBS: Job[] = [
   {

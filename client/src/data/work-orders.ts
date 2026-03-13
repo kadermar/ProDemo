@@ -19,8 +19,9 @@ export interface WorkOrderRecord {
 }
 
 export interface ContractorTeam {
-  salesRep: { name: string; email: string };
-  contractorContact: { name: string; email: string };
+  salesRep: { name: string; email: string; avatarUrl: string };
+  contractorContact: { name: string; email: string; avatarUrl: string };
+  analyst?: { avatarUrl: string };
 }
 
 export interface ActivityMessage {
@@ -62,36 +63,44 @@ export const STAGE_LABELS: Record<string, string> = {
 
 const CONTRACTOR_TEAMS: Record<string, ContractorTeam> = {
   "Apex Roofing LLC": {
-    salesRep: { name: "D. Mercer", email: "d.mercer@apex.com" },
-    contractorContact: { name: "Tom Hicks", email: "thicks@apex.com" },
+    salesRep:          { name: "D. Mercer",  email: "d.mercer@apex.com",        avatarUrl: "https://randomuser.me/api/portraits/men/18.jpg" },
+    contractorContact: { name: "Tom Hicks",  email: "thicks@apex.com",          avatarUrl: "https://randomuser.me/api/portraits/men/25.jpg" },
+    analyst:           { avatarUrl: "https://randomuser.me/api/portraits/women/28.jpg" },
   },
   "Summit Commercial": {
-    salesRep: { name: "L. Park", email: "l.park@carlisle.com" },
-    contractorContact: { name: "Amy Lin", email: "alin@summit.com" },
+    salesRep:          { name: "L. Park",    email: "l.park@carlisle.com",       avatarUrl: "https://randomuser.me/api/portraits/women/35.jpg" },
+    contractorContact: { name: "Amy Lin",    email: "alin@summit.com",           avatarUrl: "https://randomuser.me/api/portraits/women/22.jpg" },
+    analyst:           { avatarUrl: "https://randomuser.me/api/portraits/women/42.jpg" },
   },
   "Trident Contractors": {
-    salesRep: { name: "R. Okafor", email: "r.okafor@carlisle.com" },
-    contractorContact: { name: "Ben Cruz", email: "b.cruz@trident.com" },
+    salesRep:          { name: "R. Okafor",  email: "r.okafor@carlisle.com",     avatarUrl: "https://randomuser.me/api/portraits/men/54.jpg" },
+    contractorContact: { name: "Ben Cruz",   email: "b.cruz@trident.com",        avatarUrl: "https://randomuser.me/api/portraits/men/61.jpg" },
+    analyst:           { avatarUrl: "https://randomuser.me/api/portraits/women/28.jpg" },
   },
   "Keystone Roofing": {
-    salesRep: { name: "L. Park", email: "l.park@carlisle.com" },
-    contractorContact: { name: "Mike Stone", email: "m.stone@keystone.com" },
+    salesRep:          { name: "L. Park",    email: "l.park@carlisle.com",       avatarUrl: "https://randomuser.me/api/portraits/women/35.jpg" },
+    contractorContact: { name: "Mike Stone", email: "m.stone@keystone.com",      avatarUrl: "https://randomuser.me/api/portraits/men/73.jpg" },
+    analyst:           { avatarUrl: "https://randomuser.me/api/portraits/women/42.jpg" },
   },
   "Horizon Commercial": {
-    salesRep: { name: "R. Okafor", email: "r.okafor@carlisle.com" },
-    contractorContact: { name: "Julia West", email: "j.west@horizon.com" },
+    salesRep:          { name: "R. Okafor",  email: "r.okafor@carlisle.com",     avatarUrl: "https://randomuser.me/api/portraits/men/54.jpg" },
+    contractorContact: { name: "Julia West", email: "j.west@horizon.com",        avatarUrl: "https://randomuser.me/api/portraits/women/48.jpg" },
+    analyst:           { avatarUrl: "https://randomuser.me/api/portraits/women/28.jpg" },
   },
   "Atlas Roofing Co.": {
-    salesRep: { name: "D. Mercer", email: "d.mercer@carlisle.com" },
-    contractorContact: { name: "Sam Torres", email: "s.torres@atlas.com" },
+    salesRep:          { name: "D. Mercer",  email: "d.mercer@carlisle.com",     avatarUrl: "https://randomuser.me/api/portraits/men/18.jpg" },
+    contractorContact: { name: "Sam Torres", email: "s.torres@atlas.com",        avatarUrl: "https://randomuser.me/api/portraits/men/44.jpg" },
+    analyst:           { avatarUrl: "https://randomuser.me/api/portraits/women/42.jpg" },
   },
   "Meridian Systems": {
-    salesRep: { name: "K. Young", email: "k.young@carlisle.com" },
-    contractorContact: { name: "Paul Reed", email: "p.reed@meridian.com" },
+    salesRep:          { name: "K. Young",   email: "k.young@carlisle.com",      avatarUrl: "https://randomuser.me/api/portraits/women/55.jpg" },
+    contractorContact: { name: "Paul Reed",  email: "p.reed@meridian.com",       avatarUrl: "https://randomuser.me/api/portraits/men/67.jpg" },
+    analyst:           { avatarUrl: "https://randomuser.me/api/portraits/women/28.jpg" },
   },
   "Crown Commercial": {
-    salesRep: { name: "D. Mercer", email: "d.mercer@carlisle.com" },
-    contractorContact: { name: "Grace Kim", email: "g.kim@crown.com" },
+    salesRep:          { name: "D. Mercer",  email: "d.mercer@carlisle.com",     avatarUrl: "https://randomuser.me/api/portraits/men/18.jpg" },
+    contractorContact: { name: "Grace Kim",  email: "g.kim@crown.com",           avatarUrl: "https://randomuser.me/api/portraits/women/38.jpg" },
+    analyst:           { avatarUrl: "https://randomuser.me/api/portraits/women/42.jpg" },
   },
 };
 

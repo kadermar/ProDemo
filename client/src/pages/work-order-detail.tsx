@@ -472,9 +472,8 @@ export default function WorkOrderDetailPage() {
                   <div className="flex flex-col gap-2">
                     <p className="text-[14px] font-semibold leading-[1.4] text-[#6d6d6d]">CCM Design Analyst</p>
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 text-[13px] font-bold"
-                        style={{ background: "rgba(0,57,201,0.10)", color: "#0039c9" }}>
-                        {wo.analyst.split(" ").map(p => p.replace(".", "").charAt(0)).join("").slice(0, 2)}
+                      <div className="w-10 h-10 rounded-full overflow-hidden shrink-0">
+                        <img src={wo.team.analyst?.avatarUrl ?? "https://randomuser.me/api/portraits/women/28.jpg"} alt={wo.analyst} className="w-full h-full object-cover" />
                       </div>
                       <div className="flex flex-col gap-[2px]">
                         <p className="text-[16px] font-semibold text-[#404a62] leading-[1.4]">{wo.analyst}</p>
@@ -486,9 +485,8 @@ export default function WorkOrderDetailPage() {
                   <div className="flex flex-col gap-2">
                     <p className="text-[14px] font-semibold leading-[1.4] text-[#6d6d6d]">Sales Rep</p>
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 text-[13px] font-bold"
-                        style={{ background: "rgba(62,216,81,0.12)", color: "#2a8a4a" }}>
-                        {wo.team.salesRep.name.replace(".", "").split(" ").map(p => p.charAt(0)).join("").slice(0, 2)}
+                      <div className="w-10 h-10 rounded-full overflow-hidden shrink-0">
+                        <img src={wo.team.salesRep.avatarUrl} alt={wo.team.salesRep.name} className="w-full h-full object-cover" />
                       </div>
                       <div className="flex flex-col gap-[2px]">
                         <p className="text-[16px] font-semibold text-[#404a62] leading-[1.4]">{wo.team.salesRep.name}</p>
@@ -500,9 +498,8 @@ export default function WorkOrderDetailPage() {
                   <div className="flex flex-col gap-2">
                     <p className="text-[14px] font-semibold leading-[1.4] text-[#6d6d6d]">Contractor Contact</p>
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 text-[13px] font-bold"
-                        style={{ background: "rgba(128,132,136,0.12)", color: "#808488" }}>
-                        {wo.team.contractorContact.name.split(" ").map(p => p.charAt(0)).join("").slice(0, 2)}
+                      <div className="w-10 h-10 rounded-full overflow-hidden shrink-0">
+                        <img src={wo.team.contractorContact.avatarUrl} alt={wo.team.contractorContact.name} className="w-full h-full object-cover" />
                       </div>
                       <div className="flex flex-col gap-[2px]">
                         <p className="text-[16px] font-semibold text-[#404a62] leading-[1.4]">{wo.team.contractorContact.name}</p>
