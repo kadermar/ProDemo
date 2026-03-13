@@ -117,7 +117,7 @@ export default function JobDetailPage({ params }: { params: { id: string } }) {
       <div className="min-h-screen flex items-center justify-center bg-[#f6f7fa]" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
         <div className="text-center">
           <p className="text-[20px] font-medium text-[#121212] mb-2">Job not found</p>
-          <button onClick={() => navigate("/dashboard-v2")} className="text-[#0a84ff] text-[14px]">← Back to Dashboard</button>
+          <button onClick={() => navigate("/dashboard")} className="text-[#0a84ff] text-[14px]">← Back to Dashboard</button>
         </div>
       </div>
     );
@@ -133,7 +133,7 @@ export default function JobDetailPage({ params }: { params: { id: string } }) {
 
           {/* Back link */}
           <div className="pt-10 pb-6">
-            <button onClick={() => navigate("/dashboard-v2")}
+            <button onClick={() => navigate("/dashboard")}
               className="flex items-center gap-1 text-[14px] text-[#6c757d]">
               <img src={ASSET_BACK} alt="" style={{ width: 10, height: 11 }} />
               Back All Jobs

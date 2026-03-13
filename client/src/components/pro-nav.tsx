@@ -12,11 +12,11 @@ interface ProNavProps {
 }
 
 const NAV = [
-  { label: "Dashboard",        href: "/dashboard-v2",     key: "dashboard"        as ActivePage },
+  { label: "Dashboard",        href: "/dashboard",        key: "dashboard"        as ActivePage },
   { label: "Signals",          href: "/signals",          key: "signals"          as ActivePage },
   { label: "Stage Activity",   href: "/stage-activity",   key: "stage-activity"   as ActivePage },
   { label: "Field Experience", href: "/field-experience", key: "field-experience" as ActivePage },
-  { label: "Chat",             href: "/",                 key: "chat"             as ActivePage },
+  { label: "Assistant",        href: "/chat",             key: "chat"             as ActivePage },
 ];
 
 export function ProNav({ active = "dashboard" }: ProNavProps) {
@@ -39,6 +39,20 @@ export function ProNav({ active = "dashboard" }: ProNavProps) {
           backgroundImage: `url(${ASSET_ELLIPSE})`,
           backgroundSize: "contain",
           backgroundRepeat: "no-repeat",
+        }}
+      />
+
+      {/* Diagonal stripe overlay */}
+      <div
+        className="absolute pointer-events-none"
+        style={{
+          left: "50%",
+          bottom: -626,
+          transform: "translateX(-50%) skewX(-18deg) scaleY(0.95)",
+          width: 2821,
+          height: 1375,
+          mixBlendMode: "overlay",
+          background: "linear-gradient(135deg, transparent 30%, rgba(255,255,255,0.04) 50%, transparent 70%)",
         }}
       />
 

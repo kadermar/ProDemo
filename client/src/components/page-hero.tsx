@@ -37,6 +37,13 @@ export function PageHero({ title, active, action }: PageHeroProps) {
         backgroundSize: "contain", backgroundRepeat: "no-repeat",
       }} />
 
+      {/* Diagonal stripe overlay */}
+      <div className="absolute pointer-events-none" style={{
+        left: "50%", bottom: -626, transform: "translateX(-50%) skewX(-18deg) scaleY(0.95)",
+        width: 2821, height: 1375, mixBlendMode: "overlay",
+        background: "linear-gradient(135deg, transparent 30%, rgba(255,255,255,0.04) 50%, transparent 70%)",
+      }} />
+
       {/* Nav row */}
       <div className="absolute top-0 left-0 right-0 flex items-center justify-between" style={{ padding: "42px 120px 0" }}>
         <img src={ASSET_LOGO} alt="PRO" className="shrink-0" style={{ height: 28, width: 110, objectFit: "contain", objectPosition: "left" }} />
