@@ -11,6 +11,7 @@ import StageActivityPage from "@/pages/stage-activity";
 import FieldExperiencePage from "@/pages/field-experience";
 import JobDetailPage from "@/pages/job-detail";
 import WorkOrderDetailPage from "@/pages/work-order-detail";
+import ChartGalleryPage from "@/pages/chart-gallery";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -25,6 +26,7 @@ function Router() {
       <Route path="/field-experience" component={FieldExperiencePage} />
       <Route path="/job/:id" component={JobDetailPage} />
       <Route path="/work-order/:id" component={WorkOrderDetailPage} />
+      <Route path="/chart-gallery" component={ChartGalleryPage} />
       <Route component={NotFound} />
     </Switch>
   );
