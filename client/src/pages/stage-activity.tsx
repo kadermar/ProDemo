@@ -114,9 +114,9 @@ const STAGE_DATA: Record<string, StageDetail> = {
     ],
     revInsight: "Mostly human error — library gaps are minor at this stage",
     downstream: [
-      { label: "Assembly — queue fed",   sub: "Healthy handoff rate",        val: "98/mo",  color: "text-emerald-700" },
-      { label: "Submittal — projected",  sub: "Based on current acceptance", val: "~81/mo", color: "text-slate-500"   },
-      { label: "Est. fee value queued",  sub: "Proposals currently active",  val: "$4.2M",  color: "text-slate-700"   },
+      { label: "Assembly Letter",   sub: "Jobs advancing to Assembly this month",          val: "98 jobs/mo",  color: "text-emerald-700" },
+      { label: "Submittal",         sub: "Projected volume reaching Submittal this month",  val: "~81 jobs/mo", color: "text-slate-500"   },
+      { label: "Fee value queued",  sub: "Total value of proposals currently active",       val: "$4.2M",       color: "text-slate-700"   },
     ],
     downInsight: "Pipeline health at proposal is strong — no major blockers",
   },
@@ -260,9 +260,9 @@ const STAGE_DATA: Record<string, StageDetail> = {
     ],
     revInsight: "83% of revisions addressable with library updates",
     downstream: [
-      { label: "Quote — packages ready", sub: "Awaiting submittal completion",  val: "61/mo",    color: "text-emerald-700" },
-      { label: "NOA — on schedule",      sub: "Healthy handoff from submittal", val: "On track", color: "text-emerald-700" },
-      { label: "Est. fee value queued",  sub: "Submittals currently active",    val: "$3.1M",    color: "text-slate-700"   },
+      { label: "Quote",             sub: "Packages advancing to Quote stage this month",    val: "61 packages/mo", color: "text-emerald-700" },
+      { label: "NOA",               sub: "NOA-bound jobs on schedule from this stage",      val: "On track",       color: "text-emerald-700" },
+      { label: "Fee value queued",  sub: "Total value of submittals currently active",      val: "$3.1M",          color: "text-slate-700"   },
     ],
     downInsight: "Submittal is a healthy throughput stage — minor gains available",
   },
@@ -329,9 +329,9 @@ const STAGE_DATA: Record<string, StageDetail> = {
     ],
     revInsight: "50% of quote revisions addressable with one library addition",
     downstream: [
-      { label: "NOA — quotes converting",  sub: "Healthy acceptance rate",      val: "78%",   color: "text-emerald-700" },
-      { label: "Inspection — scheduled",   sub: "Post-NOA inspection bookings", val: "22/mo", color: "text-emerald-700" },
-      { label: "Est. conversion value",    sub: "Quotes currently in pipeline", val: "$2.8M", color: "text-slate-700"   },
+      { label: "NOA conversion rate",     sub: "Share of accepted quotes advancing to NOA",    val: "78%",            color: "text-emerald-700" },
+      { label: "Inspection bookings",     sub: "Inspections scheduled from accepted quotes",    val: "22 bookings/mo", color: "text-emerald-700" },
+      { label: "Conversion value",        sub: "Revenue value of quotes currently in pipeline", val: "$2.8M",          color: "text-slate-700"   },
     ],
     downInsight: "Quote stage is efficient — PVC library gap is the one action item",
   },
@@ -470,10 +470,10 @@ const STAGE_DATA: Record<string, StageDetail> = {
     ],
     revInsight: "43% of failures addressable with EPDM spec update — 3 days of cycle time recovery",
     downstream: [
-      { label: "Revenue — warranty activated", sub: "Upon inspection close-out",    val: "19/mo",  color: "text-emerald-700" },
-      { label: "Revenue — at risk",            sub: "Jobs stalled before close-out", val: "$290K",  color: "text-amber-600"   },
-      { label: "Owner satisfaction",           sub: "Based on close-out NPS",        val: "74/100", color: "text-slate-700"   },
-      { label: "Re-inspect cost",              sub: "Per additional site visit",     val: "$1.8K/job", color: "text-amber-600" },
+      { label: "Warranties activated",  sub: "Jobs clearing inspection and activating warranty",  val: "19 jobs/mo",  color: "text-emerald-700" },
+      { label: "Revenue at risk",       sub: "Fee value stalled in jobs not yet closed out",      val: "$290K",       color: "text-amber-600"   },
+      { label: "Owner satisfaction",    sub: "NPS score from post-close-out owner survey",        val: "74 / 100",    color: "text-slate-700"   },
+      { label: "Re-inspection cost",    sub: "Incremental cost per additional FSR site visit",    val: "$1,800/job",  color: "text-amber-600"   },
     ],
     downInsight: "Each re-inspection costs $1.8K and risks owner satisfaction — spec fix has clear ROI",
   },
@@ -824,17 +824,23 @@ export default function StageActivityPage() {
           {/* Downstream impact */}
           <div className="bg-white rounded-[8px] p-6" style={{ boxShadow: CARD_SHADOW }}>
             <h3 className="text-[16px] font-medium mb-0.5" style={{ color: "#121212" }}>Downstream Impact</h3>
-            <p className="text-[12.5px] mb-5" style={{ color: "#808488" }}>Delays here ripple into later stages</p>
-            {d.downstream.map((r, i) => (
-              <div key={r.label} className="flex justify-between items-start py-2.5"
-                style={{ borderBottom: i < d.downstream.length - 1 ? "1px solid #f0f0f0" : undefined }}>
-                <div>
-                  <div className="text-[13px]" style={{ color: "#404040" }}>{r.label}</div>
-                  <div className="text-[11px]" style={{ color: "#808488" }}>{r.sub}</div>
+            <p className="text-[12.5px] mb-5" style={{ color: "#808488" }}>How this stage is affecting the rest of the pipeline</p>
+            {d.downstream.map((r, i) => {
+              const hex = tailwindColorToHex(r.color);
+              return (
+                <div key={r.label} className="flex justify-between items-center py-3"
+                  style={{ borderBottom: i < d.downstream.length - 1 ? "1px solid #f0f0f0" : undefined }}>
+                  <div className="flex items-start gap-2.5">
+                    <span className="mt-[3px] shrink-0 text-[10px]" style={{ color: hex }}>▶</span>
+                    <div>
+                      <div className="text-[13px] font-medium" style={{ color: "#2a2a2a" }}>{r.label}</div>
+                      <div className="text-[11.5px] mt-0.5" style={{ color: "#808488" }}>{r.sub}</div>
+                    </div>
+                  </div>
+                  <span className="text-[14px] font-semibold shrink-0 ml-4" style={{ color: hex }}>{r.val}</span>
                 </div>
-                <span className="text-[13px] font-semibold shrink-0 ml-3" style={{ color: tailwindColorToHex(r.color) }}>{r.val}</span>
-              </div>
-            ))}
+              );
+            })}
             <div className="mt-4 px-3 py-2.5 rounded-[8px] text-[12px]"
               style={{
                 background: isHealthy ? "rgba(42,138,74,0.08)" : "rgba(239,68,68,0.08)",
