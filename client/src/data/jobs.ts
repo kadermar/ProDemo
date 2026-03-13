@@ -126,8 +126,8 @@ export const JOBS: Job[] = [
     address: "8800 Pacific Ave, Tacoma, WA 98444",
     dateCreated: "October 15, 2024",
     days: "12 days",
-    next: "Assembly Letter",
-    updates: 2,
+    next: "Completed",
+    updates: 0,
     team: [
       { role: "Contractor",         name: "Tom Bradley",     contact: "Cascade Roofing | (253) 555.3300",    avatarUrl: AVATAR_MARK, avatarStyle: { objectPosition: "-14% 0" } },
       { role: "Contractor",         name: "Jon Carpenter",   contact: "Roofs by Jon | (212) 555.4567",       avatarUrl: AVATAR_JON },
@@ -141,8 +141,6 @@ export const JOBS: Job[] = [
     },
     jobState: "completed",
     verifiers: { assemblyLetter: "Roberta Sanchez", submittal: "Roberta Sanchez", inspection: "Tom Bradley", warranty: "Roberta Sanchez" },
-    next: "Completed",
-    updates: 0,
     chat: [
       { sender: "System",          time: "12-20-2024 at 2:00 PM",  text: "Job created. Assembly letter in progress.",                                  isSystem: true },
       { sender: "Tom Bradley",     time: "12-20-2024 at 3:15 PM",  text: "Initial site assessment complete. EPDM spec confirmed for all 6 buildings."              },
