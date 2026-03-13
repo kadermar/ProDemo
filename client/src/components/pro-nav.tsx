@@ -1,5 +1,4 @@
 import { useLocation } from "wouter";
-import img31 from "@assets/image31.png";
 
 // Figma assets (expire 7 days from 2026-03-12)
 const ASSET_LOGO    = "https://www.figma.com/api/mcp/asset/8e8192b2-8ea0-4404-9a49-182465ca2693";
@@ -42,25 +41,6 @@ export function ProNav({ active = "dashboard" }: ProNavProps) {
           backgroundRepeat: "no-repeat",
         }}
       />
-      {/* Diagonal stripe */}
-      <div
-        className="absolute pointer-events-none"
-        style={{
-          left: "50%",
-          bottom: -626,
-          transform: "translateX(-50%) skewX(-18deg) scaleY(0.95)",
-          width: 2821,
-          height: 1375,
-          mixBlendMode: "overlay",
-        }}
-      >
-        <img
-          src={img31}
-          alt=""
-          className="absolute w-full"
-          style={{ top: "-9.27%", height: "118.53%", maxWidth: "none" }}
-        />
-      </div>
 
       {/* Nav row */}
       <div

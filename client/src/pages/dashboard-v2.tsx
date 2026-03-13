@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useLocation } from "wouter";
-import img31 from "@assets/image31.png";
 import { JOBS } from "@/data/jobs";
 import { AiAssistant } from "@/components/ai-assistant";
 
@@ -127,25 +126,6 @@ export default function DashboardV2Page() {
             backgroundRepeat: "no-repeat",
           }}
         />
-        {/* Diagonal stripe overlay */}
-        <div
-          className="absolute pointer-events-none"
-          style={{
-            left: "50%",
-            bottom: -626,
-            transform: "translateX(-50%) skewX(-18deg) scaleY(0.95)",
-            width: 2821,
-            height: 1375,
-            mixBlendMode: "overlay",
-          }}
-        >
-          <img
-            src={img31}
-            alt=""
-            className="absolute w-full"
-            style={{ top: "-9.27%", height: "118.53%", maxWidth: "none" }}
-          />
-        </div>
 
         {/* Nav */}
         <div

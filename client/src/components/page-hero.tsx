@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
 import { useLocation } from "wouter";
-import img31 from "@assets/image31.png";
 
 const ASSET_LOGO    = "https://www.figma.com/api/mcp/asset/8e8192b2-8ea0-4404-9a49-182465ca2693";
 const ASSET_ELLIPSE = "https://www.figma.com/api/mcp/asset/f21c6f64-f5cc-4cea-9296-a2580d1f37a2";
@@ -37,13 +36,6 @@ export function PageHero({ title, active, action }: PageHeroProps) {
         backgroundImage: `url(${ASSET_ELLIPSE})`,
         backgroundSize: "contain", backgroundRepeat: "no-repeat",
       }} />
-      {/* Diagonal stripe */}
-      <div className="absolute pointer-events-none" style={{
-        left: "50%", bottom: -626, transform: "translateX(-50%) skewX(-18deg) scaleY(0.95)",
-        width: 2821, height: 1375, mixBlendMode: "overlay",
-      }}>
-        <img src={img31} alt="" className="absolute w-full" style={{ top: "-9.27%", height: "118.53%", maxWidth: "none" }} />
-      </div>
 
       {/* Nav row */}
       <div className="absolute top-0 left-0 right-0 flex items-center justify-between" style={{ padding: "42px 120px 0" }}>
