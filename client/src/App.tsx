@@ -126,15 +126,14 @@ function Router() {
 }
 
 function App() {
-  const [unlocked, setUnlocked] = useState(
-    () => sessionStorage.getItem("unlocked") === "1"
-  );
+  // PASSWORD GATE DISABLED — uncomment below to re-enable
+  // const [unlocked, setUnlocked] = useState(() => sessionStorage.getItem("unlocked") === "1");
 
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
-        {unlocked ? <Router /> : <PasswordGate onUnlock={() => setUnlocked(true)} />}
+        <Router />
       </TooltipProvider>
     </QueryClientProvider>
   );
