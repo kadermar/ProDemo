@@ -92,36 +92,31 @@ const INSPECTION_STEPS: Record<string, Array<{ id: string; step: number; name: s
   ],
 };
 
-// ── Stable inline assets (SVG data URIs + picsum) ────────────────────────────
-
-const svg = (s: string) => `data:image/svg+xml;base64,${btoa(s)}`;
+// ── Figma asset URLs (node 2985:454, expire in 7 days) ───────────────────────
 
 const FA = {
-  avatar:          "https://i.pravatar.cc/48?img=5",
-  map:             "https://picsum.photos/seed/aerialmap99/600/400",
-  partlyCloudy:    svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 18'><circle cx='10' cy='7' r='5' fill='#FDB53A'/><ellipse cx='15' cy='12' rx='7' ry='4.5' fill='#e8e8e8'/><ellipse cx='9' cy='13' rx='5.5' ry='3.5' fill='#f5f5f5'/></svg>`),
-  signalBars:      svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 11'><rect x='0' y='7' width='3' height='4' rx='.5' fill='white'/><rect x='4.5' y='4.5' width='3' height='6.5' rx='.5' fill='white'/><rect x='9' y='2' width='3' height='9' rx='.5' fill='white'/><rect x='13.5' y='0' width='3' height='11' rx='.5' fill='white' opacity='.35'/></svg>`),
-  signalBarsLight: svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 11'><rect x='0' y='7' width='3' height='4' rx='.5' fill='#1a1a1a'/><rect x='4.5' y='4.5' width='3' height='6.5' rx='.5' fill='#1a1a1a'/><rect x='9' y='2' width='3' height='9' rx='.5' fill='#1a1a1a'/><rect x='13.5' y='0' width='3' height='11' rx='.5' fill='#1a1a1a' opacity='.35'/></svg>`),
-  wifi:            svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 14' fill='none'><circle cx='9' cy='12.5' r='1.5' fill='white'/><path d='M5.5 9.5c.9-.9 2.1-1.5 3.5-1.5s2.6.6 3.5 1.5' stroke='white' stroke-width='1.5' stroke-linecap='round'/><path d='M2.5 6.5c1.8-1.8 4.1-2.5 6.5-2.5s4.7.7 6.5 2.5' stroke='white' stroke-width='1.5' stroke-linecap='round' opacity='.5'/></svg>`),
-  wifiLight:       svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 14' fill='none'><circle cx='9' cy='12.5' r='1.5' fill='#1a1a1a'/><path d='M5.5 9.5c.9-.9 2.1-1.5 3.5-1.5s2.6.6 3.5 1.5' stroke='#1a1a1a' stroke-width='1.5' stroke-linecap='round'/><path d='M2.5 6.5c1.8-1.8 4.1-2.5 6.5-2.5s4.7.7 6.5 2.5' stroke='#1a1a1a' stroke-width='1.5' stroke-linecap='round' opacity='.5'/></svg>`),
-  battery:         svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 13'><rect x='0' y='1.5' width='23' height='10' rx='2' stroke='white' stroke-width='1.3' fill='none'/><rect x='1.5' y='3' width='18' height='7' rx='1.5' fill='white'/><path d='M24.5 4.5v4' stroke='white' stroke-width='1.5' stroke-linecap='round'/></svg>`),
-  batteryLight:    svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 13'><rect x='0' y='1.5' width='23' height='10' rx='2' stroke='#1a1a1a' stroke-width='1.3' fill='none'/><rect x='1.5' y='3' width='18' height='7' rx='1.5' fill='#1a1a1a'/><path d='M24.5 4.5v4' stroke='#1a1a1a' stroke-width='1.5' stroke-linecap='round'/></svg>`),
-  logo:            svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 16'><text x='0' y='12' font-family='Helvetica Neue,sans-serif' font-size='11' font-weight='700' fill='white'>C PRO</text></svg>`),
-  filterList:      svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 12' fill='none'><path d='M1 2h14M3 6h10M5.5 10h5' stroke='white' stroke-width='1.5' stroke-linecap='round'/></svg>`),
-  mapMarkerIcon:   svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 16'><path d='M6 0C3.24 0 1 2.24 1 5c0 3.75 5 11 5 11s5-7.25 5-11C11 2.24 8.76 0 6 0z' fill='#003591'/><circle cx='6' cy='5' r='2' fill='white'/></svg>`),
-  routeLine:       svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 8'><line x1='0' y1='4' x2='54' y2='4' stroke='#003591' stroke-width='2' stroke-dasharray='6 3'/><path d='M51 1.5l3 2.5-3 2.5' stroke='#003591' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>`),
-  plus:            svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'><path d='M8 3v10M3 8h10' stroke='#003591' stroke-width='2' stroke-linecap='round'/></svg>`),
-  minus:           svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'><path d='M3 8h10' stroke='#003591' stroke-width='2' stroke-linecap='round'/></svg>`),
-  expand:          svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'><path d='M10 2h4v4M6 14H2v-4M14 6l-4 4M2 10l4-4' stroke='#003591' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>`),
-  markerBlack:     svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 16'><path d='M6 0C3.24 0 1 2.24 1 5c0 3.75 5 11 5 11s5-7.25 5-11C11 2.24 8.76 0 6 0z' fill='#1a1a1a'/><circle cx='6' cy='5' r='2' fill='white'/></svg>`),
-  markerBlue:      svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 16'><path d='M6 0C3.24 0 1 2.24 1 5c0 3.75 5 11 5 11s5-7.25 5-11C11 2.24 8.76 0 6 0z' fill='#003591'/><circle cx='6' cy='5' r='2' fill='white'/></svg>`),
-  carlisleLogo:    svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 16'><text x='0' y='12' font-family='Helvetica Neue,sans-serif' font-size='9' font-weight='700' fill='#003591'>CARLISLE</text></svg>`),
-  closeCircle:     svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><circle cx='10' cy='10' r='9' fill='#e0e0e0'/><path d='M7 7l6 6M13 7l-6 6' stroke='#666' stroke-width='1.5' stroke-linecap='round'/></svg>`),
-  signalGood:      svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'><circle cx='3' cy='3' r='3' fill='#34C759'/></svg>`),
-  arrowRight:      svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'><path d='M6 4l4 4-4 4' stroke='#003591' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>`),
-  phoneFlip:       svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'><rect x='4' y='2' width='8' height='12' rx='2' stroke='#003591' stroke-width='1.5'/><circle cx='8' cy='12.5' r='.8' fill='#003591'/></svg>`),
-  engineWarning:   svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M8 2L14.5 13.5H1.5L8 2z' fill='#f59e0b'/><rect x='7.2' y='6' width='1.5' height='4' rx='.5' fill='white'/><circle cx='8' cy='12' r='.8' fill='white'/></svg>`),
-  locationTrack:   svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'><circle cx='8' cy='8' r='5.5' stroke='#003591' stroke-width='1.5'/><circle cx='8' cy='8' r='2' fill='#003591'/><path d='M8 1v3M8 12v3M1 8h3M12 8h3' stroke='#003591' stroke-width='1.5' stroke-linecap='round'/></svg>`),
+  avatar:         "https://www.figma.com/api/mcp/asset/4275529b-39be-4511-97bf-708d12a1f1ae",
+  map:            "https://www.figma.com/api/mcp/asset/497ede6e-5304-4958-ad9e-08713267b5fa",
+  partlyCloudy:   "https://www.figma.com/api/mcp/asset/713bf473-879a-4c01-b60e-088a8e039231",
+  signalBars:     "https://www.figma.com/api/mcp/asset/fdd515a5-e29a-4b1c-b0cc-3308b16b83ea",
+  wifi:           "https://www.figma.com/api/mcp/asset/a999ba3c-9a71-4ce2-9fe8-37a4a8c63220",
+  battery:        "https://www.figma.com/api/mcp/asset/cada8ecd-e86e-4c4b-ae0c-872631d21dff",
+  logo:           "https://www.figma.com/api/mcp/asset/c74bbac3-2258-48e1-842f-8eff8c4d8293",
+  filterList:     "https://www.figma.com/api/mcp/asset/a7260711-6bc0-4380-9633-95fb8b80f02c",
+  mapMarkerIcon:  "https://www.figma.com/api/mcp/asset/be172395-9890-4d43-a44a-4200aa31f43d",
+  routeLine:      "https://www.figma.com/api/mcp/asset/cff9f128-02fd-4ed0-aec4-3028296117b8",
+  plus:           "https://www.figma.com/api/mcp/asset/8ef8c5dc-e8b9-4a84-b35d-053dd497dac8",
+  minus:          "https://www.figma.com/api/mcp/asset/7df98277-f9d8-4418-bcd7-4cc435a9810a",
+  expand:         "https://www.figma.com/api/mcp/asset/4968d6a5-bbf7-45df-902c-1618774421b9",
+  markerBlack:    "https://www.figma.com/api/mcp/asset/3998e3c5-4475-41ae-afe9-76f7d429faee",
+  markerBlue:     "https://www.figma.com/api/mcp/asset/d39334b7-df4c-453c-a8f5-764b3d50880f",
+  carlisleLogo:   "https://www.figma.com/api/mcp/asset/b1a1ef3f-b04f-4321-8f67-74220ecb361b",
+  closeCircle:    "https://www.figma.com/api/mcp/asset/b2c86b88-a85c-4c7d-b3d9-b537decb4298",
+  signalGood:     "https://www.figma.com/api/mcp/asset/23d581a0-f7d0-46da-808e-34793b8b5bce",
+  arrowRight:     "https://www.figma.com/api/mcp/asset/7e72cc56-1b81-4a95-acd0-1a0cde187304",
+  phoneFlip:      "https://www.figma.com/api/mcp/asset/3748925e-770b-404d-a71c-c51c4b25b9ef",
+  engineWarning:  "https://www.figma.com/api/mcp/asset/19253967-c74f-4b4f-81fa-fec57ae343f8",
+  locationTrack:  "https://www.figma.com/api/mcp/asset/15679a0f-a196-4582-90b9-ea1a1d2b7e9e",
 };
 
 // ── Animation variants ────────────────────────────────────────────────────────
@@ -296,10 +291,10 @@ function TabletFrame({ children, statusBarTheme = "light" }: { children: React.R
                   </>
                 ) : (
                   <>
-                    <img src={FA.signalBarsLight} style={{ height: 10, width: 16.5 }} alt="" />
-                    <img src={FA.wifiLight} style={{ height: 10, width: 14 }} alt="" />
+                    <img src="https://www.figma.com/api/mcp/asset/bbf33f8c-9710-4621-9599-8183f23c8c90" style={{ height: 10, width: 16.5 }} alt="" />
+                    <img src="https://www.figma.com/api/mcp/asset/0e8b62e9-cb6c-499a-9bba-53ecb6625422" style={{ height: 10, width: 14 }} alt="" />
                     <span className="text-[11px] font-medium" style={{ fontFamily: "'SF Pro', system-ui, sans-serif", color: "#1a1a1a" }}>100%</span>
-                    <img src={FA.batteryLight} style={{ height: 12, width: 26.5 }} alt="" />
+                    <img src="https://www.figma.com/api/mcp/asset/a575c084-c096-4f58-93d6-9d3fdf2516e1" style={{ height: 12, width: 26.5 }} alt="" />
                   </>
                 )}
               </div>
@@ -317,31 +312,31 @@ function TabletFrame({ children, statusBarTheme = "light" }: { children: React.R
 }
 
 const FA2 = {
-  building3d:    "https://picsum.photos/seed/rooftop3d/500/300",
-  photo1:        "https://picsum.photos/seed/roofphoto1/300/200",
-  photo2:        "https://picsum.photos/seed/roofphoto2/300/200",
-  photo3:        "https://picsum.photos/seed/roofphoto3/300/200",
-  photo4:        "https://picsum.photos/seed/roofphoto4/300/200",
-  photo5:        "https://picsum.photos/seed/roofphoto5/300/200",
-  wrenchRed:     svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none'><path d='M10 1a3 3 0 00-3 3l-5 6' stroke='#ef4444' stroke-width='1.5' stroke-linecap='round'/><path d='M10 1a3 3 0 010 6' stroke='#ef4444' stroke-width='1.5' stroke-linecap='round'/></svg>`),
-  wrenchOutline: svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none'><path d='M10 1a3 3 0 00-3 3l-5 6' stroke='#aaa' stroke-width='1.5' stroke-linecap='round'/><path d='M10 1a3 3 0 010 6' stroke='#aaa' stroke-width='1.5' stroke-linecap='round'/></svg>`),
-  spinner:       svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none'><circle cx='6' cy='6' r='4' stroke='#e0e0e0' stroke-width='1.5'/><path d='M6 2a4 4 0 014 4' stroke='#003591' stroke-width='1.5' stroke-linecap='round'/></svg>`),
-  checkCircle:   svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><circle cx='4' cy='4' r='4' fill='#34C759'/><path d='M2.5 4l1 1.2 2-2' stroke='white' stroke-width='1' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>`),
-  checkCircle2:  svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><circle cx='4' cy='4' r='4' fill='#003591'/><path d='M2.5 4l1 1.2 2-2' stroke='white' stroke-width='1' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>`),
-  closeCircle:   svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><circle cx='10' cy='10' r='9' fill='#ef4444'/><path d='M7 7l6 6M13 7l-6 6' stroke='white' stroke-width='1.5' stroke-linecap='round'/></svg>`),
-  exclamation:   svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><circle cx='4' cy='4' r='4' fill='#f59e0b'/><rect x='3.5' y='2' width='1' height='2.5' rx='.5' fill='white'/><circle cx='4' cy='6' r='.5' fill='white'/></svg>`),
-  helmetUser:    svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' fill='none'><path d='M2 8a3 3 0 016 0' stroke='#9ca3af' stroke-width='1'/><path d='M1 8h8' stroke='#9ca3af' stroke-width='1' stroke-linecap='round'/><path d='M5 1.5a3 3 0 013 3H2a3 3 0 013-3z' fill='#9ca3af'/></svg>`),
-  calendar:      svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' fill='none'><rect x='1' y='2' width='8' height='7' rx='1' stroke='#9ca3af' stroke-width='1'/><path d='M3 1v2M7 1v2M1 5h8' stroke='#9ca3af' stroke-width='1' stroke-linecap='round'/></svg>`),
-  star:          svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'><path d='M5 1l1.2 2.4L9 3.9 7 5.8l.5 3L5 7.5 2.5 8.8 3 5.8 1 3.9l2.8-.5z' fill='#FDB53A'/></svg>`),
-  check:         svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' fill='none'><path d='M1.5 4l2 2 3-3' stroke='#34C759' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>`),
-  eye:           svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' fill='none'><path d='M1 4s1.5-2.5 3-2.5S7 4 7 4s-1.5 2.5-3 2.5S1 4 1 4z' stroke='#9ca3af' stroke-width='1'/><circle cx='4' cy='4' r='1' fill='#9ca3af'/></svg>`),
-  camera:        svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' fill='none'><rect x='.5' y='2.5' width='7' height='5' rx='.5' stroke='#9ca3af' stroke-width='1'/><path d='M3 2.5l.5-1h1L5 2.5' stroke='#9ca3af' stroke-width='1'/><circle cx='4' cy='5' r='1' stroke='#9ca3af' stroke-width='1'/></svg>`),
-  arrowLeft:     svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'><path d='M10 4L6 8l4 4' stroke='#1a1a1a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>`),
-  signalGood:    svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'><circle cx='3' cy='3' r='3' fill='#34C759'/></svg>`),
-  avatar2:       "https://i.pravatar.cc/48?img=12",
-  logo2:         svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 68 16'><text x='0' y='12' font-family='Helvetica Neue,sans-serif' font-size='11' font-weight='700' fill='white'>C PRO</text></svg>`),
-  search2:       svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'><circle cx='8.5' cy='8.5' r='5.5' stroke='white' stroke-width='1.5'/><path d='M13 13l4 4' stroke='white' stroke-width='1.5' stroke-linecap='round'/></svg>`),
-  bell2:         svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'><path d='M10 2a5 5 0 00-5 5v3.5L3 13v1h14v-1l-2-2.5V7a5 5 0 00-5-5z' stroke='white' stroke-width='1.5' stroke-linejoin='round'/><path d='M8.5 17a1.5 1.5 0 003 0' stroke='white' stroke-width='1.5' stroke-linecap='round'/></svg>`),
+  building3d:    "https://www.figma.com/api/mcp/asset/a954b9ac-6396-4c5d-b3fa-e32a79bd8038",
+  photo1:        "https://www.figma.com/api/mcp/asset/3b02c321-4ff9-4039-a637-cd13dde85caa",
+  photo2:        "https://www.figma.com/api/mcp/asset/029caf3b-8c07-4ccf-9dd2-e434e4eb5b1e",
+  photo3:        "https://www.figma.com/api/mcp/asset/543f3098-3e4f-4977-9b25-eef120876eeb",
+  photo4:        "https://www.figma.com/api/mcp/asset/5db14aeb-fb53-43a9-9ec0-6c1abc19ff4b",
+  photo5:        "https://www.figma.com/api/mcp/asset/6cdf194f-bc17-4d4f-bc96-ac4b8169515b",
+  wrenchRed:     "https://www.figma.com/api/mcp/asset/cc95e58a-b318-4ce5-a1b3-8f0063cb2821",
+  wrenchOutline: "https://www.figma.com/api/mcp/asset/4126a52d-6282-4b05-84a7-f65e45f3c749",
+  spinner:       "https://www.figma.com/api/mcp/asset/44ea16c6-9f17-4557-b95f-e40754f5af8b",
+  checkCircle:   "https://www.figma.com/api/mcp/asset/517cad7d-1fb8-46d6-8a42-e6b8443e9c42",
+  checkCircle2:  "https://www.figma.com/api/mcp/asset/4610448a-1cf0-41bf-92ac-24d9ab16447a",
+  closeCircle:   "https://www.figma.com/api/mcp/asset/76f34564-ce11-4edf-aefa-587bd5b57bc8",
+  exclamation:   "https://www.figma.com/api/mcp/asset/73b579b9-e1c7-447f-b9be-02a267c25555",
+  helmetUser:    "https://www.figma.com/api/mcp/asset/9e494b9e-8b0a-48bf-85da-b9febaef86be",
+  calendar:      "https://www.figma.com/api/mcp/asset/e75fcad3-7f01-4949-8eea-ea6a44e14d21",
+  star:          "https://www.figma.com/api/mcp/asset/f6fbb05c-c4be-46b9-8a49-569a3a4eb109",
+  check:         "https://www.figma.com/api/mcp/asset/81e80225-f02b-44cf-bd30-d4de9c8e3ce5",
+  eye:           "https://www.figma.com/api/mcp/asset/58428411-4aee-4064-82bf-efeff515c361",
+  camera:        "https://www.figma.com/api/mcp/asset/3a107fd4-2479-4007-856b-ed0da10bf907",
+  arrowLeft:     "https://www.figma.com/api/mcp/asset/a83affe5-2fd6-4a68-8857-fa340732acc1",
+  signalGood:    "https://www.figma.com/api/mcp/asset/cd326090-f79f-4a46-be34-1efaf53d0d4b",
+  avatar2:       "https://www.figma.com/api/mcp/asset/0ba9a9f4-ec92-4bd2-b774-54ec8bee7d19",
+  logo2:         "https://www.figma.com/api/mcp/asset/68fa5cc0-be9b-42ab-9103-9000767dac37",
+  search2:       "https://www.figma.com/api/mcp/asset/42c35a6a-0946-4ed5-a94d-6cbe09a6ea4c",
+  bell2:         "https://www.figma.com/api/mcp/asset/d2545cb3-3406-4331-83a1-13dc76f18629",
 };
 
 // ── Main FSR inspection form ──────────────────────────────────────────────────
