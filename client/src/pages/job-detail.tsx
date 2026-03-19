@@ -3,22 +3,24 @@ import { useLocation } from "wouter";
 import { getJob } from "@/data/jobs";
 import { ProNav } from "@/components/pro-nav";
 import { AiAssistant } from "@/components/ai-assistant";
+import aiFabIcon from "@assets/ai-fab-icon.svg";
 
-// ── Figma asset URLs (expire 7 days from 2026-03-12) ─────────────────────────
-const ASSET_SEND      = "https://www.figma.com/api/mcp/asset/fb9106ff-4ee5-4565-b2e0-c279aa2f2467";
-const ASSET_UPLOAD    = "https://www.figma.com/api/mcp/asset/eedca955-7ce8-41e4-93da-e96dc3fdd349";
-const ASSET_DOC_DL    = "https://www.figma.com/api/mcp/asset/c900f942-2096-4dca-870a-2d2c0959b962";
-const ASSET_DOC_MORE  = "https://www.figma.com/api/mcp/asset/8861bed7-bb5d-4d2d-a0e1-b1a65af4746c";
-const ASSET_CHECK     = "https://www.figma.com/api/mcp/asset/48ebbc16-d669-410c-9e72-3a21e4ca083a";
-const ASSET_CARLY     = "https://www.figma.com/api/mcp/asset/c62b226a-1b62-4e62-8da9-e53f4c1a4abc";
-const ASSET_BACK      = "https://www.figma.com/api/mcp/asset/72451b1d-23ac-473d-96d2-4ce409a4e05d";
-const ASSET_VIEW_ALL  = "https://www.figma.com/api/mcp/asset/ba7cacbc-63e3-4e8e-8c2f-47520dd6da37";
-const ASSET_FAB       = "https://www.figma.com/api/mcp/asset/308e0e0f-860f-410d-b250-a9e70e4b4ce3";
+// ── Stable local assets ──
+const svg = (s: string) => `data:image/svg+xml;base64,${btoa(s)}`;
+const ASSET_SEND      = svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2L2 8l6 4 4 6 6-16z"/></svg>');
+const ASSET_UPLOAD    = svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13V3m0 0L6 7m4-4l4 4"/><path d="M3 14v2a1 1 0 001 1h12a1 1 0 001-1v-2"/></svg>');
+const ASSET_DOC_DL    = svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3v10m0 0l-4-4m4 4l4-4"/><path d="M3 14v2a1 1 0 001 1h12a1 1 0 001-1v-2"/></svg>');
+const ASSET_DOC_MORE  = svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 20" fill="currentColor"><circle cx="2" cy="4" r="1.5"/><circle cx="2" cy="10" r="1.5"/><circle cx="2" cy="16" r="1.5"/></svg>');
+const ASSET_CHECK     = svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" fill="none" stroke="#3ed851" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,7 6,11 12,3"/></svg>');
+const ASSET_CARLY     = aiFabIcon;
+const ASSET_BACK      = svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="7,1 3,5.5 7,10"/></svg>');
+const ASSET_VIEW_ALL  = svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,1 7,6 1,11"/></svg>');
+const ASSET_FAB       = svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round"><circle cx="10" cy="10" r="8"/><path d="M10 6v8M6 10h8"/></svg>');
 // Status icons
-const ASSET_STATUS_AL       = "https://www.figma.com/api/mcp/asset/8ed4e96b-2d69-480f-b852-79629b71d4e6";
-const ASSET_STATUS_SUB      = "https://www.figma.com/api/mcp/asset/ee5da1cf-d06b-4f08-a0d2-78dd9f3b49b0";
-const ASSET_STATUS_INS      = "https://www.figma.com/api/mcp/asset/a7f77a50-caea-428a-9d7a-bef6d4819fa3";
-const ASSET_STATUS_COMPLETE = "https://www.figma.com/api/mcp/asset/409a7174-1d25-4ef1-8ac8-1b8189bece74";
+const ASSET_STATUS_AL       = svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="#3b5bdb" stroke-width="1.5"><rect x="3" y="2" width="14" height="16" rx="2"/><line x1="7" y1="7" x2="13" y2="7"/><line x1="7" y1="10" x2="13" y2="10"/><line x1="7" y1="13" x2="10" y2="13"/></svg>');
+const ASSET_STATUS_SUB      = svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="#f59e0b" stroke-width="1.5"><rect x="3" y="2" width="14" height="16" rx="2"/><polyline points="7,10 9,12 13,8" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+const ASSET_STATUS_INS      = svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="#8b5cf6" stroke-width="1.5"><circle cx="10" cy="9" r="5"/><circle cx="10" cy="9" r="2" fill="#8b5cf6"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="10" y1="14" x2="10" y2="16"/><line x1="3" y1="9" x2="5" y2="9"/><line x1="15" y1="9" x2="17" y2="9"/></svg>');
+const ASSET_STATUS_COMPLETE = svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="#3ed851"/><polyline points="9,16 14,21 23,11" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 

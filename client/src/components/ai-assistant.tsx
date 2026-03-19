@@ -1,9 +1,11 @@
 import { useState, useRef, useEffect } from "react";
 import aiFabIcon from "@assets/ai-fab-icon.svg";
 
-const ASSET_LOGO = "https://www.figma.com/api/mcp/asset/f082240c-6cf6-4077-bfb9-9552e0aa06dd";
-const ASSET_CLOSE = "https://www.figma.com/api/mcp/asset/ada45d95-25a2-498f-9930-5a047a7a0240";
-const ASSET_SEND = "https://www.figma.com/api/mcp/asset/684a2f0a-d2b1-409a-beed-899606bf4e7a";
+// ── Stable local assets ──
+const svg = (s: string) => `data:image/svg+xml;base64,${btoa(s)}`;
+const ASSET_LOGO  = aiFabIcon;
+const ASSET_CLOSE = svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><line x1="4" y1="4" x2="14" y2="14"/><line x1="14" y1="4" x2="4" y2="14"/></svg>');
+const ASSET_SEND  = svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2L2 8l6 4 4 6 6-16z"/></svg>');
 
 interface Message {
   id: number;
@@ -254,7 +256,7 @@ export function AiAssistant() {
               onKeyDown={(e) => { if (e.key === "Enter") send(); }}
             />
             <button
-              onClick={send}
+              onClick={() => send()}
               className="shrink-0 flex items-center justify-center rounded-full transition-opacity hover:opacity-80"
               style={{
                 width: 36,

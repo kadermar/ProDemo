@@ -1,5 +1,5 @@
 // Shared job data used by dashboard-v2 and job-detail pages
-// Figma asset URLs expire 7 days from 2026-03-12
+// ── Stable local assets ──
 
 export type JobState = "active" | "completed";
 
@@ -58,7 +58,7 @@ const AVATAR_LISA  = "https://randomuser.me/api/portraits/women/42.jpg";
 export const JOBS: Job[] = [
   {
     id: "metro-hospital",
-    img: "https://www.figma.com/api/mcp/asset/17be5c39-270c-440d-8f32-3ee0d09fce99",
+    img: "https://picsum.photos/seed/building_job1/800/500",
     title: "Metro Hospital Expansion",
     system: "TPO Membrane System",
     location: "Seattle, WA",
@@ -89,7 +89,7 @@ export const JOBS: Job[] = [
   },
   {
     id: "westfield-shopping",
-    img: "https://www.figma.com/api/mcp/asset/110e2863-272b-4fc3-a15c-58b4240a7c5c",
+    img: "https://picsum.photos/seed/building_job2/800/500",
     title: "Westfield Shopping Center - Building A",
     system: "FleeceBACK® Membrane",
     location: "Portland, OR",
@@ -119,7 +119,7 @@ export const JOBS: Job[] = [
   },
   {
     id: "industrial-park",
-    img: "https://www.figma.com/api/mcp/asset/37ce90d4-43b1-4906-9452-1ad803ee3484",
+    img: "https://picsum.photos/seed/building_job3/800/500",
     title: "Industrial Park Phase 2",
     system: "EPDM Roofing System",
     location: "Tacoma, WA",

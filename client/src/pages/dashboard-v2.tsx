@@ -4,15 +4,16 @@ import img31 from "@assets/image31.png";
 import { JOBS } from "@/data/jobs";
 import { AiAssistant } from "@/components/ai-assistant";
 
-// ── Figma asset URLs (expire 7 days from 2026-03-12) ─────────────────────────
-const ASSET_AVATAR = "https://www.figma.com/api/mcp/asset/34af509e-7911-4862-b545-1f1dd092177b";
-const ASSET_ELLIPSE = "https://www.figma.com/api/mcp/asset/f21c6f64-f5cc-4cea-9296-a2580d1f37a2";
+// ── Stable local assets ──
+const svg = (s: string) => `data:image/svg+xml;base64,${btoa(s)}`;
+const ASSET_AVATAR  = "https://picsum.photos/seed/mark_johnson/80/80";
+const ASSET_ELLIPSE = `data:image/svg+xml;base64,${btoa('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1838 1283"><defs><radialGradient id="g" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#3b5bdb" stop-opacity="0.55"/><stop offset="100%" stop-color="#3b5bdb" stop-opacity="0"/></radialGradient></defs><ellipse cx="919" cy="641" rx="919" ry="641" fill="url(#g)"/></svg>')}`;
 // Action button icons
-const ICON_ASSEMBLY  = "https://www.figma.com/api/mcp/asset/614f708a-f7b4-4fe0-aa3f-c4832c7c6fe6";
-const ICON_INSPECTION = "https://www.figma.com/api/mcp/asset/a0e2d7fb-c33f-4b60-95f4-38b2be439125";
-const ICON_UPLOAD    = "https://www.figma.com/api/mcp/asset/0d65892f-a78a-4281-ade2-a00864f0a313";
-const ICON_ASCE7     = "https://www.figma.com/api/mcp/asset/1c5b541c-9b3d-424a-adc4-fbce17c7b843";
-const ICON_WARRANTY  = "https://www.figma.com/api/mcp/asset/38b311af-eede-439f-a551-4c5d0685be13";
+const ICON_ASSEMBLY   = svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="white" stroke-width="1.5"><rect x="3" y="2" width="14" height="16" rx="2"/><line x1="7" y1="7" x2="13" y2="7"/><line x1="7" y1="10" x2="13" y2="10"/><line x1="7" y1="13" x2="10" y2="13"/></svg>');
+const ICON_INSPECTION = svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none" stroke="white" stroke-width="1.8"><circle cx="20" cy="18" r="10"/><circle cx="20" cy="18" r="4" fill="white" fill-opacity="0.3"/><line x1="20" y1="5" x2="20" y2="9"/><line x1="20" y1="27" x2="20" y2="31"/><line x1="7" y1="18" x2="11" y2="18"/><line x1="29" y1="18" x2="33" y2="18"/></svg>');
+const ICON_UPLOAD     = svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13V3m0 0L6 7m4-4l4 4"/><path d="M3 14v2a1 1 0 001 1h12a1 1 0 001-1v-2"/></svg>');
+const ICON_ASCE7      = svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="white" stroke-width="1.5"><rect x="2" y="2" width="16" height="16" rx="2"/><text x="6" y="14" font-family="monospace" font-size="7" fill="white">7</text><line x1="5" y1="8" x2="15" y2="8"/></svg>');
+const ICON_WARRANTY   = svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="white" stroke-width="1.5"><path d="M10 2l7 3v5c0 4-3 7-7 8-4-1-7-4-7-8V5l7-3z"/><polyline points="7,10 9,12 13,8" stroke-linecap="round" stroke-linejoin="round"/></svg>');
 
 // ── Stat cards ────────────────────────────────────────────────────────────────
 
@@ -148,7 +149,7 @@ export default function DashboardV2Page() {
         >
           {/* Logo */}
           <img
-            src="https://www.figma.com/api/mcp/asset/8e8192b2-8ea0-4404-9a49-182465ca2693"
+            src={`data:image/svg+xml;base64,${btoa('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 28"><text x="0" y="21" font-family="Inter,system-ui,sans-serif" font-size="20" font-weight="700" letter-spacing="-0.5" fill="white">C PRO</text></svg>')}`}
             alt="PRO"
             className="shrink-0"
             style={{ height: 28, width: 110, objectFit: "contain", objectPosition: "left" }}
