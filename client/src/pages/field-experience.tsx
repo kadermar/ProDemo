@@ -963,14 +963,10 @@ function InspectionsScreen({ onInspect }: { onInspect: () => void }) {
         <div className="flex-1 text-white text-[18px] font-medium">Inspections</div>
         <div className="flex items-center gap-6">
           {/* Search */}
-          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-          </svg>
+          <img src={FA.search} className="w-5 h-5" alt="" />
           {/* Bell with badge */}
           <div className="relative">
-            <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
-            </svg>
+            <img src={FA.bell} className="w-5 h-5" alt="" />
             <div className="absolute -top-1.5 -right-1.5 bg-[#f05f52] rounded-full w-[14px] h-[14px] flex items-center justify-center">
               <span className="text-[8px] text-white font-medium leading-none">3</span>
             </div>
