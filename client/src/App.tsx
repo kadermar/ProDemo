@@ -15,8 +15,10 @@ import WorkOrderDetailPage from "@/pages/work-order-detail";
 import ChartGalleryPage from "@/pages/chart-gallery";
 import NotFound from "@/pages/not-found";
 
+import navLogo from "@assets/nav-logo.svg";
+
 // ── Stable local assets ──
-const ASSET_LOGO = `data:image/svg+xml;base64,${btoa('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 28"><text x="0" y="21" font-family="Inter,system-ui,sans-serif" font-size="20" font-weight="700" letter-spacing="-0.5" fill="white">C PRO</text></svg>')}`;
+const ASSET_LOGO = navLogo;
 
 function PasswordGate({ onUnlock }: { onUnlock: () => void }) {
   const [value, setValue] = useState("");

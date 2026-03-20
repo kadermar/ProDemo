@@ -1,11 +1,13 @@
 import { ReactNode, useState, useRef, useEffect } from "react";
 import { useLocation } from "wouter";
 import img31 from "@assets/image31.png";
+import navLogo from "@assets/nav-logo.svg";
+import navAvatar from "@assets/nav-avatar.png";
 
 // ── Stable local assets ──
-const ASSET_LOGO    = `data:image/svg+xml;base64,${btoa('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 28"><text x="0" y="21" font-family="Inter,system-ui,sans-serif" font-size="20" font-weight="700" letter-spacing="-0.5" fill="white">C PRO</text></svg>')}`;
+const ASSET_LOGO    = navLogo;
 const ASSET_ELLIPSE = `data:image/svg+xml;base64,${btoa('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1838 1283"><defs><radialGradient id="g" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#3b5bdb" stop-opacity="0.55"/><stop offset="100%" stop-color="#3b5bdb" stop-opacity="0"/></radialGradient></defs><ellipse cx="919" cy="641" rx="919" ry="641" fill="url(#g)"/></svg>')}`;
-const ASSET_AVATAR  = "https://picsum.photos/seed/mark_johnson/80/80";
+const ASSET_AVATAR  = navAvatar;
 
 type ActivePage = "dashboard" | "signals" | "stage-activity" | "field-experience" | "chat";
 
