@@ -1,0 +1,10 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="signal-bars-good 1" clip-path="url(#clip0_0_59)">
+<path id="Vector" d="M3.75 2.375V5.5H2.25V2.375C2.25 2.16825 2.50237 2 2.8125 2H3.1875C3.49763 2 3.75 2.16825 3.75 2.375ZM5.4375 0.5H5.0625C4.75237 0.5 4.5 0.66825 4.5 0.875V5.5H6V0.875C6 0.66825 5.74763 0.5 5.4375 0.5ZM0.9375 3.75H0.5625C0.252375 3.75 0 3.91825 0 4.125V5.5H1.5V4.125C1.5 3.91825 1.24763 3.75 0.9375 3.75Z" fill="var(--fill-0, #28992A)"/>
+</g>
+<defs>
+<clipPath id="clip0_0_59">
+<rect width="6" height="6" fill="white"/>
+</clipPath>
+</defs>
+</svg>

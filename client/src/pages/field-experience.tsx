@@ -22,6 +22,57 @@ import {
 import { PageHero } from "@/components/page-hero";
 import rightPanelImage from "@assets/Right.png";
 
+// ── Field Experience local assets (downloaded from Figma 2985:454 & 3194:584) ─
+import feAvatar from "@assets/fe-avatar.png";
+import feMap from "@assets/fe-map.png";
+import fePartlyCloudy from "@assets/fe-partly-cloudy.png";
+import feSignalBars from "@assets/fe-signal-bars.png";
+import feWifi from "@assets/fe-wifi.png";
+import feBattery from "@assets/fe-battery.png";
+import feLogo from "@assets/fe-logo.png";
+import feSearch from "@assets/fe-search.png";
+import feBell from "@assets/fe-bell.png";
+import feFilterList from "@assets/fe-filter-list.png";
+import feMapMarker from "@assets/fe-map-marker.png";
+import feRouteLine from "@assets/fe-route-line.png";
+import fePlus from "@assets/fe-plus.png";
+import feMinus from "@assets/fe-minus.png";
+import feExpand from "@assets/fe-expand.png";
+import feMarkerBlue from "@assets/fe-marker-blue.png";
+import feMarkerBlack from "@assets/fe-marker-black.png";
+import feCarlisleLogo from "@assets/fe-carlisle-logo.png";
+import feCloseCircle from "@assets/fe-close-circle.png";
+import feSignalGood from "@assets/fe-signal-good.png";
+import feArrowRight from "@assets/fe-arrow-right.png";
+import fePhoneFlip from "@assets/fe-phone-flip.png";
+import feEngineWarning from "@assets/fe-engine-warning.png";
+import feLocationTrack from "@assets/fe-location-track.png";
+import fe2Avatar from "@assets/fe2-avatar.png";
+import fe2Building3d from "@assets/fe2-building3d.png";
+import fe2Photo1 from "@assets/fe2-photo1.jpg";
+import fe2Photo2 from "@assets/fe2-photo2.jpg";
+import fe2Photo3 from "@assets/fe2-photo3.jpg";
+import fe2Photo4 from "@assets/fe2-photo4.jpg";
+import fe2Photo5 from "@assets/fe2-photo5.jpg";
+import fe2Logo from "@assets/fe2-logo.png";
+import fe2Search from "@assets/fe2-search.png";
+import fe2Bell from "@assets/fe2-bell.png";
+import fe2WrenchRed from "@assets/fe2-wrench-red.png";
+import fe2WrenchOutline from "@assets/fe2-wrench-outline.png";
+import fe2Spinner from "@assets/fe2-spinner.png";
+import fe2CheckCircle from "@assets/fe2-check-circle.png";
+import fe2CheckCircle2 from "@assets/fe2-check-circle2.png";
+import fe2CloseCircle from "@assets/fe2-close-circle.png";
+import fe2Exclamation from "@assets/fe2-exclamation.png";
+import fe2HelmetUser from "@assets/fe2-helmet-user.png";
+import fe2Calendar from "@assets/fe2-calendar.png";
+import fe2Chevron from "@assets/fe2-chevron.png";
+import fe2Eye from "@assets/fe2-eye.png";
+import fe2Camera from "@assets/fe2-camera.png";
+import fe2SignalGood from "@assets/fe2-signal-good.png";
+import fe2SignalBars from "@assets/fe2-signal-bars.png";
+import fe2ArrowLeft from "@assets/fe2-arrow-left.png";
+
 // ── Static Carlisle field data ───────────────────────────────────────────────
 
 const FSR_WORKERS = [
@@ -92,36 +143,38 @@ const INSPECTION_STEPS: Record<string, Array<{ id: string; step: number; name: s
   ],
 };
 
-// ── Stable inline assets (SVG data URIs + picsum) ────────────────────────────
+// ── Local assets from Figma ───────────────────────────────────────────────────
 
 const svg = (s: string) => `data:image/svg+xml;base64,${btoa(s)}`;
 
 const FA = {
-  avatar:          "https://i.pravatar.cc/48?img=5",
-  map:             "https://picsum.photos/seed/aerialmap99/600/400",
-  partlyCloudy:    svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 18'><circle cx='10' cy='7' r='5' fill='#FDB53A'/><ellipse cx='15' cy='12' rx='7' ry='4.5' fill='#e8e8e8'/><ellipse cx='9' cy='13' rx='5.5' ry='3.5' fill='#f5f5f5'/></svg>`),
-  signalBars:      svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 11'><rect x='0' y='7' width='3' height='4' rx='.5' fill='white'/><rect x='4.5' y='4.5' width='3' height='6.5' rx='.5' fill='white'/><rect x='9' y='2' width='3' height='9' rx='.5' fill='white'/><rect x='13.5' y='0' width='3' height='11' rx='.5' fill='white' opacity='.35'/></svg>`),
+  avatar:          feAvatar,
+  map:             feMap,
+  partlyCloudy:    fePartlyCloudy,
+  signalBars:      feSignalBars,
   signalBarsLight: svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 11'><rect x='0' y='7' width='3' height='4' rx='.5' fill='#1a1a1a'/><rect x='4.5' y='4.5' width='3' height='6.5' rx='.5' fill='#1a1a1a'/><rect x='9' y='2' width='3' height='9' rx='.5' fill='#1a1a1a'/><rect x='13.5' y='0' width='3' height='11' rx='.5' fill='#1a1a1a' opacity='.35'/></svg>`),
-  wifi:            svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 14' fill='none'><circle cx='9' cy='12.5' r='1.5' fill='white'/><path d='M5.5 9.5c.9-.9 2.1-1.5 3.5-1.5s2.6.6 3.5 1.5' stroke='white' stroke-width='1.5' stroke-linecap='round'/><path d='M2.5 6.5c1.8-1.8 4.1-2.5 6.5-2.5s4.7.7 6.5 2.5' stroke='white' stroke-width='1.5' stroke-linecap='round' opacity='.5'/></svg>`),
+  wifi:            feWifi,
   wifiLight:       svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 14' fill='none'><circle cx='9' cy='12.5' r='1.5' fill='#1a1a1a'/><path d='M5.5 9.5c.9-.9 2.1-1.5 3.5-1.5s2.6.6 3.5 1.5' stroke='#1a1a1a' stroke-width='1.5' stroke-linecap='round'/><path d='M2.5 6.5c1.8-1.8 4.1-2.5 6.5-2.5s4.7.7 6.5 2.5' stroke='#1a1a1a' stroke-width='1.5' stroke-linecap='round' opacity='.5'/></svg>`),
-  battery:         svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 13'><rect x='0' y='1.5' width='23' height='10' rx='2' stroke='white' stroke-width='1.3' fill='none'/><rect x='1.5' y='3' width='18' height='7' rx='1.5' fill='white'/><path d='M24.5 4.5v4' stroke='white' stroke-width='1.5' stroke-linecap='round'/></svg>`),
+  battery:         feBattery,
   batteryLight:    svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 13'><rect x='0' y='1.5' width='23' height='10' rx='2' stroke='#1a1a1a' stroke-width='1.3' fill='none'/><rect x='1.5' y='3' width='18' height='7' rx='1.5' fill='#1a1a1a'/><path d='M24.5 4.5v4' stroke='#1a1a1a' stroke-width='1.5' stroke-linecap='round'/></svg>`),
-  logo:            svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 16'><text x='0' y='12' font-family='Helvetica Neue,sans-serif' font-size='11' font-weight='700' fill='white'>C PRO</text></svg>`),
-  filterList:      svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 12' fill='none'><path d='M1 2h14M3 6h10M5.5 10h5' stroke='white' stroke-width='1.5' stroke-linecap='round'/></svg>`),
-  mapMarkerIcon:   svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 16'><path d='M6 0C3.24 0 1 2.24 1 5c0 3.75 5 11 5 11s5-7.25 5-11C11 2.24 8.76 0 6 0z' fill='#003591'/><circle cx='6' cy='5' r='2' fill='white'/></svg>`),
-  routeLine:       svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 8'><line x1='0' y1='4' x2='54' y2='4' stroke='#003591' stroke-width='2' stroke-dasharray='6 3'/><path d='M51 1.5l3 2.5-3 2.5' stroke='#003591' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>`),
-  plus:            svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'><path d='M8 3v10M3 8h10' stroke='#003591' stroke-width='2' stroke-linecap='round'/></svg>`),
-  minus:           svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'><path d='M3 8h10' stroke='#003591' stroke-width='2' stroke-linecap='round'/></svg>`),
-  expand:          svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'><path d='M10 2h4v4M6 14H2v-4M14 6l-4 4M2 10l4-4' stroke='#003591' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>`),
-  markerBlack:     svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 16'><path d='M6 0C3.24 0 1 2.24 1 5c0 3.75 5 11 5 11s5-7.25 5-11C11 2.24 8.76 0 6 0z' fill='#1a1a1a'/><circle cx='6' cy='5' r='2' fill='white'/></svg>`),
-  markerBlue:      svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 16'><path d='M6 0C3.24 0 1 2.24 1 5c0 3.75 5 11 5 11s5-7.25 5-11C11 2.24 8.76 0 6 0z' fill='#003591'/><circle cx='6' cy='5' r='2' fill='white'/></svg>`),
-  carlisleLogo:    svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 16'><text x='0' y='12' font-family='Helvetica Neue,sans-serif' font-size='9' font-weight='700' fill='#003591'>CARLISLE</text></svg>`),
-  closeCircle:     svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><circle cx='10' cy='10' r='9' fill='#e0e0e0'/><path d='M7 7l6 6M13 7l-6 6' stroke='#666' stroke-width='1.5' stroke-linecap='round'/></svg>`),
-  signalGood:      svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'><circle cx='3' cy='3' r='3' fill='#34C759'/></svg>`),
-  arrowRight:      svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'><path d='M6 4l4 4-4 4' stroke='#003591' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>`),
-  phoneFlip:       svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'><rect x='4' y='2' width='8' height='12' rx='2' stroke='#003591' stroke-width='1.5'/><circle cx='8' cy='12.5' r='.8' fill='#003591'/></svg>`),
-  engineWarning:   svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M8 2L14.5 13.5H1.5L8 2z' fill='#f59e0b'/><rect x='7.2' y='6' width='1.5' height='4' rx='.5' fill='white'/><circle cx='8' cy='12' r='.8' fill='white'/></svg>`),
-  locationTrack:   svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'><circle cx='8' cy='8' r='5.5' stroke='#003591' stroke-width='1.5'/><circle cx='8' cy='8' r='2' fill='#003591'/><path d='M8 1v3M8 12v3M1 8h3M12 8h3' stroke='#003591' stroke-width='1.5' stroke-linecap='round'/></svg>`),
+  logo:            feLogo,
+  filterList:      feFilterList,
+  mapMarkerIcon:   feMapMarker,
+  routeLine:       feRouteLine,
+  plus:            fePlus,
+  minus:           feMinus,
+  expand:          feExpand,
+  markerBlack:     feMarkerBlack,
+  markerBlue:      feMarkerBlue,
+  carlisleLogo:    feCarlisleLogo,
+  closeCircle:     feCloseCircle,
+  signalGood:      feSignalGood,
+  arrowRight:      feArrowRight,
+  phoneFlip:       fePhoneFlip,
+  engineWarning:   feEngineWarning,
+  locationTrack:   feLocationTrack,
+  search:          feSearch,
+  bell:            feBell,
 };
 
 // ── Animation variants ────────────────────────────────────────────────────────
@@ -317,31 +370,33 @@ function TabletFrame({ children, statusBarTheme = "light" }: { children: React.R
 }
 
 const FA2 = {
-  building3d:    "https://picsum.photos/seed/rooftop3d/500/300",
-  photo1:        "https://picsum.photos/seed/roofphoto1/300/200",
-  photo2:        "https://picsum.photos/seed/roofphoto2/300/200",
-  photo3:        "https://picsum.photos/seed/roofphoto3/300/200",
-  photo4:        "https://picsum.photos/seed/roofphoto4/300/200",
-  photo5:        "https://picsum.photos/seed/roofphoto5/300/200",
-  wrenchRed:     svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none'><path d='M10 1a3 3 0 00-3 3l-5 6' stroke='#ef4444' stroke-width='1.5' stroke-linecap='round'/><path d='M10 1a3 3 0 010 6' stroke='#ef4444' stroke-width='1.5' stroke-linecap='round'/></svg>`),
-  wrenchOutline: svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none'><path d='M10 1a3 3 0 00-3 3l-5 6' stroke='#aaa' stroke-width='1.5' stroke-linecap='round'/><path d='M10 1a3 3 0 010 6' stroke='#aaa' stroke-width='1.5' stroke-linecap='round'/></svg>`),
-  spinner:       svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none'><circle cx='6' cy='6' r='4' stroke='#e0e0e0' stroke-width='1.5'/><path d='M6 2a4 4 0 014 4' stroke='#003591' stroke-width='1.5' stroke-linecap='round'/></svg>`),
-  checkCircle:   svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><circle cx='4' cy='4' r='4' fill='#34C759'/><path d='M2.5 4l1 1.2 2-2' stroke='white' stroke-width='1' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>`),
-  checkCircle2:  svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><circle cx='4' cy='4' r='4' fill='#003591'/><path d='M2.5 4l1 1.2 2-2' stroke='white' stroke-width='1' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>`),
-  closeCircle:   svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><circle cx='10' cy='10' r='9' fill='#ef4444'/><path d='M7 7l6 6M13 7l-6 6' stroke='white' stroke-width='1.5' stroke-linecap='round'/></svg>`),
-  exclamation:   svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><circle cx='4' cy='4' r='4' fill='#f59e0b'/><rect x='3.5' y='2' width='1' height='2.5' rx='.5' fill='white'/><circle cx='4' cy='6' r='.5' fill='white'/></svg>`),
-  helmetUser:    svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' fill='none'><path d='M2 8a3 3 0 016 0' stroke='#9ca3af' stroke-width='1'/><path d='M1 8h8' stroke='#9ca3af' stroke-width='1' stroke-linecap='round'/><path d='M5 1.5a3 3 0 013 3H2a3 3 0 013-3z' fill='#9ca3af'/></svg>`),
-  calendar:      svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' fill='none'><rect x='1' y='2' width='8' height='7' rx='1' stroke='#9ca3af' stroke-width='1'/><path d='M3 1v2M7 1v2M1 5h8' stroke='#9ca3af' stroke-width='1' stroke-linecap='round'/></svg>`),
+  building3d:    fe2Building3d,
+  photo1:        fe2Photo1,
+  photo2:        fe2Photo2,
+  photo3:        fe2Photo3,
+  photo4:        fe2Photo4,
+  photo5:        fe2Photo5,
+  wrenchRed:     fe2WrenchRed,
+  wrenchOutline: fe2WrenchOutline,
+  spinner:       fe2Spinner,
+  checkCircle:   fe2CheckCircle,
+  checkCircle2:  fe2CheckCircle2,
+  closeCircle:   fe2CloseCircle,
+  exclamation:   fe2Exclamation,
+  helmetUser:    fe2HelmetUser,
+  calendar:      fe2Calendar,
   star:          svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'><path d='M5 1l1.2 2.4L9 3.9 7 5.8l.5 3L5 7.5 2.5 8.8 3 5.8 1 3.9l2.8-.5z' fill='#FDB53A'/></svg>`),
   check:         svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' fill='none'><path d='M1.5 4l2 2 3-3' stroke='#34C759' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>`),
-  eye:           svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' fill='none'><path d='M1 4s1.5-2.5 3-2.5S7 4 7 4s-1.5 2.5-3 2.5S1 4 1 4z' stroke='#9ca3af' stroke-width='1'/><circle cx='4' cy='4' r='1' fill='#9ca3af'/></svg>`),
-  camera:        svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' fill='none'><rect x='.5' y='2.5' width='7' height='5' rx='.5' stroke='#9ca3af' stroke-width='1'/><path d='M3 2.5l.5-1h1L5 2.5' stroke='#9ca3af' stroke-width='1'/><circle cx='4' cy='5' r='1' stroke='#9ca3af' stroke-width='1'/></svg>`),
-  arrowLeft:     svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'><path d='M10 4L6 8l4 4' stroke='#1a1a1a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>`),
-  signalGood:    svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'><circle cx='3' cy='3' r='3' fill='#34C759'/></svg>`),
-  avatar2:       "https://i.pravatar.cc/48?img=12",
-  logo2:         svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 68 16'><text x='0' y='12' font-family='Helvetica Neue,sans-serif' font-size='11' font-weight='700' fill='white'>C PRO</text></svg>`),
-  search2:       svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'><circle cx='8.5' cy='8.5' r='5.5' stroke='white' stroke-width='1.5'/><path d='M13 13l4 4' stroke='white' stroke-width='1.5' stroke-linecap='round'/></svg>`),
-  bell2:         svg(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'><path d='M10 2a5 5 0 00-5 5v3.5L3 13v1h14v-1l-2-2.5V7a5 5 0 00-5-5z' stroke='white' stroke-width='1.5' stroke-linejoin='round'/><path d='M8.5 17a1.5 1.5 0 003 0' stroke='white' stroke-width='1.5' stroke-linecap='round'/></svg>`),
+  eye:           fe2Eye,
+  camera:        fe2Camera,
+  arrowLeft:     fe2ArrowLeft,
+  chevron:       fe2Chevron,
+  signalGood:    fe2SignalGood,
+  signalBars:    fe2SignalBars,
+  avatar2:       fe2Avatar,
+  logo2:         fe2Logo,
+  search2:       fe2Search,
+  bell2:         fe2Bell,
 };
 
 // ── Main FSR inspection form ──────────────────────────────────────────────────

@@ -1,0 +1,10 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="rocks 1" clip-path="url(#clip0_0_45)">
+<path id="Vector" d="M1.36867 4.94733L2.22367 6.18567L1.225 7.38433L0 6.785V5.55267L1.36867 4.94767V4.94733ZM6.86867 3L7.954 1.92567L7.32567 0H5.478L4.37467 1.379L5.604 3H6.86867ZM3.66667 1.39467L1.756 0.051L0 1.14833V3.38933L2.34067 4.241L3.66667 3.136V1.39467ZM7.995 6.19933L6.99167 8H4.25933L3 6.63V5.19767L4.49433 3.66667L7.025 3.66867L7.995 6.19933ZM5.66667 6.66667H4.95933L4.23833 5.882L3.74733 6.33333L4.66633 7.33333H5.66633L5.66667 6.66667Z" fill="var(--fill-0, #797D7E)"/>
+</g>
+<defs>
+<clipPath id="clip0_0_45">
+<rect width="8" height="8" fill="white"/>
+</clipPath>
+</defs>
+</svg>
