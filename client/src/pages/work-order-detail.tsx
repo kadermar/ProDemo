@@ -289,10 +289,13 @@ export default function WorkOrderDetailPage() {
           </div>
 
           {/* Title row */}
-          <div className="flex items-start justify-between mb-4">
-            <h1 className="text-[32px] font-medium text-[#121212] tracking-[-0.02em]">
-              {wo.contractor}
-            </h1>
+          <div className="flex items-start justify-between mb-1">
+            <div>
+              <h1 className="text-[32px] font-medium text-[#121212] tracking-[-0.02em]">
+                {wo.projectName}
+              </h1>
+              <p className="text-[15px] text-[#6d6d6d] mt-0.5">{wo.contractor}</p>
+            </div>
             <div className="flex items-center gap-3 mt-2">
               <span
                 className="text-[13px] font-semibold tracking-wide px-3 py-1 rounded-[6px]"
@@ -309,8 +312,10 @@ export default function WorkOrderDetailPage() {
           </div>
 
           {/* Meta line */}
-          <div className="flex items-center gap-2 text-[14px] text-[#6d6d6d] mb-8">
-            <span>{wo.city}</span>
+          <div className="flex items-center gap-2 text-[14px] text-[#6d6d6d] mb-8 mt-4">
+            <span>{wo.address}</span>
+            <span className="text-[#cdcdcd]">·</span>
+            <span>{wo.sqft} sq ft</span>
             <span className="text-[#cdcdcd]">·</span>
             <span>{wo.product}</span>
             <span className="text-[#cdcdcd]">·</span>
