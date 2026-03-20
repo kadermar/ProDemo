@@ -1,5 +1,8 @@
 // Shared job data used by dashboard-v2 and job-detail pages
 // ── Stable local assets ──
+import building1 from "@assets/building1.jpg";
+import building2 from "@assets/building2.jpg";
+import building3 from "@assets/building3.jpg";
 
 export type JobState = "active" | "completed";
 
@@ -58,7 +61,7 @@ const AVATAR_LISA  = "https://randomuser.me/api/portraits/women/42.jpg";
 export const JOBS: Job[] = [
   {
     id: "metro-hospital",
-    img: "https://picsum.photos/seed/building_job1/800/500",
+    img: building1,
     title: "Metro Hospital Expansion",
     system: "TPO Membrane System",
     location: "Seattle, WA",
@@ -89,7 +92,7 @@ export const JOBS: Job[] = [
   },
   {
     id: "westfield-shopping",
-    img: "https://picsum.photos/seed/building_job2/800/500",
+    img: building2,
     title: "Westfield Shopping Center - Building A",
     system: "FleeceBACK® Membrane",
     location: "Portland, OR",
@@ -119,7 +122,7 @@ export const JOBS: Job[] = [
   },
   {
     id: "industrial-park",
-    img: "https://picsum.photos/seed/building_job3/800/500",
+    img: building3,
     title: "Industrial Park Phase 2",
     system: "EPDM Roofing System",
     location: "Tacoma, WA",

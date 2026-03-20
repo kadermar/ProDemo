@@ -3,15 +3,14 @@ import { useLocation, useParams } from "wouter";
 import { getWorkOrder, STAGE_ORDER, STAGE_LABELS } from "@/data/work-orders";
 import { ProNav } from "@/components/pro-nav";
 import { AiAssistant } from "@/components/ai-assistant";
+import building1 from "@assets/building1.jpg";
+import building2 from "@assets/building2.jpg";
+import building3 from "@assets/building3.jpg";
 import { STAGE_ICONS } from "@/lib/stage-icons";
 import aiFabIcon from "@assets/ai-fab-icon.svg";
 
 // ── Building photos (cycled by work order ID) ────────────────────────────────
-const BUILDING_IMGS = [
-  "https://picsum.photos/seed/building_job1/800/500",
-  "https://picsum.photos/seed/building_job2/800/500",
-  "https://picsum.photos/seed/building_job3/800/500",
-];
+const BUILDING_IMGS = [building1, building2, building3];
 
 function buildingImg(id: string): string {
   const n = parseInt(id.replace(/\D/g, "").slice(-3) || "0", 10);
